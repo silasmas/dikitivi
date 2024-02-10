@@ -12,13 +12,11 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'drc' => 'République Démocratique du Congo',
-    'slogan' => 'ACR | La politique de l\'amour',
-    'keywords' => 'Action Commune pour la République,acr,l\'amour de la politique,politique de l\'amour',
+    'app_name' => 'DikiTivi',
+    'keywords' => 'dikitivi,diki,vidéo,film,séries,épisode,dessin animé,documentaire,prédication',
     'all_right_reserved' => 'Tous droits réservés',
     'follow_us' => 'Suivez-nous :',
     'call_us' => 'Appelez-nous :',
-    'bank_transaction_description' => 'Transaction bancaire depuis l\'application ACR',
     'your_language' => 'Votre langue',
     'back_home' => 'Retour à l\'accueil',
     'back_list' => 'Retourner à la liste',

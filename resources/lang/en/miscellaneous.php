@@ -12,13 +12,11 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'drc' => 'Democratic Republic of the Congo',
-    'slogan' => 'ACR | Politics of love',
-    'keywords' => 'Common Action for the Republic,acr,love of politics,politics of love',
+    'app_name' => 'DikiTivi',
+    'keywords' => 'dikitivi,diki,video,film,series,episode,cartoon,documentary,preaching',
     'all_right_reserved' => 'All right reserved',
     'follow_us' => 'Follow us:',
     'call_us' => 'Call us:',
-    'bank_transaction_description' => 'Bank transaction from the ACR application',
     'your_language' => 'Your language',
     'back_home' => 'Return to the home',
     'back_list' => 'Return to the list',
