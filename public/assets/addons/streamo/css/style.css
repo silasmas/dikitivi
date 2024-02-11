@@ -2617,6 +2617,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: #fff;
   color: #333;
 }
+.login-button .login-btn.brilliantrose {
+  background: #e948ae;
+  color: #fff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.login-button .login-btn.brilliantrose:hover {
+  background: #fff;
+  color: #333;
+}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .login-button {
     padding-left: 0;
