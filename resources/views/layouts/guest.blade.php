@@ -33,6 +33,14 @@
         <!-- ============ Modernizer JS ============ -->
         <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
 
+        <!-- ============ Custom CSS ============ -->
+        <style>
+            .logo a img { width: 200px; }
+            @media screen and (max-width: 375px) {
+                .logo a img { width: 140px; }
+            }
+        </style>
+
         <title>
 @if (Route::is('home.youth') || Route::is('home.adult') || Route::is('welcome'))
             @lang('miscellaneous.app_name')
@@ -63,7 +71,7 @@
                         <div class="col-lg-3 col-7">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="{{ route('welcome') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt="" width="200"></a>
+                                <a href="{{ route('welcome') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt=""></a>
                             </div>
                             <!-- Logo -->
                         </div>
@@ -78,7 +86,12 @@
                                         <li><a href="">Contact</a></li>
                                     </nav>
                                     <div class="login-button">
-                                        <a class="login-btn border-r-5 brilliantrose" href="">@lang('miscellaneous.menu.public.donate')</a>
+                                        <a class="login-btn border-r-5 brilliantrose" href="">
+                                            <i class="bi bi-heart-fill me-sm-2"></i>
+                                            <span class="d-sm-inline-block d-none">
+                                                @lang('miscellaneous.menu.public.donate')
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
 
