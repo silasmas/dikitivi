@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/material-design-iconic-font.min.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 
         <!-- ============ Addons CSS Files ============ -->
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
@@ -75,26 +76,53 @@
                             </div>
                             <!-- Logo -->
                         </div>
-
                         <div class="col-lg-9 col-5">
                             <div class="menu-responsive">
                                 <div class="main-menu">
                                     <nav class="main-navigation">
-                                        <li><a href="">A propos</a></li>
-                                        <li><a href="">How it Works</a></li>
-                                        <li><a href="">Pricing</a></li>
-                                        <li><a href="">Contact</a></li>
+                                        <ul>
+                                            <li><a href="#about">@lang('miscellaneous.menu.public.about')</a></li>
+                                            <li><a href="#pricing">@lang('miscellaneous.menu.public.pricing')</a></li>
+                                            <li><a href="#help">@lang('miscellaneous.menu.public.help')</a></li>
+                                        </ul>
                                     </nav>
                                     <div class="login-button">
-                                        <a class="login-btn border-r-5 brilliantrose" href="">
+                                        <a class="login-btn brilliantrose border-r-5 me-sm-2 me-1" href="">
                                             <i class="bi bi-heart-fill me-sm-2"></i>
                                             <span class="d-sm-inline-block d-none">
                                                 @lang('miscellaneous.menu.public.donate')
                                             </span>
                                         </a>
+
+                                        <div class="dropdown dropleft d-inline-block">
+                                            <a role="button" id="dropdownLanguage" class="dropdown-toggle hidden-arrow text-light" href="#">
+                                                <i class="bi bi-translate fs-4 align-middle"></i>
+                                            </a>
+
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+    @foreach ($available_locales as $locale_name => $available_locale)
+        @if ($available_locale != $current_locale)
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ route('change_language', ['locale' => $available_locale]) }}">
+                                                        {{ $locale_name }}
+            @switch($available_locale)
+                @case('ln')
+                                                        <span class="fi fi-cd"></span>
+                    @break
+                @case('en')
+                                                        <span class="fi fi-us"></span>
+                    @break
+                @default
+                                                        <span class="fi fi-{{ $available_locale }}"></span>
+            @endswitch
+                                                    </a>
+                                                </li>
+        @endif
+    @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-
                                 <!-- mobile-menu start -->
                                 <div class="mobile-menu d-block d-lg-none"></div>
                                 <!-- mobile-menu end -->
@@ -102,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-            </header>
+                    </header>
 
 @yield('guest-content')
 
@@ -193,9 +221,10 @@
         <!-- Material Design for Bootstrap -->
         <script src="{{ asset('assets/addons/custom/mdb/js/mdb.min.js') }}"></script>
         <!-- Popper JS -->
-        <script src="{{ asset('assets/addons/streamo/js/popper.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/addons/streamo/js/popper.min.js') }}"></script> --}}
         <!-- Bootstrap -->
-        <script src="{{ asset('assets/addons/streamo/js/bootstrap.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/addons/streamo/js/bootstrap.min.js') }}"></script> --}}
+        <script src="{{ asset('assets/addons/streamo/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Plugins JS -->
         <script src="{{ asset('assets/addons/streamo/js/plugins.js') }}"></script>
         <!-- Material Design for Bootstrap -->

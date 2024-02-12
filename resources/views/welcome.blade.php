@@ -39,7 +39,7 @@
                                     <form>
                                         <div class="mb-3">
                                             <label for="login_email" class="form-label">@lang('miscellaneous.email')</label>
-                                            <input type="email" class="form-control rounded-0" id="login_email" aria-describedby="login_email_error">
+                                            <input type="email" class="form-control rounded-0" id="login_email" aria-describedby="login_email_error" autofocus>
                                             {{-- <div id="login_email_error" class="form-text"></div> --}}
                                         </div>
                                         <div class="mb-3">

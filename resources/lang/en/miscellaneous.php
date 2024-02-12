@@ -257,28 +257,19 @@ return [
     // ===== NAVIGATION MENU
     'menu' => [
         'home' => 'Home',
-        'dashboard' => 'Dashboard',
         'login' => 'Log in',
         'account_settings' => 'Account settings',
         'messages' => 'Messages',
         'notifications' => 'Notifications',
-        'admin' => [
-            'legal_info' => 'Legal info',
-            'country' => 'Country',
-            'miscellaneous' => 'Miscellaneous',
-        ],
-        'developer' => [
-            'apis' => 'APIs',
-        ],
-        'manager' => [
+        'controller' => [
             'members' => 'Members',
             'other_managers' => 'Other managers',
             'infos' => 'Informations',
         ],
         'public' => [
             'about' => 'About',
-            'news' => 'News',
-            'works' => 'Our works',
+            'pricing' => 'Premium pricing',
+            'help' => 'Help',
             'donate' => 'Donate',
         ],
     ],

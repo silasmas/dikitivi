@@ -257,28 +257,19 @@ return [
     // ===== NAVIGATION MENU
     'menu' => [
         'home' => 'Accueil',
-        'dashboard' => 'Tableau de bord',
         'login' => 'Se connecter',
         'account_settings' => 'Paramètres du compte',
         'messages' => 'Messages',
         'notifications' => 'Notifications',
-        'admin' => [
-            'legal_info' =>  'Info légale',
-            'country' =>  'Pays',
-            'miscellaneous' =>  'Divers',
-        ],
-        'developer' => [
-            'apis' => 'APIs',
-        ],
-        'manager' => [
+        'controller' => [
             'members' => 'Membres',
             'other_managers' => 'Autres managers',
             'infos' => 'Informations'
         ],
         'public' => [
             'about' => 'A propos',
-            'news' => 'Actualité',
-            'works' => 'Nos œuvres',
+            'pricing' => 'Tarifs premium',
+            'help' => 'Aide',
             'donate' => 'Faire un don'
         ],
     ],
