@@ -1,6 +1,6 @@
-@extends('layouts.guest')
+@extends('layouts.welcome')
 
-@section('guest-content')
+@section('welcome-content')
 
         <!-- Hero Slider start -->
         <div class="hero-slider">
