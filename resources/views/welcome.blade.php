@@ -7,8 +7,8 @@
             <div class="single-slide-2 bg-image-two d-flex align-items-center bg-sky-blue" data-bgimage="{{ asset('assets/img/transit/bg-home.png') }}">
                 <!-- Hero Content One Start -->
                 <div class="hero-content-two container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7">
+                    <div class="row align-items-center mt-lg-0 mt-sm-5 mt-0">
+                        <div class="col-lg-7 mb-4">
                             <div class="slider-text-info">
                                 <h3 class="text-white">Bienvenue sur Diki Tivi</h3>
                                 <h1 class="text-white">Médias chrétiens</h1>
@@ -21,9 +21,9 @@
                                         <div class="col-sm-6">
                                             <a href="" class="default-btn bg-tow btn-block py-3 rounded-pill fs-5 shadow-0 text-center">Je suis mineur.e</a>
                                         </div>
-                                        <div class="col-sm-6 d-sm-none d-inline-block">
-                                            <div class="login-button">
-                                                <a class="login-btn grey-light btn-block py-3 rounded-pill fs-5 shadow-0 text-center" href="">@lang('miscellaneous.login_title1')</a>
+                                        <div class="col-lg-6 d-lg-none d-inline-block">
+                                            <div class="login-button pe-0">
+                                                <a href="{{ route('login') }}" class="login-btn grey-light btn-block py-3 rounded-pill fs-5 shadow-0 text-center">@lang('miscellaneous.login_title1')</a>
                                             </div>
                                         </div>
                                     </div>
@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-5 d-sm-inline-block d-none">
+                        <div class="col-lg-5 d-lg-inline-block d-none">
                             <div class="card rounded-0 shadow-0">
                                 <div class="card-body p-4">
                                     <h4 class="h4 mb-4 text-center">@lang('miscellaneous.login_title2')</h4>
@@ -47,8 +47,8 @@
                                             <input type="password" class="form-control rounded-0" id="login_password" aria-describedby="login_password_error">
                                             {{-- <div id="login_password_error" class="form-text"></div> --}}
                                         </div>
-                                        <button type="submit" class="default-btn btn-block border-0 btn-primary rounded-pill py-2">@lang('auth.login')</button>
-                                        <button type="submit" class="btn-block border-0 rounded-pill py-2">@lang('miscellaneous.go_register')</button>
+                                        <button type="submit" class="btn btn-block btn-primary rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('auth.login')</button>
+                                        <a href="{{ route('register') }}" class="btn btn-block bg-light border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.go_register')</a>
                                     </form>
                                 </div>
                             </div>

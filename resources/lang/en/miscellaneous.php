@@ -258,19 +258,13 @@ return [
     'menu' => [
         'home' => 'Home',
         'login' => 'Log in',
-        'account_settings' => 'Account settings',
-        'messages' => 'Messages',
+        'account' => 'My account',
+        'about' => 'About',
         'notifications' => 'Notifications',
+        'donate' => 'Donate',
         'controller' => [
-            'members' => 'Members',
-            'other_managers' => 'Other managers',
-            'infos' => 'Informations',
-        ],
-        'public' => [
-            'about' => 'About',
-            'pricing' => 'Premium pricing',
-            'help' => 'Help',
-            'donate' => 'Donate',
+            'youth' => 'Youth content',
+            'adult' => 'Adult content'
         ],
     ],
 
@@ -284,11 +278,6 @@ return [
             'title' => 'Personal Infos',
             'change_avatar' => 'Change the avatar',
             'link' => 'Register update',
-        ],
-        'membership_card' => [
-            'title' => 'Membership card',
-            'error' => 'Complete your personal information first',
-            'print_card' => 'Print card',
         ],
         'update_password' => [
             'title' => 'Change password',
@@ -309,9 +298,8 @@ return [
             'other_descriprion' => 'Describe your identity document',
             'click_to_change' => 'Click on photo to edit',
         ],
-        'my_contributions' => [
-            'title' => 'My contributions',
-            'link' => 'Contribute',
+        'payment' => [
+            'link' => 'Buy',
             'send_money' => [
                 'title' => 'Send money',
                 'description' => 'Choose payment method',
@@ -321,224 +309,10 @@ return [
         ],
     ],
 
-    // Messenger
-    'message' => [
-        'inbox' => 'Inbox',
-        'outbox' => 'Sent messages',
-        'draft' => 'Draft',
-        'spams' => 'Spams',
-        'new' => 'New message',
-        'search_result' => 'Search result',
-    ],
-
-    // ===== ADMIN PAGES
-    'admin' => [
+    // ===== CONTROLLER PAGES
+    'controller' => [
         'home' => [
-            'title' => 'Admin area',
-        ],
-        // Legal infos
-        'legal_info_subject' => [
-            'title' => 'Legal info subject',
-            'details' => 'Legal info subject details',
-            'link' => 'Manage legal info subjects',
-            'add' => 'Add a legal info subject',
-            'edit' => 'Edit the legal info subject',
-            'search' => 'Search a legal info subject',
-            'list' => 'Legal info subjects',
-            'datas' => [
-                'subject' => 'Subject',
-                'description' => 'Description',
-            ],
-            'other_datas' => 'Other datas',
-            // Title
-            'legal_info_title' => [
-                'title' => 'Legal info title',
-                'details' => 'Legal info title details',
-                'link' => 'Manage legal info titles',
-                'add' => 'Add a legal info title',
-                'edit' => 'Edit the legal info title',
-                'search' => 'Search a legal info title',
-                'list' => 'Legal info titles',
-            ],
-            // Content
-            'legal_info_content' => [
-                'title' => 'Legal info content',
-                'details' => 'Legal info content details',
-                'link' => 'Manage legal info contents',
-                'add' => 'Add a legal info content',
-                'edit' => 'Edit the legal info content',
-                'search' => 'Search a legal info content',
-                'list' => 'Legal info contents',
-            ],
-        ],
-
-        // Country
-        'country' => [
-            'title' => 'Country',
-            'details' => 'Country details',
-            'link' => 'Manage countries',
-            'add' => 'Add a country',
-            'edit' => 'Edit country',
-            'search' => 'Search a country',
-            'list' => 'Countries list',
-            'data' => [
-                'country_name' => 'Country name',
-                'country_phone_code' => 'Phone code',
-                'country_lang_code' => 'Language code',
-            ],
-        ],
-
-        // Miscellaneous
-        'miscellaneous' => [
-            'title' => 'Miscellaneous',
-            'link' => 'Manage other datas',
-            'search' => 'Search among the other datas',
-            // Group
-            'group' => [
-                'title' => 'Group',
-                'details' => 'Group details',
-                'link' => 'Manage groups',
-                'add' => 'Add a group',
-                'edit' => 'Edit group',
-                'search' => 'Search a group',
-                'list' => 'Groups list',
-            ],
-            // Status
-            'status' => [
-                'title' => 'Status',
-                'details' => 'Status details',
-                'link' => 'Manage statuses',
-                'add' => 'Add a status',
-                'edit' => 'Edit status',
-                'search' => 'Search a status',
-                'list' => 'Statuses list',
-            ],
-            // Type
-            'type' => [
-                'title' => 'Type',
-                'details' => 'Type details',
-                'link' => 'Manage types',
-                'add' => 'Add a type',
-                'edit' => 'Edit type',
-                'search' => 'Search a type',
-                'list' => 'Types list',
-            ],
-            // Role
-            'role' => [
-                'title' => 'Role',
-                'details' => 'Role details',
-                'link' => 'Manage roles',
-                'add' => 'Add a role',
-                'edit' => 'Edit role',
-                'search' => 'Search a role',
-                'list' => 'Roles list',
-            ],
-            // Other administrators
-            'other_admin' => [
-                'title' => 'Other administrators',
-            ],
-            // Developers
-            'developers' => [
-                'title' => 'Manage developers',
-            ],
-            // Managers
-            'managers' => [
-                'title' => 'Manage managers',
-            ],
-        ],
-    ],
-
-    // ===== DEVELOPER PAGES
-    'developer' => [
-        'home' => [
-            'title' => 'Developer area',
-        ],
-    ],
-
-    // ===== MANAGER PAGES
-    'manager' => [
-        'home' => [
-            'title' => 'Manager area',
-            'total_membership' => 'Total membership',
-            'members_who_left' => 'Members who left',
-
-            // New members
-            'new_members' => [
-                'title' => 'New members',
-                'link' => 'View all members',
-            ],
-
-            // Recent news
-            'recent_news' => [
-                'title' => 'Recent news',
-                'add_new' => 'Add a news',
-                'link' => 'View all news',
-            ],
-
-            // Recent communiques
-            'recent_communiques' => [
-                'title' => 'Recent communiques',
-                'add_new' => 'Add a communique',
-                'link' => 'View all communiques',
-            ],
-
-            // Recent events
-            'recent_events' => [
-                'title' => 'Recent events',
-                'add_new' => 'Add an event',
-                'link' => 'View all events',
-            ],
-
-            // Other managers
-            'other_managers' => [
-                'title' => 'Other managers',
-                'add_new' => 'Add a manager',
-            ],
-        ],
-        'member' => [
-            'title' => 'Members list',
-            'add' => 'Add a member',
-            'write_to' => [
-                'title' => 'Send a message to',
-                'label' => 'Write here...',
-            ],
-            'contributions' => 'Contributions',
-        ],
-        'info' => [
-            'title' => 'Informations',
-            'news' => [
-                'title' => 'News',
-                'add' => 'Add a news',
-                'edit' => 'Edit the news',
-                'data' => [
-                    'title' => 'Title',
-                    'content' => 'Content',
-                    'add_photo' => 'Add a photo',
-                    'video_url' => 'Video URL of Youtube/other'
-                ],
-            ],
-            'communique' => [
-                'title' => 'Communiques',
-                'add' => 'Add a communique',
-                'edit' => 'Edit the communique',
-                'data' => [
-                    'title' => 'Title',
-                    'content' => 'Content',
-                    'add_photo' => 'Add a photo',
-                    'video_url' => 'Video URL of Youtube/other'
-                ],
-            ],
-            'event' => [
-                'title' => 'Events',
-                'add' => 'Add an event',
-                'edit' => 'Edit the event',
-                'data' => [
-                    'title' => 'Title',
-                    'content' => 'Content',
-                    'add_photo' => 'Add a photo',
-                    'video_url' => 'Video URL of Youtube/other'
-                ],
-            ],
+            'title' => 'Controller area',
         ],
     ],
 

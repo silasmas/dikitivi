@@ -258,19 +258,13 @@ return [
     'menu' => [
         'home' => 'Accueil',
         'login' => 'Se connecter',
-        'account_settings' => 'Paramètres du compte',
-        'messages' => 'Messages',
+        'account' => 'Mon compte',
+        'about' => 'A propos',
         'notifications' => 'Notifications',
+        'donate' => 'Faire un don',
         'controller' => [
-            'members' => 'Membres',
-            'other_managers' => 'Autres managers',
-            'infos' => 'Informations'
-        ],
-        'public' => [
-            'about' => 'A propos',
-            'pricing' => 'Tarifs premium',
-            'help' => 'Aide',
-            'donate' => 'Faire un don'
+            'youth' => 'Contenu pour enfants',
+            'adult' => 'Contenu pour adultes'
         ],
     ],
 
@@ -284,11 +278,6 @@ return [
             'title' => 'Infos personnelles',
             'change_avatar' => 'Modifier l\'avatar',
             'link' => 'Enregistrer mise à jour',
-        ],
-        'membership_card' => [
-            'title' => 'Carte de membre',
-            'error' => 'Complétez d\'abord vos infos personnelles',
-            'print_card' => 'Imprimer la carte',
         ],
         'update_password' => [
             'title' => 'Modifier mot de passe',
@@ -309,9 +298,8 @@ return [
             'other_descriprion' => 'Décrivez votre pièce d\'identité',
             'click_to_change' => 'Cliquer sur la photo pour modifier',
         ],
-        'my_contributions' => [
-            'title' => 'Mes contributions',
-            'link' => 'Contribuer',
+        'payment' => [
+            'link' => 'Buy',
             'send_money' => [
                 'title' => 'Envoyer argent',
                 'description' => 'Choisir mode de paiement',
@@ -321,224 +309,10 @@ return [
         ],
     ],
 
-    // Messenger
-    'message' => [
-        'inbox' => 'Boîte de réception',
-        'outbox' => 'Messages envoyés',
-        'draft' => 'Brouillon',
-        'spams' => 'Spams',
-        'new' => 'Nouveau message',
-        'search_result' => 'Résultat de la recherche',
-    ],
-
-    // ===== ADMIN PAGES
-    'admin' => [
+    // ===== CONTROLLER PAGES
+    'controller' => [
         'home' => [
-            'title' => 'Espace de l\'admin',
-        ],
-        // Legal infos
-        'legal_info_subject' => [
-            'title' => 'Sujets d\'info légale',
-            'details' => 'Détails sur le sujet d\'info légale',
-            'link' => 'Gérer les sujets d\'info légale',
-            'add' => 'Ajouter un sujet d\'info légale',
-            'edit' => 'Editer le sujet d\'info légale',
-            'search' => 'Rechercher un sujet d\'info légale',
-            'list' => 'Sujets d\'info légale',
-            'datas' => [
-                'subject' => 'Sujet',
-                'description' => 'Description'
-            ],
-            'other_datas' => 'Autres données',
-            // Title
-            'legal_info_title' => [
-                'title' => 'Titre d\'info légale',
-                'details' => 'Détails sur le titre d\'info légale',
-                'link' => 'Gérer les titres d\'info légale',
-                'add' => 'Ajouter un titre d\'info légale',
-                'edit' => 'Editer le titre d\'info légale',
-                'search' => 'Rechercher un titre d\'info légale',
-                'list' => 'Titres d\'info légale',
-            ],
-            // Content
-            'legal_info_content' => [
-                'title' => 'Contenu d\'info légale',
-                'details' => 'Détails sur le contenu d\'info légale',
-                'link' => 'Gérer les contenus d\'info légale',
-                'add' => 'Ajouter un contenu d\'info légale',
-                'edit' => 'Editer le contenu d\'info légale',
-                'search' => 'Rechercher un contenu d\'info légale',
-                'list' => 'Contenus d\'info légale',
-            ]
-        ],
-
-        // Country
-        'country' => [
-            'title' => 'Pays',
-            'details' => 'Détails du pays',
-            'link' => 'Gérer les pays',
-            'add' => 'Ajouter un pays',
-            'edit' => 'Editer le pays',
-            'search' => 'Rechercher un pays',
-            'list' => 'Liste des pays',
-            'data' => [
-                'country_name' => 'Nom du pays',
-                'country_phone_code' => 'Code téléphonique',
-                'country_lang_code' => 'Code de langue'
-            ],
-        ],
-
-        // Miscellaneous
-        'miscellaneous' => [
-            'title' => 'Divers',
-            'link' => 'Gérer d\'autres données',
-            'search' => 'Rechercher parmi les autres données',
-            // Group
-            'group' => [
-                'title' => 'Groupe',
-                'details' => 'Détails sur le groupe',
-                'link' => 'Gérer les groupes',
-                'add' => 'Ajouter un groupe',
-                'edit' => 'Editer le groupe',
-                'search' => 'Rechercher un groupe',
-                'list' => 'Liste de groupes',
-            ],
-            // Status
-            'status' => [
-                'title' => 'Etat',
-                'details' => 'Détails sur l\'état',
-                'link' => 'Gérer les états',
-                'add' => 'Ajouter un état',
-                'edit' => 'Editer le état',
-                'search' => 'Rechercher un état',
-                'list' => 'Liste d\'états',
-            ],
-            // Type
-            'type' => [
-                'title' => 'Type',
-                'details' => 'Détails sur le type',
-                'link' => 'Gérer les types',
-                'add' => 'Ajouter un type',
-                'edit' => 'Editer le type',
-                'search' => 'Rechercher un type',
-                'list' => 'Liste de types',
-            ],
-            // Role
-            'role' => [
-                'title' => 'Rôle',
-                'details' => 'Détails sur le rôle',
-                'link' => 'Gérer les rôles',
-                'add' => 'Ajouter un rôle',
-                'edit' => 'Editer le rôle',
-                'search' => 'Rechercher un rôle',
-                'list' => 'Liste de rôles',
-            ],
-            // Other administrators
-            'other_admin' => [
-                'title' => 'Autres administrateurs',
-            ],
-            // Developers
-            'developers' => [
-                'title' => 'Gérer les développeurs',
-            ],
-            // Managers
-            'managers' => [
-                'title' => 'Gérer les managers',
-            ],
-        ]
-    ],
-
-    // ===== DEVELOPER PAGES
-    'developer' => [
-        'home' => [
-            'title' => 'Espace du développeur',
-        ],
-    ],
-
-    // ===== MANAGER PAGES
-    'manager' => [
-        'home' => [
-            'title' => 'Espace du manager',
-            'total_membership' => 'Totalité des membres',
-            'members_who_left' => 'Membres qui ont quitté',
-
-            // New members
-            'new_members' => [
-                'title' => 'Nouveaux membres',
-                'link' => 'Voir tous les membres',
-            ],
-
-            // Recent news
-            'recent_news' => [
-                'title' => 'Actualités récentes',
-                'add_new' => 'Ajouter une actualité',
-                'link' => 'Voir toutes les actualités',
-            ],
-
-            // Recent communiques
-            'recent_communiques' => [
-                'title' => 'Communiqués récents',
-                'add_new' => 'Ajouter un communiqué',
-                'link' => 'Voir tous les communiqués',
-            ],
-
-            // Recent events
-            'recent_events' => [
-                'title' => 'Evénements récents',
-                'add_new' => 'Ajouter un événement',
-                'link' => 'Voir tous les événements',
-            ],
-
-            // Other managers
-            'other_managers' => [
-                'title' => 'Autres managers',
-                'add_new' => 'Ajouter un manager',
-            ],
-        ],
-        'member' => [
-            'title' => 'Liste des membres',
-            'add' => 'Ajouter un membre',
-            'write_to' => [
-                'title' => 'Envoyer un message à',
-                'label' => 'Ecrire ici ...',
-            ],
-            'contributions' => 'Contributions',
-        ],
-        'info' => [
-            'title' => 'Informations',
-            'news' => [
-                'title' => 'Liste des actualités',
-                'add' => 'Ajouter une actualité',
-                'edit' => 'Editer l\'actualité',
-                'data' => [
-                    'title' => 'Titre',
-                    'content' => 'Contenu',
-                    'add_photo' => 'Ajouter une photo',
-                    'video_url' => 'URL de la vidéo Youtube/autre'
-                ],
-            ],
-            'communique' => [
-                'title' => 'Liste des communiqués',
-                'add' => 'Ajouter un communiqué',
-                'edit' => 'Editer le communiqué',
-                'data' => [
-                    'title' => 'Titre',
-                    'content' => 'Contenu',
-                    'add_photo' => 'Ajouter une photo',
-                    'video_url' => 'URL de la vidéo Youtube/autre'
-                ],
-            ],
-            'event' => [
-                'title' => 'Liste des evénements',
-                'add' => 'Ajouter un événement',
-                'edit' => 'Editer l\'événement',
-                'data' => [
-                    'title' => 'Titre',
-                    'content' => 'Contenu',
-                    'add_photo' => 'Ajouter une photo',
-                    'video_url' => 'URL de la vidéo Youtube/autre'
-                ],
-            ],
+            'title' => 'Espace du contrôleur',
         ],
     ],
 

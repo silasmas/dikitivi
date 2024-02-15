@@ -15,13 +15,13 @@
 
         <!-- ============ Font Icons Files ============ -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/fonts/bootstrap-icons/bootstrap-icons.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/material-design-iconic-font.min.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 
         <!-- ============ Addons CSS Files ============ -->
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/jquery/jquery-ui/jquery-ui.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/cropper/css/cropper.min.css') }}">
@@ -43,23 +43,21 @@
         </style>
 
         <title>
-@if (Route::is('home.youth') || Route::is('home.adult') || Route::is('welcome'))
-            @lang('miscellaneous.app_name')
+            @lang('miscellaneous.app_name') / 
+@if (Route::is('home'))
+            @lang('miscellaneous.menu.home')
 @endif
 @if (Route::is('about'))
             @lang('miscellaneous.menu.about')
 @endif
-@if (Route::is('search'))
-            @lang('miscellaneous.search_result')
+@if (Route::is('about.entity'))
+            {{ $entity_title }}
 @endif
 @if (Route::is('account'))
-            @lang('miscellaneous.menu.account_settings')
+            @lang('miscellaneous.menu.account')
 @endif
-@if (Route::is('account.update.password'))
-            @lang('miscellaneous.pages_content.account.update_password.title')
-@endif
-@if (Route::is('notifications'))
-            @lang('miscellaneous.menu.notifications')
+@if (Route::is('account.entity'))
+            {{ $entity_title }}
 @endif
         </title>
     </head>
@@ -72,7 +70,7 @@
                         <div class="col-lg-3 col-7">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="{{ route('welcome') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt=""></a>
+                                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt=""></a>
                             </div>
                             <!-- Logo -->
                         </div>
@@ -94,7 +92,7 @@
                                             </span>
                                         </a>
 
-                                        <div class="dropdown dropleft d-inline-block">
+                                        <div class="dropdown d-inline-block">
                                             <a role="button" id="dropdownLanguage" class="dropdown-toggle hidden-arrow text-light" href="#">
                                                 <i class="bi bi-translate fs-4 align-middle"></i>
                                             </a>
@@ -215,16 +213,16 @@
 
         <!-- ============ JavaScript Libraries ============ -->
         <!-- jquery -->
-        <script src="{{ asset('assets/addons/streamo/js/vendor/jquery-3.5.1.min.js') }}"></script>
-        <script src="{{ asset('assets/addons/streamo/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
+        <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/addons/streamo/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script> --}}
+        <!-- Popper JS -->
+        <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>
         <!-- Material Design for Bootstrap -->
         <script src="{{ asset('assets/addons/custom/mdb/js/mdb.min.js') }}"></script>
-        <!-- Popper JS -->
-        {{-- <script src="{{ asset('assets/addons/streamo/js/popper.min.js') }}"></script> --}}
         <!-- Bootstrap -->
         {{-- <script src="{{ asset('assets/addons/streamo/js/bootstrap.min.js') }}"></script> --}}
-        <script src="{{ asset('assets/addons/streamo/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/addons/custom/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Plugins JS -->
         <script src="{{ asset('assets/addons/streamo/js/plugins.js') }}"></script>
         <!-- Material Design for Bootstrap -->
