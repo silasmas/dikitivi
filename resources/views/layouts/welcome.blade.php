@@ -39,26 +39,12 @@
             .logo a img { width: 200px; }
             @media screen and (max-width: 375px) {
                 .logo a img { width: 140px; }
+                .login-button { min-width: 75px; }
             }
         </style>
 
         <title>
-            @lang('miscellaneous.app_name') / 
-@if (Route::is('home'))
-            @lang('miscellaneous.menu.home')
-@endif
-@if (Route::is('about'))
-            @lang('miscellaneous.menu.about')
-@endif
-@if (Route::is('about.entity'))
-            {{ $entity_title }}
-@endif
-@if (Route::is('account'))
-            @lang('miscellaneous.menu.account')
-@endif
-@if (Route::is('account.entity'))
-            {{ $entity_title }}
-@endif
+            @lang('miscellaneous.welcome')
         </title>
     </head>
     <body>
@@ -79,40 +65,40 @@
                                 <div class="main-menu">
                                     <nav class="main-navigation">
                                         <ul>
-                                            <li><a href="#about">@lang('miscellaneous.menu.public.about')</a></li>
-                                            <li><a href="#pricing">@lang('miscellaneous.menu.public.pricing')</a></li>
-                                            <li><a href="#help">@lang('miscellaneous.menu.public.help')</a></li>
+                                            <li><a href="#about">@lang('miscellaneous.menu.about')</a></li>
+                                            <li><a href="#pricing">@lang('miscellaneous.menu.pricing')</a></li>
+                                            <li><a href="#contact">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
                                     </nav>
                                     <div class="login-button">
-                                        <a class="login-btn brilliantrose border-r-5 me-sm-2 me-1" href="">
+                                        <a href="#donate" class="login-btn brilliantrose border-r-5 me-sm-2 me-1" title="@lang('miscellaneous.menu.donate')">
                                             <i class="bi bi-heart-fill me-sm-2"></i>
-                                            <span class="d-sm-inline-block d-none">
-                                                @lang('miscellaneous.menu.public.donate')
+                                            <span class="d-lg-inline-block d-none">
+                                                @lang('miscellaneous.menu.donate')
                                             </span>
                                         </a>
 
                                         <div class="dropdown d-inline-block">
-                                            <a role="button" id="dropdownLanguage" class="dropdown-toggle hidden-arrow text-light" href="#">
+                                            <a role="button" id="dropdownLanguage" class="dropdown-toggle hidden-arrow text-light" title="@lang('miscellaneous.your_language')" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-translate fs-4 align-middle"></i>
                                             </a>
 
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+                                            <ul class="dropdown-menu mt-1 p-0" aria-labelledby="dropdownLanguage">
     @foreach ($available_locales as $locale_name => $available_locale)
         @if ($available_locale != $current_locale)
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('change_language', ['locale' => $available_locale]) }}">
-                                                        {{ $locale_name }}
+                                                <li class="w-100">
+                                                    <a class="dropdown-item px-3 py-2 text-dark" href="{{ route('change_language', ['locale' => $available_locale]) }}">
             @switch($available_locale)
                 @case('ln')
-                                                        <span class="fi fi-cd"></span>
+                                                        <span class="fi fi-cd me-2"></span>
                     @break
                 @case('en')
-                                                        <span class="fi fi-us"></span>
+                                                        <span class="fi fi-us me-2"></span>
                     @break
                 @default
-                                                        <span class="fi fi-{{ $available_locale }}"></span>
+                                                        <span class="fi fi-{{ $available_locale }} me-2"></span>
             @endswitch
+                                                        {{ $locale_name }}
                                                     </a>
                                                 </li>
         @endif

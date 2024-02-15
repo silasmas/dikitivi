@@ -260,6 +260,8 @@ return [
         'login' => 'Se connecter',
         'account' => 'Mon compte',
         'about' => 'A propos',
+        'pricing' => 'Tarifs premium',
+        'contact' => 'Contact',
         'notifications' => 'Notifications',
         'donate' => 'Faire un don',
         'controller' => [
