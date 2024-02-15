@@ -13,6 +13,7 @@ return [
     |
     */
     'app_name' => 'DikiTivi',
+    'welcome' => 'Bienvenue sur Diki Tivi',
     'keywords' => 'dikitivi,diki,vidéo,film,séries,épisode,dessin animé,documentaire,prédication',
     'all_right_reserved' => 'Tous droits réservés',
     'follow_us' => 'Suivez-nous :',

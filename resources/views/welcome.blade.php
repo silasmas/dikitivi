@@ -10,7 +10,7 @@
                     <div class="row align-items-center mt-lg-0 mt-sm-5 mt-0">
                         <div class="col-lg-7 mb-4">
                             <div class="slider-text-info">
-                                <h3 class="text-white">Bienvenue sur Diki Tivi</h3>
+                                <h3 class="text-white">@lang('miscellaneous.welcome')</h3>
                                 <h1 class="text-white">Médias chrétiens</h1>
                                 <p class="text-white fs-4">Pour commencez, <a href="{{ route('login') }}" class="text-decoration-underline" style="color: #abff67">identifiez-vous</a> ou choisissez votre tranche d'âge afin de trouver les médias qui vous correspondent.</p>
                                 <div class="slider-button two-c-theme">
