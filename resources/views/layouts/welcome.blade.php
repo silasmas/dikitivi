@@ -63,7 +63,7 @@
                         <div class="col-lg-9 col-5">
                             <div class="menu-responsive">
                                 <div class="main-menu">
-                                    <nav class="main-navigation">
+                                    <nav id="mainNav" class="main-navigation">
                                         <ul>
                                             <li><a href="#about">@lang('miscellaneous.menu.about')</a></li>
                                             <li><a href="#pricing">@lang('miscellaneous.menu.pricing')</a></li>
@@ -72,7 +72,7 @@
                                     </nav>
                                     <div class="login-button">
                                         <a href="#donate" class="login-btn brilliantrose border-r-5 me-sm-2 me-1" title="@lang('miscellaneous.menu.donate')">
-                                            <i class="bi bi-heart-fill me-sm-2"></i>
+                                            <i class="bi bi-heart-fill align-middle me-sm-2"></i>
                                             <span class="d-lg-inline-block d-none">
                                                 @lang('miscellaneous.menu.donate')
                                             </span>
@@ -143,13 +143,13 @@
                             <div class="col-custom-4 mt--50">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
-                                    <h4 class="footer-widget-title">Company</h4>
+                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.useful_links')</h4>
 
                                     <div class="footer-contet">
                                         <ul class="footer-list">
-                                            <li><a href="#">About</a></li>
-                                            <li><a href="#">Service</a></li>
-                                            <li><a href="#">Contact</a></li>
+                                            <li><a href="#about">@lang('miscellaneous.menu.about')</a></li>
+                                            <li><a href="#pricing">@lang('miscellaneous.menu.pricing')</a></li>
+                                            <li><a href="#contact">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -159,13 +159,13 @@
                             <div class="col-custom-4 mt--50">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
-                                    <h4 class="footer-widget-title">Contact</h4>
+                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
 
                                     <div class="footer-contet">
                                         <ul class="footer-contact-list">
-                                            <li> <i class="zmdi zmdi-phone"></i> <a href="#">+022222222</a></li>
-                                            <li> <i class="zmdi zmdi-home"></i> <a href="#">Queen meri street abc/23 Bangladesh</a></li>
-                                            <li> <i class="zmdi zmdi-email"></i> <a href="#">demo@gmail.com</a></li>
+                                            <li> <i class="zmdi zmdi-phone"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></li>
+                                            <li> <i class="zmdi zmdi-home"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.address')</a></li>
+                                            <li> <i class="zmdi zmdi-email"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.email')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -183,10 +183,8 @@
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <ul class="footer-bottom-list">
-                                    <li><a href="#">Help</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">support</a></li>
-                                    <li><a href="#">contact</a></li>
+                                    <li><a href="#">@lang('miscellaneous.public.terms_of_use.title')</a></li>
+                                    <li><a href="#">@lang('miscellaneous.public.privacy_policy.title')</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -201,6 +199,7 @@
         <!-- jquery -->
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/addons/custom/jquery/one-page-nav/jquery.nav.js') }}"></script>
         {{-- <script src="{{ asset('assets/addons/streamo/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script> --}}
         <!-- Popper JS -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>
@@ -223,5 +222,10 @@
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#mainNav').onePageNav();
+            });
+        </script>
     </body>
 </html>

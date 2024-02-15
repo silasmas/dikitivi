@@ -60,5 +60,34 @@
         </div>
         <!-- Hero Slider end -->
 
+        <!-- Videos Area -->
+        <div id="about" class="videos-area section-pb section-bg-shape-2 py-5">
+            <div class="container">
+                <div class="row g-5 videos-main-area align-items-center">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="bg-image rounded-5 overflow-hidden">
+                            <img src="{{ asset('assets/img/pub/pub001.png') }}" alt="" class="img-fluid">
+                            <div class="mask"></div>
+                       </div>
+                    </div>
+
+                    <div class="col-lg-7 col-md-7 s--mt--30">
+                        <div class="videos-contents-wrap">
+                            <div class="section-title-two">
+                                <h2>@lang('miscellaneous.public.about.title')</h2>
+                            </div>
+                            <p> unde omnis iste natus error sit volupt atem accus antiumij doloremque laudantium, totam rem aperiam, quia voptas Neque porro quisquam est, qui dolosum quia dmet, consectetur, adipisci velit.</p>
+
+                            <div class="choose-button  two-c-theme">
+                                <a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}" class="default-btn mb-2 brilliantrose">@lang('miscellaneous.public.terms_of_use.title')</a>
+                                <a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="primary-btn">@lang('miscellaneous.public.privacy_policy.title')</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!--// Videos Area -->
 
 @endsection

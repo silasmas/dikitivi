@@ -326,9 +326,9 @@ return [
             'useful_links' => 'Liens utiles',
             'head_office' => [
                 'title' => 'Notre siège social',
-                'address' => '102, ave Kabinda, C/Kinshasa 012, Kinshasa-RDC',
-                'phone' => '+243 810 503 074',
-                'email' => 'acr@gmail.com'
+                'address' => '000, ave Lorem, C/Ipsum 111, Kinshasa-RDC',
+                'phone' => '+243 000 000 000',
+                'email' => 'contact@dikitivi.com'
             ],
             'newsletter' => [
                 'title' => 'Newsletter',

@@ -1617,7 +1617,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .section-title h2::after {
   position: absolute;
   content: "";
-  background: url(../images/icon/title-bg.png) no-repeat;
+  background: url(../../../img//icon/title-bg.png) no-repeat;
   left: 50%;
   bottom: 0;
   height: 9px;
@@ -1682,7 +1682,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .section-title-two h2::after, .section-title-3 h2::after {
   position: absolute;
   content: "";
-  background: url(../images/icon/title-bg.png) no-repeat;
+  background: url(../../../img/icon/title-bg.png) no-repeat;
   left: 0;
   bottom: 0;
   height: 9px;
@@ -1690,7 +1690,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .section-title-3 h2::after {
-  background: url(../images/icon/title-bg-2.png) no-repeat;
+  background: url(../../../img//icon/title-bg-2.png) no-repeat;
   height: 10px;
 }
 
@@ -4223,7 +4223,7 @@ nav.sidebar-menu ul li a:hover {
   bottom: -50px;
   width: 100%;
   height: 100%;
-  background: url("../images/other/choose-s-01.png") no-repeat bottom right;
+  background: url("../../../img//other/choose-s-01.png") no-repeat bottom right;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .section-bg-shape::before {
@@ -4240,14 +4240,14 @@ nav.sidebar-menu ul li a:hover {
   .section-bg-shape::before {
     right: -280px;
     bottom: -193px;
-    background: url("../images/other/choose-s-01.png") no-repeat top left;
+    background: url("../../../img//other/choose-s-01.png") no-repeat top left;
   }
 }
 @media only screen and (max-width: 767px) {
   .section-bg-shape::before {
     right: -280px;
     bottom: -193px;
-    background: url("../images/other/choose-s-01.png") no-repeat top left;
+    background: url("../../../img//other/choose-s-01.png") no-repeat top left;
   }
 }
 
@@ -4351,7 +4351,7 @@ nav.sidebar-menu ul li a:hover {
   bottom: -100px;
   width: 100%;
   height: 100%;
-  background: url("../images/other/mokup-08.png") no-repeat top right;
+  background: url("../../../img//other/mokup-08.png") no-repeat top right;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .section-bg-shape-2::before {
@@ -4367,7 +4367,7 @@ nav.sidebar-menu ul li a:hover {
   .section-bg-shape-2::before {
     right: -548px;
     bottom: 80px;
-    background: url("../images/other/mokup-08.png") no-repeat bottom left;
+    background: url("../../../img//other/mokup-08.png") no-repeat bottom left;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -4538,7 +4538,7 @@ nav.sidebar-menu ul li a:hover {
     08. Footer Css
 -------------------------------*/
 .footer-bg-image {
-  background-image: url("../images/other/footer-shaep.png");
+  background-image: url("../../../img//other/footer-shaep.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
@@ -4577,7 +4577,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .footer-bg-image-two {
-  background-image: url("../images/bg/footer-bg-03.jpg");
+  background-image: url("../../../img//bg/footer-bg-03.jpg");
   background-repeat: no-repeat;
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px), only screen and (min-width: 1200px) and (max-width: 1600px) {
@@ -4742,7 +4742,7 @@ nav.sidebar-menu ul li a:hover {
 .footer-widget-title::after {
   position: absolute;
   content: "";
-  background: url(../images/icon/fotter-title-bg.png) no-repeat;
+  background: url(../../../img//icon/fotter-title-bg.png) no-repeat;
   left: 0;
   bottom: 0;
   height: 12px;
@@ -4854,7 +4854,7 @@ nav.sidebar-menu ul li a:hover {
   color: #637282;
 }
 .coloer-three .footer-widget-title::after {
-  background: url(../images/icon/fotter-title-bg-3.png) no-repeat;
+  background: url(../../../img//icon/fotter-title-bg-3.png) no-repeat;
 }
 .coloer-three p {
   color: #637282;

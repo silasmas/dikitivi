@@ -326,9 +326,9 @@ return [
             'useful_links' => 'Useful links',
             'head_office' => [
                 'title' => 'Our head office',
-                'address' => '102, Kabinda street, Kinshasa 012 area, Kinshasa-DRC',
-                'phone' => '+243 810 503 074',
-                'email' => 'acr@gmail.com',
+                'address' => '000, Lorem street, Ipsum 111 area, Kinshasa-DRC',
+                'phone' => '+243 000 000 000',
+                'email' => 'contact@dikitivi.com'
             ],
             'newsletter' => [
                 'title' => 'Newsletter',
