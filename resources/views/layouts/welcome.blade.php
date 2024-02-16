@@ -183,8 +183,8 @@
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <ul class="footer-bottom-list">
-                                    <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}">@lang('miscellaneous.public.terms_of_use.title')</a></li>
-                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}">@lang('miscellaneous.public.privacy_policy.title')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}">@lang('miscellaneous.public.about.terms_of_use.title')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}">@lang('miscellaneous.public.about.privacy_policy.title')</a></li>
                                 </ul>
                             </div>
                         </div>

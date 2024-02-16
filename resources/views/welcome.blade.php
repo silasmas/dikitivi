@@ -79,8 +79,8 @@
                             <p> unde omnis iste natus error sit volupt atem accus antiumij doloremque laudantium, totam rem aperiam, quia voptas Neque porro quisquam est, qui dolosum quia dmet, consectetur, adipisci velit.</p>
 
                             <div class="choose-button  two-c-theme">
-                                <a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}" class="default-btn mb-2 brilliantrose">@lang('miscellaneous.public.terms_of_use.title')</a>
-                                <a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="primary-btn">@lang('miscellaneous.public.privacy_policy.title')</a>
+                                <a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}" class="default-btn mb-2 brilliantrose">@lang('miscellaneous.public.about.terms_of_use.title')</a>
+                                <a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="primary-btn ms-lg-2">@lang('miscellaneous.public.about.privacy_policy.title')</a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
 @forelse ($pricings->data as $pricing)
                     <div class="col-lg-4 col-md-6 mx-auto">
                         <!-- Pricing-panel -->
-                        <div class="pricing-panal-wrap free-panel mt--30">
+                        <div class="pricing-panal-wrap free-panel mt--30 d-block">
                             <span></span>
                             <div class="pricing-panel text-center">
                                 <div class="pricing-heading">
@@ -153,5 +153,115 @@
             </div>
         </div>
         <!--// Pricing Area -->
+
+        <!-- Contact Area -->
+        <div id="contact" class="contact-us-wrapper section-ptb py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 m-auto">
+                        <!-- Section Title -->
+                        <div class="section-title mb-5 text-center">
+                            <h2>@lang('miscellaneous.public.about.contact.title')</h2>
+                            <p>@lang('miscellaneous.public.about.contact.description')</p>
+                        </div><!--// Section Title -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact-form-wrap">
+                            <form id="contact-form" action="assets/php/mail.php" method="POST">
+                                <div class="contact-page-form">
+                                    <div class="row contact-input">
+                                        <div class="col-lg-6 col-md-6 contact-inner">
+                                            <input name="name" type="text" placeholder="@lang('miscellaneous.firstname')" id="first-name">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 contact-inner">
+                                            <input name="lastname" type="text" placeholder="@lang('miscellaneous.lastname')" id="last-name">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 contact-inner">
+                                            <input type="text" placeholder="@lang('miscellaneous.email')" id="email" name="email">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 contact-inner">
+                                            <input name="subject" type="text" placeholder="@lang('miscellaneous.public.about.contact.message_subject')" id="subject">
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 contact-inner contact-message">
+                                            <textarea name="message"  placeholder="@lang('miscellaneous.public.about.contact.message_content')"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="contact-submit-btn text-center">
+                                        <button class="submit-btn" type="submit"><i class="bi bi-send me-2"></i>@lang('miscellaneous.send')</button>
+                                        <p class="form-messege"></p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Contact Area -->
+
+        <!-- Map location Area -->
+        <div class="map-wrapper relative">
+            <div class="gogle_map">
+                <div id="googleMap"></div>
+            </div>
+
+            <div class="contact-info-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 ms-auto">
+                            <div class="contact-info-inner">
+                                <!-- Single-contact-info -->
+                                <div class="single-contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="zmdi zmdi-home"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p>@lang('miscellaneous.public.footer.head_office.address')</p>
+                                    </div>
+                                </div>
+                                <!--// Single-contact-info -->
+
+                                <!-- Single-contact-info -->
+                                <div class="single-contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="zmdi zmdi-phone"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p><a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></p>
+                                    </div>
+                                </div>
+                                <!--// Single-contact-info -->
+
+                                <!-- Single-contact-info -->
+                                <div class="single-contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="zmdi zmdi-email"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p><a href="#">@lang('miscellaneous.public.footer.head_office.email')</a> </p>
+                                    </div>
+                                </div>
+                                <!--// Single-contact-info -->
+
+                                <!-- Single-contact-info -->
+                                <div class="single-contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="zmdi zmdi-globe-alt"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p><a href="{{ route('home') }}">www.dikitivi.com</a></p>
+                                    </div>
+                                </div>
+                                <!--// Single-contact-info -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Map location Area -->
 
 @endsection

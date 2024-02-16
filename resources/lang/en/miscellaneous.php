@@ -388,38 +388,24 @@ return [
                 'link3' => 'Help center',
                 'link4' => 'FAQ',
             ],
-        ],
 
-        // Help
-        'help' => [
-            'title' => 'Help center',
-        ],
+            // Contact
+            'contact' => [
+                'title' => 'Contact Us',
+                'description' => 'You can either write to us directly here, or by email, or you can go to our address below',
+                'message_subject' => 'Subject',
+                'message_content' => 'Message content'
+            ],
 
-        // FAQ
-        'faq' => [
-            'title' => 'Frequently Asked Questions',
-        ],
+            // Terms of use
+            'terms_of_use' => [
+                'title' => 'Terms of use',
+            ],
 
-        // Terms of use
-        'terms_of_use' => [
-            'title' => 'Terms of use',
-        ],
-
-        // Privacy policy
-        'privacy_policy' => [
-            'title' => 'Privacy policy',
-        ],
-
-        // News
-        'news' => [
-            'title' => 'News',
-            'details' => 'Info details',
-            'other' => 'Other informations',
-        ],
-
-        // Works
-        'works' => [
-            'title' => 'Our works',
+            // Privacy policy
+            'privacy_policy' => [
+                'title' => 'Privacy policy',
+            ],
         ],
     ],
 ];

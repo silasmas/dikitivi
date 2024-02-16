@@ -31,7 +31,7 @@ return [
     'register' => 'Enregistrer',
     'send' => 'Envoyer',
     'add' => 'Ajouter',
-    'buy' => 'Acheter maintenant',
+    'buy' => 'Acheter',
     'choose' => 'Choisir',
     'validated' => 'Validé',
     'invalid' => 'Non valide',
@@ -380,7 +380,7 @@ return [
         // About
         'about' => [
             'title' => 'A propos de Diki Tivi',
-            'subtitle' => '',
+            'description' => '',
             'other_links' => [
                 'title' => 'Autres liens',
                 'link1' => 'Conditions d\'utilisation',
@@ -388,38 +388,24 @@ return [
                 'link3' => 'Centre d\'aide',
                 'link4' => 'FAQ'
             ],
-        ],
 
-        // Help
-        'help' => [
-            'title' => 'Centre d\'aide',
-        ],
+            // Contact
+            'contact' => [
+                'title' => 'Nous Contacter',
+                'description' => 'Vous pouvez soit nous écrire directement ici, soit par mail, ou vous pouvez vous rendre à notre adresse ci-dessous',
+                'message_subject' => 'Sujet',
+                'message_content' => 'Contenu du message'
+            ],
 
-        // FAQ
-        'faq' => [
-            'title' => 'Foire Aux Questions',
-        ],
+            // Terms of use
+            'terms_of_use' => [
+                'title' => 'Conditions d\'utilisation',
+            ],
 
-        // Terms of use
-        'terms_of_use' => [
-            'title' => 'Conditions d\'utilisation',
-        ],
-
-        // Privacy policy
-        'privacy_policy' => [
-            'title' => 'Politique de confidentialité',
-        ],
-
-        // News
-        'news' => [
-            'title' => 'Actualité',
-            'details' => 'Détails sur l\'info',
-            'other' => 'Autres informations',
-        ],
-
-        // Works
-        'works' => [
-            'title' => 'Nos œuvres',
+            // Privacy policy
+            'privacy_policy' => [
+                'title' => 'Politique de confidentialité',
+            ],
         ],
     ],
 ];
