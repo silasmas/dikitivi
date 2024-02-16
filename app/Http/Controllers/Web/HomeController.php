@@ -43,7 +43,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $pricings = $this::$api_client_manager::call('GET', getApiURL() . '/pricing');
+
+        return view('welcome', ['pricings' => $pricings]);
     }
 
     // ==================================== HTTP POST METHODS ====================================

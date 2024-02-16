@@ -11,15 +11,15 @@
                         <div class="col-lg-7 mb-4">
                             <div class="slider-text-info">
                                 <h3 class="text-white">@lang('miscellaneous.welcome')</h3>
-                                <h1 class="text-white">Médias chrétiens</h1>
-                                <p class="text-white fs-4">Pour commencez, <a href="{{ route('login') }}" class="text-decoration-underline" style="color: #abff67">identifiez-vous</a> ou choisissez votre tranche d'âge afin de trouver les médias qui vous correspondent.</p>
+                                <h1 class="text-white">@lang('miscellaneous.public.home.hero.title')</h1>
+                                <p class="text-white fs-4">@lang('miscellaneous.public.home.hero.content')</p>
                                 <div class="slider-button two-c-theme">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <a href="" class="default-btn shakespeare btn-block py-3 rounded-pill fs-5 shadow-0 text-center">Je suis majeur.e</a>
+                                            <a href="" class="default-btn shakespeare btn-block py-3 rounded-pill fs-5 shadow-0 text-center">@lang('miscellaneous.public.home.hero.link1')</a>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a href="" class="default-btn bg-tow btn-block py-3 rounded-pill fs-5 shadow-0 text-center">Je suis mineur.e</a>
+                                            <a href="" class="default-btn bg-tow btn-block py-3 rounded-pill fs-5 shadow-0 text-center">@lang('miscellaneous.public.home.hero.link2')</a>
                                         </div>
                                         <div class="col-lg-6 d-lg-none d-inline-block">
                                             <div class="login-button pe-0">
@@ -60,7 +60,7 @@
         </div>
         <!-- Hero Slider end -->
 
-        <!-- Videos Area -->
+        <!-- About Area -->
         <div id="about" class="videos-area section-pb section-bg-shape-2 py-5">
             <div class="container">
                 <div class="row g-5 videos-main-area align-items-center">
@@ -86,8 +86,72 @@
                     </div>
                 </div>
                 
+                <div class="row g-5 videos-main-area align-items-center mt-5">
+                    <div class="col-lg-7 col-md-7 s--mt--30">
+                        <div class="videos-contents-wrap">
+                            <div class="section-title-two">
+                                <h2>@lang('miscellaneous.public.home.download_mobile_app.title')</h2>
+                            </div>
+                            <p>@lang('miscellaneous.public.home.download_mobile_app.content')</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-5">
+                        <div class="bg-image mb-4">
+                            <img src="{{ asset('assets/img/button-playstore-white.png') }}" alt="" class="img-fluid">
+                            <div class="mask"><a href="#" class="stretched-link"></a></div>
+                        </div>
+
+                        <div class="bg-image">
+                            <img src="{{ asset('assets/img/button-applestore-white.png') }}" alt="" class="img-fluid">
+                            <div class="mask"><a href="#" class="stretched-link"></a></div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
-        <!--// Videos Area -->
+        <!--// About Area -->
+
+        <!-- Pricing Area -->
+        <div id="pricing" class="pricing-plan-area section-pt py-5 border-top border-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 m-auto">
+                        <!-- Section Title -->
+                        <div class="section-title mb-3 text-center">
+                            <h2>@lang('miscellaneous.public.home.pricing.title')</h2>
+                            <p>@lang('miscellaneous.public.home.pricing.content')</p>
+                        </div><!--// Section Title -->
+                    </div>
+                </div>
+
+                <div class="row">
+@forelse ($pricings->data as $pricing)
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <!-- Pricing-panel -->
+                        <div class="pricing-panal-wrap free-panel mt--30">
+                            <span></span>
+                            <div class="pricing-panel text-center">
+                                <div class="pricing-heading">
+                                    <h2>{{ '$' . $pricing->price }}</h2>
+                                    <h4 class="text-warning">{{ $pricing->deadline }}</h4>
+                                </div>
+                                <div class="pricing-body">
+                                </div>
+                                <div class="pricing-footer">
+                                    <a href="#" class="plan-btn"><i class="bi bi-cart me-2"></i>@lang('miscellaneous.buy')</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pricing-panel -->
+                    </div>
+
+@empty
+@endforelse
+                </div>
+            </div>
+        </div>
+        <!--// Pricing Area -->
 
 @endsection

@@ -31,6 +31,8 @@ return [
     'register' => 'Register',
     'send' => 'Send',
     'add' => 'Add',
+    'buy' => 'Buy now',
+    'choose' => 'Choose',
     'validated' => 'Validated',
     'invalid' => 'Invalid',
     'issued_on' => 'Issued in Kinshasa, on',
@@ -340,28 +342,19 @@ return [
 
         // Home
         'home' => [
-            'slide1' => [
-                'title' => 'Let\'s write history and do politics differently',
-                'content' => 'All engaged in the politics of love',
-            ],
-            'slide2' => [
-                'title' => 'Support for the FARDC against aggression in the east of the country',
-                'content' => 'For a strong and disciplined army',
-            ],
-            'slide3' => [
-                'title' => 'Securing food for our people',
-                'content' => 'Through a good agricultural policy',
+            'hero' => [
+                'title' => 'Christian medias',
+                'content' => 'To get started, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">log in</a> or choose your age group in order to find the media that suit you.',
+                'link1' => 'I am older',
+                'link2' => 'I am a minor'
             ],
             'download_mobile_app' => [
                 'title' => 'Download the ACR mobile app',
-                'content' => 'The ACR mobile app allows you to join the <span class="acr-text-yellow">Action Commune pour la République</span> party, stay informed about party news and contribute online.',
+                'content' => 'The DikiTivi mobile app helps you follow your videos on your smartphone, tablet or smart-TV and benefit from all our advantages.',
             ],
-            'register_member' => [
-                'title' => 'Join us',
-                'content1' => 'You can join us, because ACR is not just a matter of a few individuals. Together, let us unite in a real commitment to transform our country.',
-                'content2' => 'If you are already registered in the site or in the mobile app, click on the button below to log in. Otherwise, give your names and your phone number to start.',
-                'login' => 'I already have an account',
-                'register' => 'Start registration',
+            'pricing' => [
+                'title' => 'Pricing plan',
+                'content' => 'You can now purchase a plan to follow premium videos.',
             ],
             'donate' => [
                 'title' => 'Make an anonymous donation or become a partner',
@@ -386,27 +379,8 @@ return [
 
         // About
         'about' => [
-            'title' => 'About us',
-            'slogan' => 'The Power of Love and not the Love of Power',
-            'subtitle' => 'All about Action Commune pour la République',
-            'description' => 'A political party that brings a new touch to the political world. A framework for training civic values, which places them at the center of the development process, thus advocating the ethical values of society.',
-            'comment' => [
-                'title1' => 'One credo',
-                'content1' => 'Given our vision, our only credo is “Doing politics differently”.',
-                'title2' => 'Help the people',
-                'content2' => 'To effectively raise one\'s forehead, by grip, work, discipline and honesty.',
-            ],
-            'why_us' => [
-                'title' => 'Why us?',
-                'subtitle' => 'Let\'s choose change',
-                'content' => 'ACR advocates the change of mentality, the true ethical values, with the aim of bringing individual development in particular, and of the whole country in general. Our motto is:',
-                'item1' => 'Unity',
-                'item1_description' => 'Because together we are stronger and more capable.',
-                'item2' => 'Work',
-                'item2_description' => 'Let us work hard and honestly to develop our nation.',
-                'item3' => 'Patriotism',
-                'item3_description' => 'Love of the fatherland, at the center of our decisions and initiatives.',
-            ],
+            'title' => 'About Diki Tivi',
+            'subtitle' => '',
             'other_links' => [
                 'title' => 'Other links',
                 'link1' => 'Terms of use',

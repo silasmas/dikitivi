@@ -31,6 +31,8 @@ return [
     'register' => 'Enregistrer',
     'send' => 'Envoyer',
     'add' => 'Ajouter',
+    'buy' => 'Acheter maintenant',
+    'choose' => 'Choisir',
     'validated' => 'Validé',
     'invalid' => 'Non valide',
     'issued_on' => 'Délivrée à Kinshasa, le',
@@ -340,28 +342,19 @@ return [
 
         // Home
         'home' => [
-            'slide1' => [
-                'title' => 'Écrivons l\'histoire et faisons la politique autrement',
-                'content' => 'Tous engagés dans la politique de l\'amour'
-            ],
-            'slide2' => [
-                'title' => 'Soutien aux FARDC contre l\'agression à l\'Est du pays',
-                'content' => 'Pour une armée forte et disciplinée'
-            ],
-            'slide3' => [
-                'title' => 'Assurer de la nourriture pour notre peuple',
-                'content' => 'À travers une bonne politique agricole'
+            'hero' => [
+                'title' => 'Médias chrétiens',
+                'content' => 'Pour commencez, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">identifiez-vous</a> ou choisissez votre tranche d\'âge afin de trouver les médias qui vous correspondent.',
+                'link1' => 'Je suis majeur.e',
+                'link2' => 'Je suis mineur.e'
             ],
             'download_mobile_app' => [
                 'title' => 'Télécharger l\'appli mobile ACR',
-                'content' => 'L\'appli mobile ACR vous permet d\'adhérer au parti <span class="acr-text-yellow">Action Commune pour la République</span>, de rester informé(e) sur les infos du parti et de contribuer en ligne.'
+                'content' => 'L\'appli mobile DikiTivi vous aide à suivre vos vidéos sur votre smartphone, tablette ou smart-TV et à bénéficier de tous nos avantages.'
             ],
-            'register_member' => [
-                'title' => 'Nous réjoindre',
-                'content1' => 'Vous pouvez nous réjoindre, car ACR n\'est pas qu\'une affaire de quelques individus. Ensemble, unissons-nous en un réel engagement pour transformer notre pays.',
-                'content2' => 'Si vous êtes déjà inscrit(e) dans le site ou dans l\'appli mobile, cliquez sur le bouton ci-dessous pour vous connecter. Sinon, donnez vos noms et votre n&deg; de téléphone pour commencer.',
-                'login' => 'J\'ai déjà un compte',
-                'register' => 'Commencer l\'inscription'
+            'pricing' => [
+                'title' => 'Plan tarifaire',
+                'content' => 'Vous pouvez dès maintenant acheter un plan pour suivre des vidéos premiums.',
             ],
             'donate' => [
                 'title' => 'Faire un don anonyme ou devenir partenaire',
@@ -386,27 +379,8 @@ return [
 
         // About
         'about' => [
-            'title' => 'A propos de nous',
-            'slogan' => 'Le Pouvoir de l\'Amour et non l\'Amour du Pouvoir',
-            'subtitle' => 'Tout savoir sur Action Commune pour la République',
-            'description' => 'Un parti politique qui apporte une nouvelle touche dans le monde politique. Un cadre de formation des valeurs citoyennes, qui place au centre du processus du développement, prônant ainsi des valeurs éthiques de la société.',
-            'comment' => [
-                'title1' => 'Un seul credo',
-                'content1' => 'Compte tenu de notre vision, notre seul credo est « Faire la politique autrement ».',
-                'title2' => 'Aider le peuple',
-                'content2' => 'À dresser effectivement son front, par la prise, le travail, la discipline et l\'honnêteté',
-            ],
-            'why_us' => [
-                'title' => 'Pourquoi nous ?',
-                'subtitle' => 'Faisons le choix du changement',
-                'content' => 'ACR prône le changement de mentalité, les vraies valeurs éthiques, dans le but d\'apporter le développement individuel en particulier, et de tout le pays en général. Notre devise est :',
-                'item1' => 'Unité',
-                'item1_description' => 'Parce qu\'ensemble, nous sommes plus forts et plus capables.',
-                'item2' => 'Travail',
-                'item2_description' => 'Travaillons durement et honnêtement pour développer notre nation.',
-                'item3' => 'Patriotisme',
-                'item3_description' => 'L\'amour de la patrie, au centre de nos décisions et initiatives.',
-            ],
+            'title' => 'A propos de Diki Tivi',
+            'subtitle' => '',
             'other_links' => [
                 'title' => 'Autres liens',
                 'link1' => 'Conditions d\'utilisation',

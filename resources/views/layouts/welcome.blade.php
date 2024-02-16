@@ -126,7 +126,7 @@
                             <div class="col-custom-4 mt--50">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
-                                    <h4 class="footer-widget-title">A propos de Diki Tivi</h4>
+                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
                                     <div class="footer-contet">
                                         <p>Eiusmod tempor incididunt ut la abore et minim ven exerc itation ulla mco lboris naliquip ex ea comm.</p>
                                         <ul class="fotter-socail">
@@ -183,8 +183,8 @@
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <ul class="footer-bottom-list">
-                                    <li><a href="#">@lang('miscellaneous.public.terms_of_use.title')</a></li>
-                                    <li><a href="#">@lang('miscellaneous.public.privacy_policy.title')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}">@lang('miscellaneous.public.terms_of_use.title')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}">@lang('miscellaneous.public.privacy_policy.title')</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -18,7 +18,7 @@ if (!function_exists('getWebURL')) {
 if (!function_exists('getApiURL')) {
     function getApiURL()
     {
-        return (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/api';
+        return 'https://apidikitivi.jptshienda.com/api';
     }
 }
 
