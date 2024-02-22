@@ -4,7 +4,7 @@
 
         <!-- Hero Slider start -->
         <div class="hero-slider">
-            <div class="single-slide-2 bg-image-two d-flex align-items-center bg-sky-blue" data-bgimage="{{ asset('assets/img/transit/bg-home.png') }}">
+            <div class="single-slide-2 bg-image-two d-flex align-items-center bg-sky-blue" data-bgimage="{{ asset('assets/img/pub/bg-home.png') }}">
                 <!-- Hero Content One Start -->
                 <div class="hero-content-two container">
                     <div class="row align-items-center mt-lg-0 mt-sm-5 mt-0">
