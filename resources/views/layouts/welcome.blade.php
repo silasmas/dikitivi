@@ -44,15 +44,27 @@
         </style>
 
         <title>
+@if (Route::is('home'))
             @lang('miscellaneous.welcome')
+@else
+            Diki Tivi
+    @if (Route::is('about'))
+             / @lang('miscellaneous.menu.about')
+    @endif
+
+    @if (Route::is('about.entity'))
+             / {{ $entity_title }}
+    @endif
+@endif
         </title>
     </head>
+
     <body>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
             <header class="header-area inner-header">
                 <div class="container relative">
-                    <div class="row align-items-center">
+                    <div class="row{{ Route::is('home') ? ' align-items-center' : '' }}">
                         <div class="col-lg-3 col-7">
                             <!-- Logo -->
                             <div class="logo">
@@ -60,14 +72,16 @@
                             </div>
                             <!-- Logo -->
                         </div>
+
+@if (Route::is('home'))
                         <div class="col-lg-9 col-5">
                             <div class="menu-responsive">
                                 <div class="main-menu">
                                     <nav id="mainNav" class="main-navigation">
                                         <ul>
-                                            <li><a href="#about">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="#pricing">@lang('miscellaneous.menu.pricing')</a></li>
-                                            <li><a href="#contact">@lang('miscellaneous.menu.contact')</a></li>
+                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
+                                            <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
+                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
                                     </nav>
                                     <div class="login-button">
@@ -112,9 +126,62 @@
                                 <!-- mobile-menu end -->
                             </div>
                         </div>
+@else
+                        <div class="col-lg-9 col-5">
+                            <div class="main-menu">
+                                <nav id="mainNav" class="main-navigation">
+                                    <ul>
+                                        <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
+                                        <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
+                                        <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="login-button">
+                                    <a href="#donate" class="login-btn brilliantrose border-r-5 me-sm-2 me-1" title="@lang('miscellaneous.menu.donate')">
+                                        <i class="bi bi-heart-fill align-middle me-sm-2"></i>
+                                        <span class="d-lg-inline-block d-none">
+                                            @lang('miscellaneous.menu.donate')
+                                        </span>
+                                    </a>
+                                    <div class="dropdown d-inline-block">
+                                        <a role="button" id="dropdownLanguage" class="dropdown-toggle hidden-arrow text-light" title="@lang('miscellaneous.your_language')" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-translate fs-4 align-middle"></i>
+                                        </a>
+                                        <ul class="dropdown-menu mt-1 p-0" aria-labelledby="dropdownLanguage">
+    @foreach ($available_locales as $locale_name => $available_locale)
+        @if ($available_locale != $current_locale)
+                                            <li class="w-100">
+                                                <a class="dropdown-item px-3 py-2 text-dark" href="{{ route('change_language', ['locale' => $available_locale]) }}">
+            @switch($available_locale)
+                @case('ln')
+                                                    <span class="fi fi-cd me-2"></span>
+                    @break
+                @case('en')
+                                                    <span class="fi fi-us me-2"></span>
+                    @break
+                @default
+                                                    <span class="fi fi-{{ $available_locale }} me-2"></span>
+            @endswitch
+                                                        {{ $locale_name }}
+                                                </a>
+                                            </li>
+        @endif
+    @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <!-- mobile-menu start -->
+                            <div class="mobile-menu d-block d-lg-none"></div>
+                            <!-- mobile-menu end -->
+                        </div>
+@endif
                     </div>
                 </div>
-                    </header>
+            </header>
 
 @yield('welcome-content')
 
