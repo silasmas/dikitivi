@@ -79,6 +79,7 @@
                                 <div class="main-menu">
                                     <nav id="mainNav" class="main-navigation">
                                         <ul>
+                                            <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                             <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
                                             <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
                                             <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
@@ -131,6 +132,7 @@
                             <div class="main-menu">
                                 <nav id="mainNav" class="main-navigation">
                                     <ul>
+                                        <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                         <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
                                         <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
                                         <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
@@ -182,6 +184,10 @@
                     </div>
                 </div>
             </header>
+
+@if (Route::is('about') || Route::is('about.entity'))
+    @include('partials.breacrumb')
+@endif
 
 @yield('welcome-content')
 

@@ -328,8 +328,8 @@ return [
             'useful_links' => 'Useful links',
             'head_office' => [
                 'title' => 'Our head office',
-                'address' => '000, Lorem street, Ipsum 111 area, Kinshasa-DRC',
-                'phone' => '+243 000 000 000',
+                'address' => '13, Du Grand Seminaire Street',
+                'phone' => '+243 856 438 822',
                 'email' => 'contact@dikitivi.com'
             ],
             'newsletter' => [

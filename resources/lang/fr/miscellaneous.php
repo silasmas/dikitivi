@@ -328,8 +328,8 @@ return [
             'useful_links' => 'Liens utiles',
             'head_office' => [
                 'title' => 'Notre siège social',
-                'address' => '000, ave Lorem, C/Ipsum 111, Kinshasa-RDC',
-                'phone' => '+243 000 000 000',
+                'address' => '13 Av. du Grand Seminaire',
+                'phone' => '+243 856 438 822',
                 'email' => 'contact@dikitivi.com'
             ],
             'newsletter' => [

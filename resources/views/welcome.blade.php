@@ -206,7 +206,7 @@
         <div class="map-wrapper relative">
             <div class="gogle_map">
                 <div id="googleMap">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254595.4750351303!2d15.157927977869083!3d-4.4009432564518205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a3130fe066a8b%3A0x168b7e4e1f52378d!2sKinshasa!5e0!3m2!1sfr!2scd!4v1708596477903!5m2!1sfr!2scd" style="width:100%; height: 100%; border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.311381827949!2d15.264175774090075!3d-4.352566346663912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a3107fc94200d%3A0xc35ccb7ced83c173!2s13%20Av.%20du%20Grand%20Seminaire%2C%20Kinshasa!5e0!3m2!1sfr!2scd!4v1708708658879!5m2!1sfr!2scd" style="width:100%; height: 100%; border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
