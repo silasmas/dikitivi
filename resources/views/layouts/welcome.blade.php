@@ -272,7 +272,6 @@
         <!-- jquery -->
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('assets/addons/custom/jquery/one-page-nav/jquery.nav.js') }}"></script>
         {{-- <script src="{{ asset('assets/addons/streamo/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script> --}}
         <!-- Popper JS -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>
@@ -295,10 +294,5 @@
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#mainNav').onePageNav();
-            });
-        </script>
     </body>
 </html>

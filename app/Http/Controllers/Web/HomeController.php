@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $this::$api_client_manager = new ApiClientManager();
 
-        $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
+        // $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -37,7 +37,17 @@ class HomeController extends Controller
     }
 
     /**
-     * GET: Home page
+     * GET: Test home page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function homeMockup()
+    {
+        return view('home');
+    }
+
+    /**
+     * GET: Welcome/Home page
      *
      * @return \Illuminate\View\View
      */
@@ -49,7 +59,7 @@ class HomeController extends Controller
 
         } else {
         }
-        
+
         return view('welcome', ['pricings' => $pricings]);
     }
 

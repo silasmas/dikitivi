@@ -261,6 +261,12 @@ return [
     'menu' => [
         'home' => 'Accueil',
         'login' => 'Se connecter',
+        'live' => 'En direct',
+        'films' => 'Films',
+        'series' => 'Séries TV',
+        'programmes' => 'Programmes',
+        'songs' => 'Chansons',
+        'books' => 'Livres',
         'account' => 'Mon compte',
         'about' => 'A propos',
         'terms_of_use' => 'Conditions',

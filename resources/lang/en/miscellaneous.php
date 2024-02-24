@@ -261,6 +261,12 @@ return [
     'menu' => [
         'home' => 'Home',
         'login' => 'Log in',
+        'live' => 'Live',
+        'films' => 'Films',
+        'series' => 'TV series',
+        'programmes' => 'Programmes',
+        'songs' => 'Songs',
+        'books' => 'Books',
         'account' => 'My account',
         'about' => 'About',
         'terms_of_use' => 'Terms',
