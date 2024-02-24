@@ -263,6 +263,8 @@ return [
         'login' => 'Se connecter',
         'account' => 'Mon compte',
         'about' => 'A propos',
+        'terms_of_use' => 'Conditions',
+        'privacy_policy' => 'Politique de confidentialité',
         'pricing' => 'Tarifs premium',
         'contact' => 'Contact',
         'notifications' => 'Notifications',
@@ -389,14 +391,6 @@ return [
                 'link4' => 'FAQ'
             ],
 
-            // Contact
-            'contact' => [
-                'title' => 'Nous Contacter',
-                'description' => 'Vous pouvez soit nous écrire directement ici, soit par mail, ou vous pouvez vous rendre à notre adresse ci-dessous',
-                'message_subject' => 'Sujet',
-                'message_content' => 'Contenu du message'
-            ],
-
             // Terms of use
             'terms_of_use' => [
                 'title' => 'Conditions d\'utilisation',
@@ -405,6 +399,19 @@ return [
             // Privacy policy
             'privacy_policy' => [
                 'title' => 'Politique de confidentialité',
+            ],
+
+            // Privacy policy
+            'pricing' => [
+                'title' => 'Notre plan de tarification',
+            ],
+
+            // Contact
+            'contact' => [
+                'title' => 'Nous Contacter',
+                'description' => 'Vous pouvez soit nous écrire directement ici, soit par mail, ou vous pouvez vous rendre à notre adresse ci-dessous',
+                'message_subject' => 'Sujet',
+                'message_content' => 'Contenu du message'
             ],
         ],
     ],

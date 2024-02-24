@@ -263,6 +263,8 @@ return [
         'login' => 'Log in',
         'account' => 'My account',
         'about' => 'About',
+        'terms_of_use' => 'Terms',
+        'privacy_policy' => 'Privacy policy',
         'pricing' => 'Premium pricing',
         'contact' => 'Contact',
         'notifications' => 'Notifications',
@@ -389,14 +391,6 @@ return [
                 'link4' => 'FAQ',
             ],
 
-            // Contact
-            'contact' => [
-                'title' => 'Contact Us',
-                'description' => 'You can either write to us directly here, or by email, or you can go to our address below',
-                'message_subject' => 'Subject',
-                'message_content' => 'Message content'
-            ],
-
             // Terms of use
             'terms_of_use' => [
                 'title' => 'Terms of use',
@@ -405,6 +399,19 @@ return [
             // Privacy policy
             'privacy_policy' => [
                 'title' => 'Privacy policy',
+            ],
+
+            // Privacy policy
+            'pricing' => [
+                'title' => 'Our pricing plan',
+            ],
+
+            // Contact
+            'contact' => [
+                'title' => 'Contact Us',
+                'description' => 'You can either write to us directly here, or by email, or you can go to our address below',
+                'message_subject' => 'Subject',
+                'message_content' => 'Message content'
             ],
         ],
     ],

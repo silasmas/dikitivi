@@ -47,7 +47,7 @@
 @if (Route::is('home'))
             @lang('miscellaneous.welcome')
 @else
-            Diki Tivi
+            DikiTivi
     @if (Route::is('about'))
              / @lang('miscellaneous.menu.about')
     @endif

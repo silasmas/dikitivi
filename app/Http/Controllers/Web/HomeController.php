@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $this::$api_client_manager = new ApiClientManager();
 
-        $this->middleware('auth')->except(['changeLanguage', 'index', 'about']);
+        $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -37,7 +37,7 @@ class HomeController extends Controller
     }
 
     /**
-     * GET: Generate symbolic link for images
+     * GET: Home page
      *
      * @return \Illuminate\View\View
      */
@@ -45,7 +45,36 @@ class HomeController extends Controller
     {
         $pricings = $this::$api_client_manager::call('GET', getApiURL() . '/pricing');
 
+        if (session()->has('age')) {
+
+        } else {
+        }
+        
         return view('welcome', ['pricings' => $pricings]);
+    }
+
+    /**
+     * GET: Home page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function about()
+    {
+        return view('about');
+    }
+
+    /**
+     * GET: Home page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function aboutEntity($entity)
+    {
+        return view('about', [
+            'entity' => $entity,
+            'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+            'entity_menu' => __('miscellaneous.menu.' . $entity),
+        ]);
     }
 
     // ==================================== HTTP POST METHODS ====================================
