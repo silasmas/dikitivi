@@ -1,0 +1,170 @@
+/*
+    Custom styles
+
+    Author : Xanders Samoth | https://www.linkedin.com/in/xanders-samoth-b2770737/
+*/
+
+pre {
+    font-family: inherit!important;
+    font-size: inherit!important;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/********** Custom colors **********/
+/* background */
+.dktv-bg-pink {
+    background-color: #e3106f !important;
+}
+
+.dktv-bg-pink-transparent {
+    background-color: rgba(227, 16, 111, 0.5) !important;
+}
+
+.dktv-bg-blue {
+    background-color: #0f9cd8 !important;
+}
+
+.dktv-bg-blue-transparent {
+    background-color: rgba(15, 156, 116, 0.5) !important;
+}
+
+a.dktv-bg-blue-transparent:hover {
+    transition: .3s;
+    background-color: rgba(15, 156, 116, 0.7) !important;
+}
+
+.dktv-bg-yellow {
+    background-color: #f7b233 !important;
+}
+
+.dktv-bg-yellow-transparent {
+    background-color: rgba(247, 178, 51, 0.5) !important;
+}
+
+.dktv-bg-green {
+    background-color: #96bd1f !important;
+}
+
+.dktv-bg-green-transparent {
+    background-color: rgba(150, 189, 31, 0.5) !important;
+}
+
+.dktv-bg-gray {
+    background-color: #878787 !important;
+}
+
+.dktv-bg-gray-transparent {
+    background-color: rgba(135, 135, 135, 0.5) !important;
+}
+
+/* button */
+.dktv-btn-pink {
+    background-color: #e3106f !important;
+    color: #fff !important;
+    border-color: #da0e6a !important;
+}
+
+.dktv-btn-pink:hover {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+}
+
+.dktv-btn-blue {
+    background-color: #0f9cd8 !important;
+    color: #fff !important;
+    border-color: #0d94ce !important;
+}
+
+.dktv-btn-blue:hover {
+    background-color: #878787 !important;
+    border-color: #878787 !important;
+}
+
+.dktv-btn-yellow {
+    background-color: #f7b233 !important;
+    color: #000 !important;
+    border-color: #f7b233 !important;
+}
+
+.dktv-btn-yellow:hover {
+    background-color: #878787 !important;
+    color: #fff !important;
+    border-color: #878787 !important;
+}
+
+.dktv-btn-green {
+    background-color: #96bd1f !important;
+    color: #000 !important;
+    border-color: #96bd1f !important;
+}
+
+.dktv-btn-green:hover {
+    background-color: #878787 !important;
+    color: #fff !important;
+    border-color: #878787 !important;
+}
+
+.dktv-btn-gray {
+    background-color: #96bd1f !important;
+    color: #fff !important;
+    border-color: #96bd1f !important;
+}
+
+.dktv-btn-gray:hover {
+    background-color: #878787 !important;
+    border-color: #878787 !important;
+}
+
+/* text */
+.dktv-text-pink {
+    color: #e3106f !important;
+}
+
+.dktv-text-blue {
+    color: #0f9cd8 !important;
+}
+
+.dktv-text-yellow {
+    color: #f7b233 !important;
+}
+
+.dktv-text-green {
+    color: #96bd1f !important;
+}
+
+.dktv-text-gray {
+    color: #878787 !important;
+}
+
+/* paragraph */
+.dktv-line-height-1 {
+    line-height: 1;
+}
+
+.dktv-line-height-1_4 {
+    line-height: 1.4;
+}
+
+.dktv-line-height-1_45 {
+    line-height: 1.45;
+}
+
+.dktv-line-height-1_5 {
+    line-height: 1.5;
+}
+
+/* stretched link */
+.card-body + .stretched-link::after {
+    background-color: rgba(70, 100, 150, 0.2)!important;
+    opacity: 0;
+    transition: .3s;
+}
+
+.card-body + .stretched-link.changed::after {
+    opacity: 1;
+}
