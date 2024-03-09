@@ -22,8 +22,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 
         <!-- ============ Addons CSS Files ============ -->
-        <link rel="stylesheet" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" id="mdb-style" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
+        <link rel="stylesheet" id="bootstrap-style" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/jquery/jquery-ui/jquery-ui.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/cropper/css/cropper.min.css') }}">
@@ -31,12 +31,13 @@
 
         <!-- ============ Streamo CSS File ============ -->
         <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/plugins.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/style.css') }}">
+        <link rel="stylesheet" id="custom-style" href="{{ asset('assets/addons/streamo/css/style.css') }}">
 
         <!-- ============ Modernizer JS ============ -->
         <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
 
         <!-- ============ Custom CSS ============ -->
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}" blp-theme="Light" blp-user-id="{{ Auth::user()->id }}">
         <style>
             .logo a img { width: 200px; }
             @media screen and (max-width: 375px) {
@@ -348,8 +349,6 @@
         <script src="{{ asset('assets/addons/custom/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Plugins JS -->
         <script src="{{ asset('assets/addons/streamo/js/plugins.js') }}"></script>
-        <!-- Material Design for Bootstrap -->
-        <script src="{{ asset('assets/addons/custom/mdb/js/mdb.min.js') }}"></script>
         <!-- Ajax Mail -->
         <script src="{{ asset('assets/addons/streamo/js/ajax-mail.js') }}"></script>
         <!-- Perfect scrollbar -->
@@ -364,6 +363,8 @@
         <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
+        <!-- Biliap JS -->
+        <script src="{{ asset('assets/addons/custom/biliap/js/biliap.cores.js') }}"></script>
         <!-- Custom JS -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
         <script type="text/javascript">

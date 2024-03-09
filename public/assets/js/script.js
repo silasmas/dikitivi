@@ -20,6 +20,83 @@ var currentImageRecto = document.querySelector('#rectoImageWrapper img');
 var retrievedImageVerso = document.getElementById('retrieved_image_verso');
 var currentImageVerso = document.querySelector('#versoImageWrapper img');
 var cropper;
+// Toggle app theme
+const LOCAL_STORAGE_KEY = "toggle-bootstrap-theme";
+const LOCAL_META_DATA = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+let isDark = LOCAL_META_DATA && LOCAL_META_DATA.isDark;
+const MDB_LIGHT = currentHost + '/assets/addons/custom/mdb/css/mdb.min.css';
+const MDB_DARK = currentHost + '/assets/addons/custom/mdb/css/mdb.dark.min.css';
+const CUST_LIGHT = currentHost + '/assets/css/style.css';
+
+// check if user has already selected dark theme earlier
+if (isDark) {
+    themeDark();
+} else {
+    themeLight();
+}
+
+/**
+ * Dynamically load JS files
+ */
+function loadAllJS() {
+    $.getScript('/assets/addons/custom/jquery/js/jquery.min.js');
+    $.getScript('/assets/addons/custom/jquery/js/jquery-ui.min.js');
+    $.getScript('/assets/addons/streamo/js/vendor/jquery-migrate-3.3.0.min.js');
+    $.getScript('/assets/addons/custom/bootstrap/js/popper.min.js');
+    $.getScript('/assets/addons/custom/mdb/js/mdb.min.js');
+    $.getScript('/assets/addons/custom/bootstrap/js/bootstrap.bundle.min.js');
+    $.getScript('/assets/addons/streamo/js/plugins.js');
+    $.getScript('/assets/addons/streamo/js/ajax-mail.js');
+    $.getScript('/assets/addons/custom/perfect-scrollbar/dist/perfect-scrollbar.min.js');
+    $.getScript('/assets/addons/custom/cropper/js/cropper.min.js');
+    $.getScript('/assets/addons/custom/sweetalert2/dist/sweetalert2.min.js');
+    $.getScript('/assets/addons/custom/jquery/scroll4ever/js/jquery.scroll4ever.js');
+    $.getScript('/assets/addons/custom/autosize/js/autosize.min.js');
+    $.getScript('/assets/addons/streamo/js/main.js');
+    $.getScript('/assets/addons/custom/biliap/js/biliap.cores.js');
+    $.getScript('/assets/js/script.js');
+}
+
+/**
+ * Set theme to light
+ */
+function themeLight() {
+    $('.list-group-item, .list-group-item a').addClass('text-dark').removeClass('text-white');
+    $('#mdb-style').attr('href', MDB_LIGHT);
+}
+
+/**
+ * Set theme to dark
+ */
+function themeDark() {
+    $('.list-group-item, .list-group-item a').addClass('text-white').removeClass('text-dark');
+    $('#mdb-style').attr('href', MDB_DARK);
+}
+
+/**
+ * Get cookie by name
+ * 
+ * @param string cname 
+ */
+function getCookie(cname) {
+    let name = cname + '=';
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+
+    return '';
+}
 
 $(function () {
     $('.navbar, .card, .btn').addClass('shadow-0');
@@ -67,7 +144,7 @@ $(function () {
 
     /* jQuery Date picker */
     $('#register_birthdate').datepicker({
-        dateFormat: currentLanguage.startsWith('fr') ? 'dd/mm/yy' : 'mm/dd/yy',
+        dateFormat: currentLanguage.startsWith('fr') || currentLanguage.startsWith('ln') ? 'dd/mm/yy' : 'mm/dd/yy',
         onSelect: function () {
             $(this).focus();
         }
@@ -181,7 +258,7 @@ $(function () {
                     data: datas,
                     success: function (res) {
                         $('.user-image').attr('src', res);
-                        window.location.reload();
+                        location.reload(true);
                     },
                     error: function (xhr, error, status_description) {
                         console.log(xhr.responseJSON);
@@ -351,5 +428,45 @@ $(function () {
                 $('#media_cover_picture').attr('value', base64_data);
             };
         });
+    });
+
+    /* When user change the theme by click, change the browser theme according to his preference */
+    // LIGHT
+    $('#themeToggler .light').on('click', function (e) {
+        e.preventDefault();
+
+        if (currentUser !== null) {
+            $.ajax({
+                headers: headers,
+                type: 'PUT',
+                contentType: 'application/json',
+                url: currentHost + '/api/user/' + userId,
+                data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'light' }),
+                success: function () {
+                    location.reload(true);
+                    history.go(0);
+
+                    location.href = location.href;
+
+                    $(this).unbind('click');
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                },
+                error: function (xhr, error, status_description) {
+                    console.log(xhr.responseJSON);
+                    console.log(xhr.status);
+                    console.log(error);
+                    console.log(status_description);
+                }
+            });
+        }
+
+        if (currentUser === null) {
+            themeLight();
+
+            const META = { isDark };
+
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(META));
+        }
     });
 });
