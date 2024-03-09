@@ -3,9 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
-        <meta name="dktv-visitor" content="{{ !empty($current_user) ? random_int(10000, 99999) . '-' . $current_user->id : null }}">
+        <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
 
         <!-- ============ Favicon ============ -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}">

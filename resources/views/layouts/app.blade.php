@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
         <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -71,6 +72,8 @@
     </head>
 
     <body>
+        <!-- Main Wrapper Start -->
+        <div class="main-wrapper">
             <!-- header-medea -->
             <header class="header-medea clearfix header-sticky">
                 <div class="container-fluid ">
@@ -252,8 +255,7 @@
             </div>
             <!--// side-main-menu -->
 
-
-@yield('welcome-content')
+@yield('app-content')
 
             <!-- Footer Area -->
             <footer class="footer-area">
@@ -356,11 +358,15 @@
         <script src="{{ asset('assets/addons/custom/cropper/js/cropper.min.js') }}"></script>
         <!-- SweetAlert -->
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+        <!-- Scroll4ever -->
+        <script src="{{ asset('assets/addons/custom/jquery/scroll4ever/js/jquery.scroll4ever.js') }}"></script>
         <!-- Autosize -->
         <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <!-- Custom JS -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script type="text/javascript">
+        </script>
     </body>
 </html>

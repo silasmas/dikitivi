@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/symlink', function () {return view('symlink');})->name('generate_symlink');
 // Home
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
-Route::get('/home', 'App\Http\Controllers\Web\HomeController@homeMockup')->name('home_mockup');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
 Route::get('/notification', 'App\Http\Controllers\Web\HomeController@notification')->name('notification.home');
 Route::get('/about', 'App\Http\Controllers\Web\HomeController@about')->name('about');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @author Xanders
@@ -18,7 +19,7 @@ class HomeController extends Controller
     {
         $this::$api_client_manager = new ApiClientManager();
 
-        // $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
+        $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -37,16 +38,6 @@ class HomeController extends Controller
     }
 
     /**
-     * GET: Test home page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function homeMockup()
-    {
-        return view('home');
-    }
-
-    /**
      * GET: Welcome/Home page
      *
      * @return \Illuminate\View\View
@@ -55,12 +46,12 @@ class HomeController extends Controller
     {
         $pricings = $this::$api_client_manager::call('GET', getApiURL() . '/pricing');
 
-        if (session()->has('age')) {
+        if (session()->has('age') OR Auth::check()) {
+            return view('home');
 
         } else {
+            return view('welcome', ['pricings' => $pricings]);
         }
-
-        return view('welcome', ['pricings' => $pricings]);
     }
 
     /**
