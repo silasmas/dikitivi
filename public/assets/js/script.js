@@ -4,9 +4,11 @@
  * @author Xanders
  * @see https://www.linkedin.com/in/xanders-samoth-b2770737/
  */
-
+// Common variables
 var currentLanguage = $('html').attr('lang');
+var currentUser = $('[name="dktv-visitor"]').attr('content');
 var currentHost = $('[name="dktv-url"]').attr('content');
+var headers = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': 'application/json', 'X-localization': navigator.language };
 // Modals
 var modalUser = $('#cropModalUser');
 // Preview images
@@ -37,6 +39,30 @@ $(function () {
         paging: 'matchMedia' in window ? (window.matchMedia('(min-width: 500px)').matches ? true : false) : false,
         ordering: false,
         info: 'matchMedia' in window ? (window.matchMedia('(min-width: 500px)').matches ? true : false) : false,
+    });
+
+    /* Perfect scrollbar */
+    const ps = new PerfectScrollbar('.menu-sidebar2__content', {
+        wheelSpeed: 2,
+        wheelPropagation: true,
+        minScrollbarLength: 20
+    });
+
+    /* Bootstrap Tooltip */
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+
+    /* jQuery scroll4ever */
+    $('#scope').scroll4ever({
+        trigger: '.next-page-link',
+        container: '#items',
+        selector: '.item',
+        distance: 100,
+        debug: true,
+        start: function () { $('.next-page-link').html('<div class="loader"><div class="loaderBar"></div></div>'); },
+        complete: function () { }
     });
 
     /* jQuery Date picker */
@@ -143,9 +169,8 @@ $(function () {
             reader.readAsDataURL(blob);
             reader.onloadend = function () {
                 var base64_data = reader.result;
-                var entity_id = document.getElementById('user_id').value;
-                var mUrl = apiURL + '/api/user/update_avatar_picture/' + parseInt($('#userId').val());
-                var datas = JSON.stringify({ 'id': parseInt($('#userId').val()), 'user_id': entity_id, 'image_64': base64_data });
+                var mUrl = apiURL + '/api/user/update_avatar_picture/' + parseInt(currentUser);
+                var datas = JSON.stringify({ 'id': parseInt(currentUser), 'user_id': currentUser, 'image_64': base64_data });
 
                 $.ajax({
                     headers: headers,

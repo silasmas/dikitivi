@@ -3,9 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="dktv-url" content="{{ getWebURL() }}">
-        <meta name="dktv-visitor" content="{{ !empty($current_user) ? random_int(10000, 99999) . '-' . $current_user->id : null }}">
+        <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
 
         <!-- ============ Favicon ============ -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}">
@@ -70,134 +71,187 @@
     </head>
 
     <body>
-        <!-- Main Wrapper Start -->
-        <div class="main-wrapper">
-            <header class="header-area inner-header">
-                <div class="container relative">
-                    <div class="row{{ Route::is('home') ? ' align-items-center' : '' }}">
-                        <div class="col-lg-3 col-7">
-                            <!-- Logo -->
-                            <div class="logo">
-                                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt=""></a>
-                            </div>
-                            <!-- Logo -->
-                        </div>
+            <!-- header-medea -->
+            <header class="header-medea clearfix header-sticky">
+                <div class="container-fluid ">
+                    <div class="row g-0">
+                        <div class="col-lg-12">
+                            <div class="header-medea-inner-area">
+                                <div class="left-side">
+                                    <div class="logo-medea">
+                                        <a href="{{ route('home_mockup') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt="" width="140"></a>
+                                    </div>
+                                </div>
+                                <div class="right-side d-flex">
+                                    <!-- search-input-box start -->
+                                    <div class="search-input-box">
+                                        <input type="text" placeholder="Search">
+                                        <button><i class="bi bi-search"></i></button>
+                                    </div>
+                                    <!-- search-input-box end -->
 
-@if (Route::is('home'))
-                        <div class="col-lg-9 col-5">
-                            <div class="menu-responsive">
-                                <div class="main-menu">
-                                    <nav id="mainNav" class="main-navigation">
-                                        <ul>
-                                            <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
-                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
-                                        </ul>
-                                    </nav>
-                                    <div class="login-button">
-                                        <a href="#donate" class="login-btn brilliantrose border-r-5 me-sm-2 me-1" title="@lang('miscellaneous.menu.donate')">
-                                            <i class="bi bi-heart-fill align-middle me-sm-2"></i>
-                                            <span class="d-lg-inline-block d-none">
-                                                @lang('miscellaneous.menu.donate')
-                                            </span>
+                                    <!-- notifications start -->
+                                    <div class="notifications-bar btn-group">
+                                        <a href="#" class="notifications-iocn"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <i
+                                                class="zmdi zmdi-notifications"></i>
+                                            <span>5</span>
                                         </a>
+                                        <div class="dropdown-menu">
+                                            <h5>Notifications</h5>
+                                            <ul>
+                                                <li
+                                                    class="single-notifications">
+                                                    <a href="#">
+                                                        <span class="image"><img
+                                                                src="assets/images/review/author-01.png"
+                                                                alt></span>
+                                                        <span
+                                                            class="notific-contents">
+                                                            <span>Lorem ipsum
+                                                                dolor sit amet
+                                                                consectetur.</span>
+                                                            <span
+                                                                class="time">21
+                                                                hours ago</span>
+                                                        </span>
 
-                                        <div class="dropdown d-inline-block">
-                                            <a role="button" id="dropdownLanguage" class="dropdown-toggle hidden-arrow text-light" title="@lang('miscellaneous.your_language')" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-translate fs-4 align-middle"></i>
-                                            </a>
-
-                                            <ul class="dropdown-menu mt-1 p-0" aria-labelledby="dropdownLanguage">
-    @foreach ($available_locales as $locale_name => $available_locale)
-        @if ($available_locale != $current_locale)
-                                                <li class="w-100">
-                                                    <a class="dropdown-item px-3 py-2 text-dark" href="{{ route('change_language', ['locale' => $available_locale]) }}">
-            @switch($available_locale)
-                @case('ln')
-                                                        <span class="fi fi-cd me-2"></span>
-                    @break
-                @case('en')
-                                                        <span class="fi fi-us me-2"></span>
-                    @break
-                @default
-                                                        <span class="fi fi-{{ $available_locale }} me-2"></span>
-            @endswitch
-                                                        {{ $locale_name }}
                                                     </a>
                                                 </li>
-        @endif
-    @endforeach
+                                                <li
+                                                    class="single-notifications">
+                                                    <a href="#">
+                                                        <span class="image"><img
+                                                                src="assets/images/review/author-01.png"
+                                                                alt></span>
+                                                        <span
+                                                            class="notific-contents">
+                                                            <span>Lorem ipsum
+                                                                dolor sit amet
+                                                                consectetur.</span>
+                                                            <span
+                                                                class="time">21
+                                                                hours ago</span>
+                                                        </span>
+
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- mobile-menu start -->
-                                <div class="mobile-menu d-block d-lg-none"></div>
-                                <!-- mobile-menu end -->
-                            </div>
-                        </div>
-@else
-                        <div class="col-lg-9 col-5">
-                            <div class="main-menu">
-                                <nav id="mainNav" class="main-navigation">
-                                    <ul>
-                                        <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
-                                        <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                        <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
-                                        <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
-                                    </ul>
-                                </nav>
-                                <div class="login-button">
-                                    <a href="#donate" class="login-btn brilliantrose border-r-5 me-sm-2 me-1" title="@lang('miscellaneous.menu.donate')">
-                                        <i class="bi bi-heart-fill align-middle me-sm-2"></i>
-                                        <span class="d-lg-inline-block d-none">
-                                            @lang('miscellaneous.menu.donate')
-                                        </span>
-                                    </a>
-                                    <div class="dropdown d-inline-block">
-                                        <a role="button" id="dropdownLanguage" class="dropdown-toggle hidden-arrow text-light" title="@lang('miscellaneous.your_language')" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-translate fs-4 align-middle"></i>
-                                        </a>
-                                        <ul class="dropdown-menu mt-1 p-0" aria-labelledby="dropdownLanguage">
-    @foreach ($available_locales as $locale_name => $available_locale)
-        @if ($available_locale != $current_locale)
-                                            <li class="w-100">
-                                                <a class="dropdown-item px-3 py-2 text-dark" href="{{ route('change_language', ['locale' => $available_locale]) }}">
-            @switch($available_locale)
-                @case('ln')
-                                                    <span class="fi fi-cd me-2"></span>
-                    @break
-                @case('en')
-                                                    <span class="fi fi-us me-2"></span>
-                    @break
-                @default
-                                                    <span class="fi fi-{{ $available_locale }} me-2"></span>
-            @endswitch
-                                                        {{ $locale_name }}
-                                                </a>
-                                            </li>
-        @endif
-    @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <!-- notifications end -->
 
-                        <div class="col">
-                            <!-- mobile-menu start -->
-                            <div class="mobile-menu d-block d-lg-none"></div>
-                            <!-- mobile-menu end -->
+                                    <!-- our-profile-area start -->
+                                    <div class="our-profile-area ">
+                                        <a href="#" class="our-profile-pc"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <img
+                                                src="assets/images/review/author-01.png"
+                                                alt>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <ul>
+                                                <li class="single-list"><a
+                                                        href="my-profile.html">My
+                                                        Profile</a></li>
+                                                <li class="single-list"><a
+                                                        href="my-account.html">My
+                                                        Account</a></li>
+                                                <li class="single-list"><a
+                                                        href="login-and-register.html">Log
+                                                        Out</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- our-profile-area end -->
+                                    <div class="main-menu d-block d-lg-none">
+                                        <nav class="main-navigation">
+                                            <ul>
+                                                <li><a href="index-3.html"><i
+                                                            class="zmdi zmdi-tv-alt-play"></i>
+                                                        TV Series</a></li>
+                                                <li><a href="playlists.html"><i
+                                                            class="zmdi zmdi-collection-music"></i>
+                                                        Playlist</a></li>
+                                                <li><a
+                                                        href="new-arrivals.html"><i
+                                                            class="zmdi zmdi-cocktail"></i>
+                                                        New Arrivals</a></li>
+                                                <li><a href="animation.html"><i
+                                                            class="zmdi zmdi-slideshare"></i>
+                                                        Animation</a></li>
+                                                <li><a href="talk-show.html"><i
+                                                            class="zmdi zmdi-accounts-alt"></i>
+                                                        Talk Show</a></li>
+                                                <li><a
+                                                        href="coming-soon.html"><i
+                                                            class="zmdi zmdi-spinner"></i>
+                                                        Coming Soon</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!-- mobile-menu start -->
+                                    <div
+                                        class="mobile-menu menu-black d-block d-lg-none"></div>
+                                    <!-- mobile-menu end -->
+                                </div>
+                            </div>
                         </div>
-@endif
                     </div>
                 </div>
             </header>
+            <!--// header-medea -->
 
-@if (Route::is('about') || Route::is('about.entity'))
-    @include('partials.breacrumb')
-@endif
+            <!-- side-main-menu -->
+            <div class="side-main-menu">
+                <nav class="sidebar-menu" data-simplebar>
+                    <ul>
+                        <li class="normal-item-pro">
+                            <a href="index-3.html">
+                                <i class="zmdi zmdi-tv-alt-play"></i>
+                                <span>TV Series</span>
+                            </a>
+                        </li>
+                        <li class="normal-item-pro">
+                            <a href="playlists.html">
+                                <i class="zmdi zmdi-collection-music"></i>
+                                <span>Playlist</span>
+                            </a>
+                        </li>
+                        <li class="normal-item-pro">
+                            <a href="new-arrivals.html">
+                                <i class="zmdi zmdi-cocktail"></i>
+                                <span>New Arrivals</span>
+                            </a>
+                        </li>
+                        <li class="normal-item-pro">
+                            <a href="animation.html">
+                                <i class="zmdi zmdi-slideshare"></i>
+                                <span>Animation</span>
+                            </a>
+                        </li>
+                        <li class="normal-item-pro">
+                            <a href="talk-show.html">
+                                <i class="zmdi zmdi-accounts-alt"></i>
+                                <span>Talk Show</span>
+                            </a>
+                        </li>
+                        <li class="normal-item-pro">
+                            <a href="coming-soon.html">
+                                <i class="zmdi zmdi-spinner"></i>
+                                <span>Coming Soon</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!--// side-main-menu -->
+
 
 @yield('welcome-content')
 
@@ -302,7 +356,11 @@
         <script src="{{ asset('assets/addons/custom/cropper/js/cropper.min.js') }}"></script>
         <!-- SweetAlert -->
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+        <!-- Autosize -->
+        <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
+        <!-- Custom JS -->
+        <script src="{{ asset('assets/js/script.js') }}"></script>
     </body>
 </html>
