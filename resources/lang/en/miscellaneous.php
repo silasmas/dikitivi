@@ -182,7 +182,7 @@ return [
     'login_title1' => 'Log in',
     'login_title2' => 'Identify yourself',
     'login_description' => 'Your data is safe with us. So you need to identify yourself to be sure it\'s you.',
-    'login_username' => 'Phone number or E-mail',
+    'login_username' => 'Phone number, E-mail or Username',
     'remember_me' => 'Remember me',
     'forgotten_password' => 'Forgotten password?',
     'not_member' => 'Not a member?',

@@ -58,7 +58,7 @@ class AuthenticatedSessionController extends Controller
         } else {
             $resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . $user->data;
 
-            return redirect('/login')->with('response_error', $resp_error);
+            return redirect()->back()->with('response_error', $resp_error);
         }
     }
 

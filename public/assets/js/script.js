@@ -29,10 +29,18 @@ const MDB_DARK = currentHost + '/assets/addons/custom/mdb/css/mdb.dark.min.css';
 const CUST_LIGHT = currentHost + '/assets/css/style.css';
 
 // check if user has already selected dark theme earlier
-if (isDark) {
-    themeDark();
-} else {
+if (!isDark) {
     themeLight();
+
+} else {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (darkThemeMq.matches) {
+        themeDark();
+        
+    } else {
+        themeLight();
+    }
 }
 
 /**
@@ -71,6 +79,22 @@ function themeLight() {
 function themeDark() {
     $('.list-group-item, .list-group-item a').addClass('text-white').removeClass('text-dark');
     $('#mdb-style').attr('href', MDB_DARK);
+}
+
+/**
+ * Set theme to auto
+ */
+function themeAuto() {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (darkThemeMq.matches) {
+        $('.list-group-item, .list-group-item a').addClass('text-white').removeClass('text-dark');
+        $('#mdb-style').attr('href', MDB_DARK);
+
+    } else {
+        $('.list-group-item, .list-group-item a').addClass('text-dark').removeClass('text-white');
+        $('#mdb-style').attr('href', MDB_LIGHT);
+    }
 }
 
 /**
@@ -434,6 +458,7 @@ $(function () {
     // LIGHT
     $('#themeToggler .light').on('click', function (e) {
         e.preventDefault();
+        $('#themeToggler .current-theme').html('<i class="bi bi-sun"></i>');
 
         if (currentUser !== null) {
             $.ajax({
@@ -463,6 +488,98 @@ $(function () {
 
         if (currentUser === null) {
             themeLight();
+            location.reload(true);
+            history.go(0);
+
+            location.href = location.href;
+
+            const META = { isDark };
+
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(META));
+        }
+    });
+
+    // DARK
+    $('#themeToggler .dark').on('click', function (e) {
+        e.preventDefault();
+        $('#themeToggler .current-theme').html('<i class="bi bi-moon-fill"></i>');
+
+        if (currentUser !== null) {
+            $.ajax({
+                headers: headers,
+                type: 'PUT',
+                contentType: 'application/json',
+                url: currentHost + '/api/user/' + userId,
+                data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'dark' }),
+                success: function () {
+                    location.reload(true);
+                    history.go(0);
+
+                    location.href = location.href;
+
+                    $(this).unbind('click');
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                },
+                error: function (xhr, error, status_description) {
+                    console.log(xhr.responseJSON);
+                    console.log(xhr.status);
+                    console.log(error);
+                    console.log(status_description);
+                }
+            });
+        }
+
+        if (currentUser === null) {
+            themeDark();
+            location.reload(true);
+            history.go(0);
+
+            location.href = location.href;
+
+            const META = { isDark };
+
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(META));
+        }
+    });
+
+    // AUTO
+    $('#themeToggler .auto').on('click', function (e) {
+        e.preventDefault();
+        $('#themeToggler .current-theme').html('<i class="bi bi-circle-half"></i>');
+
+        if (currentUser !== null) {
+            $.ajax({
+                headers: headers,
+                type: 'PUT',
+                contentType: 'application/json',
+                url: currentHost + '/api/user/' + userId,
+                data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'auto' }),
+                success: function () {
+                    location.reload(true);
+                    history.go(0);
+
+                    location.href = location.href;
+
+                    $(this).unbind('click');
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                },
+                error: function (xhr, error, status_description) {
+                    console.log(xhr.responseJSON);
+                    console.log(xhr.status);
+                    console.log(error);
+                    console.log(status_description);
+                }
+            });
+        }
+
+        if (currentUser === null) {
+            themeAuto();
+            location.reload(true);
+            history.go(0);
+
+            location.href = location.href;
 
             const META = { isDark };
 

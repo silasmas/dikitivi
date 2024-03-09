@@ -182,7 +182,7 @@ return [
     'login_title1' => 'Se connecter',
     'login_title2' => 'Identifiez-vous',
     'login_description' => 'Vos données sont sécurisées avec nous. Alors vous devez vous identifier pour être sûr que c\'est bien vous.',
-    'login_username' => 'N° de téléphone ou E-mail',
+    'login_username' => 'N° de tél., E-mail ou Pseudo',
     'remember_me' => 'Se souvenir de moi',
     'forgotten_password' => 'Mot de passe oublié ?',
     'not_member' => 'Pas encore membre ?',
