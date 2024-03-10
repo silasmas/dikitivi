@@ -37,8 +37,8 @@ class AuthenticatedSessionController extends Controller
     {
         // Get inputs
         $inputs = [
-            'username' => $request->username,
-            'password' => $request->password
+            'username' => $request->login_username,
+            'password' => $request->login_password
         ];
         // Login API
         $user = $this::$api_client_manager::call('POST', getApiURL() . '/user/login', null, $inputs);

@@ -37,6 +37,7 @@
                                     <h4 class="h4 mb-4 text-center">@lang('miscellaneous.login_title2')</h4>
 
                                     <form method="POST" action="{{ route('login') }}">
+    @csrf
                                         <div class="form-floating mb-3">
                                             <input type="username" name="login_username" id="login_username" class="form-control" aria-describedby="login_username_error" placeholder="@lang('miscellaneous.login_username')" value="{{ \Session::has('response_error') ? explode('-', \Session::get('response_error'))[0] : '' }}" {{ \Session::has('response_error') && !empty(explode('-', \Session::get('response_error'))[0])  ? '' : 'autofocus' }}>
                                             <label for="login_username">@lang('miscellaneous.login_username')</label>
