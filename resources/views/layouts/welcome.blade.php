@@ -305,7 +305,7 @@
                     var formData = new FormData(this);
 
                     $.ajax({
-                        headers: { 'Authorization': 'Bearer 14|zri5K36Vn961IVzHeDvnNT1j3ghWItE44lYfH9rPfebe4524' },
+                        headers: { 'Authorization': 'Bearer 14|zri5K36Vn961IVzHeDvnNT1j3ghWItE44lYfH9rPfebe4524', 'Accept': 'application/json', 'X-localization': navigator.language },
                         type: 'POST',
                         url: 'https://apidikitivi.jptshienda.com/api/media',
                         data: formData,
