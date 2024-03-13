@@ -296,5 +296,35 @@
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('form#data').submit(function(e) {
+                    e.preventDefault();
+                    $('#data p').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
+
+                    var formData = new FormData(this);
+
+                    $.ajax({
+                        headers: { 'Authorization': 'Bearer 14|zri5K36Vn961IVzHeDvnNT1j3ghWItE44lYfH9rPfebe4524' },
+                        type: 'POST',
+                        url: 'https://apidikitivi.jptshienda.com/api/media',
+                        data: formData,
+                        success: function (res) {
+                            $('#data p').addClass('text-success').html(res.message);
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        error: function (xhr, error, status_description) {
+                            $('#data p').addClass('text-danger').html(xhr.responseJSON.error ? xhr.responseJSON.error : (xhr.responseJSON.message ? xhr.responseJSON.message : error));
+                            console.log(xhr.responseJSON);
+                            console.log(xhr.status);
+                            console.log(error);
+                            console.log(status_description);
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
