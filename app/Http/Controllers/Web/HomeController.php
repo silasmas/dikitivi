@@ -61,7 +61,12 @@ class HomeController extends Controller
      */
     public function about()
     {
-        return view('about');
+		$group_name = 'Media type';
+		$type_name = 'TV series';
+        $types_by_group = $this::$api_client_manager::call('GET', getApiURL() . '/type/find_by_group/en/' . $group_name);
+        $medias_by_type = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_type/en/' . $type_name);
+
+        return view('about', ['types' => $types_by_group, 'medias' => $medias_by_type]);
     }
 
     /**
