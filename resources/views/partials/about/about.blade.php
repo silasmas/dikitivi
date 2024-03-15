@@ -22,6 +22,17 @@
 							<div class="card-body">
 								<form id="data" method="post" enctype="multipart/form-data">
 									<div class="mb-3">
+										<label for="cover_url" class="form-label mb-0">Media type</label>
+										<select name="type_id" id="type_id" class="form-select" aria-label="Media type">
+											<option class="small" selected disabled>Choose a type</option>
+@forelse ($types->data as $type)
+											<option value="{{ $type->id }}">{{ $type->type_name }}</option>
+@empty
+@endforelse
+										</select>
+									</div>
+
+									<div class="mb-3">
 										<label for="media_title" class="form-label mb-0 visually-hidden">Video Title</label>
 										<input type="text" name="media_title" id="media_title" class="form-control" placeholder="Video Title">
 									</div>
@@ -53,18 +64,7 @@
 										<input type="file" name="cover_url" id="cover_url" class="form-control" />
 									</div>
 
-									<div class="mb-3">
-										<label for="cover_url" class="form-label mb-0">Media type</label>
-										<select name="type_id" id="type_id" class="form-select" aria-label="Media type">
-											<option class="small" selected disabled>Choose a type</option>
-@forelse ($types->data as $type)
-											<option value="{{ $type->id }}">{{ $type->type_name }}</option>
-@empty
-@endforelse
-										</select>
-									</div>
-
-									<div class="mb-3">
+									<div class="mb-4">
 										<label for="cover_url" class="form-label mb-0">Belongs to</label>
 										<select name="belongs_to" id="belongs_to" class="form-select" aria-label="Select a TV series">
 											<option class="small" selected disabled>Choose a TV series</option>
