@@ -95,7 +95,7 @@
 										</select>
 									</div>
 
-									<div class="row">
+									<div class="row g-2">
 										<div class="col-sm-6">
 											<button class="btn btn-primary w-100 mb-3 shadow-0">@lang('miscellaneous.send')</button>
 										</div>
