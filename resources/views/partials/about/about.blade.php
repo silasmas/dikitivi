@@ -100,7 +100,7 @@
 										</select>
 									</div>
 
-									<div class="mb-1 text-center">
+									<div class="mb-4 text-center">
 										<label for="author_names" class="form-label mb-0 d-block">Is the media live?</label>
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="radio" name="is_live" id="is_live_1" value="1">
