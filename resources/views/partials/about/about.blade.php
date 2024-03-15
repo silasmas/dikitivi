@@ -16,17 +16,17 @@
                     <div class="col-lg-6 m-auto">
                         <form id="data" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <label for="media_title" class="form-label mb-1 visually-hidden">Video Title</label>
+                                <label for="media_title" class="form-label mb-0 visually-hidden">Video Title</label>
                                 <input type="text" name="media_title" id="media_title" class="form-control" placeholder="Video Title">
                             </div>
 
                             <div class="mb-3">
-                                <label for="author_names" class="form-label mb-1 visually-hidden">Author names</label>
+                                <label for="author_names" class="form-label mb-0 visually-hidden">Author names</label>
                                 <input type="text" name="author_names" id="author_names" class="form-control" placeholder="Author names">
                             </div>
 
                             <div class="mb-3">
-                                <label for="author_names" class="form-label mb-1 visually-hidden">For Youth</label>
+                                <label for="author_names" class="form-label mb-0">For Youth</label>
                                 <div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="for_youth" id="for_youth_1" value="1">
 									<label class="form-check-label" for="for_youth_1">Yes</label>
@@ -38,17 +38,17 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="youtube_video" class="form-label mb-1">Upload video</label>
+                                <label for="youtube_video" class="form-label mb-0">Upload video</label>
                                 <input type="file" name="youtube_video" id="youtube_video" class="form-control" />
                             </div>
 
                             <div class="mb-3">
-                                <label for="cover_url" class="form-label mb-1">Upload cover</label>
+                                <label for="cover_url" class="form-label mb-0">Upload cover</label>
                                 <input type="file" name="cover_url" id="cover_url" class="form-control" />
                             </div>
 
                             <div class="mb-3">
-                                <label for="cover_url" class="form-label mb-1">Media type</label>
+                                <label for="cover_url" class="form-label mb-0">Media type</label>
                                 <select name="type_id" id="type_id" class="form-select" aria-label="Media type">
 									<option class="small" selected disabled>Choose a type</option>
 @forelse ($types->data as $type)
@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="cover_url" class="form-label mb-1">Belongs to</label>
+                                <label for="cover_url" class="form-label mb-0">Belongs to</label>
                                 <select name="belongs_to" id="belongs_to" class="form-select" aria-label="Select a TV series">
 									<option class="small" selected disabled>Choose a TV series</option>
 @forelse ($medias->data as $media)
