@@ -89,7 +89,7 @@
 										<input type="file" name="cover_url" id="cover_url" class="form-control" />
 									</div>
 
-									<div class="mb-4">
+									<div class="mb-3">
 										<label for="cover_url" class="form-label mb-0">Belongs to</label>
 										<select name="belongs_to" id="belongs_to" class="form-select" aria-label="Select a TV series">
 											<option class="small" selected disabled>Choose a TV series</option>
