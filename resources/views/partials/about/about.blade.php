@@ -100,6 +100,18 @@
 										</select>
 									</div>
 
+									<div class="mb-1 text-center">
+										<label for="author_names" class="form-label mb-0 d-block">Is the media live?</label>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="is_live" id="is_live_1" value="1">
+											<label class="form-check-label" for="is_live_1">Yes</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="is_live" id="is_live_0" value="0">
+											<label class="form-check-label" for="is_live_0">No</label>
+										</div>
+									</div>
+
 									<div class="row g-2">
 										<div class="col-sm-6">
 											<button class="btn btn-primary w-100 mb-3 shadow-0">@lang('miscellaneous.send')</button>
