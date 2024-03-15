@@ -14,10 +14,11 @@
 
                 <div class="row">
                     <div class="col-lg-6 m-auto">
-						<div class="card border rounded-5 shadow-0">
-							<div class="card-header">
-								<h2>Add a media</h3>
+						<div class="card border rounded-5 overflow-hidden shadow-0">
+							<div class="card-header py-3">
+								<h4 class="mb-0">Add a media</h4>
 							</div>
+
 							<div class="card-body">
 								<form id="data" method="post" enctype="multipart/form-data">
 									<div class="mb-3">
