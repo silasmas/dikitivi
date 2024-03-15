@@ -49,7 +49,7 @@
 
 									<div class="mb-3">
 										<label for="director" class="form-label mb-0 visually-hidden">Film director</label>
-										<input type="text" name="director" id="director" class="form-control" placeholder="Written by">
+										<input type="text" name="director" id="director" class="form-control" placeholder="Film director">
 									</div>
 
 									<div class="mb-3">
