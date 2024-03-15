@@ -25,8 +25,8 @@
                                 <input type="text" name="author_names" id="author_names" class="form-control" placeholder="Author names">
                             </div>
 
-                            <div class="mb-3">
-                                <label for="author_names" class="form-label mb-0">For Youth</label>
+                            <div class="mb-3 text-center">
+                                <label for="author_names" class="form-label mb-0 d-block">For Youth</label>
                                 <div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="for_youth" id="for_youth_1" value="1">
 									<label class="form-check-label" for="for_youth_1">Yes</label>
