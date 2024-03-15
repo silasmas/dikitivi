@@ -316,7 +316,7 @@
                         contentType: false,
                         processData: false,
                         error: function (xhr, error, status_description) {
-                            $('#data p').addClass('text-danger').html(xhr.responseJSON.error ? xhr.responseJSON.error : (xhr.responseJSON.message ? xhr.responseJSON.message : error));
+                            $('#data p').addClass('text-danger').html(xhr.responseJSON.error + ' : ' + xhr.responseJSON.message);
                             console.log(xhr.responseJSON);
                             console.log(xhr.status);
                             console.log(error);

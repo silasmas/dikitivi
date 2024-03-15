@@ -38,12 +38,32 @@
 									</div>
 
 									<div class="mb-3">
+										<label for="teaser_url" class="form-label mb-0">Upload teaser <i class="bi bi-question-circle" title="Upload a short video featuring your post" data-bs-toggle="tooltip"></i></label>
+										<input type="file" name="teaser_url" id="teaser_url" class="form-control" />
+									</div>
+
+									<div class="mb-3">
 										<label for="author_names" class="form-label mb-0 visually-hidden">Author names</label>
 										<input type="text" name="author_names" id="author_names" class="form-control" placeholder="Author names">
 									</div>
 
-									<div class="mb-3 text-center">
-										<label for="author_names" class="form-label mb-0 d-block">It's a media for children</label>
+									<div class="mb-3">
+										<label for="writer" class="form-label mb-0 visually-hidden">Written by</label>
+										<input type="text" name="writer" id="writer" class="form-control" placeholder="Written by">
+									</div>
+
+									<div class="mb-3">
+										<label for="director" class="form-label mb-0 visually-hidden">Film director</label>
+										<input type="text" name="director" id="director" class="form-control" placeholder="Written by">
+									</div>
+
+									<div class="mb-3">
+										<label for="price" class="form-label mb-0 visually-hidden">DVD price (in USD)</label>
+										<input type="number" name="price" id="price" class="form-control" placeholder="DVD price (in USD)">
+									</div>
+
+									<div class="mb-1 text-center">
+										<label for="author_names" class="form-label mb-0 d-block">Is the media for children?</label>
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="radio" name="for_youth" id="for_youth_1" value="1">
 											<label class="form-check-label" for="for_youth_1">Yes</label>
