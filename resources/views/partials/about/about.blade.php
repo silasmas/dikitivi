@@ -38,6 +38,11 @@
 									</div>
 
 									<div class="mb-3">
+										<label for="media_url" class="form-label mb-0 visually-hidden">Video URL (YouTube or other)</label>
+										<input type="text" name="media_url" id="media_url" class="form-control" placeholder="Video URL (YouTube or other)">
+									</div>
+
+									<div class="mb-3">
 										<label for="author_names" class="form-label mb-0 visually-hidden">Author names</label>
 										<input type="text" name="author_names" id="author_names" class="form-control" placeholder="Author names">
 									</div>
@@ -74,10 +79,10 @@
 										<input type="file" name="teaser_url" id="teaser_url" class="form-control" />
 									</div>
 
-									<div class="mb-3">
+									<!--<div class="mb-3">
 										<label for="youtube_video" class="form-label mb-0">Upload video</label>
 										<input type="file" name="youtube_video" id="youtube_video" class="form-control" />
-									</div>
+									</div>-->
 
 									<div class="mb-3">
 										<label for="cover_url" class="form-label mb-0">Upload cover</label>
