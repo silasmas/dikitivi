@@ -38,11 +38,6 @@
 									</div>
 
 									<div class="mb-3">
-										<label for="teaser_url" class="form-label mb-0">Upload teaser <i class="bi bi-question-circle" title="Upload a short video featuring your post" data-bs-toggle="tooltip"></i></label>
-										<input type="file" name="teaser_url" id="teaser_url" class="form-control" />
-									</div>
-
-									<div class="mb-3">
 										<label for="author_names" class="form-label mb-0 visually-hidden">Author names</label>
 										<input type="text" name="author_names" id="author_names" class="form-control" placeholder="Author names">
 									</div>
@@ -72,6 +67,11 @@
 											<input class="form-check-input" type="radio" name="for_youth" id="for_youth_0" value="0">
 											<label class="form-check-label" for="for_youth_0">No</label>
 										</div>
+									</div>
+
+									<div class="mb-3">
+										<label for="teaser_url" class="form-label mb-0">Upload teaser <i role="button" class="bi bi-question-circle" title="Upload a short video featuring your post" data-bs-toggle="tooltip"></i></label>
+										<input type="file" name="teaser_url" id="teaser_url" class="form-control" />
 									</div>
 
 									<div class="mb-3">
