@@ -16,7 +16,7 @@
                     <div class="col-lg-6 m-auto">
 						<div class="card border rounded-5 overflow-hidden shadow-0">
 							<div class="card-header py-3">
-								<h4 class="mb-0">Add a media</h4>
+								<h3 class="mb-0 text-center fw-bold">Add a media</h3>
 							</div>
 
 							<div class="card-body">
