@@ -95,7 +95,15 @@
 										</select>
 									</div>
 
-									<button class="btn btn-primary w-100 mb-3 shadow-0">@lang('miscellaneous.send')</button>
+									<div class="row">
+										<div class="col-sm-6">
+											<button class="btn btn-primary w-100 mb-3 shadow-0">@lang('miscellaneous.send')</button>
+										</div>
+										<div class="col-sm-6">
+											<button type="reset" class="btn btn-secondary w-100 mb-3 shadow-0">@lang('miscellaneous.reset')</button>
+										</div>
+									</div>
+
 									<p class="text-center"></p>
 								</form>
 							</div>
