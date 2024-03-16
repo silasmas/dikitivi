@@ -8,6 +8,7 @@
 var currentLanguage = $('html').attr('lang');
 var currentUser = $('[name="dktv-visitor"]').attr('content');
 var currentHost = $('[name="dktv-url"]').attr('content');
+var apiHost = $('[name="dktv-api-url"]').attr('content');
 var headers = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': 'application/json', 'X-localization': navigator.language };
 // Modals
 var modalUser = $('#cropModalUser');
@@ -143,7 +144,7 @@ $(function () {
     });
 
     /* Perfect scrollbar */
-    const ps = new PerfectScrollbar('.menu-sidebar2__content', {
+    const ps = new PerfectScrollbar('.perfect-scrollbar', {
         wheelSpeed: 2,
         wheelPropagation: true,
         minScrollbarLength: 20
@@ -454,6 +455,35 @@ $(function () {
         });
     });
 
+    /* Register media */
+	$('form#mediaData').submit(function(e) {
+		e.preventDefault();
+		$('#mediaData p').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
+
+		var formData = new FormData(this);
+
+		$.ajax({
+			headers: headers,
+			type: 'POST',
+			url: apiHost + '/media',
+			data: formData,
+			success: function (res) {
+				$('#mediaData p').addClass('text-success').html(res.message);
+				location.reload();
+			},
+			cache: false,
+			contentType: false,
+			processData: false,
+			error: function (xhr, error, status_description) {
+				$('#mediaData p').addClass('text-danger').html(xhr.responseJSON.message + ' : ' + xhr.responseJSON.error);
+				console.log(xhr.responseJSON);
+				console.log(xhr.status);
+				console.log(error);
+				console.log(status_description);
+			}
+		});
+	});
+
     /* When user change the theme by click, change the browser theme according to his preference */
     // LIGHT
     $('#themeToggler .light').on('click', function (e) {
@@ -465,7 +495,7 @@ $(function () {
                 headers: headers,
                 type: 'PUT',
                 contentType: 'application/json',
-                url: currentHost + '/api/user/' + userId,
+                url: apiHost + '/user/' + userId,
                 data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'light' }),
                 success: function () {
                     location.reload(true);
@@ -509,7 +539,7 @@ $(function () {
                 headers: headers,
                 type: 'PUT',
                 contentType: 'application/json',
-                url: currentHost + '/api/user/' + userId,
+                url: apiHost + '/user/' + userId,
                 data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'dark' }),
                 success: function () {
                     location.reload(true);
@@ -553,7 +583,7 @@ $(function () {
                 headers: headers,
                 type: 'PUT',
                 contentType: 'application/json',
-                url: currentHost + '/api/user/' + userId,
+                url: apiHost + '/user/' + userId,
                 data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'auto' }),
                 success: function () {
                     location.reload(true);

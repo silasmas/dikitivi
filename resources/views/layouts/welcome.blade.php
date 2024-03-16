@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
+        <meta name="dktv-api-url" content="{{ getApiURL() }}">
         <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
@@ -274,18 +275,14 @@
         <!-- jquery -->
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
-        {{-- <script src="{{ asset('assets/addons/streamo/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script> --}}
         <!-- Popper JS -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>
         <!-- Material Design for Bootstrap -->
         <script src="{{ asset('assets/addons/custom/mdb/js/mdb.min.js') }}"></script>
         <!-- Bootstrap -->
-        {{-- <script src="{{ asset('assets/addons/streamo/js/bootstrap.min.js') }}"></script> --}}
         <script src="{{ asset('assets/addons/custom/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Plugins JS -->
         <script src="{{ asset('assets/addons/streamo/js/plugins.js') }}"></script>
-        <!-- Material Design for Bootstrap -->
-        <script src="{{ asset('assets/addons/custom/mdb/js/mdb.min.js') }}"></script>
         <!-- Ajax Mail -->
         <script src="{{ asset('assets/addons/streamo/js/ajax-mail.js') }}"></script>
         <!-- Perfect scrollbar -->
@@ -296,36 +293,6 @@
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('form#data').submit(function(e) {
-                    e.preventDefault();
-                    $('#data p').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
-
-                    var formData = new FormData(this);
-
-                    $.ajax({
-                        headers: { 'Authorization': 'Bearer 14|zri5K36Vn961IVzHeDvnNT1j3ghWItE44lYfH9rPfebe4524', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
-                        type: 'POST',
-                        url: 'https://apidikitivi.jptshienda.com/api/media',
-                        data: formData,
-                        success: function (res) {
-                            $('#data p').addClass('text-success').html(res.message);
-							location.reload();
-                        },
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        error: function (xhr, error, status_description) {
-                            $('#data p').addClass('text-danger').html(xhr.responseJSON.message + ' : ' + xhr.responseJSON.error);
-                            console.log(xhr.responseJSON);
-                            console.log(xhr.status);
-                            console.log(error);
-                            console.log(status_description);
-                        }
-                    });
-                });
-            });
-        </script>
+        <script src="{{ asset('assets/js/script.js') }}"></script>
     </body>
 </html>

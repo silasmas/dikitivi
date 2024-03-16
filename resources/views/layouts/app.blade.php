@@ -5,9 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
+        <meta name="dktv-api-url" content="{{ getApiURL() }}">
         <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- ============ Favicon ============ -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}">
@@ -24,6 +26,8 @@
         <!-- ============ Addons CSS Files ============ -->
         <link rel="stylesheet" id="mdb-style" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
         <link rel="stylesheet" id="bootstrap-style" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/jquery/jquery-ui/jquery-ui.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/cropper/css/cropper.min.css') }}">
@@ -345,7 +349,6 @@
         <!-- Material Design for Bootstrap -->
         <script src="{{ asset('assets/addons/custom/mdb/js/mdb.min.js') }}"></script>
         <!-- Bootstrap -->
-        {{-- <script src="{{ asset('assets/addons/streamo/js/bootstrap.min.js') }}"></script> --}}
         <script src="{{ asset('assets/addons/custom/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Plugins JS -->
         <script src="{{ asset('assets/addons/streamo/js/plugins.js') }}"></script>
