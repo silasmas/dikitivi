@@ -311,6 +311,7 @@
                         data: formData,
                         success: function (res) {
                             $('#data p').addClass('text-success').html(res.message);
+							location.reload();
                         },
                         cache: false,
                         contentType: false,
