@@ -91,9 +91,20 @@
 
 									<div class="mb-3">
 										<label for="cover_url" class="form-label mb-0">Belongs to</label>
-										<select name="belongs_to" id="belongs_to" class="form-select" aria-label="Select a TV series">
+										<select name="belongs_to" id="belongs_to" class="form-select" aria-label="Choose a TV series">
 											<option class="small" selected disabled>Choose a TV series</option>
-@forelse ($medias->data as $media)
+@forelse ($series_medias->data as $media)
+											<option value="{{ $media->id }}">{{ $media->media_title }}</option>
+@empty
+@endforelse
+										</select>
+									</div>
+
+									<div class="mb-3">
+										<label for="cover_url" class="form-label mb-0">Belongs to</label>
+										<select name="belongs_to" id="belongs_to" class="form-select" aria-label="Choose an album">
+											<option class="small" selected disabled>Choose an album</option>
+@forelse ($album_medias->data as $media)
 											<option value="{{ $media->id }}">{{ $media->media_title }}</option>
 @empty
 @endforelse
