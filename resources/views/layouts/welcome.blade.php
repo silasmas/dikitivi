@@ -302,7 +302,7 @@
                     e.preventDefault();
                     $('#data p').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
 
-                    var formData = new FormData(this);
+                    var formData = $(this).serialize();
 
                     $.ajax({
                         headers: { 'Authorization': 'Bearer 14|zri5K36Vn961IVzHeDvnNT1j3ghWItE44lYfH9rPfebe4524', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
