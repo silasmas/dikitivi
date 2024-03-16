@@ -45,6 +45,7 @@ Route::get('/transaction_message/{orderNumber}/{userId}/{password}', 'App\Http\C
 Route::get('/account', 'App\Http\Controllers\Web\AccountController@account')->name('account');
 Route::get('/account/{entity}', 'App\Http\Controllers\Web\AccountController@accountEntity')->name('account.entity');
 Route::get('/account/{entity}/{id}', 'App\Http\Controllers\Web\AccountController@accountEntityDatas')->whereNumber('id')->name('account.entity.datas');
+Route::get('/members/{id}', 'App\Http\Controllers\Web\AccountController@memberDetails')->whereNumber('id')->name('members');
 
 /*
 |--------------------------------------------------------------------------
