@@ -35,29 +35,89 @@
 
         <!-- ============ Custom CSS ============ -->
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}" blp-theme="Light" blp-user-id="{{ Auth::user()->id }}">
-        <style>
-            .logo a img { width: 200px; }
-            @media screen and (max-width: 375px) {
-                .logo a img { width: 140px; }
-                .login-button { min-width: 75px; }
-            }
-        </style>
 
         <title>{{ config('app.name', 'Home') }}</title>
     </head>
 
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <body>
+        <!-- Main Wrapper Start -->
+        <div class="main-wrapper">
+@yield('guest-content')
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
+            <!-- Footer Area -->
+            <footer class="footer-area">
+                <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-custom-4 mt--50">
+                                <!-- footer-widget -->
+                                <div class="footer-widget">
+                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
+                                    <div class="footer-contet">
+                                        <p>@lang('miscellaneous.public.about.description')</p>
+                                        <ul class="fotter-socail">
+                                            <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--// footer-widget -->
+                            </div>
+
+                            <div class="col-custom-4 mt--50">
+                                <!-- footer-widget -->
+                                <div class="footer-widget">
+                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.useful_links')</h4>
+
+                                    <div class="footer-contet">
+                                        <ul class="footer-list">
+                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
+                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--// footer-widget -->
+                            </div>
+
+                            <div class="col-custom-4 mt--50">
+                                <!-- footer-widget -->
+                                <div class="footer-widget">
+                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
+
+                                    <div class="footer-contet">
+                                        <ul class="footer-contact-list">
+                                            <li> <i class="zmdi zmdi-phone"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></li>
+                                            <li> <i class="zmdi zmdi-home"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.address')</a></li>
+                                            <li> <i class="zmdi zmdi-email"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.email')</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--// footer-widget -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <p class="copyright-text">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <ul class="footer-bottom-list">
+                                    <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}">@lang('miscellaneous.public.about.terms_of_use.title')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}">@lang('miscellaneous.public.about.privacy_policy.title')</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--// Footer Area -->
         </div>
+        <!-- Main Wrapper End -->
 
         <!-- ============ JavaScript Libraries ============ -->
         <!-- jquery -->
@@ -69,6 +129,10 @@
         <script src="{{ asset('assets/addons/custom/mdb/js/mdb.min.js') }}"></script>
         <!-- Bootstrap -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Plugins JS -->
+        <script src="{{ asset('assets/addons/streamo/js/plugins.js') }}"></script>
+        <!-- Ajax Mail -->
+        <script src="{{ asset('assets/addons/streamo/js/ajax-mail.js') }}"></script>
         <!-- Perfect scrollbar -->
         <script src="{{ asset('assets/addons/custom/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
         <!-- CropperJS -->
@@ -76,6 +140,7 @@
         <!-- SweetAlert -->
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
         <!-- Main JS -->
+        <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
     </body>
 </html>

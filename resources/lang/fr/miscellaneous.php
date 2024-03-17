@@ -14,7 +14,7 @@ return [
     */
     'app_name' => 'DikiTivi',
     'welcome' => 'Bienvenue sur Diki Tivi',
-    'keywords' => 'dikitivi,diki,vidéo,film,séries,épisode,dessin animé,documentaire,prédication',
+    'keywords' => 'dikitivi,diki,tivi,vidéo,film,séries,épisode,dessin animé,documentaire,prédication',
     'all_right_reserved' => 'Tous droits réservés',
     'follow_us' => 'Suivez-nous :',
     'call_us' => 'Appelez-nous :',
@@ -357,7 +357,7 @@ return [
                 'link2' => 'Je suis mineur.e'
             ],
             'download_mobile_app' => [
-                'title' => 'Télécharger l\'appli mobile ACR',
+                'title' => 'Télécharger l\'appli mobile DikiTivi',
                 'content' => 'L\'appli mobile DikiTivi vous aide à suivre vos vidéos sur votre smartphone, tablette ou smart-TV et à bénéficier de tous nos avantages.'
             ],
             'pricing' => [
@@ -366,7 +366,7 @@ return [
             ],
             'donate' => [
                 'title' => 'Faire un don anonyme ou devenir partenaire',
-                'content1' => 'En soutenant le parti ACR, non seulement vous contribuez au changement de votre pays, mais aussi vous contribuez à l\'aide qu\'apporte le parti aux ophelins et aux démunis.',
+                'content1' => 'En soutenant le ministère DikiTivi, non seulement vous contribuez à l\'amélioration de vie du peuple de Dieu, mais aussi vous contribuez à l\'aide qu\'apporte le ministère aux ophelins et aux démunis.',
                 'content2' => 'Si c\'est l\'argent que vous voulez envoyer, vous n\'avez qu\'à sélectionner le mode de paiement ; ensuite, vous l\'envoyez directement en ligne.',
                 'content3' => 'Si vous voulez donner autre chose que de l\'argent, vous n\'avez qu\'à donner la description de votre don.',
                 'anonyme' => 'Faire un don anonyme',
@@ -388,7 +388,7 @@ return [
         // About
         'about' => [
             'title' => 'A propos de Diki Tivi',
-            'description' => '',
+            'description' => 'Diki Tivi est une chaîne de télé chrétienne visant à offrir aux parents une plateforme leur permettant de trouver, <i>pour eux et pour leurs enfants</i>, des médias sains, ludiques et Divins.',
             'other_links' => [
                 'title' => 'Autres liens',
                 'link1' => 'Conditions d\'utilisation',
@@ -397,17 +397,330 @@ return [
                 'link4' => 'FAQ'
             ],
 
+            // About content
+            'content' =>
+            [
+                'titles' =>
+                [
+                    [
+                        'ref' => 'story',
+                        'title' => 'Notre Histoire',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => 'Année 2019',
+                                'content' => 'Réception du mandat pour le projet « DikiTivi ».',
+                            ],
+                            [
+                                'subtitle' => '20 Août 2020',
+                                'content' => 'Création de la chaîne YouTube DikiTivi.',
+                            ],
+                            [
+                                'subtitle' => '6 Septembre 2020',
+                                'content' => 'Création de la chaîne Facebook DikiTivi.',
+                            ],
+                            [
+                                'subtitle' => '25 Décembre 2020',
+                                'content' => 'Mise en ligne des premières vidéos.',
+                            ],
+                            [
+                                'subtitle' => '17 Mars 2021',
+                                'content' => 'Mise en ligne de la première version de la WebTV DikiTivi avec de Bourdak corporation.',
+                            ],
+                            [
+                                'subtitle' => '30 Juin 2022',
+                                'content' => 'Premier direct sur YouTube.',
+                            ],
+                            [
+                                'subtitle' => 'Décembre 2023',
+                                'content' => 'Décision d\'élargir l\'audience de DikiTivi aux enfants de tous les âges et de créer l\'application DikiTivi.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'mission',
+                        'title' => 'Notre mission',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Offrir aux enfants, aux familles des programmes ludiques, amusants, instructifs, sains et Divins, leurs permettant de se divertir et d\'assurer leur  croissance spirituelle en Christ ;',
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Apporter Christ, le faire connaître, le faire aimer aux tous petits enfants et aux jeunes via les médias ;',
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Soutenir les parents qui tiennent à élever leurs enfants selon les vraies valeurs morales, Divines et chrétiennes, en se constituant comme média-ressource.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'vision',
+                        'title' => 'Notre vision',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Faire des enfants de tous les âges et de toutes les nations  des disciples du Christ et des vases d\'honneurs.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'legal_notice',
+                        'title' => 'Mentions légales',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Ce site web est édité par le Ministère Divines Kids International. Kinshasa, RDC',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'publication_director',
+                        'title' => 'Directeur de la publication',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Jean Loup Atambutu en qualité de Coordonnateur du projet DIKI.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'images',
+                        'title' => 'Photos',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Les photos utilisées sur le site et l\'application sont originales libres de droit ou achetées principalement sur des sites spécialisés avec les droits d\'exploitation. Dans ce cas, elles ne sont utilisées qu\'à des fins purement illustratives et les personnes représentées sur les photos ne sont que des modèles.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'intellectual_property',
+                        'title' => 'Propriété intellectuelle',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Tous droits réservés. Toute reproduction est interdite sans autorisation. Tous les textes, photos, vidéos, mp3, données, logos et autres éléments reproduits sur ce site sont protégés par le droit d\'auteur selon les règles de droit Congolais et international.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'hoster',
+                        'title' => 'Hébergeur',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Le site <strong>dikitivi.com</strong>, l\'application, ainsi que les fichiers audio et vidéos sont hébergés sur des serveurs que nous louons à la société « Hostinger » et « Amazon ».',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'internet_broadcasting',
+                        'title' => 'Diffusion sur Internet',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Les vidéos diffusées sur Internet (service "replay") sont hébergées et diffusées par YouTube. Nous vous invitons à consulter les conditions générales d\'utilisation de YouTube à cette adresse : <a href="https://policies.google.com/privacy?hl=en" class="dktv-text-blue">https://policies.google.com/privacy?hl=fr</a>.',
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+
             // Terms of use
             'terms_of_use' => [
                 'title' => 'Conditions d\'utilisation',
+                'description' => 'En utilisant nos services, vous acceptez nos conditions d\'utilisation. Alors nous vous suggérons de prendre un peu de votre temps pour lire ces conditions, car vous êtes sur le point de conclure un contrat qui vous engage.',
+                'titles' =>
+                [
+                    [
+                        'ref' => '',
+                        'title' => '',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => ''
+                            ],
+                        ]
+                    ]
+                ]
             ],
 
             // Privacy policy
             'privacy_policy' => [
                 'title' => 'Politique de confidentialité',
+                'description' => 'Bienvenue dans la politique de confidentialité et protection de vos données personnelles chez DikiTivi.',
+                'titles' =>
+                [
+                    [
+                        'ref' => 'information_collection',
+                        'title' => 'Collecte de l\'information',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous recueillons des informations lorsque vous faites un don sur notre site ou que vous vous inscrivez pour écrire un commentaire, pour contacter un orateur du site ou encore pour vous inscrire à un événement ou à un service offert. Les informations recueillies sont uniquement celles que vous nous avez fournies et varient selon les cas.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Dans le cadre d\'un don par exemple, nous vous demandons votre pays (obligatoire), votre prénom et nom (obligatoire), votre adresse e-mail (obligatoire), votre numéro de téléphone, votre adresse postale, votre organisme le cas échéant, et votre mode de paiement.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'En outre, nous recevons et enregistrons automatiquement des informations à partir de votre navigateur internet, y compris votre adresse IP, vos logiciels, votre matériel, et la page que vous visitez.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'data_use',
+                        'title' => 'Utilisation des informations',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => 'Toutes les informations que nous recueillons auprès de vous peuvent être utilisées pour :',
+                                'content' => 'Personnaliser votre expérience et répondre à vos besoins individuels ;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Améliorer notre site web ;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Améliorer le service auprès de nos utilisateurs et de nos donateurs et que leurs besoins soient pris en charge ;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Vous contacter par email ou par SMS ;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Administrer un concours, une promotion, ou une enquête.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'third_party_disclosure',
+                        'title' => 'Divulgation à des tiers',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous ne vendons, n\'échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. Cela ne comprend pas les tierces parties de confiance qui nous aident à exploiter notre site internet, tant que ces parties conviennent de garder ces informations confidentielles.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous pensons qu\'il est nécessaire de partager des informations afin d\'enquêter, de prévenir ou de prendre des mesures concernant des activités illégales, fraudes présumées, situations impliquant des menaces potentielles à la sécurité physique de toute personne, violations de nos conditions d\'utilisation, ou quand la loi nous y contraint.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Les informations non-privées, cependant, peuvent être fournies à d\'autres parties majoritairement pour des besoins d\'amélioration de notre site internet.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'data_safety',
+                        'title' => 'Protection des informations',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Seuls les employés qui ont besoin d\'effectuer un travail spécifique ont accès aux informations personnelles identifiables. Les ordinateurs et serveurs utilisés pour stocker des informations personnelles identifiables sont conservés dans un environnement sécurisé.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Aucune information bancaire n\'est enregistrée dans nos bases de données hormis les coordonnées bancaires.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Est-ce que nous utilisons des cookies ? Oui. Nos cookies améliorent l\'accès à notre site et identifient les visiteurs réguliers. En outre, nos cookies améliorent l\'expérience d\'utilisateur grâce au suivi et au ciblage de ses intérêts. Cependant, cette utilisation des cookies n\'est en aucune façon liée à des informations personnelles identifiables sur notre site.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'data_retirement',
+                        'title' => 'Droit d\'opposition, de retrait de vos informations',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous nous engageons à vous offrir un droit d\'opposition et de retrait quant à vos renseignements personnels. Le droit d\'opposition s\'entend comme étant la possibilité offerte aux internautes de refuser que leurs renseignements personnels soient utilisés à certaines fins mentionnées lors de la collecte. Le droit de retrait s\'entend comme étant la possibilité offerte aux internautes de demander à ce que leurs renseignements personnels ne figurent plus, par exemple, dans une liste de diffusion.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Pour exercer ce droit de retrait de vos informations, veuillez nous écrire en vous rendant sur la page contact de notre site internet.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'donation_refund',
+                        'title' => 'Délai de rétractation, annulation et remboursement de votre don',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Les paiements en ligne ne font pas l\'objet d\'un droit de rétractation. Tout paiement est ferme et définitif.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Les paiements réalisés par les donateurs ne donnent lieu à aucun remboursement.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'access_right',
+                        'title' => 'Droit d\'accès',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous nous engageons à reconnaître un droit d\'accès et de rectification aux personnes concernées désireuses de consulter, modifier, voire radier les informations les concernant.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Pour exercer ce droit d\'accès veuillez nous écrire en vous rendant sur la page contact de notre site internet.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'unsuscribe',
+                        'title' => 'Se désabonner',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous utilisons l\'adresse e-mail que vous fournissez pour vous envoyer des informations et mises à jour relatives à votre don, des nouvelles de notre ministère (si vous avez choisi de recevoir de nos nouvelles), etc. Si à n\'importe quel moment vous souhaitez vous désinscrire et ne plus recevoir d\'e-mails, des instructions de désabonnement détaillées sont incluses en bas de chaque e-mail, ou bien écrivez-nous par e-mail à <strong>contact@dikitivi.com</strong>.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'consent',
+                        'title' => 'Consentement',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'En utilisant notre site ou notre application, vous consentez implicitement à nos conditions générales d\'utilisation, ainsi que celle de YouTube.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Nous vous invitons à consulter les conditions générales d\'utilisation de YouTube à cette adresse : <a href="https://policies.google.com/privacy?hl=fr" class="dktv-text-blue">https://policies.google.com/privacy?hl=fr</a>'
+                            ]
+                        ]
+                    ],
+                ]
             ],
 
-            // Privacy policy
+            // Pricing
             'pricing' => [
                 'title' => 'Notre plan de tarification',
             ],

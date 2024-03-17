@@ -5,13 +5,18 @@
 */
 
 pre {
-    font-family: inherit!important;
-    font-size: inherit!important;
-    white-space: pre-wrap;       /* css-3 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    font-family: inherit !important;
+    font-size: inherit !important;
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
 }
 
 /********** Custom colors **********/
@@ -159,13 +164,13 @@ a.dktv-bg-blue-transparent:hover {
 }
 
 /* stretched link */
-.card-body + .stretched-link::after {
-    background-color: rgba(70, 100, 150, 0.2)!important;
+.card-body+.stretched-link::after {
+    background-color: rgba(70, 100, 150, 0.2) !important;
     opacity: 0;
     transition: .3s;
 }
 
-.card-body + .stretched-link.changed::after {
+.card-body+.stretched-link.changed::after {
     opacity: 1;
 }
 
@@ -234,5 +239,23 @@ a.dktv-bg-blue-transparent:hover {
         left: 100%;
         right: 0%;
         width: 0%;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+.logo a img {
+    width: 200px;
+}
+
+@media screen and (max-width: 375px) {
+    .logo a img {
+        width: 140px;
+    }
+
+    .login-button {
+        min-width: 75px;
     }
 }

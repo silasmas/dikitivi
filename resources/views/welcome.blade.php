@@ -82,7 +82,8 @@
                             <div class="section-title-two">
                                 <h2>@lang('miscellaneous.public.about.title')</h2>
                             </div>
-                            <p> unde omnis iste natus error sit volupt atem accus antiumij doloremque laudantium, totam rem aperiam, quia voptas Neque porro quisquam est, qui dolosum quia dmet, consectetur, adipisci velit.</p>
+
+                            <p>@lang('miscellaneous.public.about.description')</p>
 
                             <div class="choose-button  two-c-theme">
                                 <a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}" class="default-btn mb-2 brilliantrose">@lang('miscellaneous.public.about.terms_of_use.title')</a>
@@ -118,47 +119,6 @@
             </div>
         </div>
         <!--// About Area -->
-
-        <!-- Pricing Area -->
-        <div id="pricing" class="pricing-plan-area section-pt py-5 border-top border-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 m-auto">
-                        <!-- Section Title -->
-                        <div class="section-title mb-3 text-center">
-                            <h2>@lang('miscellaneous.public.home.pricing.title')</h2>
-                            <p>@lang('miscellaneous.public.home.pricing.content')</p>
-                        </div><!--// Section Title -->
-                    </div>
-                </div>
-
-                <div class="row">
-@forelse ($pricings->data as $pricing)
-                    <div class="col-lg-4 col-md-6 mx-auto">
-                        <!-- Pricing-panel -->
-                        <div class="pricing-panal-wrap free-panel mt--30 d-block">
-                            <span></span>
-                            <div class="pricing-panel text-center">
-                                <div class="pricing-heading">
-                                    <h2>{{ '$' . $pricing->price }}</h2>
-                                    <h4 class="text-warning">{{ $pricing->deadline }}</h4>
-                                </div>
-                                <div class="pricing-body">
-                                </div>
-                                <div class="pricing-footer">
-                                    <a href="#" class="plan-btn"><i class="bi bi-cart me-2"></i>@lang('miscellaneous.buy')</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Pricing-panel -->
-                    </div>
-
-@empty
-@endforelse
-                </div>
-            </div>
-        </div>
-        <!--// Pricing Area -->
 
         <!-- Contact Area -->
         <div id="contact" class="contact-us-wrapper section-ptb py-5">

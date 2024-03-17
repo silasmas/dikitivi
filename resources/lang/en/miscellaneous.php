@@ -14,7 +14,7 @@ return [
      */
     'app_name' => 'DikiTivi',
     'welcome' => 'Welcome to Diki Tivi',
-    'keywords' => 'dikitivi,diki,video,film,series,episode,cartoon,documentary,preaching',
+    'keywords' => 'dikitivi,diki,tivi,video,film,series,episode,cartoon,documentary,preaching',
     'all_right_reserved' => 'All right reserved',
     'follow_us' => 'Follow us:',
     'call_us' => 'Call us:',
@@ -357,7 +357,7 @@ return [
                 'link2' => 'I am a minor'
             ],
             'download_mobile_app' => [
-                'title' => 'Download the ACR mobile app',
+                'title' => 'Download the DikiTivi mobile app',
                 'content' => 'The DikiTivi mobile app helps you follow your videos on your smartphone, tablet or smart-TV and benefit from all our advantages.',
             ],
             'pricing' => [
@@ -366,7 +366,7 @@ return [
             ],
             'donate' => [
                 'title' => 'Make an anonymous donation or become a partner',
-                'content1' => 'By supporting the ACR party, you not only contribute to the change of your country, but also you contribute to the help that the party brings to the ophelines and the poor.',
+                'content1' => 'By supporting the DikiTivi ministry, you not only contribute to the improvement of life of the people of God, but also you contribute to the help that the ministry brings to the ophelines and the poor.',
                 'content2' => 'If it\'s money you want to send, just select the payment method; then you send it directly online.',
                 'content3' => 'If you want to donate something other than money, just enter a description of your donation.',
                 'anonyme' => 'Make an anonymous donation',
@@ -388,7 +388,7 @@ return [
         // About
         'about' => [
             'title' => 'About Diki Tivi',
-            'subtitle' => '',
+            'description' => 'Diki Tivi is a Christian TV channel aiming to offer parents a platform allowing them to find, <i>for themselves and for their children</i>, healthy, fun and Divine media.',
             'other_links' => [
                 'title' => 'Other links',
                 'link1' => 'Terms of use',
@@ -397,17 +397,330 @@ return [
                 'link4' => 'FAQ',
             ],
 
+            // About content
+            'content' =>
+            [
+                'titles' =>
+                [
+                    [
+                        'ref' => 'story',
+                        'title' => 'Our story',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => 'Year 2019',
+                                'content' => 'Receipt of the mandate for the “DikiTivi” project.',
+                            ],
+                            [
+                                'subtitle' => 'August 20, 2020',
+                                'content' => 'Creation of the DikiTivi YouTube channel.',
+                            ],
+                            [
+                                'subtitle' => 'September 6, 2020',
+                                'content' => 'Creation of the DikiTivi Facebook channel.',
+                            ],
+                            [
+                                'subtitle' => 'December 25, 2020',
+                                'content' => 'Uploading of the first videos.',
+                            ],
+                            [
+                                'subtitle' => 'March 17, 2021',
+                                'content' => 'Launch of the first version of WebTV DikiTivi with Bourdak corporation.',
+                            ],
+                            [
+                                'subtitle' => 'June 30, 2022',
+                                'content' => 'First live on YouTube.',
+                            ],
+                            [
+                                'subtitle' => 'December 2023',
+                                'content' => 'Decision to expand DikiTivi\'s audience to children of all ages and create the DikiTivi application.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'mission',
+                        'title' => 'Our mission',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Offer children and families fun, informative, healthy and Divine programs, allowing them to have fun and ensure their spiritual growth in Christ;',
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Bring Christ, make him known, make him loved by very young children and young people through the media;',
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Support parents who want to raise their children according to true moral, Divine and Christian values, by constituting themselves as a media resource.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'vision',
+                        'title' => 'Our vision',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Making children of all ages and all nations disciples of Christ and vessels of honor.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'legal_notice',
+                        'title' => 'Legal Notices',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'This website is published by the Divines Kids International Ministry. Kinshasa, DRC',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'publication_director',
+                        'title' => 'Publication Director',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Jean Loup Atambutu as Coordinator of the DIKI project.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'images',
+                        'title' => 'Photos',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'The photos used on the site and the application are original royalty-free or purchased mainly on specialized sites with exploitation rights. In this case, they are used for purely illustrative purposes and the people represented in the photos are models only.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'intellectual_property',
+                        'title' => 'Intellectual property',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'All rights reserved. Any reproduction is prohibited without authorization. All texts, photos, videos, mp3s, data, logos and other elements reproduced on this site are protected by copyright according to the rules of Congolese and international law.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'hoster',
+                        'title' => 'Hoster',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'The <strong>dikitivi.com</strong> site, the application, as well as the audio and video files are hosted on servers that we rent from the company “Hostinger” and “Amazon”.',
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'internet_broadcasting',
+                        'title' => 'Internet broadcasting',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Videos broadcast on the Internet (“replay” service) are hosted and distributed by YouTube. We invite you to consult the general conditions of use of YouTube at this address: <a href="https://policies.google.com/privacy?hl=en" class="dktv-text-blue">https ://policies.google.com/privacy?hl=en</a>.',
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+
             // Terms of use
             'terms_of_use' => [
                 'title' => 'Terms of use',
+                'description' => 'By using our services, you agree to our terms of use. So we suggest you take some time to read these conditions, because you are about to enter into a binding contract.',
+                'titles' =>
+                [
+                    [
+                        'ref' => '',
+                        'title' => '',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => ''
+                            ],
+                        ]
+                    ]
+                ]
             ],
 
             // Privacy policy
             'privacy_policy' => [
                 'title' => 'Privacy policy',
+                'description' => 'Welcome to the privacy policy and protection of your personal data at DikiTivi.',
+                'titles' =>
+                [
+                    [
+                        'ref' => 'information_collection',
+                        'title' => 'Information collection',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'We collect information when you make a donation on our site or register to write a comment, to contact a speaker on the site or to register for an event or service offered. The information collected is only that which you have provided to us and varies from case to case.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'As part of a donation for example, we ask you for your country (required), your first and last name (required), your email address (required), your telephone number, your postal address, your organization if applicable , and your payment method.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Additionally, we automatically receive and record information from your internet browser, including your IP address, software, hardware, and the page you are visiting.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'data_use',
+                        'title' => 'Use of information',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => 'Any information we collect from you may be used to:',
+                                'content' => 'Customize your experience and respond to your individual needs;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Improve our website;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Improve service to our users and donors and ensure their needs are taken care of;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Contact you by email or SMS;'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Administer a contest, promotion, or survey.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'third_party_disclosure',
+                        'title' => 'Disclosure to third parties',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties. This does not include trusted third parties who assist us in operating our website, so long as those parties agree to keep this information confidential.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'We believe it is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of our terms of service. use, or when the law requires us to do so.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Non-private information, however, may be provided to other parties primarily for purposes of improving our website.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'data_safety',
+                        'title' => 'Privacy',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'We implement a variety of security measures to keep your personal information safe. Only employees who need to perform a specific job have access to personally identifiable information. Computers and servers used to store personally identifiable information are kept in a secure environment.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'No banking information is recorded in our databases other than bank details.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Do we use cookies? Yes. Our cookies improve access to our site and identify repeat visitors. Additionally, our cookies improve the user experience by tracking and targeting their interests. However, this use of cookies is in no way linked to any personally identifiable information on our site.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'data_retirement',
+                        'title' => 'Right of opposition, withdrawal of your information',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'We are committed to offering you a right of opposition and withdrawal regarding your personal information. The right to object is understood as the possibility offered to Internet users to refuse that their personal information be used for certain purposes mentioned during collection. The right of withdrawal is understood as being the possibility offered to Internet users to request that their personal information no longer appear, for example, in a mailing list.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'To exercise this right to withdraw your information, please write to us by going to the contact page of our website.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'donation_refund',
+                        'title' => 'Withdrawal period, cancellation and reimbursement of your donation',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'Online payments are not subject to a right of withdrawal. All payment is firm and final.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'Payments made by donors do not give rise to any refund.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'access_right',
+                        'title' => 'Permission to access',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'We undertake to recognize a right of access and rectification to those concerned wishing to consult, modify or even delete information concerning them.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'To exercise this right of access, please write to us by going to the contact page of our website.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'unsuscribe',
+                        'title' => 'Unsubscribe',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'We use the email address you provide to send you information and updates related to your donation, news from our ministry (if you have opted in to receive news from us), etc. If at any time you would like to unsubscribe from receiving emails, detailed unsubscribe instructions are included at the bottom of each email, or email us at<strong>contact @dikitivi.com</strong>.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'ref' => 'consent',
+                        'title' => 'Consent',
+                        'contents' =>
+                        [
+                            [
+                                'subtitle' => '',
+                                'content' => 'By using our site or application, you implicitly agree to our general conditions of use, as well as those of YouTube.'
+                            ],
+                            [
+                                'subtitle' => '',
+                                'content' => 'We invite you to consult the YouTube general conditions of use at this address: <a href="https://policies.google.com/privacy?hl=en" class="dktv-text-blue">https://policies.google.com/privacy?hl=en</a>'
+                            ]
+                        ]
+                    ],
+                ]
             ],
 
-            // Privacy policy
+            // Pricing
             'pricing' => [
                 'title' => 'Our pricing plan',
             ],

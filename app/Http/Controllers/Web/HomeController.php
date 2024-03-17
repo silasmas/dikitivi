@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 /**
  * @author Xanders
@@ -44,13 +45,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pricings = $this::$api_client_manager::call('GET', getApiURL() . '/pricing');
-
         if (session()->has('age') OR Auth::check()) {
             return view('home');
 
         } else {
-            return view('welcome', ['pricings' => $pricings]);
+            return view('welcome');
         }
     }
 
@@ -61,7 +60,9 @@ class HomeController extends Controller
      */
     public function about()
     {
-        return view('about');
+        $titles = Lang::get('miscellaneous.public.about.content.titles');
+
+        return view('about', ['titles' => $titles]);
     }
 
     /**
@@ -71,7 +72,10 @@ class HomeController extends Controller
      */
     public function aboutEntity($entity)
     {
+        $titles = Lang::get('miscellaneous.public.about.' . $entity . '.titles');
+
         return view('about', [
+            'titles' => $titles,
             'entity' => $entity,
             'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
             'entity_menu' => __('miscellaneous.menu.' . $entity),

@@ -42,13 +42,6 @@
 
         <!-- ============ Custom CSS ============ -->
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}" blp-theme="Light" blp-user-id="{{ Auth::user()->id }}">
-        <style>
-            .logo a img { width: 200px; }
-            @media screen and (max-width: 375px) {
-                .logo a img { width: 140px; }
-                .login-button { min-width: 75px; }
-            }
-        </style>
 
         <title>
             DikiTivi / 
@@ -272,12 +265,11 @@
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
                                     <div class="footer-contet">
-                                        <p>Eiusmod tempor incididunt ut la abore et minim ven exerc itation ulla mco lboris naliquip ex ea comm.</p>
+                                        <p>@lang('miscellaneous.public.about.description')</p>
                                         <ul class="fotter-socail">
-                                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -291,9 +283,8 @@
 
                                     <div class="footer-contet">
                                         <ul class="footer-list">
-                                            <li><a href="#about">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="#pricing">@lang('miscellaneous.menu.pricing')</a></li>
-                                            <li><a href="#contact">@lang('miscellaneous.menu.contact')</a></li>
+                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
+                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -343,7 +334,6 @@
         <!-- jquery -->
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('assets/addons/streamo/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
         <!-- Popper JS -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>
         <!-- Material Design for Bootstrap -->
@@ -360,17 +350,8 @@
         <script src="{{ asset('assets/addons/custom/cropper/js/cropper.min.js') }}"></script>
         <!-- SweetAlert -->
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
-        <!-- Scroll4ever -->
-        <script src="{{ asset('assets/addons/custom/jquery/scroll4ever/js/jquery.scroll4ever.js') }}"></script>
-        <!-- Autosize -->
-        <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
-        <!-- Biliap JS -->
-        <script src="{{ asset('assets/addons/custom/biliap/js/biliap.cores.js') }}"></script>
-        <!-- Custom JS -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
-        <script type="text/javascript">
-        </script>
     </body>
 </html>

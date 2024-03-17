@@ -38,13 +38,7 @@
         <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
 
         <!-- ============ Custom CSS ============ -->
-        <style>
-            .logo a img { width: 200px; }
-            @media screen and (max-width: 375px) {
-                .logo a img { width: 140px; }
-                .login-button { min-width: 75px; }
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
         <title>
 @if (Route::is('home'))
@@ -84,7 +78,6 @@
                                         <ul>
                                             <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                             <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
                                             <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
                                     </nav>
@@ -137,7 +130,6 @@
                                     <ul>
                                         <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                         <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                        <li><a href="{{ route('about.entity', ['entity' => 'pricing']) }}">@lang('miscellaneous.menu.pricing')</a></li>
                                         <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
                                     </ul>
                                 </nav>
@@ -204,12 +196,11 @@
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
                                     <div class="footer-contet">
-                                        <p>Eiusmod tempor incididunt ut la abore et minim ven exerc itation ulla mco lboris naliquip ex ea comm.</p>
+                                        <p>@lang('miscellaneous.public.about.description')</p>
                                         <ul class="fotter-socail">
-                                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -223,9 +214,8 @@
 
                                     <div class="footer-contet">
                                         <ul class="footer-list">
-                                            <li><a href="#about">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="#pricing">@lang('miscellaneous.menu.pricing')</a></li>
-                                            <li><a href="#contact">@lang('miscellaneous.menu.contact')</a></li>
+                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
+                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
                                     </div>
                                 </div>
