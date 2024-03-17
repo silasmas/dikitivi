@@ -33,16 +33,53 @@
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/cropper/css/cropper.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.css') }}">
 
-        <!-- ============ Custom CSS ============ -->
-        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}" blp-theme="Light" blp-user-id="{{ Auth::user()->id }}">
+        <!-- ============ Streamo CSS File ============ -->
+        <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/plugins.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/style.css') }}">
 
-        <title>{{ config('app.name', 'Home') }}</title>
+        <!-- ============ Modernizer JS ============ -->
+        <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+
+        <!-- ============ Custom CSS ============ -->
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}" blp-theme="Light" blp-user-id="{{ !empty(Auth::user()) ? Auth::user()->id : null }}">
+
+        <title>
+@if (!empty($exception))
+            {{ $exception->getStatusCode() . ' - ' . __('notifications.' . $exception->getStatusCode() . '_title') }}
+@endif
+
+@if (Route::is('login'))
+            @lang('auth.login')
+@endif
+
+@if (Route::is('register'))
+            @lang('auth.register')
+@endif
+
+@if (Route::is('password.reset'))
+            @lang('auth.reset-password')
+@endif
+        </title>
     </head>
 
     <body>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
+            <!-- Page Conttent -->
+            <main class="page-content">
+                <!-- login-register  -->
+                <div class="register-page py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-sm-6 mx-auto">
+                                <div class="bg-image mb-sm-4 mb-3 d-flex justify-content-center">
+                                    <img src="{{ asset('assets/img/logo-text.png') }}" alt="DikiTivi" width="200">
+                                    <div class="mask"><a href="{{ route('home') }}"></a></div>
+                                </div>
+
 @yield('guest-content')
+            </main>
+            <!--// Page Conttent -->
 
             <!-- Footer Area -->
             <footer class="footer-area">
@@ -139,6 +176,10 @@
         <script src="{{ asset('assets/addons/custom/cropper/js/cropper.min.js') }}"></script>
         <!-- SweetAlert -->
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+        <!-- DataTable -->
+        <script src="{{ asset('assets/addons/custom/dataTables/datatables.min.js') }}"></script>
+        <!-- Autosize -->
+        <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
