@@ -26,8 +26,6 @@
         <!-- ============ Addons CSS Files ============ -->
         <link rel="stylesheet" id="bootstrap-style" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" id="mdb-style" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/jquery/jquery-ui/jquery-ui.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/cropper/css/cropper.min.css') }}">
@@ -41,7 +39,7 @@
         <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
 
         <!-- ============ Custom CSS ============ -->
-        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}" blp-theme="Light" blp-user-id="{{ Auth::user()->id }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
         <title>
             DikiTivi / 
@@ -75,7 +73,7 @@
         <div class="main-wrapper">
             <!-- header-medea -->
             <header class="header-medea clearfix header-sticky">
-                <div class="container-fluid ">
+                <div class="container-fluid">
                     <div class="row g-0">
                         <div class="col-lg-12">
                             <div class="header-medea-inner-area">
@@ -270,6 +268,7 @@
                                         <ul class="fotter-socail">
                                             <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
                                             <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
+                                            <li><a href="#" class="fs-4"><i class="bi bi-twitter-x align-middle"></i></a></li>
                                             <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
                                         </ul>
                                     </div>

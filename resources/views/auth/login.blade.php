@@ -42,10 +42,5 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--// login-register End -->
 
 @endsection

@@ -55,7 +55,7 @@ html, body {
 }
 
 body {
-  background-color: #fff;
+  /* background-color: #fff; */
   font-family: "Poppins", sans-serif;
   line-height: 28px;
   font-size: 14px;
@@ -1617,7 +1617,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .section-title h2::after {
   position: absolute;
   content: "";
-  background: url(../../../img//icon/title-bg.png) no-repeat;
+  background: url(../../../img/icon/title-bg.png) no-repeat;
   left: 50%;
   bottom: 0;
   height: 9px;
@@ -1690,7 +1690,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .section-title-3 h2::after {
-  background: url(../../../img//icon/title-bg-2.png) no-repeat;
+  background: url(../../../img/icon/title-bg-2.png) no-repeat;
   height: 10px;
 }
 
@@ -2548,7 +2548,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   position: absolute;
-  background: #fff;
+  /* background: #fff; */
   padding: 15px;
   z-index: 9;
   top: 120%;
@@ -2659,7 +2659,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*-- Header style home 3 --*/
 .header-medea-inner-area {
-  background: #fff;
+  /* background: #fff; */
   padding: 30px 80px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2705,7 +2705,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: absolute;
   top: 0;
   width: 100%;
-  background: #ffffff;
+  /* background: #ffffff; */
   z-index: 999;
   position: fixed;
 }
@@ -2719,7 +2719,7 @@ nav.sidebar-menu {
   display: block;
   margin-top: 104px;
   position: fixed;
-  background: #ffffff;
+  /* background: #ffffff; */
   top: 0;
   left: 0;
   bottom: 0;
@@ -2782,7 +2782,7 @@ nav.sidebar-menu ul li {
 }
 nav.sidebar-menu ul li a {
   display: block;
-  background: #ffffff;
+  /* background: #ffffff; */
   border: 1px solid #eee;
   padding: 55px 0;
   text-align: center;
@@ -2800,7 +2800,7 @@ nav.sidebar-menu ul li a:hover {
 .menu-bar-area {
   width: 40px;
   font-size: 21px;
-  background: #f9f9f9;
+  /* background: #f9f9f9; */
   color: #637282;
   text-align: center;
   border-radius: 2px;
@@ -2871,7 +2871,7 @@ nav.sidebar-menu ul li a:hover {
   position: relative;
 }
 .notifications-bar::before {
-  background: #ccc;
+  /* background: #ccc; */
   position: absolute;
   content: "";
   left: 0;
@@ -3007,7 +3007,7 @@ nav.sidebar-menu ul li a:hover {
   -webkit-transform: translate3d(0px, 44px, 0px) !important;
           transform: translate3d(0px, 44px, 0px) !important;
   right: 0;
-  background: #ffffff none repeat scroll 0 0;
+  /* background: #ffffff none repeat scroll 0 0; */
   border: 1px solid #eaecee;
   border-radius: 0;
   -webkit-box-shadow: none;
@@ -3248,7 +3248,7 @@ nav.sidebar-menu ul li a:hover {
   overflow: hidden;
 }
 .search-wrap-2 form input {
-  background-color: #fff;
+  /* background-color: #fff; */
   border: 1px solid #E2DCDC;
   color: #000000;
   line-height: 30px;
@@ -3599,7 +3599,7 @@ nav.sidebar-menu ul li a:hover {
   background: #ffab00;
 }
 .hero-content-three .slider-text-info .slider-button.two-c-theme .default-btn:hover {
-  background: #ffffff;
+  /* background: #ffffff; */
   color: #333;
 }
 .hero-content-three .slider-text-info .slider-button.two-c-theme .video-play-btn {
@@ -3845,7 +3845,7 @@ nav.sidebar-menu ul li a:hover {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 }
 @media only screen and (max-width: 767px) {
   .slider-content-hm4 .sub-title-time-wrap span:before {
@@ -4060,7 +4060,7 @@ nav.sidebar-menu ul li a:hover {
 .single-feature-icons {
   height: 100px;
   width: 100px;
-  background: #fff;
+  /* background: #fff; */
   text-align: center;
   line-height: 100px;
   border-radius: 5000px;
@@ -4223,7 +4223,7 @@ nav.sidebar-menu ul li a:hover {
   bottom: -50px;
   width: 100%;
   height: 100%;
-  background: url("../../../img//other/choose-s-01.png") no-repeat bottom right;
+  background: url("../../../img/other/choose-s-01.png") no-repeat bottom right;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .section-bg-shape::before {
@@ -4240,14 +4240,14 @@ nav.sidebar-menu ul li a:hover {
   .section-bg-shape::before {
     right: -280px;
     bottom: -193px;
-    background: url("../../../img//other/choose-s-01.png") no-repeat top left;
+    background: url("../../../img/other/choose-s-01.png") no-repeat top left;
   }
 }
 @media only screen and (max-width: 767px) {
   .section-bg-shape::before {
     right: -280px;
     bottom: -193px;
-    background: url("../../../img//other/choose-s-01.png") no-repeat top left;
+    background: url("../../../img/other/choose-s-01.png") no-repeat top left;
   }
 }
 
@@ -4351,7 +4351,7 @@ nav.sidebar-menu ul li a:hover {
   bottom: -100px;
   width: 100%;
   height: 100%;
-  background: url("../../../img//other/mokup-08.png") no-repeat top right;
+  background: url("../../../img/other/mokup-08.png") no-repeat top right;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .section-bg-shape-2::before {
@@ -4367,7 +4367,7 @@ nav.sidebar-menu ul li a:hover {
   .section-bg-shape-2::before {
     right: -548px;
     bottom: 80px;
-    background: url("../../../img//other/mokup-08.png") no-repeat bottom left;
+    background: url("../../../img/other/mokup-08.png") no-repeat bottom left;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -4538,7 +4538,7 @@ nav.sidebar-menu ul li a:hover {
     08. Footer Css
 -------------------------------*/
 .footer-bg-image {
-  background-image: url("../../../img//other/footer-shaep.png");
+  background-image: url("../../../img/other/footer-shaep.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
@@ -4577,7 +4577,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .footer-bg-image-two {
-  background-image: url("../../../img//bg/footer-bg-03.jpg");
+  background-image: url("../../../img/bg/footer-bg-03.jpg");
   background-repeat: no-repeat;
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px), only screen and (min-width: 1200px) and (max-width: 1600px) {
@@ -4590,7 +4590,7 @@ nav.sidebar-menu ul li a:hover {
     padding-bottom: 80px;
     padding-top: 30px;
     background-image: none;
-    background: #f0f4f5;
+    /* background: #f0f4f5; */
   }
 }
 @media only screen and (max-width: 767px) {
@@ -4598,7 +4598,7 @@ nav.sidebar-menu ul li a:hover {
     padding-bottom: 60px;
     padding-top: 10px;
     background-image: none;
-    background: #f0f4f5;
+    /* background: #f0f4f5; */
   }
 }
 
@@ -4742,7 +4742,7 @@ nav.sidebar-menu ul li a:hover {
 .footer-widget-title::after {
   position: absolute;
   content: "";
-  background: url(../../../img//icon/fotter-title-bg.png) no-repeat;
+  background: url(../../../img/icon/fotter-title-bg.png) no-repeat;
   left: 0;
   bottom: 0;
   height: 12px;
@@ -4854,7 +4854,7 @@ nav.sidebar-menu ul li a:hover {
   color: #637282;
 }
 .coloer-three .footer-widget-title::after {
-  background: url(../../../img//icon/fotter-title-bg-3.png) no-repeat;
+  background: url(../../../img/icon/fotter-title-bg-3.png) no-repeat;
 }
 .coloer-three p {
   color: #637282;
@@ -5365,7 +5365,7 @@ nav.sidebar-menu ul li a:hover {
   height: 60px;
   padding-left: 15px;
   width: 100%;
-  background: #f6f6f6;
+  /* background: #f6f6f6; */
 }
 .contact-inner.contact-message {
   width: 100%;
@@ -5598,7 +5598,7 @@ nav.sidebar-menu ul li a:hover {
           transform: translateY(-40%);
 }
 .faq-style-wrap .panel-title a {
-  background: #f6f9fb;
+  /* background: #f6f9fb; */
   padding: 25px 60px 25px 15px;
   font-size: 16px;
   display: -webkit-box;
@@ -5804,7 +5804,7 @@ nav.sidebar-menu ul li a:hover {
     12. Pricing Panel Css
 --------------------------*/
 .pricing-panel {
-  background: #fff;
+  /* background: #fff; */
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -5885,7 +5885,7 @@ nav.sidebar-menu ul li a:hover {
   font-size: 16px;
 }
 .pricing-panel .pricing-footer .plan-btn:hover {
-  background: #fff;
+  /* background: #fff; */
   color: #333;
 }
 .pricing-panel.modify-pricing-panel {
@@ -6189,7 +6189,7 @@ nav.sidebar-menu ul li a:hover {
   margin-right: 15px;
 }
 .product-carousl-active .slick-arrow {
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
   border: medium none;
   color: #333;
   font-size: 18px;
@@ -6324,7 +6324,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .coming-soon-active .slick-arrow {
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
   border: medium none;
   color: #333;
   font-size: 18px;
@@ -6821,7 +6821,7 @@ nav.sidebar-menu ul li a:hover {
 .my-account-form-wrap.white .account-input-box input {
   color: #ccc;
   border: 1px solid #1E272D;
-  background: #1E272D;
+  /* background: #1E272D; */
   height: 45px;
 }
 .my-account-form-wrap.white .account-input-box input::-moz-input-placeholder {
@@ -6835,7 +6835,7 @@ nav.sidebar-menu ul li a:hover {
 .my-account-form-wrap.white .account-input-box .nice-select select {
   color: #ffffff;
   border: 1px solid #1E272D;
-  background: #1E272D;
+  /* background: #1E272D; */
   height: 38px;
 }
 
@@ -6955,7 +6955,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .dic-pricing {
-  background-color: #fff;
+  /* background-color: #fff; */
   border: 1px solid #ddd;
   margin-bottom: 40px;
   -webkit-transition: all 0.3s ease 0s;
@@ -6967,7 +6967,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .dic-pricing-header {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-right: 1px solid #ddd;
   padding: 40px 10px;
   text-align: center;
@@ -7161,11 +7161,11 @@ nav.sidebar-menu ul li a:hover {
   color: #ffffff;
 }
 .white .dic-pricing {
-  background-color: #1E272D;
+  /* background-color: #1E272D; */
   border: 1px solid #1E272D;
 }
 .white .dic-pricing .dic-pricing-header {
-  background-color: #1E272D;
+  /* background-color: #1E272D; */
   border-right: 1px solid #1E272D;
 }
 .white .dic-pricing .dic-pricing-header .package {
@@ -7178,7 +7178,7 @@ nav.sidebar-menu ul li a:hover {
   color: #ffffff;
 }
 .white .dic-pricing .dic-pricing-header .old-price span::before {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 }
 .white .dic-pricing .dic-pricing-items ul li {
   color: #ffffff;
@@ -7378,7 +7378,7 @@ nav.sidebar-menu ul li a:hover {
   border: none;
   color: #8c8c8c;
   border-radius: 4px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   padding: 2px 165px 2px 20px;
 }
 .create-membership-wrap input::-webkit-input-placeholder {

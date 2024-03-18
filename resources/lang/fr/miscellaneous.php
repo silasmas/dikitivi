@@ -18,6 +18,7 @@ return [
     'all_right_reserved' => 'Tous droits réservés',
     'follow_us' => 'Suivez-nous :',
     'call_us' => 'Appelez-nous :',
+    'toggle_theme' => 'Changer de thème',
     'your_language' => 'Votre langue',
     'back_home' => 'Retour à l\'accueil',
     'back_list' => 'Retourner à la liste',

@@ -18,6 +18,7 @@ return [
     'all_right_reserved' => 'All right reserved',
     'follow_us' => 'Follow us:',
     'call_us' => 'Call us:',
+    'toggle_theme' => 'Toggle theme',
     'your_language' => 'Your language',
     'back_home' => 'Return to the home',
     'back_list' => 'Return to the list',

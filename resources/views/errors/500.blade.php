@@ -10,10 +10,5 @@
                                         <a href="{{ route('home') }}" class="btn dktv-btn-yellow rounded-pill py-3 px-5">{{ __('miscellaneous.back_home') }}</a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--// login-register End -->
 
 @endsection
