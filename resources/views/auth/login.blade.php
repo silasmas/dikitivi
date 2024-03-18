@@ -27,8 +27,8 @@
                                             <div class="row mb-3">
                                                 <div class="col-sm-6 d-flex justify-content-center">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                                        <label class="form-check-label" for="form1Example3">@lang('miscellaneous.remember_me')</label>
+                                                        <input type="checkbox" id="login_remember" class="form-check-input" />
+                                                        <label class="form-check-label" for="login_remember">@lang('miscellaneous.remember_me')</label>
                                                     </div>
                                                 </div>
 
