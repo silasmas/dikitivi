@@ -26,8 +26,8 @@
         <!-- ============ Addons CSS Files ============ -->
         <link rel="stylesheet" id="mdb-style" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
         <link rel="stylesheet" id="bootstrap-style" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/addons/custom/mdb/css/mdb.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/jquery/jquery-ui/jquery-ui.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/addons/custom/cropper/css/cropper.min.css') }}">
@@ -56,7 +56,7 @@
             @lang('auth.register')
 @endif
 
-@if (Route::is('password.reset'))
+@if (Route::is('password.request'))
             @lang('auth.reset-password')
 @endif
         </title>
@@ -71,10 +71,14 @@
                 <div class="register-page py-5">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-5 col-sm-6 mx-auto">
-                                <div class="bg-image mb-sm-4 mb-3 d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/logo-text.png') }}" alt="DikiTivi" width="200">
-                                    <div class="mask"><a href="{{ route('home') }}"></a></div>
+                            <div class="col-lg-5 col-sm-8 mx-auto">
+                                <div class="bg-image mx-auto mb-sm-4 mb-3" style="width: 200px">
+                                    <img src="{{ asset('assets/img/logo-text.png') }}" alt="DikiTivi" class="img-fluid">
+                                    <div class="mask">
+@if (empty($exception))
+                                        <a href="{{ route('home') }}" class="stretched-link"></a>
+@endif
+                                    </div>
                                 </div>
 
 @yield('guest-content')

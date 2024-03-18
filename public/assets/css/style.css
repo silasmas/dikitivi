@@ -4,6 +4,7 @@
     Author : Xanders Samoth | https://www.linkedin.com/in/xanders-samoth-b2770737/
 */
 
+/* typography */
 pre {
     font-family: inherit !important;
     font-size: inherit !important;
@@ -17,6 +18,14 @@ pre {
     /* Opera 7 */
     word-wrap: break-word;
     /* Internet Explorer 5.5+ */
+}
+
+a {
+    color: var(--bs-primary);
+}
+
+textarea {
+    resize: none;
 }
 
 /********** Custom colors **********/
@@ -115,9 +124,9 @@ a.dktv-bg-blue-transparent:hover {
 }
 
 .dktv-btn-gray {
-    background-color: #96bd1f !important;
-    color: #fff !important;
-    border-color: #96bd1f !important;
+    background-color: #cfcfcf !important;
+    color: #000 !important;
+    border-color: #cfcfcf !important;
 }
 
 .dktv-btn-gray:hover {
@@ -143,7 +152,7 @@ a.dktv-bg-blue-transparent:hover {
 }
 
 .dktv-text-gray {
-    color: #878787 !important;
+    color: #757575 !important;
 }
 
 /* paragraph */
@@ -161,6 +170,12 @@ a.dktv-bg-blue-transparent:hover {
 
 .dktv-line-height-1_5 {
     line-height: 1.5;
+}
+
+/********** Custom bootstrap components **********/
+/* button */
+.btn {
+    font-size: 11pt;
 }
 
 /* stretched link */
@@ -182,6 +197,22 @@ a.dktv-bg-blue-transparent:hover {
 
 .modal-backdrop.show:nth-of-type(even) {
     z-index: 1051 !important;
+}
+
+/********** Miscellaneous **********/
+/* From streamo template */
+.logo a img {
+    width: 200px;
+}
+
+@media screen and (max-width: 375px) {
+    .logo a img {
+        width: 140px;
+    }
+
+    .login-button {
+        min-width: 75px;
+    }
 }
 
 /* Ajax loading bar */
@@ -239,23 +270,5 @@ a.dktv-bg-blue-transparent:hover {
         left: 100%;
         right: 0%;
         width: 0%;
-    }
-}
-
-textarea {
-    resize: none;
-}
-
-.logo a img {
-    width: 200px;
-}
-
-@media screen and (max-width: 375px) {
-    .logo a img {
-        width: 140px;
-    }
-
-    .login-button {
-        min-width: 75px;
     }
 }

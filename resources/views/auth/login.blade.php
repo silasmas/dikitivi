@@ -1,47 +1,50 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.guest')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('guest-content')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+                                <div class="card border rounded-0 text-center shadow-0">
+                                    <div class="card-body py-5">
+                                        <h4 class="h4 mb-4 text-center">@lang('miscellaneous.login_title2')</h4>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                                        <form method="POST" action="{{ route('login') }}">
+    @csrf
+                                            <div class="form-floating mb-3">
+                                                <input type="username" name="login_username" id="login_username" class="form-control" aria-describedby="login_username_error" placeholder="@lang('miscellaneous.login_username')" value="{{ \Session::has('response_error') ? explode('-', \Session::get('response_error'))[0] : '' }}" {{ \Session::has('response_error') && !empty(explode('-', \Session::get('response_error'))[0])  ? '' : 'autofocus' }}>
+                                                <label for="login_username">@lang('miscellaneous.login_username')</label>
+    @if (\Session::has('response_error') && explode('-', \Session::get('response_error'))[2] == explode('-', \Session::get('response_error'))[0])
+                                                <small id="login_username_error" class="form-text text-danger">{{ explode('-', \Session::get('response_error'))[3] }}</small>
+    @endif
+                                            </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                                            <div class="form-floating mb-3">
+                                                <input type="password" name="login_password" id="login_password" class="form-control" aria-describedby="login_password_error" placeholder="@lang('miscellaneous.password.label')" {{ \Session::has('response_error') && !empty(explode('-', \Session::get('response_error'))[0]) ? 'autofocus' : '' }}>
+                                                <label for="login_password">@lang('miscellaneous.password.label')</label>
+    @if (\Session::has('response_error') && explode('-', \Session::get('response_error'))[2] == explode('-', \Session::get('response_error'))[1])
+                                                <small id="login_password_error" class="form-text text-danger">{{ explode('-', \Session::get('response_error'))[3] }}</small>
+    @endif
+                                            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6 d-flex justify-content-center">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                                                        <label class="form-check-label" for="form1Example3">@lang('miscellaneous.remember_me')</label>
+                                                    </div>
+                                                </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+                                                <div class="col-sm-6">
+                                                    <a href="{{ route('password.request') }}">@lang('miscellaneous.forgotten_password')</a>
+                                                </div>
+                                            </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+                                            <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('auth.login')</button>
+                                            <a href="{{ route('register') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.go_register')</a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--// login-register End -->
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection
