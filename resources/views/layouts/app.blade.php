@@ -19,7 +19,7 @@
 
         <!-- ============ Font Icons Files ============ -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="{{ asset('assets/fonts/bootstrap-icons/bootstrap-icons.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/material-design-iconic-font.min.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 
@@ -70,6 +70,7 @@
     </head>
 
     <body>
+        <span class="d-none perfect-scrollbar"></span>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
             <!-- header-medea -->
@@ -334,6 +335,7 @@
         <!-- jquery -->
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/addons/custom/jquery/scroll4ever/js/jquery.scroll4ever.js') }}"></script>
         <!-- Popper JS -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>
         <!-- Material Design for Bootstrap -->
@@ -350,6 +352,10 @@
         <script src="{{ asset('assets/addons/custom/cropper/js/cropper.min.js') }}"></script>
         <!-- SweetAlert -->
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+        <!-- DataTable -->
+        <script src="{{ asset('assets/addons/custom/dataTables/datatables.min.js') }}"></script>
+        <!-- Autosize -->
+        <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>

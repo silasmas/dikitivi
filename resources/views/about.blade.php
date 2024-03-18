@@ -10,7 +10,7 @@
         @include('partials.about.' . $entity)
     @endif
 
-                    <div class="col-lg-3 col-sm-4">
+                    <div class="col-sm-4">
                         <div class="card border border-default shadow-0">
                             <div class="card-body">
                                 <h4 class="h4 mb-4 text-black fw-bold">@lang('miscellaneous.public.about.other_links.title')</h4>
@@ -100,7 +100,7 @@
                                         <i class="zmdi zmdi-phone"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></p>
+                                        <p><a href="#" class="text-white">@lang('miscellaneous.public.footer.head_office.phone')</a></p>
                                     </div>
                                 </div>
                                 <!--// Single-contact-info -->
@@ -111,7 +111,7 @@
                                         <i class="zmdi zmdi-email"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><a href="#">@lang('miscellaneous.public.footer.head_office.email')</a> </p>
+                                        <p><a href="#" class="text-white">@lang('miscellaneous.public.footer.head_office.email')</a> </p>
                                     </div>
                                 </div>
                                 <!--// Single-contact-info -->
@@ -122,7 +122,7 @@
                                         <i class="zmdi zmdi-globe-alt"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><a href="{{ route('home') }}">www.dikitivi.com</a></p>
+                                        <p><a href="{{ route('home') }}" class="text-white">www.dikitivi.com</a></p>
                                     </div>
                                 </div>
                                 <!--// Single-contact-info -->

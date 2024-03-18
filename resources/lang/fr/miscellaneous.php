@@ -364,25 +364,6 @@ return [
                 'title' => 'Plan tarifaire',
                 'content' => 'Vous pouvez dès maintenant acheter un plan pour suivre des vidéos premiums.',
             ],
-            'donate' => [
-                'title' => 'Faire un don anonyme ou devenir partenaire',
-                'content1' => 'En soutenant le ministère DikiTivi, non seulement vous contribuez à l\'amélioration de vie du peuple de Dieu, mais aussi vous contribuez à l\'aide qu\'apporte le ministère aux ophelins et aux démunis.',
-                'content2' => 'Si c\'est l\'argent que vous voulez envoyer, vous n\'avez qu\'à sélectionner le mode de paiement ; ensuite, vous l\'envoyez directement en ligne.',
-                'content3' => 'Si vous voulez donner autre chose que de l\'argent, vous n\'avez qu\'à donner la description de votre don.',
-                'anonyme' => 'Faire un don anonyme',
-                'partner' => 'Devenir partenaire',
-                'your_identity' => 'Votre identité',
-                'send_money' => [
-                    'title' => 'Envoyer l\'argent',
-                    'description' => 'Choisir le mode de paiement',
-                    'mobile_money' => 'Mobile money',
-                    'bank_card' => 'Carte bancaire'
-                ],
-                'other_donation' => [
-                    'title' => 'Autre don',
-                    'description' => 'Description de votre don'
-                ],
-            ],
         ],
 
         // About
@@ -731,6 +712,27 @@ return [
                 'description' => 'Vous pouvez soit nous écrire directement ici, soit par mail, ou vous pouvez vous rendre à notre adresse ci-dessous',
                 'message_subject' => 'Sujet',
                 'message_content' => 'Contenu du message'
+            ],
+
+            // Donate
+            'donate' => [
+                'title' => 'Faire un don pour soutenir DikiTivi',
+                'description' => 'En soutenant le ministère DikiTivi, non seulement vous contribuez à l\'amélioration de vie du peuple de Dieu, mais aussi vous contribuez à l\'aide qu\'apporte le ministère aux ophelins et aux démunis.',
+                'content1' => 'Si c\'est l\'argent que vous voulez envoyer, vous n\'avez qu\'à sélectionner le mode de paiement ; ensuite, vous l\'envoyez directement en ligne.',
+                'content2' => 'Si vous voulez donner autre chose que de l\'argent, vous n\'avez qu\'à donner la description de votre don.',
+                'anonyme' => 'Faire un don anonyme',
+                'partner' => 'Devenir partenaire',
+                'your_identity' => 'Votre identité',
+                'send_money' => [
+                    'title' => 'Envoyer l\'argent',
+                    'description' => 'Choisir le mode de paiement',
+                    'mobile_money' => 'Mobile money',
+                    'bank_card' => 'Carte bancaire'
+                ],
+                'other_donation' => [
+                    'title' => 'Autre don',
+                    'description' => 'Description de votre don'
+                ],
             ],
         ],
     ],

@@ -15,7 +15,7 @@
                 <hr class="mt-4 mb-5">
 
                 <div class="row">
-                    <div class="col-lg-9 col-sm-8">
+                    <div class="col-sm-8">
                         <ul class="ps-5">
 @foreach ($titles as $ttl)
                             <li class="h3 mb-4 fw-bold" style="list-style-type: decimal;">{{ $ttl['title'] }}</li>

@@ -15,7 +15,7 @@
                 <hr class="mt-4 mb-5">
 
                 <div class="row">
-                    <div class="col-lg-9 col-sm-8">
+                    <div class="col-sm-8">
 @foreach ($titles as $ttl)
     @if ($ttl['ref'] == 'mission')
                         <hr class="my-5">

@@ -19,7 +19,7 @@
 
         <!-- ============ Font Icons Files ============ -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="{{ asset('assets/fonts/bootstrap-icons/bootstrap-icons.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/material-design-iconic-font.min.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 
@@ -46,25 +46,61 @@
         <title>
 @if (!empty($exception))
             {{ $exception->getStatusCode() . ' - ' . __('notifications.' . $exception->getStatusCode() . '_title') }}
-@endif
-
-@if (Route::is('login'))
+@else
+    @if (Route::is('login'))
             @lang('auth.login')
-@endif
+    @endif
 
-@if (Route::is('register'))
+    @if (Route::is('register'))
             @lang('auth.register')
-@endif
+    @endif
 
-@if (Route::is('password.request'))
+    @if (Route::is('password.request'))
             @lang('auth.reset-password')
+    @endif
 @endif
         </title>
     </head>
 
     <body>
+        <span class="d-none perfect-scrollbar"></span>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
+            <div class="d-flex justify-content-between mb-4 p-4 position-absolute w-100">
+                <div role="group" id="themeToggler" class="btn-group text-center shadow-0" aria-label="Theme toggler">
+                    <button type="button" class="btn btn-light light"  data-mdb-ripple-init><i class="bi bi-sun"></i></button>
+                    <button type="button" class="btn btn-light dark"  data-mdb-ripple-init><i class="bi bi-moon-fill"></i></button>
+                    <button type="button" class="btn btn-light auto"  data-mdb-ripple-init><i class="bi bi-circle-half"></i></button>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <a role="button" id="dropdownLanguage" class="btn btn-light dropdown-toggle px-3 hidden-arrow shadow-0" title="@lang('miscellaneous.your_language')" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-translate fs-4 align-middle"></i>
+                    </a>
+                    <ul class="dropdown-menu mt-1 p-0" aria-labelledby="dropdownLanguage">
+@foreach ($available_locales as $locale_name => $available_locale)
+    @if ($available_locale != $current_locale)
+                        <li class="w-100">
+                            <a class="dropdown-item px-3 py-2 text-dark" href="{{ route('change_language', ['locale' => $available_locale]) }}">
+        @switch($available_locale)
+            @case('ln')
+                                <span class="fi fi-cd me-2"></span>
+                @break
+            @case('en')
+                                <span class="fi fi-us me-2"></span>
+                @break
+            @default
+                                <span class="fi fi-{{ $available_locale }} me-2"></span>
+        @endswitch
+                                {{ $locale_name }}
+                            </a>
+                        </li>
+    @endif
+@endforeach
+                    </ul>
+                </div>
+            </div>
+
             <!-- Page Conttent -->
             <main class="page-content">
                 <!-- login-register  -->
@@ -164,6 +200,7 @@
         <!-- jquery -->
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/addons/custom/jquery/scroll4ever/js/jquery.scroll4ever.js') }}"></script>
         <!-- Popper JS -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>
         <!-- Material Design for Bootstrap -->

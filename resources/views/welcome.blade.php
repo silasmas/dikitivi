@@ -212,7 +212,7 @@
                                         <i class="zmdi zmdi-phone"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></p>
+                                        <p><a href="#" class="text-white">@lang('miscellaneous.public.footer.head_office.phone')</a></p>
                                     </div>
                                 </div>
                                 <!--// Single-contact-info -->
@@ -223,7 +223,7 @@
                                         <i class="zmdi zmdi-email"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><a href="#">@lang('miscellaneous.public.footer.head_office.email')</a> </p>
+                                        <p><a href="#" class="text-white">@lang('miscellaneous.public.footer.head_office.email')</a> </p>
                                     </div>
                                 </div>
                                 <!--// Single-contact-info -->
@@ -234,7 +234,7 @@
                                         <i class="zmdi zmdi-globe-alt"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><a href="{{ route('home') }}">www.dikitivi.com</a></p>
+                                        <p><a href="{{ route('home') }}" class="text-white">www.dikitivi.com</a></p>
                                     </div>
                                 </div>
                                 <!--// Single-contact-info -->

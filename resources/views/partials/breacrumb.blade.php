@@ -11,7 +11,7 @@
                                 <!-- breadcrumb-list start -->
                                 <ul class="breadcrumb-list">
                                     <li class="breadcrumb-item">
-                                        <a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a>
+                                        <a href="{{ route('home') }}" class="text-white">@lang('miscellaneous.menu.home')</a>
                                     </li>
                                     <li class="breadcrumb-item active">@lang('miscellaneous.menu.about')</li>
                                 </ul>
@@ -24,10 +24,10 @@
                                 <!-- breadcrumb-list start -->
                                 <ul class="breadcrumb-list">
                                     <li class="breadcrumb-item">
-                                        <a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a>
+                                        <a href="{{ route('home') }}" class="text-white">@lang('miscellaneous.menu.home')</a>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a>
+                                        <a href="{{ route('about') }}" class="text-white">@lang('miscellaneous.menu.about')</a>
                                     </li>
                                     <li class="breadcrumb-item active">{{ $entity_menu }}</li>
                                 </ul>

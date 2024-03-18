@@ -6,8 +6,8 @@
                     <div class="col-lg-6 m-auto">
                         <!-- Section Title -->
                         <div class="section-title mb-3 text-center">
-                            <h2>@lang('miscellaneous.public.about.pricing.title')</h2>
-                            <p>@lang('miscellaneous.public.about.pricing.description')</p>
+                            <h2>@lang('miscellaneous.public.about.donate.title')</h2>
+                            <p>@lang('miscellaneous.public.about.donate.description')</p>
                         </div><!--// Section Title -->
                     </div>
                 </div>
@@ -16,6 +16,4 @@
 
                 <div class="row">
                     <div class="col-sm-8">
-                        
                     </div>
-

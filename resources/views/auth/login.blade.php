@@ -39,7 +39,8 @@
 
                                             <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('auth.login')</button>
                                             <a href="{{ route('register') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.go_register')</a>
-                                        </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

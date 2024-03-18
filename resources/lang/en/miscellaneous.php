@@ -364,25 +364,6 @@ return [
                 'title' => 'Pricing plan',
                 'content' => 'You can now purchase a plan to follow premium videos.',
             ],
-            'donate' => [
-                'title' => 'Make an anonymous donation or become a partner',
-                'content1' => 'By supporting the DikiTivi ministry, you not only contribute to the improvement of life of the people of God, but also you contribute to the help that the ministry brings to the ophelines and the poor.',
-                'content2' => 'If it\'s money you want to send, just select the payment method; then you send it directly online.',
-                'content3' => 'If you want to donate something other than money, just enter a description of your donation.',
-                'anonyme' => 'Make an anonymous donation',
-                'partner' => 'Become a partner',
-                'your_identity' => 'Your identity',
-                'send_money' => [
-                    'title' => 'Send money',
-                    'description' => 'Choose payment method',
-                    'mobile_money' => 'Mobile money',
-                    'bank_card' => 'Bank card',
-                ],
-                'other_donation' => [
-                    'title' => 'Other donation',
-                    'description' => 'Description of your donation',
-                ],
-            ],
         ],
 
         // About
@@ -731,6 +712,27 @@ return [
                 'description' => 'You can either write to us directly here, or by email, or you can go to our address below',
                 'message_subject' => 'Subject',
                 'message_content' => 'Message content'
+            ],
+
+            // Donate
+            'donate' => [
+                'title' => 'Make a donation to support DikiTivi',
+                'description' => 'By supporting the DikiTivi ministry, you not only contribute to the improvement of life of the people of God, but also you contribute to the help that the ministry brings to the ophelines and the poor.',
+                'content1' => 'If it\'s money you want to send, just select the payment method; then you send it directly online.',
+                'content2' => 'If you want to donate something other than money, just enter a description of your donation.',
+                'anonyme' => 'Make an anonymous donation',
+                'partner' => 'Become a partner',
+                'your_identity' => 'Your identity',
+                'send_money' => [
+                    'title' => 'Send money',
+                    'description' => 'Choose payment method',
+                    'mobile_money' => 'Mobile money',
+                    'bank_card' => 'Bank card',
+                ],
+                'other_donation' => [
+                    'title' => 'Other donation',
+                    'description' => 'Description of your donation',
+                ],
             ],
         ],
     ],

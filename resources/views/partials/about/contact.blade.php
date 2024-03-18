@@ -15,7 +15,7 @@
                 <hr class="mt-4 mb-5">
 
                 <div class="row">
-                    <div class="col-lg-9 col-sm-8">
+                    <div class="col-sm-8">
                         <div class="contact-form-wrap">
                             <form id="contact-form" action="assets/php/mail.php" method="POST">
                                 <div class="contact-page-form">
