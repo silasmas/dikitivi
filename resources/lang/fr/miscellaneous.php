@@ -31,6 +31,7 @@ return [
     'connection' => 'Connexion',
     'register' => 'Enregistrer',
     'send' => 'Envoyer',
+    'start' => 'Commencer',
     'add' => 'Ajouter',
     'buy' => 'Acheter',
     'choose' => 'Choisir',
@@ -232,7 +233,7 @@ return [
         'city' => 'Ville',
     ],
     'addresses' => 'Adresses',
-    'username' => 'Nom d\'utilisateur',
+    'username' => 'Pseudo',
     'password' => [
         'label' => 'Mot de passe',
         'error' => 'Doit avoir au moins 8 caractère, être alphanumérique, avoir au moins une lettre majuscule et avoir un caractère spécial',

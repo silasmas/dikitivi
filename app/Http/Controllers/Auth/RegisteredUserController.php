@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\ApiClientManager;
+use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -30,14 +31,13 @@ class RegisteredUserController extends Controller
     {
         // Find users having the role "Membre" to verify if the register page can be displayed or not
         $role_data = 'Membre';
-        $member_role = $this::$api_client_manager::call('GET', getApiURL() . '/role/search/' . $role_data, getApiToken());
+        $member_role = $this::$api_client_manager::call('GET', getApiURL() . '/role/search/' . $role_data);
+        $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
-        if (count($member_role->data) > 0) {
-            abort(403);
-
-        } else {
-            return view('auth.register', ['member_role' => $member_role->data]);
-        }
+        return view('auth.register', [
+            'role_id' => $member_role->data->id,
+            'countries' => $countries->data,
+        ]);
     }
 
     /**
@@ -45,54 +45,114 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse|View
     {
-        // User inputs
-        $user_inputs = [
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'surname' => $request->surname,
-            'gender' => $request->gender,
-            'birth_date' => str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1],
-            'city' => $request->city,
-            'address_1' => $request->address_1,
-            'address_2' => $request->address_2,
-            'p_o_box' => $request->p_o_box,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'username' => $request->username,
-            'password' => $request->register_password,
-            'confirm_password' => $request->confirm_password,
-            'belongs_to' => $request->belongs_to,
-            'parental_code' => $request->parental_code,
-            'api_token' => $request->api_token,
-            'prefered_theme' => $request->prefered_theme,
-            'country_id' => $request->country_id,
-            'role_id' => $request->role_id
-        ];
-        // Register user API
-        $user = $this::$api_client_manager::call('POST', getApiURL() . '/user', getApiToken(), $user_inputs);
+        if (!empty($request->token)) {
+            $given_token = $request->check_digit_1 . $request->check_digit_2 . $request->check_digit_3 . $request->check_digit_4 . $request->check_digit_5 . $request->check_digit_6 . $request->check_digit_7;
 
-        if ($user->success) {
-            // Authentication datas (E-mail or Phone number)
-            $auth_phone = Auth::attempt(['phone' => $user->data->user->phone, 'password' => $user_inputs['password']]);
-            $auth_email = Auth::attempt(['email' => $user->data->user->email, 'password' => $user_inputs['password']]);
-            if ($auth_phone || $auth_email) {
-                $request->session()->regenerate();
-                return redirect()->route('home');
+            if ($given_token == $request->token) {
+                $pr = $this::$api_client_manager::call('POST', getApiURL() . '/password_reset/check_token', null, [
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'token' => $request->token,
+                ]);
+
+                if ($pr->success) {
+                    return view('register', [
+                        'temporary_user' => $pr->data->user
+                    ]);
+
+                } else {
+                    return view('register', [
+                        'token' => $request->token
+                    ]);
+                }
+
+            } else {
+                return view('register', [
+                    'token' => $request->token
+                ]);
             }
 
         } else {
-            $resp_error = $user_inputs['firstname']                     // array[0]
-                            . '-' . $user_inputs['lastname']            // array[1]
-                            . '-' . $user_inputs['surname']             // array[2]
-                            . '-' . $user_inputs['phone']               // array[3]
-                            . '-' . $user_inputs['email']               // array[4]
-                            . '-' . $user_inputs['password']            // array[5]
-                            . '-' . $user_inputs['confirm_password']    // array[6]
-                            . '-' . $user->message                      // array[7]
-                            . '-' . $user->data;                        // array[8]
-            return redirect('/register')->with('response_error', $resp_error);
-        }    
+            // Get temporary user to register the rest of datas
+            $temporary_user = $this::$api_client_manager::call('POST', getApiURL() . '/user/' . $request->temporary_user_id, $request->api_token);
+            // User inputs
+            $user_inputs = [
+                'firstname' => !empty($temporary_user->data->firstname) ? $temporary_user->data->firstname : $request->register_firstname,
+                'lastname' => !empty($temporary_user->data->lastname) ? $temporary_user->data->lastname : $request->register_lastname,
+                'surname' => $request->register_surname,
+                'gender' => $request->register_gender,
+                'birth_date' => !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
+                'city' => $request->register_city,
+                'address_1' => $request->register_address_1,
+                'address_2' => $request->register_address_2,
+                'p_o_box' => $request->register_p_o_box,
+                'email' => !empty($temporary_user->data->email) ? $temporary_user->data->email : $request->register_email,
+                'phone' => !empty($temporary_user->data->phone) ? $temporary_user->data->phone : $request->phone_code . $request->phone_number,
+                'username' => $request->register_username,
+                'password' => $request->register_password,
+                'confirm_password' => $request->confirm_password,
+                'country_id' => !empty($temporary_user->data->country_id) ? $temporary_user->data->country_id : $request->country_id,
+                'role_id' => !empty($temporary_user->data->role_id) ? $temporary_user->data->role_id : $request->role_id
+            ];
+            // Register user API
+            $user = $this::$api_client_manager::call('POST', getApiURL() . '/user', null, $user_inputs);
+
+            if (!empty($request->temporary_user_id)) {
+                if ($user->success) {
+                    // Authentication datas (E-mail or Phone number)
+                    $auth_email = Auth::attempt(['email' => $user->data->user->email, 'password' => $user->data->password_reset->former_password], false);
+                    $auth_phone = Auth::attempt(['phone' => $user->data->user->phone, 'password' => $user->data->password_reset->former_password], false);
+
+                    if ($auth_email || $auth_phone) {
+                        $request->session()->regenerate();
+
+                        return redirect()->route('home');
+                    }
+
+                } else {
+                    $input_birthday_exists = !empty($user_inputs['birth_date']);
+                    $lang_check = str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln');
+                    $cond1 = explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[0];
+                    $cond2 = explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[0];
+
+                    $error_data = $user->message . '-' . $user->data;
+                    $inputs_data = $user_inputs['firstname']                                                // array[0]
+                                    . '-' . $user_inputs['lastname']                                        // array[1]
+                                    . '-' . $user_inputs['surname']                                         // array[2]
+                                    . '-' . $user_inputs['gender']                                          // array[3]
+                                    . '-' . $input_birthday_exists ? ($lang_check ? $cond1 : $cond2) : null // array[4]
+                                    . '-' . $user_inputs['city']                                            // array[5]
+                                    . '-' . $user_inputs['address_1']                                       // array[6]
+                                    . '-' . $user_inputs['address_2']                                       // array[7]
+                                    . '-' . $user_inputs['p_o_box']                                         // array[8]
+                                    . '-' . $user_inputs['email']                                           // array[9]
+                                    . '-' . $user_inputs['phone']                                           // array[10]
+                                    . '-' . $user_inputs['username']                                        // array[11]
+                                    . '-' . $request->temporary_user_id                                     // array[12]
+                                    . '-' . $request->api_token;                                            // array[13]
+
+                    return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                }
+
+            } else {
+                if ($user->success) {
+                    return view('auth.register', [
+                        'token' => $user->data->password_reset->token
+                    ]);
+
+                } else {
+                    $error_data = $user->message . '-' . $user->data;
+                    $inputs_data = $user_inputs['firstname']                    // array[0]
+                                    . '-' . $user_inputs['lastname']            // array[1]
+                                    . '-' . $user_inputs['email']               // array[2]
+                                    . '-' . $user->message                      // array[7]
+                                    . '-' . $user->data;                        // array[8]
+
+                    return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                }
+            }
+        }
     }
 }

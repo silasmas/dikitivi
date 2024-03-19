@@ -289,6 +289,5 @@
         <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
-        <script src="{{ asset('assets/js/script.js') }}"></script>
     </body>
 </html>

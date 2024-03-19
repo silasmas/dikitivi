@@ -95,11 +95,26 @@
 
             <!-- Page Conttent -->
             <main class="page-content">
+@if (\Session::has('error_message'))
+                <!-- Alert Start -->
+                <div class="position-relative">
+                    <div class="row position-fixed w-100" style="opacity: 0.9; z-index: 999;">
+                        <div class="col-lg-5 col-sm-6 mx-auto">
+                            <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
+                                <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {{ preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[1] : \Session::get('error_message') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Alert End -->
+
+@endif
                 <!-- login-register  -->
                 <div class="register-page py-5">
                     <div class="container-sm container-fluid">
                         <div class="row">
-                            <div class="col-lg-5 col-sm-8 mx-auto">
+                            <div class="col-lg-6 col-sm-9 mx-auto">
                                 <div class="bg-image mx-auto mb-sm-4 mb-3" style="width: 200px">
                                     <img src="{{ asset('assets/img/logo-text.png') }}" alt="DikiTivi" class="img-fluid">
                                     <div class="mask">
@@ -230,201 +245,6 @@
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
         <script type="text/javascript">
-            // Toggle app theme
-            const MDB_LIGHT = currentHost + '/assets/addons/custom/mdb/css/mdb.min.css';
-            const MDB_DARK = currentHost + '/assets/addons/custom/mdb/css/mdb.dark.min.css';
-
-            /**
-             * Set theme to light
-             */
-            function themeLight() {
-                $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-dark').removeClass('text-white');
-                $('.fotter-socail li a, .footer-list li a').removeClass('text-light');
-                $('#mdb-style').attr('href', MDB_LIGHT);
-
-                document.cookie = "theme=light";
-            }
-
-            /**
-             * Set theme to dark
-             */
-            function themeDark() {
-                $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-white').removeClass('text-dark');
-                $('.fotter-socail li a, .footer-list li a').addClass('text-light');
-                $('#mdb-style').attr('href', MDB_DARK);
-
-                document.cookie = "theme=dark";
-            }
-
-            /**
-             * Set theme to auto
-             */
-            function themeAuto() {
-                const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-
-                if (darkThemeMq.matches) {
-                    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-white').removeClass('text-dark');
-                    $('.fotter-socail li a, .footer-list li a').addClass('text-white');
-                    $('#mdb-style').attr('href', MDB_DARK);
-
-                } else {
-                    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-dark').removeClass('text-white');
-                    $('.fotter-socail li a, .footer-list li a').removeClass('text-white');
-                    $('#mdb-style').attr('href', MDB_LIGHT);
-                }
-
-                document.cookie = "theme=auto";
-            }
-
-            /**
-             * Check string is numeric
-             * 
-             * @param string str 
-             */
-            function isNumeric(str) {
-                if (typeof str != "string") {
-                    return false
-                } // we only process strings!
-
-                return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-                    !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
-            }
-
-            if (isNumeric(currentUser)) {
-                $.ajax({
-                    headers: headers,
-                    type: 'GET',
-                    contentType: 'application/json',
-                    url: apiHost + '/user/' + parseInt(currentUser),
-                    success: function (result) {
-                        if (result.data.prefered_theme !== null) {
-                            if (result.data.prefered_theme === 'dark') {
-                                themeDark();
-
-                            } else {
-                                if (result.data.prefered_theme === 'light') {
-                                    themeLight();
-                                } else {
-                                    themeAuto();
-                                }
-                            }
-
-                        } else {
-                            themeAuto();
-                        }
-                    },
-                    error: function (xhr, error, status_description) {
-                        console.log(xhr.responseJSON);
-                        console.log(xhr.status);
-                        console.log(error);
-                        console.log(status_description);
-                    }
-                });
-
-            } else {
-                if (getCookie('theme') === 'dark') {
-                    themeDark();
-
-                } else {
-                    if (getCookie('theme') === 'light') {
-                        themeLight();
-                    } else {
-                        themeAuto();
-                    }
-                }
-            }
-
-            $(function () {
-                // LIGHT
-                $('#themeToggler .light').on('click', function (e) {
-                    e.preventDefault();
-                    $('#themeToggler .current-theme').html('<i class="bi bi-sun"></i>');
-
-                    if (isNumeric(currentUser)) {
-                        $.ajax({
-                            headers: headers,
-                            type: 'PUT',
-                            contentType: 'application/json',
-                            url: apiHost + '/user/' + currentUser,
-                            data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'light' }),
-                            success: function () {
-                                $(this).unbind('click');
-                                e.stopPropagation();
-                                e.stopImmediatePropagation();
-                            },
-                            error: function (xhr, error, status_description) {
-                                console.log(xhr.responseJSON);
-                                console.log(xhr.status);
-                                console.log(error);
-                                console.log(status_description);
-                            }
-                        });
-
-                    } else {
-                        themeLight();
-                    }
-                });
-
-                // DARK
-                $('#themeToggler .dark').on('click', function (e) {
-                    e.preventDefault();
-                    $('#themeToggler .current-theme').html('<i class="bi bi-moon-fill"></i>');
-
-                    if (isNumeric(currentUser)) {
-                        $.ajax({
-                            headers: headers,
-                            type: 'PUT',
-                            contentType: 'application/json',
-                            url: apiHost + '/user/' + currentUser,
-                            data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'dark' }),
-                            success: function () {
-                                $(this).unbind('click');
-                                e.stopPropagation();
-                                e.stopImmediatePropagation();
-                            },
-                            error: function (xhr, error, status_description) {
-                                console.log(xhr.responseJSON);
-                                console.log(xhr.status);
-                                console.log(error);
-                                console.log(status_description);
-                            }
-                        });
-
-                    } else {
-                        themeDark();
-                    }
-                });
-
-                // AUTO
-                $('#themeToggler .auto').on('click', function (e) {
-                    e.preventDefault();
-                    $('#themeToggler .current-theme').html('<i class="bi bi-circle-half"></i>');
-
-                    if (isNumeric(currentUser)) {
-                        $.ajax({
-                            headers: headers,
-                            type: 'PUT',
-                            contentType: 'application/json',
-                            url: apiHost + '/user/' + currentUser,
-                            data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'auto' }),
-                            success: function () {
-                                $(this).unbind('click');
-                                e.stopPropagation();
-                                e.stopImmediatePropagation();
-                            },
-                            error: function (xhr, error, status_description) {
-                                console.log(xhr.responseJSON);
-                                console.log(xhr.status);
-                                console.log(error);
-                                console.log(status_description);
-                            }
-                        });
-
-                    } else {
-                        themeAuto();
-                    }
-                });
-            });
-        </script>
+       </script>
     </body>
 </html>

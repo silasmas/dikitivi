@@ -31,6 +31,7 @@ return [
     'connection' => 'Connection',
     'register' => 'Register',
     'send' => 'Send',
+    'start' => 'Start',
     'add' => 'Add',
     'buy' => 'Buy now',
     'choose' => 'Choose',
