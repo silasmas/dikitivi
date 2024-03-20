@@ -27,7 +27,7 @@ class ApiClientManager
         try {
             $response = $client->request($method, $url, [
                 'headers' => [
-                    'Authorization' => $api_token,
+                    'Authorization' => 'Bearer ' . $api_token,
                     'Accept' => 'application/json',
                     'X-localization' => !empty(Session::get('locale')) ? Session::get('locale') : App::getLocale(),
                 ],

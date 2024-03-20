@@ -86,33 +86,30 @@ class RegisteredUserController extends Controller
             }
 
         } else {
-            // Get temporary user to register the rest of datas
-            $temporary_user = $this::$api_client_manager::call('POST', getApiURL() . '/user/' . $request->temporary_user_id, $request->api_token);
             // User inputs
             $user_inputs = [
-                'firstname' => !empty($temporary_user->data->firstname) ? $temporary_user->data->firstname : $request->register_firstname,
-                'lastname' => !empty($temporary_user->data->lastname) ? $temporary_user->data->lastname : $request->register_lastname,
+                'firstname' => !empty($temporary_user) && !empty($temporary_user->data->firstname) ? $temporary_user->data->firstname : $request->register_firstname,
+                'lastname' => !empty($temporary_user) && !empty($temporary_user->data->lastname) ? $temporary_user->data->lastname : $request->register_lastname,
                 'surname' => $request->register_surname,
                 'gender' => $request->register_gender,
-                'birth_date' => !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
+                'birth_date' => !empty($temporary_user) && !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
                 'city' => $request->register_city,
                 'address_1' => $request->register_address_1,
                 'address_2' => $request->register_address_2,
                 'p_o_box' => $request->register_p_o_box,
-                'email' => !empty($temporary_user->data->email) ? $temporary_user->data->email : $request->register_email,
-                'phone' => !empty($temporary_user->data->phone) ? $temporary_user->data->phone : $request->phone_code . $request->phone_number,
+                'email' => !empty($temporary_user) && !empty($temporary_user->data->email) ? $temporary_user->data->email : $request->register_email,
+                'phone' => !empty($temporary_user) && !empty($temporary_user->data->phone) ? $temporary_user->data->phone : $request->phone_code . $request->phone_number,
                 'username' => $request->register_username,
                 'password' => $request->register_password,
                 'confirm_password' => $request->confirm_password,
-                'country_id' => !empty($temporary_user->data->country_id) ? $temporary_user->data->country_id : $request->country_id,
-                'role_id' => !empty($temporary_user->data->role_id) ? $temporary_user->data->role_id : $request->role_id
+                'country_id' => !empty($temporary_user) && !empty($temporary_user->data->country_id) ? $temporary_user->data->country_id : $request->country_id,
+                'role_id' => !empty($temporary_user) && !empty($temporary_user->data->role_id) ? $temporary_user->data->role_id : $request->role_id
             ];
 
             if (!empty($request->temporary_user_id)) {
                 // Update user API
                 $user = $this::$api_client_manager::call('PUT', getApiURL() . '/user/' . $request->temporary_user_id, $request->api_token, $user_inputs);
 
-                dd($request->api_token);
                 if ($user->success) {
                     // Authentication datas (E-mail or Phone number)
                     $auth_email = Auth::attempt(['email' => $user->data->user->email, 'password' => $user->data->password_reset->former_password], false);
