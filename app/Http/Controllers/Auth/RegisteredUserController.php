@@ -112,8 +112,8 @@ class RegisteredUserController extends Controller
 
                 if ($user->success) {
                     // Authentication datas (E-mail or Phone number)
-                    $auth_email = Auth::attempt(['email' => $user->data->user->email, 'password' => $user->data->password_reset->former_password], false);
-                    $auth_phone = Auth::attempt(['phone' => $user->data->user->phone, 'password' => $user->data->password_reset->former_password], false);
+                    $auth_email = Auth::attempt(['email' => $user->data->email, 'password' => $request->register_password], false);
+                    $auth_phone = Auth::attempt(['phone' => $user->data->phone, 'password' => $request->register_password], false);
 
                     if ($auth_email || $auth_phone) {
                         $request->session()->regenerate();
@@ -158,9 +158,9 @@ class RegisteredUserController extends Controller
 
                 } else {
                     $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : 'DATA');
-                    $inputs_data = $user_inputs['firstname']                    // array[0]
-                                    . '-' . $user_inputs['lastname']            // array[1]
-                                    . '-' . $user_inputs['email'];               // array[2]
+                    $inputs_data = $user_inputs['firstname']        // array[0]
+                                    . '-' . $user_inputs['lastname']// array[1]
+                                    . '-' . $user_inputs['email'];  // array[2]
 
                     return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
                 }
