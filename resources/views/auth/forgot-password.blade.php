@@ -49,7 +49,7 @@
                                             </div>
 
                                             <button type="submit" class="btn btn-block dktv-btn-pink rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.start')</button>
-                                            <a href="{{ route('login') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.go_login')</a>
+                                            <a href="{{ route('login') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.cancel')</a>
                                         </form>
                                     </div>
                                 </div>
