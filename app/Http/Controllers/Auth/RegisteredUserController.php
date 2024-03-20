@@ -110,7 +110,7 @@ class RegisteredUserController extends Controller
                 // Update user API
                 $user = $this::$api_client_manager::call('PUT', getApiURL() . '/user/' . $request->temporary_user_id, $request->api_token, $user_inputs);
 
-                dd($user_inputs['birth_date']);
+                // dd($user_inputs['birth_date']);
                 if ($user->success) {
                     // Authentication datas (E-mail or Phone number)
                     $auth_phone = Auth::attempt(['phone' => $user->data->phone, 'password' => $user_inputs['password']], $request->remember);
