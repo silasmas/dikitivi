@@ -12,12 +12,12 @@
 
                                             <input type="hidden" name="redirect" value="reset_password">
 
-                                            <div class="form-floating">
+                                            <div class="form-floating mb-3">
                                                 <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : '' }}">
                                                 <label for="register_email">@lang('miscellaneous.email')</label>
                                             </div>
 
-                                            <div class="row g-3">
+                                            <div class="row g-3 mb-4">
                                                 <div class="col-sm-5">
                                                     <div class="form-floating pt-0">
                                                         <select name="select_country" id="select_country1" class="form-select pt-2 shadow-0">
