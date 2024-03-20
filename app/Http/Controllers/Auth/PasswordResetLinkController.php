@@ -5,13 +5,22 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
+use App\Http\Controllers\ApiClientManager;
 
 class PasswordResetLinkController extends Controller
 {
+    public static $api_client_manager;
+
+    public function __construct()
+    {
+        $this::$api_client_manager = new ApiClientManager();
+    }
+
     /**
      * Display the password reset link request view.
+     *
+     * @return \Illuminate\View\View
      */
     public function create(): View
     {
@@ -21,24 +30,29 @@ class PasswordResetLinkController extends Controller
     /**
      * Handle an incoming password reset link request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'email' => ['required', 'email'],
-        ]);
+        // User inputs
+        $user_inputs = [
+            'former_password' => $request->register_former_password,
+            'new_password' => $request->register_password,
+            'confirm_new_password' => $request->confirm_password
+        ];
+        $user = $this::$api_client_manager::call('POST', getApiURL() . '/user/update_password/' . $request->user_id, $request->api_token, $user_inputs);
 
-        // We will send the password reset link to this user. Once we have attempted
-        // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        if ($user->success) {
+            return response()->redirectTo('/login');
 
-        return $status == Password::RESET_LINK_SENT
-                    ? back()->with('status', __($status))
-                    : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+        } else {
+            $error_data = $user->message . '-' . $user->data;
+            $inputs_data = $request->former_password        // array[0]
+                            . '-' . $request->user_id       // array[1]
+                            . '-' . $request->api_token;    // array[2]
+
+            return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+        }
     }
 }

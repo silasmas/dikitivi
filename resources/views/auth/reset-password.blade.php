@@ -1,39 +1,36 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+@extends('layouts.guest')
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+@section('guest-content')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+                                <div class="card border rounded-0 text-center shadow-0">
+                                    <div class="card-body py-5">
+                                        <h4 class="h4 mb-4 text-center">@lang('miscellaneous.login_title2')</h4>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                                        <form method="POST" action="{{ route('password.email') }}">
+    @csrf
+                                            <input type="hidden" name="former_password" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : $former_password }}">
+                                            <input type="hidden" name="user_id" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : $temporary_user->id }}">
+                                            <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : $temporary_user->api_token }}">
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                                            <div class="form-floating mb-3">
+                                                <input type="password" name="register_former_password" id="register_former_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.former_password')">
+                                                <label for="register_former_password">@lang('miscellaneous.account.update_password.former_password')</label>
+                                            </div>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+                                            <div class="form-floating mb-3">
+                                                <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.new_password')">
+                                                <label for="register_password">@lang('miscellaneous.account.update_password.new_password')</label>
+                                            </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+                                            <div class="form-floating mb-4">
+                                                <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.confirm_password')">
+                                                <label for="register_password">@lang('miscellaneous.account.update_password.confirm_password')</label>
+                                            </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                                            <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.register')</button>
+                                            <a href="{{ route('login') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.cancel')</a>
+                                        </form>
+                                    </div>
+                                </div>
+
+@endsection

@@ -9,10 +9,14 @@
                                         <form method="POST" action="{{ route('register') }}">
     @csrf
 
-    @if (!empty($token))
-                                            <input type="hidden" name="phone" value="{{ $phone }}">
-                                            <input type="hidden" name="password" value="{{ $password }}">
-                                            <input type="hidden" name="token" value="{{ $token }}">
+    @if (!empty($token_sent))
+        @if (request()->has('redirect'))
+                                            <input type="hidden" name="redirect" value="{{ request()->redirect }}">
+        @endif
+        @if ($redirect)
+                                            <input type="hidden" name="redirect" value="{{ $redirect }}">
+        @endif
+                                            <input type="hidden" name="token" value="{{ $token_sent }}">
 
                                             <div class="row mb-4">
                                                 <div class="col-sm-8 mx-auto">
@@ -46,54 +50,54 @@
                                             <a href="{{ route('home') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.cancel')</a>
 
     @else
-        @if ($temporary_user)
-                                            <input type="hidden" name="temporary_user_id" value="{{ $temporary_user->id }}">
-                                            <input type="hidden" name="api_token" value="{{ $temporary_user->api_token }}">
+        @if (!empty($temporary_user))
+                                            <input type="hidden" name="temporary_user_id" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[11] : $temporary_user->id }}">
+                                            <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[12] : $temporary_user->api_token }}">
 
                                             <div class="row g-3 mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_firstname" id="register_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" autofocus>
+                                                        <input type="text" name="register_firstname" id="register_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : '' }}" autofocus>
                                                         <label for="register_firstname">@lang('miscellaneous.firstname')</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_lastname" id="register_lastname" class="form-control" placeholder="@lang('miscellaneous.lastname')">
+                                                        <input type="text" name="register_lastname" id="register_lastname" class="form-control" placeholder="@lang('miscellaneous.lastname')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : '' }}">
                                                         <label for="register_lastname">@lang('miscellaneous.lastname')</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_surname" id="register_surname" class="form-control" placeholder="@lang('miscellaneous.surname')">
+                                                        <input type="text" name="register_surname" id="register_surname" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : '' }}">
                                                         <label for="register_surname">@lang('miscellaneous.surname')</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="birth_date" id="birth_date" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')">
+                                                        <input type="text" name="birth_date" id="birth_date" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[4] : '' }}">
                                                         <label for="birth_date">@lang('miscellaneous.birth_date.label')</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <label for="author_names" class="form-label mb-0 d-block">@lang('miscellaneous.gender_title')</label>
+                                                    <label class="form-label mb-0 d-block">@lang('miscellaneous.gender_title')</label>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="register_gender" id="register_gender_1" value="1">
+                                                        <input class="form-check-input" type="radio" name="register_gender" id="register_gender_1" value="M"{{ \Session::has('error_message') ? (explode('-', explode('~', \Session::get('error_message'))[1])[3] == 'M' ? ' checked' : '') : '' }}>
                                                         <label class="form-check-label" for="register_gender_1">@lang('miscellaneous.gender1')</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="register_gender" id="register_gender_2" value="0">
+                                                        <input class="form-check-input" type="radio" name="register_gender" id="register_gender_2" value="F"{{ \Session::has('error_message') ? (explode('-', explode('~', \Session::get('error_message'))[1])[3] == 'F' ? ' checked' : '') : '' }}>
                                                         <label class="form-check-label" for="register_gender_2">@lang('miscellaneous.gender2')</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')">
+                                                        <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[9] : '' }}">
                                                         <label for="register_email">@lang('miscellaneous.email')</label>
                                                     </div>
                                                 </div>
@@ -133,7 +137,35 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_username" id="register_username" class="form-control" placeholder="@lang('miscellaneous.username')">
+                                                        <input type="text" name="register_city" id="register_city" class="form-control" placeholder="@lang('miscellaneous.address.city')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[5] : '' }}">
+                                                        <label for="register_city">@lang('miscellaneous.address.city')</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 col-span-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" name="register_p_o_box" id="register_p_o_box" class="form-control" placeholder="@lang('miscellaneous.p_o_box')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[8] : '' }}">
+                                                        <label for="register_p_o_box">@lang('miscellaneous.p_o_box')</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <textarea name="register_address_1" id="register_address_1" class="form-control" placeholder="@lang('miscellaneous.address.line1')">{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[6] : '' }}</textarea>
+                                                        <label for="register_address_1">@lang('miscellaneous.address.line1')</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <textarea name="register_address_2" id="register_address_2" class="form-control" placeholder="@lang('miscellaneous.address.line2')">{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[7] : '' }}</textarea>
+                                                        <label for="register_address_2">@lang('miscellaneous.address.line2')</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input type="text" name="register_username" id="register_username" class="form-control" placeholder="@lang('miscellaneous.username')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[10] : '' }}">
                                                         <label for="register_username">@lang('miscellaneous.username')</label>
                                                     </div>
                                                 </div>
@@ -162,21 +194,21 @@
                                             <div class="row g-3 mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_firstname" id="register_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" autofocus>
+                                                        <input type="text" name="register_firstname" id="register_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : '' }}" autofocus>
                                                         <label for="register_firstname">@lang('miscellaneous.firstname')</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_lastname" id="register_lastname" class="form-control" placeholder="@lang('miscellaneous.surname')">
+                                                        <input type="text" name="register_lastname" id="register_lastname" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : '' }}">
                                                         <label for="register_lastname">@lang('miscellaneous.lastname')</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12">
                                                     <div class="form-floating">
-                                                        <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')">
+                                                        <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : '' }}">
                                                         <label for="register_email">@lang('miscellaneous.email')</label>
                                                     </div>
                                                 </div>

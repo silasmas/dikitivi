@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
-use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -26,6 +20,8 @@ class RegisteredUserController extends Controller
 
     /**
      * Display the registration view.
+     *
+     * @return \Illuminate\View\View
      */
     public function create(): View
     {
@@ -43,35 +39,47 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse | \Illuminate\View\View
      */
     public function store(Request $request): RedirectResponse|View
     {
         if (!empty($request->token)) {
             $given_token = $request->check_digit_1 . $request->check_digit_2 . $request->check_digit_3 . $request->check_digit_4 . $request->check_digit_5 . $request->check_digit_6 . $request->check_digit_7;
 
-            if ($given_token == $request->token) {
-                $pr = $this::$api_client_manager::call('POST', getApiURL() . '/password_reset/check_token', null, [
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                    'token' => $request->token,
-                ]);
+            $pr = $this::$api_client_manager::call('POST', getApiURL() . '/password_reset/check_token', null, [
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'token' => $given_token,
+            ]);
 
-                if ($pr->success) {
-                    return view('register', [
-                        'temporary_user' => $pr->data->user
+            if ($pr->success) {
+                if (!empty($request->redirect) && $request->redirect == 'reset_password') {
+                    return view('auth.reset-password', [
+                        'temporary_user' => $pr->data->user,
+                        'former_password' => $pr->data->password_reset->former_password,
                     ]);
 
                 } else {
-                    return view('register', [
-                        'token' => $request->token
+                    return view('auth.register', [
+                        'temporary_user' => $pr->data->user
                     ]);
                 }
 
             } else {
-                return view('register', [
-                    'token' => $request->token
-                ]);
+                if (!empty($request->redirect) && $request->redirect == 'reset_password') {
+                    return view('auth.register', [
+                        'token_sent' => $request->token,
+                        'redirect' => $request->redirect,
+                        'error_message' => $pr->data
+                    ]);
+
+                } else {
+                    return view('auth.register', [
+                        'token_sent' => $request->token,
+                        'error_message' => $pr->data
+                    ]);
+                }
             }
 
         } else {
@@ -128,10 +136,9 @@ class RegisteredUserController extends Controller
                                     . '-' . $user_inputs['address_2']                                       // array[7]
                                     . '-' . $user_inputs['p_o_box']                                         // array[8]
                                     . '-' . $user_inputs['email']                                           // array[9]
-                                    . '-' . $user_inputs['phone']                                           // array[10]
-                                    . '-' . $user_inputs['username']                                        // array[11]
-                                    . '-' . $request->temporary_user_id                                     // array[12]
-                                    . '-' . $request->api_token;                                            // array[13]
+                                    . '-' . $user_inputs['username']                                        // array[10]
+                                    . '-' . $request->temporary_user_id                                     // array[11]
+                                    . '-' . $request->api_token;                                            // array[12]
 
                     return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
                 }
@@ -139,16 +146,14 @@ class RegisteredUserController extends Controller
             } else {
                 if ($user->success) {
                     return view('auth.register', [
-                        'token' => $user->data->password_reset->token
+                        'token_sent' => __('miscellaneous.yes')
                     ]);
 
                 } else {
                     $error_data = $user->message . '-' . $user->data;
                     $inputs_data = $user_inputs['firstname']                    // array[0]
                                     . '-' . $user_inputs['lastname']            // array[1]
-                                    . '-' . $user_inputs['email']               // array[2]
-                                    . '-' . $user->message                      // array[7]
-                                    . '-' . $user->data;                        // array[8]
+                                    . '-' . $user_inputs['email'];               // array[2]
 
                     return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
                 }
