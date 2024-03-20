@@ -112,15 +112,7 @@ class RegisteredUserController extends Controller
 
                 // dd($user_inputs['birth_date']);
                 if ($user->success) {
-                    // Authentication datas (E-mail or Phone number)
-                    $auth_phone = Auth::attempt(['phone' => $user->data->phone, 'password' => $user_inputs['password']], $request->remember);
-                    $auth_email = Auth::attempt(['email' => $user->data->email, 'password' => $user_inputs['password']], $request->remember);
-
-                    if ($auth_phone || $auth_email) {
-                        $request->session()->regenerate();
-
-                        return redirect()->route('home');
-                    }
+                    return redirect('/login')->with('success_message', __('notifications.create_account_success'));
 
                 } else {
                     $input_birthday_exists = !empty($user_inputs['birth_date']);

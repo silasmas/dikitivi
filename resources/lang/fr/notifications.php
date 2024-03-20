@@ -118,6 +118,7 @@ return [
     'find_api_token_success' => 'Jeton d\'API trouvé',
     'find_user_404' => 'Utilisateur non trouvé',
     'create_user_success' => 'Utilisateur créé',
+    'create_account_success' => 'Votre compte est créé. Veuillez vous connecter',
     'create_user_SMS_failed' => 'Il y a un problème avec le service des SMS',
     'update_user_success' => 'Utilisateur modifié',
     'update_password_success' => 'Mot de passe modifié',
