@@ -111,7 +111,7 @@
 
 @endif
 
-@if ($error_message)
+@if (!empty($error_message))
                 <!-- Alert Start -->
                 <div class="position-relative">
                     <div class="row position-fixed w-100" style="opacity: 0.9; z-index: 999;">

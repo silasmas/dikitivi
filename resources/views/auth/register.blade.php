@@ -51,8 +51,8 @@
 
     @else
         @if (!empty($temporary_user))
-                                            <input type="hidden" name="temporary_user_id" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[11] : $temporary_user->id }}">
-                                            <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[12] : $temporary_user->api_token }}">
+                                            <input type="hidden" name="temporary_user_id" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[11] : $temporary_user->id }}">
+                                            <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[12] : $temporary_user->api_token }}">
 
                                             <div class="row g-3 mb-3">
                                                 <div class="col-md-6">
