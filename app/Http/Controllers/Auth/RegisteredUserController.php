@@ -139,23 +139,47 @@ class RegisteredUserController extends Controller
                 }
 
             } else {
-                // Register user API
-                $user = $this::$api_client_manager::call('POST', getApiURL() . '/user', null, $user_inputs);
+                if (!empty($request->redirect)) {
+                    // Find password reset by email or phone API
+                    $password_reset = $this::$api_client_manager::call('POST', getApiURL() . '/password_reset/search_by_email_or_phone/' . (!empty($user_inputs['email']) ? $user_inputs['email'] : $user_inputs['phone']) , null, $user_inputs);
 
-                if ($user->success) {
-                    return view('auth.register', [
-                        'token_sent' => __('miscellaneous.yes'),
-                        'email' => $user_inputs['email'],
-                        'phone' => $user_inputs['phone']
-                    ]);
+                    if ($password_reset->success) {
+                        return view('auth.register', [
+                            'token_sent' => __('miscellaneous.yes'),
+                            'redirect' => $request->redirect,
+                            'email' => $user_inputs['email'],
+                            'phone' => $user_inputs['phone']
+                        ]);
+
+                    } else {
+                        $error_data = $password_reset->message . '-' . (!empty($password_reset->data) ? $password_reset->data : 'DATA');
+                        $inputs_data = $user_inputs['firstname']        // array[0]
+                                        . '-' . $user_inputs['lastname']// array[1]
+                                        . '-' . $user_inputs['email']   // array[2]
+                                        . '-' . $request->redirect;     // array[3]
+
+                        return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                    }
 
                 } else {
-                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : 'DATA');
-                    $inputs_data = $user_inputs['firstname']        // array[0]
-                                    . '-' . $user_inputs['lastname']// array[1]
-                                    . '-' . $user_inputs['email'];  // array[2]
+                    // Register user API
+                    $user = $this::$api_client_manager::call('POST', getApiURL() . '/user', null, $user_inputs);
 
-                    return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                    if ($user->success) {
+                        return view('auth.register', [
+                            'token_sent' => __('miscellaneous.yes'),
+                            'email' => $user_inputs['email'],
+                            'phone' => $user_inputs['phone']
+                        ]);
+
+                    } else {
+                        $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : 'DATA');
+                        $inputs_data = $user_inputs['firstname']        // array[0]
+                                        . '-' . $user_inputs['lastname']// array[1]
+                                        . '-' . $user_inputs['email'];  // array[2]
+
+                        return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                    }
                 }
             }
         }

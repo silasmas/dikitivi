@@ -10,6 +10,9 @@
     @csrf
 
     @if (!empty($token_sent))
+        @if (!empty($redirect))
+                                            <input type="hidden" name="redirect" value="{{ $redirect }}">
+        @endif
                                             <input type="hidden" name="email" value="{{ $email }}">
                                             <input type="hidden" name="phone" value="{{ $phone }}">
                                             <input type="hidden" name="token" value="{{ $token_sent }}">
