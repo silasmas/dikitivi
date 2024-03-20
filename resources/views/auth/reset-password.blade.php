@@ -4,18 +4,13 @@
 
                                 <div class="card border rounded-0 text-center shadow-0">
                                     <div class="card-body py-5">
-                                        <h4 class="h4 mb-4 text-center">@lang('miscellaneous.login_title2')</h4>
+                                        <h4 class="h4 mb-4 text-center">@lang('auth.reset-password')</h4>
 
                                         <form method="POST" action="{{ route('password.email') }}">
     @csrf
-                                            <input type="hidden" name="former_password" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : $former_password }}">
+                                            <input type="hidden" name="register_former_password" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : $former_password }}">
                                             <input type="hidden" name="user_id" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : $temporary_user->id }}">
                                             <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : $temporary_user->api_token }}">
-
-                                            <div class="form-floating mb-3">
-                                                <input type="password" name="register_former_password" id="register_former_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.former_password')">
-                                                <label for="register_former_password">@lang('miscellaneous.account.update_password.former_password')</label>
-                                            </div>
 
                                             <div class="form-floating mb-3">
                                                 <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.new_password')">
