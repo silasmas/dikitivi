@@ -21,7 +21,9 @@ return [
     'register' => 'Register',
     'login' => 'Log in',
     'reset-password' => 'Reset password',
-    'verify-email' => 'Verify e-mail',
+    'verify-email' => 'Enter your email',
+    'verify-phone' => 'Enter your phone number',
+    'verify-email-phone' => 'Enter your email or your phone number',
     'confirm-password' => 'Confirm password',
     // Error messages
     'unauthorized' => 'This space is reserved for the administrator',

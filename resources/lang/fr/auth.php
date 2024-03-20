@@ -21,7 +21,9 @@ return [
     'register' => 'Inscription',
     'login' => 'Connexion',
     'reset-password' => 'Réinitialiser mot de passe',
-    'verify-email' => 'Vérifier e-mail',
+    'verify-email' => 'Donnez votre e-mail',
+    'verify-phone' => 'Donnez votre n° de téléphone',
+    'verify-email-phone' => 'Donnez votre e-mail ou votre n° de téléphone',
     'confirm-password' => 'Confirmer mot de passe',
     // Error messages
     'unauthorized' => 'Cet espace est réservé à l\'administrateur',

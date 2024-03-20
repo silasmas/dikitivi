@@ -6,9 +6,9 @@
         <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
         <meta name="dktv-api-url" content="{{ getApiURL() }}">
-        <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
+        <meta name="dktv-visitor" content="{{ !empty(Auth::user()) ? Auth::user()->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
+        <meta name="dktv-ref" content="{{ !empty(Auth::user()) ? Auth::user()->api_token : null }}">
 
         <!-- ============ Favicon ============ -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}">
