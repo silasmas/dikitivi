@@ -92,7 +92,7 @@ class RegisteredUserController extends Controller
                 'lastname' => !empty($temporary_user) && !empty($temporary_user->data->lastname) ? $temporary_user->data->lastname : $request->register_lastname,
                 'surname' => $request->register_surname,
                 'gender' => $request->register_gender,
-                'birth_date' => !empty($temporary_user) && !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
+                'birth_date' => !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
                 'city' => $request->register_city,
                 'address_1' => $request->register_address_1,
                 'address_2' => $request->register_address_2,
