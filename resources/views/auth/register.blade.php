@@ -24,25 +24,25 @@
                                                 <div class="col-sm-8 mx-auto">
                                                     <div class="d-flex">
                                                         <div class="flex-fill me-1">
-                                                            <input type="text" name="check_digit_1" id="check_digit_1" class="form-control text-center" autofocus onkeyup="tokenWritter('check_digit_1')">
+                                                            <input type="text" name="check_digit_1" id="check_digit_1" class="form-control text-center" autofocus onkeydown="tokenWritter('check_digit_1')">
                                                         </div>
                                                         <div class="flex-fill me-1">
-                                                            <input type="text" name="check_digit_2" id="check_digit_2" class="form-control text-center" onkeyup="tokenWritter('check_digit_2')">
+                                                            <input type="text" name="check_digit_2" id="check_digit_2" class="form-control text-center" onkeydown="tokenWritter('check_digit_2')">
                                                         </div>
                                                         <div class="flex-fill me-1">
-                                                            <input type="text" name="check_digit_3" id="check_digit_3" class="form-control text-center" onkeyup="tokenWritter('check_digit_3')">
+                                                            <input type="text" name="check_digit_3" id="check_digit_3" class="form-control text-center" onkeydown="tokenWritter('check_digit_3')">
                                                         </div>
                                                         <div class="flex-fill me-1">
-                                                            <input type="text" name="check_digit_4" id="check_digit_4" class="form-control text-center" onkeyup="tokenWritter('check_digit_4')">
+                                                            <input type="text" name="check_digit_4" id="check_digit_4" class="form-control text-center" onkeydown="tokenWritter('check_digit_4')">
                                                         </div>
                                                         <div class="flex-fill me-1">
-                                                            <input type="text" name="check_digit_5" id="check_digit_5" class="form-control text-center" onkeyup="tokenWritter('check_digit_5')">
+                                                            <input type="text" name="check_digit_5" id="check_digit_5" class="form-control text-center" onkeydown="tokenWritter('check_digit_5')">
                                                         </div>
                                                         <div class="flex-fill me-1">
-                                                            <input type="text" name="check_digit_6" id="check_digit_6" class="form-control text-center" onkeyup="tokenWritter('check_digit_6')">
+                                                            <input type="text" name="check_digit_6" id="check_digit_6" class="form-control text-center" onkeydown="tokenWritter('check_digit_6')">
                                                         </div>
                                                         <div class="flex-fill">
-                                                            <input type="text" name="check_digit_7" id="check_digit_7" class="form-control text-center" onkeyup="tokenWritter('check_digit_7')">
+                                                            <input type="text" name="check_digit_7" id="check_digit_7" class="form-control text-center" onkeydown="tokenWritter('check_digit_7')">
                                                         </div>
                                                     </div>
                                                 </div>
