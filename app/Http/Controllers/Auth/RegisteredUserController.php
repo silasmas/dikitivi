@@ -112,10 +112,10 @@ class RegisteredUserController extends Controller
 
                 if ($user->success) {
                     // Authentication datas (E-mail or Phone number)
-                    $auth_email = Auth::attempt(['email' => $user_inputs['email'], 'password' => $user_inputs['password']], false);
-                    $auth_phone = Auth::attempt(['phone' => $user_inputs['phone'], 'password' => $user_inputs['password']], false);
+                    $auth_phone = Auth::attempt(['phone' => $user->data->phone, 'password' => $inputs['password']], $request->remember);
+                    $auth_email = Auth::attempt(['email' => $user->data->email, 'password' => $inputs['password']], $request->remember);
 
-                    if ($auth_email || $auth_phone) {
+                    if ($auth_phone || $auth_email) {
                         $request->session()->regenerate();
 
                         return redirect()->route('home');
