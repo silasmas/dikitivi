@@ -235,7 +235,7 @@
         <!-- ============ JavaScript Libraries ============ -->
         <!-- jquery -->
         <script src="{{ asset('assets/addons/custom/jquery/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/addons/custom/jquery/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/addons/custom/jquery/jquery-ui/jquery-ui.min.js') }}"></script>
         <script src="{{ asset('assets/addons/custom/jquery/scroll4ever/js/jquery.scroll4ever.js') }}"></script>
         <!-- Popper JS -->
         <script src="{{ asset('assets/addons/custom/bootstrap/js/popper.min.js') }}"></script>

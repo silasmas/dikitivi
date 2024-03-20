@@ -54,6 +54,8 @@ class RegisteredUserController extends Controller
             ]);
 
             if ($pr->success) {
+                $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
+
                 if (!empty($request->redirect) && $request->redirect == 'reset_password') {
                     return view('auth.reset-password', [
                         'temporary_user' => $pr->data->user,
@@ -62,7 +64,8 @@ class RegisteredUserController extends Controller
 
                 } else {
                     return view('auth.register', [
-                        'temporary_user' => $pr->data->user
+                        'temporary_user' => $pr->data->user,
+                        'countries' => $countries->data
                     ]);
                 }
 
@@ -71,13 +74,13 @@ class RegisteredUserController extends Controller
                     return view('auth.register', [
                         'token_sent' => $request->token,
                         'redirect' => $request->redirect,
-                        'error_message' => $pr->data
+                        'error_message' => $pr->message
                     ]);
 
                 } else {
                     return view('auth.register', [
                         'token_sent' => $request->token,
-                        'error_message' => $pr->data
+                        'error_message' => $pr->message
                     ]);
                 }
             }
@@ -125,7 +128,7 @@ class RegisteredUserController extends Controller
                     $cond1 = explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[0];
                     $cond2 = explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[0];
 
-                    $error_data = $user->message . '-' . $user->data;
+                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : 'DATA');
                     $inputs_data = $user_inputs['firstname']                                                // array[0]
                                     . '-' . $user_inputs['lastname']                                        // array[1]
                                     . '-' . $user_inputs['surname']                                         // array[2]
@@ -146,11 +149,13 @@ class RegisteredUserController extends Controller
             } else {
                 if ($user->success) {
                     return view('auth.register', [
-                        'token_sent' => __('miscellaneous.yes')
+                        'token_sent' => __('miscellaneous.yes'),
+                        'email' => $user_inputs['email'],
+                        'phone' => $user_inputs['phone']
                     ]);
 
                 } else {
-                    $error_data = $user->message . '-' . $user->data;
+                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : 'DATA');
                     $inputs_data = $user_inputs['firstname']                    // array[0]
                                     . '-' . $user_inputs['lastname']            // array[1]
                                     . '-' . $user_inputs['email'];               // array[2]
