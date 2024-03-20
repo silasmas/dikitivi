@@ -107,10 +107,11 @@ class RegisteredUserController extends Controller
                 'country_id' => !empty($temporary_user->data->country_id) ? $temporary_user->data->country_id : $request->country_id,
                 'role_id' => !empty($temporary_user->data->role_id) ? $temporary_user->data->role_id : $request->role_id
             ];
-            // Register user API
-            $user = $this::$api_client_manager::call('POST', getApiURL() . '/user', null, $user_inputs);
 
             if (!empty($request->temporary_user_id)) {
+                // Update user API
+                $user = $this::$api_client_manager::call('PUT', getApiURL() . '/user/' . $request->temporary_user_id, $request->api_token, $user_inputs);
+
                 if ($user->success) {
                     // Authentication datas (E-mail or Phone number)
                     $auth_email = Auth::attempt(['email' => $user->data->user->email, 'password' => $user->data->password_reset->former_password], false);
@@ -147,6 +148,9 @@ class RegisteredUserController extends Controller
                 }
 
             } else {
+                // Register user API
+                $user = $this::$api_client_manager::call('POST', getApiURL() . '/user', null, $user_inputs);
+
                 if ($user->success) {
                     return view('auth.register', [
                         'token_sent' => __('miscellaneous.yes'),
