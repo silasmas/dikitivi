@@ -24,7 +24,9 @@ class PasswordResetLinkController extends Controller
      */
     public function create(): View
     {
-        return view('auth.forgot-password');
+        $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
+
+        return view('auth.forgot-password', ['countries' => $countries->data]);
     }
 
     /**
