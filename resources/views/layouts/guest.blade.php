@@ -47,7 +47,9 @@
 @else
     @if (!empty($error_title) || \Session::has('error_message'))
             {{ !empty($error_title) ? $error_title : ( \Session::has('error_message') ? (preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[2] : \Session::get('error_message')) : '') }}
-    @else
+    @endif
+
+    @if (empty($error_title) && !\Session::has('error_message'))
 		@if (Route::is('login'))
 			@lang('auth.login')
 		@endif
