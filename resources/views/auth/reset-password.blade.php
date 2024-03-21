@@ -8,9 +8,9 @@
 
                                         <form method="POST" action="{{ route('password.email') }}">
     @csrf
-                                            <input type="hidden" name="register_former_password" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : $former_password }}">
-                                            <input type="hidden" name="user_id" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : $temporary_user->id }}">
-                                            <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : $temporary_user->api_token }}">
+                                            <input type="hidden" name="register_former_password" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : $former_password }}">
+                                            <input type="hidden" name="user_id" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : $temporary_user->id }}">
+                                            <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : $temporary_user->api_token }}">
 
                                             <div class="form-floating mb-3">
                                                 <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.new_password')">

@@ -10,10 +10,10 @@
                                         <form method="POST" action="{{ route('register') }}">
     @csrf
 
-                                            <input type="hidden" name="redirect" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[3] : 'reset_password' }}">
+                                            <input type="hidden" name="redirect" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : 'reset_password' }}">
 
                                             <div class="form-floating mb-3">
-                                                <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : '' }}">
+                                                <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : '' }}">
                                                 <label for="register_email">@lang('miscellaneous.email')</label>
                                             </div>
 

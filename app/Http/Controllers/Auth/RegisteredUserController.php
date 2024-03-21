@@ -120,7 +120,7 @@ class RegisteredUserController extends Controller
                     $cond1 = explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[0];
                     $cond2 = explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[0];
 
-                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : 'DATA');
+                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message);
                     $inputs_data = $user_inputs['firstname']                                                // array[0]
                                     . '-' . $user_inputs['lastname']                                        // array[1]
                                     . '-' . $user_inputs['surname']                                         // array[2]
@@ -144,19 +144,15 @@ class RegisteredUserController extends Controller
                     $password_reset = $this::$api_client_manager::call('GET', getApiURL() . '/password_reset/search_by_email_or_phone/' . (!empty($user_inputs['email']) ? $user_inputs['email'] : $user_inputs['phone']) , null, $user_inputs);
 
                     if ($password_reset->success) {
-                        return view('auth.register', [
-                            'token_sent' => __('miscellaneous.yes'),
-                            'redirect' => $request->redirect,
-                            'email' => $user_inputs['email'],
-                            'phone' => $user_inputs['phone']
+                        return view('auth.reset-password', [
+                            'former_password' => $password_reset->data->password_reset->former_password,
+                            'temporary_user' => $password_reset->data->user
                         ]);
 
                     } else {
-                        $error_data = $password_reset->message . '-' . (!empty($password_reset->data) ? $password_reset->data : 'DATA');
-                        $inputs_data = $user_inputs['firstname']        // array[0]
-                                        . '-' . $user_inputs['lastname']// array[1]
-                                        . '-' . $user_inputs['email']   // array[2]
-                                        . '-' . $request->redirect;     // array[3]
+                        $error_data = $password_reset->message . '-' . (!empty($password_reset->data) ? $password_reset->data : $password_reset->message);
+                        $inputs_data = $user_inputs['email']		// array[0]
+                                        . '-' . $request->redirect;	// array[1]
 
                         return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
                     }
@@ -173,7 +169,7 @@ class RegisteredUserController extends Controller
                         ]);
 
                     } else {
-                        $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : 'DATA');
+                        $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message);
                         $inputs_data = $user_inputs['firstname']        // array[0]
                                         . '-' . $user_inputs['lastname']// array[1]
                                         . '-' . $user_inputs['email'];  // array[2]
