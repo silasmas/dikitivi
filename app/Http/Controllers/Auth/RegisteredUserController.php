@@ -144,9 +144,11 @@ class RegisteredUserController extends Controller
                     $password_reset = $this::$api_client_manager::call('GET', getApiURL() . '/password_reset/search_by_email_or_phone/' . (!empty($user_inputs['email']) ? $user_inputs['email'] : $user_inputs['phone']) , null, $user_inputs);
 
                     if ($password_reset->success) {
-                        return view('auth.reset-password', [
-                            'former_password' => $password_reset->data->password_reset->former_password,
-                            'temporary_user' => $password_reset->data->user
+                        return view('auth.register', [
+                            'redirect' => $request->redirect,
+                            'token_sent' => __('miscellaneous.yes'),
+                            'email' => $user_inputs['email'],
+                            'phone' => $user_inputs['phone']
                         ]);
 
                     } else {
