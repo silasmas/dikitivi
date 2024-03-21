@@ -35,7 +35,7 @@ class PasswordResetLinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse | View
     {
         // User inputs
         $user_inputs = [
@@ -49,12 +49,12 @@ class PasswordResetLinkController extends Controller
             return redirect('/login')->with('success_message', (!empty($user->data) ? $user->data : $user->message));
 
         } else {
-            $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message);
-            $inputs_data = $request->former_password        // array[0]
-                            . '-' . $request->user_id       // array[1]
-                            . '-' . $request->api_token;    // array[2]
-
-            return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+			return view('auth.reset-password', [
+				'former_password' => $request->register_former_password,
+				'temporary_user_id' => $request->user_id,
+				'temporary_user_api_token' => $request->api_token,
+				'error_message' => !empty($user->data) ? $user->data : $user->message
+			]);
         }
     }
 }
