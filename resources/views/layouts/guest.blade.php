@@ -54,7 +54,7 @@
 			@lang('auth.login')
 		@endif
 
-		@if (Route::is('register') || !empty($temporary_user))
+		@if (Route::is('register') || !empty($request->temporary_user_id))
 			@lang('auth.register')
 		@endif
 
