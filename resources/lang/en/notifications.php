@@ -14,6 +14,7 @@ return [
     */
 
     // ===== ERROR PAGES
+    'error_title' => 'Oops!!! Error.',
     // 400
     '400_title' => 'Bad request',
     '400_description' => 'Verify your request please!',

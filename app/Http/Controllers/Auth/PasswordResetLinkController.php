@@ -53,6 +53,7 @@ class PasswordResetLinkController extends Controller
 				'former_password' => $request->register_former_password,
 				'temporary_user_id' => $request->user_id,
 				'temporary_user_api_token' => $request->api_token,
+				'error_title' => __('notifications.error_title'),
 				'error_message' => !empty($user->data) ? $user->data : $user->message
 			]);
         }

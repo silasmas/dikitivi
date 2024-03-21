@@ -76,6 +76,7 @@ class RegisteredUserController extends Controller
 						'phone' => $request->phone,
                         'token_sent' => $request->token,
                         'redirect' => $request->redirect,
+						'error_title' => __('notifications.error_title'),
                         'error_message' => !empty($pr->data) ? $pr->data : $pr->message
                     ]);
 
@@ -84,6 +85,7 @@ class RegisteredUserController extends Controller
 						'email' => $request->email,
 						'phone' => $request->phone,
                         'token_sent' => $request->token,
+						'error_title' => __('notifications.error_title'),
                         'error_message' => !empty($pr->data) ? $pr->data : $pr->message
                     ]);
                 }
@@ -124,7 +126,7 @@ class RegisteredUserController extends Controller
                     $cond1 = explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[0];
                     $cond2 = explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[0];
 
-                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message);
+                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message) . '-' . __('notifications.error_title');
                     $inputs_data = $user_inputs['firstname']                                                // array[0]
                                     . '-' . $user_inputs['lastname']                                        // array[1]
                                     . '-' . $user_inputs['surname']                                         // array[2]
@@ -156,7 +158,7 @@ class RegisteredUserController extends Controller
                         ]);
 
                     } else {
-                        $error_data = $password_reset->message . '-' . (!empty($password_reset->data) ? $password_reset->data : $password_reset->message);
+                        $error_data = $password_reset->message . '-' . (!empty($password_reset->data) ? $password_reset->data : $password_reset->message) . '-' . __('notifications.error_title');
                         $inputs_data = $user_inputs['email']		// array[0]
                                         . '-' . $request->redirect;	// array[1]
 
@@ -175,7 +177,7 @@ class RegisteredUserController extends Controller
                         ]);
 
                     } else {
-                        $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message);
+                        $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message) . '-' . __('notifications.error_title');
                         $inputs_data = $user_inputs['firstname']        // array[0]
                                         . '-' . $user_inputs['lastname']// array[1]
                                         . '-' . $user_inputs['email'];  // array[2]
