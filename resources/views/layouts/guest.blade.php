@@ -58,7 +58,7 @@
 			@lang('auth.register')
 		@endif
 
-		@if (Route::is('password.request'))
+		@if (Route::is('password.request') || !empty($request->former_password))
 			@lang('auth.reset-password')
 		@endif
 
