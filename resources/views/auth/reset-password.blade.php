@@ -13,7 +13,7 @@
                                             <input type="hidden" name="api_token" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : $temporary_user->api_token }}">
 
                                             <div class="form-floating mb-3">
-                                                <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.new_password')">
+                                                <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.new_password')" autofocus>
                                                 <label for="register_password">@lang('miscellaneous.account.update_password.new_password')</label>
                                             </div>
 
