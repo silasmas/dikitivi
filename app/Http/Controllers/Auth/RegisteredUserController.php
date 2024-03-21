@@ -72,6 +72,8 @@ class RegisteredUserController extends Controller
             } else {
                 if (!empty($request->redirect) && $request->redirect == 'reset_password') {
                     return view('auth.register', [
+						'email' => $request->email,
+						'phone' => $request->phone,
                         'token_sent' => $request->token,
                         'redirect' => $request->redirect,
                         'error_message' => $pr->message
@@ -79,6 +81,8 @@ class RegisteredUserController extends Controller
 
                 } else {
                     return view('auth.register', [
+						'email' => $request->email,
+						'phone' => $request->phone,
                         'token_sent' => $request->token,
                         'error_message' => $pr->message
                     ]);
