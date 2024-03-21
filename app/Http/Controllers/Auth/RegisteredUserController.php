@@ -76,7 +76,7 @@ class RegisteredUserController extends Controller
 						'phone' => $request->phone,
                         'token_sent' => $request->token,
                         'redirect' => $request->redirect,
-                        'error_message' => $pr->message
+                        'error_message' => !empty($pr->data) ? $pr->data : $pr->message
                     ]);
 
                 } else {
@@ -84,7 +84,7 @@ class RegisteredUserController extends Controller
 						'email' => $request->email,
 						'phone' => $request->phone,
                         'token_sent' => $request->token,
-                        'error_message' => $pr->message
+                        'error_message' => !empty($pr->data) ? $pr->data : $pr->message
                     ]);
                 }
             }
