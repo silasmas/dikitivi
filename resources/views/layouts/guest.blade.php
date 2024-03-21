@@ -61,7 +61,7 @@
             {{ preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[2] : \Session::get('error_message') }}
     @endif
 
-    @if ($error_title)
+    @if (!empty($error_title))
             {{ $error_title }}
     @endif
 @endif
