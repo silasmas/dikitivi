@@ -143,6 +143,7 @@ class RegisteredUserController extends Controller
                     // Find password reset by email or phone API
                     $password_reset = $this::$api_client_manager::call('POST', getApiURL() . '/password_reset/search_by_email_or_phone/' . (!empty($user_inputs['email']) ? $user_inputs['email'] : $user_inputs['phone']) , null, $user_inputs);
 
+					dd($password_reset);
                     if ($password_reset->success) {
                         return view('auth.register', [
                             'token_sent' => __('miscellaneous.yes'),
