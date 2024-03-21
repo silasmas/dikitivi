@@ -4,7 +4,11 @@
 
                                 <div class="card border rounded-0 text-center shadow-0">
                                     <div class="card-body py-5">
+    @if (!empty($redirect))
+                                        <h6 class="h6 mb-4 text-center">@lang('miscellaneous.register_title2')</h6>
+    @else
                                         <h4 class="h4 mb-4 text-center">@lang('miscellaneous.register_title2')</h4>
+    @endif
 
                                         <form method="POST" action="{{ route('register') }}">
     @csrf
