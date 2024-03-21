@@ -45,24 +45,24 @@
 @if (!empty($exception))
             {{ $exception->getStatusCode() . ' - ' . __('notifications.' . $exception->getStatusCode() . '_title') }}
 @else
-    @if (Route::is('login'))
-            @lang('auth.login')
-    @endif
+    @if (!empty($error_title) || \Session::has('error_message'))
+            {{ !empty($error_title) ? $error_title : ( \Session::has('error_message') ? (preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[2] : \Session::get('error_message')) : '') }}
+    @else
+		@if (Route::is('login'))
+			@lang('auth.login')
+		@endif
 
-    @if (Route::is('register'))
-            @lang('auth.register')
-    @endif
+		@if (Route::is('register'))
+			@lang('auth.register')
+		@endif
 
-    @if (Route::is('password.request'))
-            @lang('auth.reset-password')
-    @endif
+		@if (Route::is('password.request'))
+			@lang('auth.reset-password')
+		@endif
 
-    @if (\Session::has('error_message'))
-            {{ preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[2] : \Session::get('error_message') }}
-    @endif
-
-    @if (!empty($error_title))
-            {{ $error_title }}
+		@if (!empty($request->redirect))
+			@lang('auth.reset-password')
+		@endif
     @endif
 @endif
         </title>
