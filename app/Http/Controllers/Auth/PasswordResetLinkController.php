@@ -45,11 +45,12 @@ class PasswordResetLinkController extends Controller
         ];
         $user = $this::$api_client_manager::call('POST', getApiURL() . '/user/update_password/' . $request->user_id, $request->api_token, $user_inputs);
 
+		dd($user);
         if ($user->success) {
-            return response()->redirectTo('/login');
+            return redirect('/login')->with('success_message', (!empty($user->data) ? $user->data : $user->message));
 
         } else {
-            $error_data = $user->message . '-' . $user->data;
+            $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message);
             $inputs_data = $request->former_password        // array[0]
                             . '-' . $request->user_id       // array[1]
                             . '-' . $request->api_token;    // array[2]
