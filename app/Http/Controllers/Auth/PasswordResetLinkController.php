@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Http\Controllers\ApiClientManager;
 
+/**
+ * @author Xanders
+ * @see https://www.linkedin.com/in/xanders-samoth-b2770737/
+ */
 class PasswordResetLinkController extends Controller
 {
     public static $api_client_manager;
@@ -46,7 +50,7 @@ class PasswordResetLinkController extends Controller
         $user = $this::$api_client_manager::call('PUT', getApiURL() . '/user/update_password/' . $request->user_id, $request->api_token, $user_inputs);
 
         if ($user->success) {
-            return redirect('/login')->with('success_message', (!empty($user->data) ? $user->data : $user->message));
+            return redirect('/login')->with('success_message', $user->message);
 
         } else {
 			return view('auth.reset-password', [

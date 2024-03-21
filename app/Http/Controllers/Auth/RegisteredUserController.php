@@ -9,6 +9,10 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
 
+/**
+ * @author Xanders
+ * @see https://www.linkedin.com/in/xanders-samoth-b2770737/
+ */
 class RegisteredUserController extends Controller
 {
     public static $api_client_manager;
