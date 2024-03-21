@@ -25,6 +25,7 @@ return [
     'verify-phone' => 'Enter your phone number',
     'verify-email-phone' => 'Enter your email or your phone number',
     'confirm-password' => 'Confirm password',
+    'otp-code' => 'OTP code',
     'otp-check' => 'Write the code you received by mail or SMS',
     // Error messages
     'unauthorized' => 'This space is reserved for the administrator',

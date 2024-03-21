@@ -65,6 +65,10 @@
 		@if (!empty($request->redirect))
 			@lang('auth.reset-password')
 		@endif
+
+		@if (!empty($token_sent))
+			@lang('auth.otp-code')
+		@endif
     @endif
 @endif
         </title>

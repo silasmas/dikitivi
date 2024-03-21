@@ -25,6 +25,7 @@ return [
     'verify-phone' => 'Donnez votre n° de téléphone',
     'verify-email-phone' => 'Donnez votre e-mail ou votre n° de téléphone',
     'confirm-password' => 'Confirmer mot de passe',
+    'otp-code' => 'Code OTP',
     'otp-check' => 'Ecrivez le code que vous avez reçu par mail ou SMS',
     // Error messages
     'unauthorized' => 'Cet espace est réservé à l\'administrateur',
