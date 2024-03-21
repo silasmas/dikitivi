@@ -18,8 +18,8 @@
                                             </div>
 
                                             <div class="form-floating mb-4">
-                                                <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.confirm_password')">
-                                                <label for="register_password">@lang('miscellaneous.account.update_password.confirm_password')</label>
+                                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.confirm_password')">
+                                                <label for="confirm_password">@lang('miscellaneous.account.update_password.confirm_password')</label>
                                             </div>
 
                                             <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.register')</button>
