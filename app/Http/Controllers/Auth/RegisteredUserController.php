@@ -98,6 +98,7 @@ class RegisteredUserController extends Controller
         } else {
             // User inputs
             $user_inputs = [
+                'id' => !empty($temporary_user) && !empty($temporary_user->data->id) ? $temporary_user->data->id : null,
                 'firstname' => !empty($temporary_user) && !empty($temporary_user->data->firstname) ? $temporary_user->data->firstname : $request->register_firstname,
                 'lastname' => !empty($temporary_user) && !empty($temporary_user->data->lastname) ? $temporary_user->data->lastname : $request->register_lastname,
                 'surname' => $request->register_surname,
