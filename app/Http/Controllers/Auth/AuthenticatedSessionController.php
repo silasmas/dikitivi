@@ -56,10 +56,14 @@ class AuthenticatedSessionController extends Controller
             }
 
         } else {
-			dd($user->message);
-            $resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . $user->data;
+			if (is_object($user->message)) {
+				$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . __('notifications.unverified_token') . '. <a href="' . route('password.request') . '">' . __('miscellaneous.check_now') . '</a>';
 
-            return redirect()->back()->with('response_error', $resp_error);
+			} else {
+				$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . $user->data;
+			}
+
+			return redirect()->back()->with('response_error', $resp_error);
         }
     }
 

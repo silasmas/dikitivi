@@ -34,6 +34,8 @@ return [
     'start' => 'Commencer',
     'add' => 'Ajouter',
     'buy' => 'Acheter',
+    'check' => 'Vérifier',
+    'check_now' => 'Vérifier maintenant',
     'choose' => 'Choisir',
     'validated' => 'Validé',
     'invalid' => 'Non valide',

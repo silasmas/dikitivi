@@ -34,6 +34,8 @@ return [
     'start' => 'Start',
     'add' => 'Add',
     'buy' => 'Buy now',
+    'check' => 'Verify',
+    'check_now' => 'Verify now',
     'choose' => 'Choose',
     'validated' => 'Validated',
     'invalid' => 'Invalid',
