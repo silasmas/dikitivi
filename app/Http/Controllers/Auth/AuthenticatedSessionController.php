@@ -57,7 +57,12 @@ class AuthenticatedSessionController extends Controller
 
         } else {
 			if (is_object($user->message)) {
-				$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . __('notifications.unverified_token') . '. <a href="' . route('password.request') . '">' . __('miscellaneous.check_now') . '</a>';
+				if (is_numeric($inputs['username'])) {
+					$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . __('notifications.unverified_token_phone') . '. <a href="' . route('password.request') . '">' . __('miscellaneous.check_now') . '</a>';
+
+				} else {
+					$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . __('notifications.unverified_token_email') . '. <a href="' . route('password.request') . '">' . __('miscellaneous.check_now') . '</a>';
+				}
 
 			} else {
 				$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . $user->data;
