@@ -130,7 +130,7 @@ function switchDisplay(current, element1, element2, message1, message2) {
             document.querySelector('#' + element1 + ' select').selectedIndex = 0;
         }
 
-        document.querySelector('#' + element1 + ' input').value = '';
+        document.querySelector('#' + element1 + ' input.form-control').value = '';
     }
 
     if (el2.classList.contains('d-none')) {
@@ -140,7 +140,7 @@ function switchDisplay(current, element1, element2, message1, message2) {
             document.querySelector('#' + element2 + ' select').selectedIndex = 0;
         }
 
-        document.querySelector('#' + element2 + ' input').value = '';
+        document.querySelector('#' + element2 + ' input.form-control').value = '';
     }
 }
 
