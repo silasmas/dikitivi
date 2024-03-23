@@ -218,7 +218,7 @@
                                                 </div>
 
                                                 <div class="col-12">
-                                                    <p class="mb-1" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', {{ '<i class='bi bi-envelope-at'></i>' @lang('miscellaneous.use_email') }}, {{ '<i class='bi bi-phone'></i>' @lang('miscellaneous.use_phone') }});">
+                                                    <p class="mb-1" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', {{ '<i class="bi bi-envelope-at"></i>' @lang('miscellaneous.use_email') }}, {{ '<i class="bi bi-phone"></i>' @lang('miscellaneous.use_phone') }});">
                                                         <i class="bi bi-envelope-at"></i> @lang('miscellaneous.use_email')
                                                     </p>
                                                 </div>
