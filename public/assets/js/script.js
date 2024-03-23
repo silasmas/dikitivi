@@ -130,7 +130,11 @@ function switchDisplay(current, element1, element2, message1, message2) {
             document.querySelector('#' + element1 + ' select').selectedIndex = 0;
         }
 
-        document.querySelector('#' + element1 + ' input.form-control').value = '';
+        document.querySelector('#' + element1 + ' input.form-control, #' + element1 + ' input[type="hidden"]').value = '';
+
+        if (el1.contains(document.getElementsByClassName('.text-value')[0])) {
+            document.querySelector('#' + element1 + ' .text-value').textContent = 'xxxx';
+        }
     }
 
     if (el2.classList.contains('d-none')) {
@@ -140,7 +144,11 @@ function switchDisplay(current, element1, element2, message1, message2) {
             document.querySelector('#' + element2 + ' select').selectedIndex = 0;
         }
 
-        document.querySelector('#' + element2 + ' input.form-control').value = '';
+        document.querySelector('#' + element2 + ' input.form-control, #' + element2 + ' input[type="hidden"]').value = '';
+
+        if (el1.contains(document.getElementsByClassName('.text-value')[0])) {
+            document.querySelector('#' + element2 + ' .text-value').textContent = 'xxxx';
+        }
     }
 }
 
