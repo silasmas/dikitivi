@@ -217,18 +217,6 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-12">
-                                                    <p class="mb-1">
-<?php
-$message1 = "<i class=\"bi bi-envelope-at me-2\"></i>" . __('miscellaneous.use_email');
-$message2 = "<i class=\"bi bi-phone me-2\"></i>" . __('miscellaneous.use_phone');
-?>
-                                                        <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
-                                                            <i class="bi bi-envelope-at me-2"></i> @lang('miscellaneous.use_email')
-                                                        </a>
-                                                    </p>
-                                                </div>
-
                                                 <div id="emailInput" class="col-12 d-none">
                                                     <div class="form-floating">
                                                         <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : '' }}">
@@ -267,6 +255,16 @@ $message2 = "<i class=\"bi bi-phone me-2\"></i>" . __('miscellaneous.use_phone')
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <p class="mb-1 text-end">
+<?php
+$message1 = "<i class=\"bi bi-envelope-at me-2\"></i>" . __('miscellaneous.use_email');
+$message2 = "<i class=\"bi bi-phone me-2\"></i>" . __('miscellaneous.use_phone');
+?>
+                                                        <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
+                                                            <i class="bi bi-envelope-at me-2"></i> @lang('miscellaneous.use_email')
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
 
