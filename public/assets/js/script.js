@@ -107,6 +107,25 @@ function getCookie(cname) {
 }
 
 /**
+ * Toggle Password Visibility
+ * 
+ * @param string current 
+ * @param string element 
+ */
+function passwordVisible(current, element) {
+    var el = document.getElementById(element);
+
+    if (el.type === 'password') {
+        el.type = 'text';
+        current.innerHTML = '<i class="bi bi-eye-slash"></i>'
+
+    } else {
+        el.type = 'password';
+        current.innerHTML = '<i class="bi bi-eye"></i>'
+    }
+}
+
+/**
  * Switch between two elements visibility
  * 
  * @param string current
@@ -131,10 +150,6 @@ function switchDisplay(current, element1, element2, message1, message2) {
         }
 
         document.querySelector('#' + element1 + ' input.form-control, #' + element1 + ' input[type="hidden"]').value = '';
-
-        if (el1.contains(document.getElementsByClassName('.text-value')[0])) {
-            document.querySelector('#' + element1 + ' .text-value').textContent = 'xxxx';
-        }
     }
 
     if (el2.classList.contains('d-none')) {
@@ -145,10 +160,6 @@ function switchDisplay(current, element1, element2, message1, message2) {
         }
 
         document.querySelector('#' + element2 + ' input.form-control, #' + element2 + ' input[type="hidden"]').value = '';
-
-        if (el1.contains(document.getElementsByClassName('.text-value')[0])) {
-            document.querySelector('#' + element2 + ' .text-value').textContent = 'xxxx';
-        }
     }
 }
 

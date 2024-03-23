@@ -12,14 +12,24 @@
                                             <input type="hidden" name="user_id" value="{{ !empty($temporary_user_id) ? $temporary_user_id : $temporary_user->id }}">
                                             <input type="hidden" name="api_token" value="{{ !empty($temporary_user_api_token) ? $temporary_user_api_token : $temporary_user->api_token }}">
 
-                                            <div class="form-floating mb-3">
-                                                <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.new_password')" autofocus>
+                                            <div class="mb-3">
                                                 <label for="register_password">@lang('miscellaneous.account.update_password.new_password')</label>
+                                                <div class="input-group">
+                                                    <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.new_password')" autofocus>
+                                                    <div class="input-group-btn bg-transparent border-0">
+                                                        <button class="btn btn-default bg-transparent border-0" type="button" onclick="event.stopPropagation(); event.preventDefault(); passwordVisible(this, 'register_password')"><i class="bi bi-eye"></i></button>
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <div class="form-floating mb-4">
-                                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.confirm_password')">
+                                            <div class="mb-4">
                                                 <label for="confirm_password">@lang('miscellaneous.account.update_password.confirm_password')</label>
+                                                <div class="input-group">
+                                                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="@lang('miscellaneous.account.update_password.confirm_password')">
+                                                    <div class="input-group-btn bg-transparent border-0">
+                                                        <button class="btn btn-default bg-transparent border-0" type="button" onclick="event.stopPropagation(); event.preventDefault(); passwordVisible(this, 'confirm_password')"><i class="bi bi-eye"></i></button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.register')</button>

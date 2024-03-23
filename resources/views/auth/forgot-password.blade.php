@@ -12,12 +12,12 @@
 
                                             <input type="hidden" name="redirect" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : 'reset_password' }}">
 
-                                            <div class="form-floating mb-3">
+                                            <div id="emailInput" class="form-floating mb-3">
                                                 <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : '' }}">
                                                 <label for="register_email">@lang('miscellaneous.email')</label>
                                             </div>
 
-                                            <div class="row g-3 mb-4">
+                                            <div id="phoneInput" class="row g-3 mb-1">
                                                 <div class="col-sm-5">
                                                     <div class="form-floating pt-0">
                                                         <select name="select_country" id="select_country1" class="form-select pt-2 shadow-0">
@@ -47,6 +47,16 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <p class="mb-4 text-end">
+<?php
+$message1 = "<i class=\"bi bi-envelope-at me-2\"></i>" . __('miscellaneous.use_email');
+$message2 = "<i class=\"bi bi-phone me-2\"></i>" . __('miscellaneous.use_phone');
+?>
+                                                <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
+                                                    <i class="bi bi-envelope-at me-2"></i> @lang('miscellaneous.use_email')
+                                                </a>
+                                            </p>
 
                                             <button type="submit" class="btn btn-block dktv-btn-pink rounded-pill shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.start')</button>
                                             <a href="{{ route('login') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.cancel')</a>
