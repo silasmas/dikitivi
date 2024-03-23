@@ -107,28 +107,6 @@ function getCookie(cname) {
 }
 
 /**
- * Reset "select" element
- * 
- * @param string selectElement 
- */
-function resetSelectElement(selectElement) {
-    var element = document.querySelector(selectElement);
-
-    // Look for a default selected option
-    if (element.options) {
-        for (var i = 0, iLen = element.options.length; i < iLen; i++) {
-            if (element.options[i].defaultSelected) {
-                element.selectedIndex = i;
-                return;
-            }
-        }
-    }
-
-    // If no option is the default, select first or none as appropriate
-    element.selectedIndex = 0; // or -1 for no option selected
-}
-
-/**
  * Switch between two elements visibility
  * 
  * @param string current
@@ -146,14 +124,14 @@ function switchDisplay(current, element1, element2, message1, message2) {
 
     if (el1.classList.contains('d-none')) {
         current.innerHTML = message1;
-        resetSelectElement('#' + element1 + ' select')
-        document.querySelector('#' + element1 + ' input').value = ''
+        document.querySelector('#' + element1 + ' select').selectedIndex = 0;
+        document.querySelector('#' + element1 + ' input').value = '';
     }
 
     if (el2.classList.contains('d-none')) {
         current.innerHTML = message2;
-        resetSelectElement('#' + element2 + ' select')
-        document.querySelector('#' + element2 + ' input').value = ''
+        document.querySelector('#' + element2 + ' select').selectedIndex = 0;
+        document.querySelector('#' + element2 + ' input').value = '';
     }
 }
 
