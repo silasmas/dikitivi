@@ -113,13 +113,14 @@ function getCookie(cname) {
  */
 function resetSelectElement(selectElement) {
     var element = document.querySelector(selectElement);
-    var options = element.options;
 
     // Look for a default selected option
-    for (var i = 0, iLen = options.length; i < iLen; i++) {
-        if (options[i].defaultSelected) {
-            element.selectedIndex = i;
-            return;
+    if (element.options) {
+        for (var i = 0, iLen = element.options.length; i < iLen; i++) {
+            if (element.options[i].defaultSelected) {
+                element.selectedIndex = i;
+                return;
+            }
         }
     }
 
