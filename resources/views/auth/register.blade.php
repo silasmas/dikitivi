@@ -223,7 +223,7 @@
 $message1 = "'<i class=\"bi bi-envelope-at me-2\"></i>' . __('miscellaneous.use_email')";
 $message2 = "'<i class=\"bi bi-phone me-2\"></i>' . __('miscellaneous.use_phone')";
 ?>
-                                                        <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', {{ $message1 }}, {{ $message2 }});">
+                                                        <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
                                                             <i class="bi bi-envelope-at me-2"></i> @lang('miscellaneous.use_email')
                                                         </a>
                                                     </p>
