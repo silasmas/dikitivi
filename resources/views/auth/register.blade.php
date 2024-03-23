@@ -258,7 +258,7 @@
                                                 </div>
 
                                                 <div class="col-12">
-                                                    <p class="mb-1 text-end">
+                                                    <p class="mb-0 text-end">
 <?php
 $message1 = "<i class=\"bi bi-envelope-at me-2\"></i>" . __('miscellaneous.use_email');
 $message2 = "<i class=\"bi bi-phone me-2\"></i>" . __('miscellaneous.use_phone');

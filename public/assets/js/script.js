@@ -107,6 +107,27 @@ function getCookie(cname) {
 }
 
 /**
+ * Reset "select" element
+ * 
+ * @param string selectElement 
+ */
+function resetSelectElement(selectElement) {
+    var element = document.querySelector(selectElement);
+    var options = element.options;
+
+    // Look for a default selected option
+    for (var i = 0, iLen = options.length; i < iLen; i++) {
+        if (options[i].defaultSelected) {
+            element.selectedIndex = i;
+            return;
+        }
+    }
+
+    // If no option is the default, select first or none as appropriate
+    element.selectedIndex = 0; // or -1 for no option selected
+}
+
+/**
  * Switch between two elements visibility
  * 
  * @param string current
@@ -116,18 +137,22 @@ function getCookie(cname) {
  * @param string message2
  */
 function switchDisplay(current, element1, element2, message1, message2) {
-    el1 = document.getElementById(element1);
-    el2 = document.getElementById(element2);
+    var el1 = document.getElementById(element1);
+    var el2 = document.getElementById(element2);
 
     el1.classList.toggle('d-none');
     el2.classList.toggle('d-none');
 
     if (el1.classList.contains('d-none')) {
         current.innerHTML = message1;
+        resetSelectElement('#' + element1 + ' select')
+        document.querySelector('#' + element1 + ' input').value = ''
     }
 
     if (el2.classList.contains('d-none')) {
         current.innerHTML = message2;
+        resetSelectElement('#' + element2 + ' select')
+        document.querySelector('#' + element2 + ' input').value = ''
     }
 }
 
@@ -632,7 +657,7 @@ $(function () {
                 }
             });
 
-        // Otherwise, change is theme locally
+            // Otherwise, change is theme locally
         } else {
             themeLight();
         }
@@ -664,7 +689,7 @@ $(function () {
                 }
             });
 
-        // Otherwise, change is theme locally
+            // Otherwise, change is theme locally
         } else {
             themeDark();
         }
@@ -696,7 +721,7 @@ $(function () {
                 }
             });
 
-        // Otherwise, change is theme locally
+            // Otherwise, change is theme locally
         } else {
             themeAuto();
         }
