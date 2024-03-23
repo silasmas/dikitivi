@@ -118,19 +118,28 @@ function getCookie(cname) {
 function switchDisplay(current, element1, element2, message1, message2) {
     var el1 = document.getElementById(element1);
     var el2 = document.getElementById(element2);
+    var select = document.getElementsByTagName('select')[0];
 
     el1.classList.toggle('d-none');
     el2.classList.toggle('d-none');
 
     if (el1.classList.contains('d-none')) {
         current.innerHTML = message1;
-        document.querySelector('#' + element1 + ' select').selectedIndex = 0;
+
+        if (el1.contains(select)) {
+            document.querySelector('#' + element1 + ' select').selectedIndex = 0;
+        }
+
         document.querySelector('#' + element1 + ' input').value = '';
     }
 
     if (el2.classList.contains('d-none')) {
         current.innerHTML = message2;
-        document.querySelector('#' + element2 + ' select').selectedIndex = 0;
+
+        if (el2.contains(select)) {
+            document.querySelector('#' + element2 + ' select').selectedIndex = 0;
+        }
+
         document.querySelector('#' + element2 + ' input').value = '';
     }
 }
