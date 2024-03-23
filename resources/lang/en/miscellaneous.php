@@ -245,6 +245,8 @@ return [
         'error' => 'Your confirmation doesn\'t match the new password',
     ],
     'choose_role' => 'Choose a role',
+    'use_email' => 'Use the Email address',
+    'use_phone' => 'Use the phone number',
     'go_login' => 'Already have an account',
     'api_token' => 'Your key for using of APIs',
     'amount' => 'Amount',

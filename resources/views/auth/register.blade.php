@@ -218,13 +218,19 @@
                                                 </div>
 
                                                 <div class="col-12">
+                                                    <p class="mb-1" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', {{ '<i class='bi bi-envelope-at'></i>' @lang('miscellaneous.use_email') }}, {{ '<i class='bi bi-phone'></i>' @lang('miscellaneous.use_phone') }});">
+                                                        <i class="bi bi-envelope-at"></i> @lang('miscellaneous.use_email')
+                                                    </p>
+                                                </div>
+
+                                                <div id="emailInput" class="col-12 d-none">
                                                     <div class="form-floating">
                                                         <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : '' }}">
                                                         <label for="register_email">@lang('miscellaneous.email')</label>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-12">
+                                                <div id="phoneInput" class="col-12">
                                                     <div class="row g-3">
                                                         <div class="col-sm-5">
                                                             <div class="form-floating pt-0">
