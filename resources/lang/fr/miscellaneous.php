@@ -245,7 +245,7 @@ return [
         'error' => 'Votre confirmation ne correspond pas au mot de passe',
     ],
     'choose_role' => 'Choisir un rôle',
-    'use_email' => 'Utiliser l\'adresse Email',
+    'use_email' => 'Utiliser l’adresse Email',
     'use_phone' => 'Utiliser le n° de téléphone',
     'go_login' => 'J\'ai déjà un compte',
     'api_token' => 'Votre clé pour utiliser les APIs',
