@@ -185,7 +185,7 @@
                                                     <label for="register_password">@lang('miscellaneous.password.label')</label>
                                                     <div class="input-group">
                                                         <input type="password" name="register_password" id="register_password" class="form-control" placeholder="@lang('miscellaneous.password.label')">
-                                                        <div class="input-group-btn bg-transparent border-0">
+                                                        <div class="input-group-btn px-2 border-0">
                                                             <button class="btn btn-default bg-transparent border-0" type="button" onclick="event.stopPropagation(); event.preventDefault(); passwordVisible(this, 'register_password')"><i class="bi bi-eye"></i></button>
                                                         </div>
                                                     </div>
@@ -195,7 +195,7 @@
                                                     <label for="confirm_password">@lang('miscellaneous.confirm_password.label')</label>
                                                     <div class="input-group">
                                                         <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="@lang('miscellaneous.confirm_password.label')">
-                                                        <div class="input-group-btn bg-transparent border-0">
+                                                        <div class="input-group-btn px-2 border-0">
                                                             <button class="btn btn-default bg-transparent border-0" type="button" onclick="event.stopPropagation(); event.preventDefault(); passwordVisible(this, 'confirm_password')"><i class="bi bi-eye"></i></button>
                                                         </div>
                                                     </div>
