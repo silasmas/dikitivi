@@ -39,6 +39,9 @@
 
         <!-- ============ Custom CSS ============ -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <style>
+			.footer-bottom a { color: white; }
+		</style>
 
         <title>
 @if (Route::is('home'))

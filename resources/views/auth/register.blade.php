@@ -10,7 +10,7 @@
                                         <h4 class="h4 mb-4 text-center">@lang('miscellaneous.register_title2')</h4>
     @endif
 
-                                        <form method="POST" action="{{ route('register') }}">
+                                        <form id="registerForm" method="POST" action="{{ route('register') }}">
     @csrf
 
     @if (!empty($token_sent))
@@ -223,14 +223,14 @@
                                                     </div>
                                                 </div>
 
-                                                <div id="emailInput" class="col-12 d-none">
+                                                <div id="emailInput" class="col-12">
                                                     <div class="form-floating">
                                                         <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : '' }}">
                                                         <label for="register_email">@lang('miscellaneous.email')</label>
                                                     </div>
                                                 </div>
 
-                                                <div id="phoneInput" class="col-12">
+                                                <div id="phoneInput" class="col-12 d-none">
                                                     <div class="row g-3">
                                                         <div class="col-sm-5">
                                                             <div class="form-floating pt-0">
@@ -267,10 +267,10 @@
                                                     <p class="mb-0 text-end">
 <?php
 $message1 = "<i class=\"bi bi-envelope-at me-2\"></i>" . __('miscellaneous.use_email');
-$message2 = "<i class=\"bi bi-phone me-2\"></i>" . __('miscellaneous.use_phone');
+$message2 = "<i class=\"bi bi-telephone me-2\"></i>" . __('miscellaneous.use_phone');
 ?>
-                                                        <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
-                                                            <i class="bi bi-envelope-at me-2"></i> @lang('miscellaneous.use_email')
+                                                        <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'registerForm', 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
+                                                            <i class="bi bi-telephone me-2"></i> @lang('miscellaneous.use_phone')
                                                         </a>
                                                     </p>
                                                 </div>
