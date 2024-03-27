@@ -1,6 +1,6 @@
 
             <!-- Breadcrumb -->
-            <div class="breadcrumb-area bg-image" data-bgimage="{{ asset('assets/img/pub/bg-home.png') }}">
+            <div class="breadcrumb-area bg-image d-md-block d-none" data-bgimage="{{ asset('assets/img/pub/bg-home.png') }}">
                 <div class="container">
                     <div class="in-breadcrumb">
                         <div class="row">

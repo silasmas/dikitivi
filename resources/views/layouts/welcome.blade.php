@@ -63,7 +63,7 @@
         <span class="d-none perfect-scrollbar"></span>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
-            <header class="header-area inner-header">
+            <header class="header-area inner-header d-md-block d-none">
                 <div class="container relative">
                     <div class="row{{ Route::is('home') ? ' align-items-center' : '' }}">
                         <div class="col-lg-3 col-7">
@@ -191,7 +191,7 @@
 @yield('welcome-content')
 
             <!-- Footer Area -->
-            <footer class="footer-area">
+            <footer class="footer-area d-md-block d-none">
                 <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}">
                     <div class="container">
                         <div class="row">
