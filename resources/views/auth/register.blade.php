@@ -4,7 +4,7 @@
 
                                 <div class="card border rounded-0 text-center shadow-0">
                                     <div class="card-body py-5">
-    @if (!empty($redirect))
+    @if (!empty($redirect) || !empty($token_sent))
                                         <p class="mb-4 text-center">@lang('auth.otp-check')</p>
     @else
                                         <h4 class="h4 mb-4 text-center">@lang('miscellaneous.register_title2')</h4>

@@ -191,11 +191,12 @@
 @yield('welcome-content')
 
             <!-- Footer Area -->
-            <footer class="footer-area{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
-                <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}">
+            <footer class="footer-area">
+                {{-- <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}"> --}}
+                <div class="footer-top-tow dktv-bg-blue">
                     <div class="container">
                         <div class="row">
-                            <div class="col-custom-4 mt--50">
+                            <div class="col-custom-4 mt--50{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
@@ -218,6 +219,7 @@
 
                                     <div class="footer-contet">
                                         <ul class="footer-list">
+                                            <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                             <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
                                             <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
@@ -226,7 +228,7 @@
                                 <!--// footer-widget -->
                             </div>
 
-                            <div class="col-custom-4 mt--50">
+                            <div class="col-custom-4 mt--50{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
@@ -245,7 +247,7 @@
                     </div>
                 </div>
 
-                <div class="footer-bottom">
+                <div class="footer-bottom{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
