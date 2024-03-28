@@ -117,11 +117,11 @@ function passwordVisible(current, element) {
 
     if (el.type === 'password') {
         el.type = 'text';
-        current.innerHTML = '<i class="bi bi-eye-slash"></i>'
+        current.innerHTML = '<i class="bi bi-eye-slash-fill"></i>'
 
     } else {
         el.type = 'password';
-        current.innerHTML = '<i class="bi bi-eye"></i>'
+        current.innerHTML = '<i class="bi bi-eye-fill"></i>'
     }
 }
 

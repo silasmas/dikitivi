@@ -7,7 +7,7 @@
                                         <h4 class="h4 mb-2 text-center">@lang('auth.reset-password')</h4>
                                         <p class="mb-4 text-secondary">@lang('auth.verify-email-phone')</p>
 
-                                        <form method="POST" action="{{ route('register') }}">
+                                        <form id="registerForm" method="POST" action="{{ route('register') }}">
     @csrf
 
                                             <input type="hidden" name="redirect" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : 'reset_password' }}">
@@ -17,7 +17,7 @@
                                                 <label for="register_email">@lang('miscellaneous.email')</label>
                                             </div>
 
-                                            <div id="phoneInput" class="row g-3 mb-1">
+                                            <div id="phoneInput" class="row g-3 mb-3 d-none">
                                                 <div class="col-sm-5">
                                                     <div class="form-floating pt-0">
                                                         <select name="select_country" id="select_country1" class="form-select pt-2 shadow-0">
@@ -51,10 +51,10 @@
                                             <p class="mb-4 text-end">
 <?php
 $message1 = "<i class=\"bi bi-envelope-at me-2\"></i>" . __('miscellaneous.use_email');
-$message2 = "<i class=\"bi bi-phone me-2\"></i>" . __('miscellaneous.use_phone');
+$message2 = "<i class=\"bi bi-telephone me-2\"></i>" . __('miscellaneous.use_phone');
 ?>
-                                                <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
-                                                    <i class="bi bi-envelope-at me-2"></i> @lang('miscellaneous.use_email')
+                                                <a role="button" onclick="event.stopPropagation(); event.preventDefault(); switchDisplay(this, 'registerForm', 'emailInput', 'phoneInput', '{{ $message1 }}', '{{ $message2 }}');">
+                                                    <i class="bi bi-telephone me-2"></i> @lang('miscellaneous.use_phone')
                                                 </a>
                                             </p>
 
