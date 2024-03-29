@@ -222,6 +222,7 @@
                                             <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                             <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
                                             <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
+                                            <li><a href="{{ route('login') }}">@lang('miscellaneous.login_title1')</a></li>
                                         </ul>
                                     </div>
                                 </div>
