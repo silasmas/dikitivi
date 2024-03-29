@@ -206,7 +206,7 @@
                                 </div>
                                 <!--// Single-contact-info -->
 
-                                <!-- Single-contact-info -->
+                                {{-- <!-- Single-contact-info -->
                                 <div class="single-contact-info">
                                     <div class="contact-info-icon">
                                         <i class="zmdi zmdi-phone"></i>
@@ -215,7 +215,7 @@
                                         <p><a href="#" class="text-white">@lang('miscellaneous.public.footer.head_office.phone')</a></p>
                                     </div>
                                 </div>
-                                <!--// Single-contact-info -->
+                                <!--// Single-contact-info --> --}}
 
                                 <!-- Single-contact-info -->
                                 <div class="single-contact-info">
