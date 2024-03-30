@@ -40,9 +40,11 @@ const isWebview = (isAndroid && /; wv\)/.test(normalizedUserAgent)) || (isIos &
  */
 if (isWebview) {
     document.querySelector('.detect-webview').classList.add('d-none');
+    $('.detect-webview').addClass('d-none');
 
 } else {
-    document.querySelector('.detect-webview').classList.add('d-none');
+    document.querySelector('.detect-webview').classList.remove('d-none');
+    $('.detect-webview').removeClass('d-none');
 }
 // const standalone = window.navigator.standalone;
 // const userAgent = window.navigator.userAgent.toLowerCase();
