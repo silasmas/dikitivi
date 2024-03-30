@@ -40,6 +40,11 @@
 
         <!-- ============ Custom CSS ============ -->
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+@if (request()->hasHeader('HTTP_X_REQUESTED_WITH'))
+        <style>
+            .detect-webview { display: none; }
+        </style>
+@endif
 
         <title>
 @if (!empty($exception))

@@ -39,9 +39,11 @@
 
         <!-- ============ Custom CSS ============ -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+@if (request()->hasHeader('HTTP_X_REQUESTED_WITH'))
         <style>
-			.footer-bottom a { color: white; }
-		</style>
+            .detect-webview { display: none; }
+        </style>
+@endif
 
         <title>
 @if (Route::is('home'))
@@ -63,7 +65,7 @@
         <span class="d-none perfect-scrollbar"></span>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
-            <header class="header-area inner-header{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
+            <header class="header-area inner-header detect-webview">
                 <div class="container relative">
                     <div class="row{{ Route::is('home') ? ' align-items-center' : '' }}">
                         <div class="col-lg-3 col-7">
@@ -196,7 +198,7 @@
                 <div class="footer-top-tow dktv-bg-blue">
                     <div class="container">
                         <div class="row">
-                            <div class="col-custom-4 mt--50{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
+                            <div class="col-custom-4 mt--50 detect-webview">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
@@ -229,7 +231,7 @@
                                 <!--// footer-widget -->
                             </div>
 
-                            <div class="col-custom-4 mt--50{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
+                            <div class="col-custom-4 mt--50 detect-webview">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
@@ -248,7 +250,7 @@
                     </div>
                 </div>
 
-                <div class="footer-bottom{{ Route::is('home') ? '' : ' d-md-block d-none'}}">
+                <div class="footer-bottom detect-webview">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">

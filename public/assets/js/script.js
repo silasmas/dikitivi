@@ -24,6 +24,45 @@ var cropper;
 // Toggle app theme
 const MDB_LIGHT = currentHost + '/assets/addons/custom/mdb/css/mdb.min.css';
 const MDB_DARK = currentHost + '/assets/addons/custom/mdb/css/mdb.dark.min.css';
+// Mobile user agent
+const navigator = window.navigator;
+const userAgent = navigator.userAgent;
+const normalizedUserAgent = userAgent.toLowerCase();
+const standalone = navigator.standalone;
+
+const isIos = /ip(ad|hone|od)/.test(normalizedUserAgent) || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+const isAndroid = /android/.test(normalizedUserAgent);
+const isSafari = /safari/.test(normalizedUserAgent);
+const isWebview = (isAndroid && /; wv\)/.test(normalizedUserAgent)) || (isIos && !standalone && !isSafari);
+
+/**
+ * If the window is webview, hide some elements
+ */
+if (isWebview) {
+    document.querySelector('.detect-webview').classList.add('d-none');
+
+} else {
+    document.querySelector('.detect-webview').classList.add('d-none');
+}
+// const standalone = window.navigator.standalone;
+// const userAgent = window.navigator.userAgent.toLowerCase();
+// const safari = /safari/.test(userAgent);
+// const ios = /iphone|ipod|ipad/.test(userAgent);
+
+// if (ios) {
+//     if (!standalone && safari) {
+//         $('.detect-mobile').addClass('d-none');
+
+//     } else if (standalone && !safari) {
+//         $('.detect-mobile').addClass('d-none');
+
+//     } else if (!standalone && !safari) {
+//         $('.detect-mobile').removeClass('d-none');
+//     };
+
+// } else {
+//     $('.detect-mobile').removeClass('d-none');
+// };
 
 /**
  * Set theme to light
