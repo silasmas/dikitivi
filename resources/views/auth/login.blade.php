@@ -9,19 +9,13 @@
                                         <form method="POST" action="{{ route('login') }}">
     @csrf
                                             <div class="form-floating mb-3">
-                                                <input type="username" name="login_username" id="login_username" class="form-control" aria-describedby="login_username_error" placeholder="@lang('miscellaneous.login_username')" value="{{ \Session::has('response_error') ? explode('-', \Session::get('response_error'))[0] : '' }}" {{ \Session::has('response_error') && !empty(explode('-', \Session::get('response_error'))[0])  ? '' : 'autofocus' }}>
+                                                <input type="username" name="login_username" id="login_username" class="form-control" placeholder="@lang('miscellaneous.login_username')" value="{{ \Session::has('error_message_login') ? explode(', ', explode('~', \Session::get('error_message_login'))[1])[0] : '' }}" {{ \Session::has('error_message_login') && !empty(explode(', ', explode('~', \Session::get('error_message_login'))[1])[0])  ? '' : 'autofocus' }}>
                                                 <label for="login_username">@lang('miscellaneous.login_username')</label>
-    @if (\Session::has('response_error') && explode('-', \Session::get('response_error'))[2] == explode('-', \Session::get('response_error'))[0])
-                                                <small id="login_username_error" class="form-text text-danger">{{ explode('-', \Session::get('response_error'))[3] }}</small>
-    @endif
                                             </div>
 
                                             <div class="form-floating mb-3">
-                                                <input type="password" name="login_password" id="login_password" class="form-control" aria-describedby="login_password_error" placeholder="@lang('miscellaneous.password.label')" {{ \Session::has('response_error') && !empty(explode('-', \Session::get('response_error'))[0]) ? 'autofocus' : '' }}>
+                                                <input type="password" name="login_password" id="login_password" class="form-control" placeholder="@lang('miscellaneous.password.label')" {{ \Session::has('error_message_login') && !empty(explode(', ', explode('~', \Session::get('error_message_login'))[1])[0]) ? 'autofocus' : '' }}>
                                                 <label for="login_password">@lang('miscellaneous.password.label')</label>
-    @if (\Session::has('response_error') && explode('-', \Session::get('response_error'))[2] == explode('-', \Session::get('response_error'))[1])
-                                                <small id="login_password_error" class="form-text text-danger">{{ explode('-', \Session::get('response_error'))[3] }}</small>
-    @endif
                                             </div>
 
                                             <div class="row mb-3">

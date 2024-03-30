@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         // Get inputs
         $inputs = [
@@ -58,17 +58,24 @@ class AuthenticatedSessionController extends Controller
         } else {
 			if (is_object($user->message)) {
 				if (is_numeric($inputs['username'])) {
-					$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . __('notifications.unverified_token_phone') . '. <a href="' . route('password.request') . '">' . __('miscellaneous.check_now') . '</a>';
+                    $error_data = $user->data . ', ' . __('notifications.unverified_token_phone') . '.<br><strong><a href="' . route('password.request', ['check' => 'phone']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
+                    $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
+
+                    return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
 
 				} else {
-					$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . __('notifications.unverified_token_email') . '. <a href="' . route('password.request') . '">' . __('miscellaneous.check_now') . '</a>';
+                    $error_data = $user->data . ', ' . __('notifications.unverified_token_email') . '.<br><strong><a href="' . route('password.request', ['check' => 'email']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
+                    $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
+
+                    return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
 				}
 
 			} else {
-				$resp_error = $inputs['username'] . '-' . $inputs['password'] . '-' . $user->message . '-' . $user->data;
-			}
+                $error_data = $user->message . ', ' . $user->data . ', ' . __('notifications.error_title');
+                $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
-			return redirect()->back()->with('response_error', $resp_error);
+                return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
+			}
         }
     }
 

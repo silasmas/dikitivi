@@ -50,11 +50,11 @@
 @if (!empty($exception))
             {{ $exception->getStatusCode() . ' - ' . __('notifications.' . $exception->getStatusCode() . '_title') }}
 @else
-    @if (!empty($error_title) || \Session::has('error_message'))
-            {{ !empty($error_title) ? $error_title : ( \Session::has('error_message') ? (preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[2] : \Session::get('error_message')) : '') }}
+    @if (!empty($error_title) || \Session::has('error_message') || \Session::has('error_message_login'))
+            {{ !empty($error_title) ? $error_title : (\Session::has('error_message_login') ? preg_match('/~/', \Session::get('error_message_login')) ? explode(', ', explode('~', \Session::get('error_message_login'))[0])[2] : \Session::get('error_message_login') : (\Session::has('error_message') ? (preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[2] : \Session::get('error_message')) : '')) }}
     @endif
 
-    @if (empty($error_title) && !\Session::has('error_message'))
+    @if (empty($error_title) && Session::get('error_message') == null)
 		@if (Route::is('login'))
 			@lang('auth.login')
 		@endif
@@ -120,7 +120,23 @@
                     <div class="row position-fixed w-100" style="opacity: 0.9; z-index: 999;">
                         <div class="col-lg-5 col-sm-6 mx-auto">
                             <div class="alert alert-success alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
-                                <i class="bi bi-info-circle me-2 fs-4" style="vertical-align: -3px;"></i> {{ \Session::get('success_message') }}
+                                <i class="bi bi-info-circle me-2 fs-4" style="vertical-align: -3px;"></i> {!! \Session::get('success_message') !!}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Alert End -->
+
+@endif
+
+@if (\Session::has('error_message_login'))
+                <!-- Alert Start -->
+                <div class="position-relative">
+                    <div class="row position-fixed w-100" style="opacity: 0.9; z-index: 999;">
+                        <div class="col-lg-5 col-sm-6 mx-auto">
+                            <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
+                                <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! preg_match('/~/', \Session::get('error_message_login')) ? explode(', ', explode('~', \Session::get('error_message_login'))[0])[1] : \Session::get('error_message_login') !!}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
@@ -136,7 +152,7 @@
                     <div class="row position-fixed w-100" style="opacity: 0.9; z-index: 999;">
                         <div class="col-lg-5 col-sm-6 mx-auto">
                             <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
-                                <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {{ preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[1] : \Session::get('error_message') }}
+                                <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[1] : \Session::get('error_message') !!}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
@@ -152,7 +168,7 @@
                     <div class="row position-fixed w-100" style="opacity: 0.9; z-index: 999;">
                         <div class="col-lg-5 col-sm-6 mx-auto">
                             <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
-                                <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {{ $error_message }}
+                                <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! $error_message !!}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
@@ -176,6 +192,7 @@
                                 </div>
 @yield('guest-content')
                                 <p class="mt-3 mb-0 text-center">@lang('miscellaneous.toggle_theme')</p>
+
                                 <div class="d-flex justify-content-center">
                                     <div role="group" id="themeToggler" class="btn-group shadow-0" aria-label="Theme toggler">
                                         <button type="button" class="btn btn-light light"  data-mdb-ripple-init><i class="bi bi-sun"></i></button>
@@ -183,6 +200,8 @@
                                         <button type="button" class="btn btn-light auto"  data-mdb-ripple-init><i class="bi bi-circle-half"></i></button>
                                     </div>
                                 </div>
+
+                                <p class="mt-3 mb-0 text-center">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
                             </div>
                         </div>
                     </div>
@@ -191,6 +210,7 @@
             </main>
             <!--// Page Conttent -->
 
+@empty($comingSoon)
             <!-- Footer Area -->
             <footer class="footer-area">
                 <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}">
@@ -264,6 +284,7 @@
                 </div>
             </footer>
             <!--// Footer Area -->
+@endempty
         </div>
         <!-- Main Wrapper End -->
 

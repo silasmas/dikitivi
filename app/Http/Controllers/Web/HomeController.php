@@ -49,7 +49,8 @@ class HomeController extends Controller
             return view('home');
 
         } else {
-            return view('welcome');
+            // return view('welcome');
+            return view('coming-soon', ['comingSoon' => 'yes']);
         }
     }
 

@@ -5,27 +5,27 @@
  * @see https://www.linkedin.com/in/xanders-samoth-b2770737/
  */
 // Common variables
-var currentLanguage = $('html').attr('lang');
-var currentUser = $('[name="dktv-visitor"]').attr('content');
-var currentHost = $('[name="dktv-url"]').attr('content');
-var apiHost = $('[name="dktv-api-url"]').attr('content');
-var headers = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language };
+const navigator = window.navigator;
+const currentLanguage = $('html').attr('lang');
+const currentUser = $('[name="dktv-visitor"]').attr('content');
+const currentHost = $('[name="dktv-url"]').attr('content');
+const apiHost = $('[name="dktv-api-url"]').attr('content');
+const headers = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language };
 // Modals
-var modalUser = $('#cropModalUser');
+const modalUser = $('#cropModalUser');
 // Preview images
-var retrievedAvatar = document.getElementById('retrieved_image');
-var retrievedMediaCover = document.getElementById('retrieved_media_cover');
-var currentMediaCover = document.querySelector('#mediaCoverWrapper img');
-var retrievedImageRecto = document.getElementById('retrieved_image_recto');
-var currentImageRecto = document.querySelector('#rectoImageWrapper img');
-var retrievedImageVerso = document.getElementById('retrieved_image_verso');
-var currentImageVerso = document.querySelector('#versoImageWrapper img');
-var cropper;
+const retrievedAvatar = document.getElementById('retrieved_image');
+const retrievedMediaCover = document.getElementById('retrieved_media_cover');
+const currentMediaCover = document.querySelector('#mediaCoverWrapper img');
+const retrievedImageRecto = document.getElementById('retrieved_image_recto');
+const currentImageRecto = document.querySelector('#rectoImageWrapper img');
+const retrievedImageVerso = document.getElementById('retrieved_image_verso');
+const currentImageVerso = document.querySelector('#versoImageWrapper img');
+let cropper;
 // Toggle app theme
 const MDB_LIGHT = currentHost + '/assets/addons/custom/mdb/css/mdb.min.css';
 const MDB_DARK = currentHost + '/assets/addons/custom/mdb/css/mdb.dark.min.css';
 // Mobile user agent
-const navigator = window.navigator;
 const userAgent = navigator.userAgent;
 const normalizedUserAgent = userAgent.toLowerCase();
 const standalone = navigator.standalone;
@@ -39,11 +39,9 @@ const isWebview = (isAndroid && /; wv\)/.test(normalizedUserAgent)) || (isIos &
  * If the window is webview, hide some elements
  */
 if (isWebview) {
-    document.querySelector('.detect-webview').classList.add('d-none');
     $('.detect-webview').addClass('d-none');
 
 } else {
-    document.querySelector('.detect-webview').classList.remove('d-none');
     $('.detect-webview').removeClass('d-none');
 }
 // const standalone = window.navigator.standalone;
