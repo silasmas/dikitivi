@@ -25,6 +25,7 @@ Route::get('/symlink', function () {return view('symlink');})->name('generate_sy
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
 Route::get('/notification', 'App\Http\Controllers\Web\HomeController@notification')->name('notification.home');
+Route::get('/donation', 'App\Http\Controllers\Web\HomeController@index')->name('donation');
 Route::get('/about', 'App\Http\Controllers\Web\HomeController@about')->name('about');
 Route::get('/about/{entity}', 'App\Http\Controllers\Web\HomeController@aboutEntity')->name('about.entity');
 Route::get('/live', 'App\Http\Controllers\Web\HomeController@live')->name('live.home');
