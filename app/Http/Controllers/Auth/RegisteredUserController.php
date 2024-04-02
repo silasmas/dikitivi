@@ -70,10 +70,12 @@ class RegisteredUserController extends Controller
                     if ($request->redirect == 'login') {
                         if (!empty($request->check_param)) {
                             if ($request->check_param == 'email') {
-                                return redirect('/login')->with('success_message', __('auth.verified-email') . '. ' . __('miscellaneous.login_title2'));
+                                dd('/' . $request->redirect);
+                                return redirect('/' . $request->redirect)->with('success_message', __('auth.verified-email') . '. ' . __('miscellaneous.login_title2'));
                             }
+
                             if ($request->check_param == 'phone') {
-                                return redirect('/login')->with('success_message', __('auth.verified-phone') . '. ' . __('miscellaneous.login_title2'));
+                                return redirect('/' . $request->redirect)->with('success_message', __('auth.verified-phone') . '. ' . __('miscellaneous.login_title2'));
                             }
                         }
                     }
