@@ -5,7 +5,16 @@
                                 <div class="card border rounded-0 text-center shadow-0">
                                     <div class="card-body py-5">
     @if (!empty($redirect) || !empty($token_sent))
+        @if (!empty($check_param))
+            @if ($check_param == 'email')
+                                        <p class="mb-4 text-center">@lang('auth.otp-check-email')</p>
+            @endif
+            @if ($check_param == 'phone')
+                                        <p class="mb-4 text-center">@lang('auth.otp-check-phone')</p>
+            @endif
+        @else
                                         <p class="mb-4 text-center">@lang('auth.otp-check')</p>
+        @endif
     @else
                                         <h4 class="h4 mb-4 text-center">@lang('miscellaneous.register_title2')</h4>
     @endif
@@ -16,6 +25,9 @@
     @if (!empty($token_sent))
         @if (!empty($redirect))
                                             <input type="hidden" name="redirect" value="{{ $redirect }}">
+        @endif
+        @if (!empty($check_param))
+                                            <input type="hidden" name="check_param" value="{{ $check_param }}">
         @endif
                                             <input type="hidden" name="email" value="{{ $email }}">
                                             <input type="hidden" name="phone" value="{{ $phone }}">

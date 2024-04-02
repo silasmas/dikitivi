@@ -56,24 +56,59 @@
 
     @if (empty($error_title) && Session::get('error_message') == null)
 		@if (Route::is('login'))
-			@lang('auth.login')
+            @if (request()->has('check_param'))
+                @if (request()->get('check_param') == 'email')
+                    @lang('auth.verified-email')
+                @endif
+                @if (request()->get('check_param') == 'phone')
+                    @lang('auth.verified-phone')
+                @endif
+            @else
+                @lang('auth.login')
+            @endif
 		@endif
 
-		@if (Route::is('register') || !empty($request->temporary_user_id) || !empty($temporary_user))
-			@lang('auth.register')
+		@if (Route::is('register') || !empty($request->temporary_user_id))
+            @if (!empty($token_sent))
+                @lang('auth.otp-code')
+            @else
+                @if (!empty($temporary_user))
+                    @lang('miscellaneous.account.personal_infos.title')
+                @else
+                    @if (!empty($request->redirect))
+                        @if (request()->has('check'))
+                            @if (request()->get('check') == 'email')
+                                @lang('auth.verify-email')
+                            @endif
+                            @if (request()->get('check') == 'phone')
+                                @lang('auth.verify-phone')
+                            @endif
+                        @else
+                            @lang('auth.reset-password')
+                        @endif
+                    @else
+                        @lang('auth.register')
+                    @endif
+                @endif
+            @endif
 		@endif
 
 		@if (Route::is('password.request') || !empty($former_password))
-			@lang('auth.reset-password')
+            @if (request()->has('check'))
+                @if (request()->get('check') == 'email')
+                    @lang('auth.verify-email')
+                @endif
+                @if (request()->get('check') == 'phone')
+                    @lang('auth.verify-phone')
+                @endif
+            @else
+                @lang('auth.reset-password')
+            @endif
 		@endif
 
-		@if (!empty($request->redirect))
-			@lang('auth.reset-password')
-		@endif
-
-		@if (!empty($token_sent))
-			@lang('auth.otp-code')
-		@endif
+        @if (!empty($token_sent))
+            @lang('auth.otp-code')
+        @endif
     @endif
 @endif
         </title>
@@ -121,7 +156,7 @@
                         <div class="col-lg-5 col-sm-6 mx-auto">
                             <div class="alert alert-success alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
                                 <i class="bi bi-info-circle me-2 fs-4" style="vertical-align: -3px;"></i> {!! \Session::get('success_message') !!}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close text-success" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
                     </div>
@@ -137,7 +172,7 @@
                         <div class="col-lg-5 col-sm-6 mx-auto">
                             <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
                                 <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! preg_match('/~/', \Session::get('error_message_login')) ? explode(', ', explode('~', \Session::get('error_message_login'))[0])[1] : \Session::get('error_message_login') !!}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close text-danger" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
                     </div>
@@ -153,7 +188,7 @@
                         <div class="col-lg-5 col-sm-6 mx-auto">
                             <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
                                 <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[1] : \Session::get('error_message') !!}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close text-danger" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
                     </div>
@@ -169,7 +204,7 @@
                         <div class="col-lg-5 col-sm-6 mx-auto">
                             <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
                                 <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! $error_message !!}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close text-danger" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
                     </div>

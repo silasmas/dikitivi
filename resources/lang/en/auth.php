@@ -24,9 +24,13 @@ return [
     'verify-email' => 'Enter your email',
     'verify-phone' => 'Enter your phone number',
     'verify-email-phone' => 'Enter your email or your phone number',
+    'verified-email' => 'E-mail verified',
+    'verified-phone' => 'Phone number verified',
     'confirm-password' => 'Confirm password',
     'otp-code' => 'OTP code',
     'otp-check' => 'Write the code you received by mail or SMS',
+    'otp-check-email' => 'Write the code you received by mail',
+    'otp-check-phone' => 'Write the code you received by SMS',
     // Error messages
     'unauthorized' => 'This space is reserved for the administrator',
     'failed' => 'These credentials do not match our records.',

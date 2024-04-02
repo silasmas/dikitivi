@@ -24,9 +24,13 @@ return [
     'verify-email' => 'Donnez votre e-mail',
     'verify-phone' => 'Donnez votre n° de téléphone',
     'verify-email-phone' => 'Donnez votre e-mail ou votre n° de téléphone',
+    'verified-email' => 'E-mail vérifié',
+    'verified-phone' => 'N° de téléphone vérifié',
     'confirm-password' => 'Confirmer mot de passe',
     'otp-code' => 'Code OTP',
     'otp-check' => 'Ecrivez le code que vous avez reçu par mail ou SMS',
+    'otp-check-email' => 'Ecrivez le code que vous avez reçu par mail',
+    'otp-check-phone' => 'Ecrivez le code que vous avez reçu par SMS',
     // Error messages
     'unauthorized' => 'Cet espace est réservé à l\'administrateur',
     'failed' => 'Ces informations d\identification ne correspondent pas à nos enregistrement.',

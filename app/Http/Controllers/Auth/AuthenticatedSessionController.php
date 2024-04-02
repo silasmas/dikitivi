@@ -56,26 +56,26 @@ class AuthenticatedSessionController extends Controller
             }
 
         } else {
-			if (is_object($user->message)) {
-				if (is_numeric($inputs['username'])) {
-                    $error_data = $user->data . ', ' . __('notifications.unverified_token_phone') . '.<br><strong><a href="' . route('password.request', ['check' => 'phone']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
+            if (is_object($user->data)) {
+                if (is_numeric($inputs['username'])) {
+                    $error_data = $user->message . ', ' . __('notifications.unverified_token_phone') . '.<br><strong><a href="' . route('password.request', ['check' => 'phone']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
                     $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
                     return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
 
-				} else {
-                    $error_data = $user->data . ', ' . __('notifications.unverified_token_email') . '.<br><strong><a href="' . route('password.request', ['check' => 'email']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
+                } else {
+                    $error_data = $user->message . ', ' . __('notifications.unverified_token_email') . '.<br><strong><a href="' . route('password.request', ['check' => 'email']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
                     $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
                     return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
-				}
+                }
 
-			} else {
-                $error_data = $user->message . ', ' . $user->data . ', ' . __('notifications.error_title');
+            } else {
+                $error_data = $user->data . ', ' . $user->message . ', ' . __('notifications.error_title');
                 $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
                 return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
-			}
+            }
         }
     }
 

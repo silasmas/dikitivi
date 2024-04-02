@@ -59,11 +59,24 @@ class RegisteredUserController extends Controller
             if ($pr->success) {
                 $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
-                if (!empty($request->redirect) && $request->redirect == 'reset_password') {
-                    return view('auth.reset-password', [
-                        'temporary_user' => $pr->data->user,
-                        'former_password' => $pr->data->password_reset->former_password,
-                    ]);
+                if (!empty($request->redirect)) {
+                    if ($request->redirect == 'reset_password') {
+                        return view('auth.reset-password', [
+                            'temporary_user' => $pr->data->user,
+                            'former_password' => $pr->data->password_reset->former_password,
+                        ]);
+                    }
+
+                    if ($request->redirect == 'login') {
+                        if (!empty($request->check_param)) {
+                            if ($request->check_param == 'email') {
+                                return redirect('/login')->with('success_message', __('auth.verified-email') . '. ' . __('miscellaneous.login_title2'));
+                            }
+                            if ($request->check_param == 'phone') {
+                                return redirect('/login')->with('success_message', __('auth.verified-phone') . '. ' . __('miscellaneous.login_title2'));
+                            }
+                        }
+                    }
 
                 } else {
                     return view('auth.register', [
@@ -80,7 +93,7 @@ class RegisteredUserController extends Controller
                         'token_sent' => $request->token,
                         'redirect' => $request->redirect,
 						'error_title' => __('notifications.error_title'),
-                        'error_message' => !empty($pr->data) ? $pr->data : $pr->message
+                        'error_message' => $pr->message
                     ]);
 
                 } else {
@@ -89,7 +102,7 @@ class RegisteredUserController extends Controller
 						'phone' => $request->phone,
                         'token_sent' => $request->token,
 						'error_title' => __('notifications.error_title'),
-                        'error_message' => !empty($pr->data) ? $pr->data : $pr->message
+                        'error_message' => $pr->message
                     ]);
                 }
             }
@@ -130,7 +143,7 @@ class RegisteredUserController extends Controller
                     $cond1 = explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[0];
                     $cond2 = explode('-', $user_inputs['birth_date'])[1] . '/' . explode('-', $user_inputs['birth_date'])[2] . '/' . explode('-', $user_inputs['birth_date'])[0];
 
-                    $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message) . '-' . __('notifications.error_title');
+                    $error_data = $user->message . '-' . $user->message . '-' . __('notifications.error_title');
                     $inputs_data = $user_inputs['firstname']                                                // array[0]
                                     . '-' . $user_inputs['lastname']                                        // array[1]
                                     . '-' . $user_inputs['surname']                                         // array[2]
@@ -153,20 +166,41 @@ class RegisteredUserController extends Controller
                     // Find password reset by email or phone API
                     $password_reset = $this::$api_client_manager::call('GET', getApiURL() . '/password_reset/search_by_email_or_phone/' . (!empty($user_inputs['email']) ? $user_inputs['email'] : $user_inputs['phone']) , null, $user_inputs);
 
-                    if ($password_reset->success) {
-                        return view('auth.register', [
-                            'redirect' => $request->redirect,
-                            'token_sent' => __('miscellaneous.yes'),
-                            'email' => $user_inputs['email'],
-                            'phone' => $user_inputs['phone']
-                        ]);
+                    if (!empty($request->check_param)) {
+                        if ($password_reset->success) {
+                            return view('auth.register', [
+                                'redirect' => $request->redirect,
+                                'check_param' => $request->check_param,
+                                'token_sent' => __('miscellaneous.yes'),
+                                'email' => $user_inputs['email'],
+                                'phone' => $user_inputs['phone']
+                            ]);
+
+                        } else {
+                            $error_data = $password_reset->message . '-' . $password_reset->message . '-' . __('notifications.error_title');
+                            $inputs_data = ($request->check_param == 'email' ? $user_inputs['email'] : 'EMPTY')  // array[0]
+                                            . '-' . $request->redirect                                      // array[1]
+                                            . '-' . $request->check_param;                                  // array[2]
+
+                            return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                        }
 
                     } else {
-                        $error_data = $password_reset->message . '-' . (!empty($password_reset->data) ? $password_reset->data : $password_reset->message) . '-' . __('notifications.error_title');
-                        $inputs_data = $user_inputs['email']		// array[0]
-                                        . '-' . $request->redirect;	// array[1]
+                        if ($password_reset->success) {
+                            return view('auth.register', [
+                                'redirect' => $request->redirect,
+                                'token_sent' => __('miscellaneous.yes'),
+                                'email' => $user_inputs['email'],
+                                'phone' => $user_inputs['phone']
+                            ]);
 
-                        return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                        } else {
+                            $error_data = $password_reset->message . '-' . $password_reset->message . '-' . __('notifications.error_title');
+                            $inputs_data = $user_inputs['email']		// array[0]
+                                            . '-' . $request->redirect;	// array[1]
+
+                            return redirect()->back()->with('error_message', $error_data . '~' . $inputs_data);
+                        }
                     }
 
                 } else {
@@ -181,7 +215,7 @@ class RegisteredUserController extends Controller
                         ]);
 
                     } else {
-                        $error_data = $user->message . '-' . (!empty($user->data) ? $user->data : $user->message) . '-' . __('notifications.error_title');
+                        $error_data = $user->message . '-' . $user->message . '-' . __('notifications.error_title');
                         $inputs_data = $user_inputs['firstname']        // array[0]
                                         . '-' . $user_inputs['lastname']// array[1]
                                         . '-' . $user_inputs['email'];  // array[2]
