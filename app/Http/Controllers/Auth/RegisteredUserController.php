@@ -165,10 +165,11 @@ class RegisteredUserController extends Controller
 
             } else {
                 if (!empty($request->redirect)) {
-                    // Find password reset by email or phone API
-                    $password_reset = $this::$api_client_manager::call('GET', getApiURL() . '/password_reset/search_by_email_or_phone/' . (!empty($user_inputs['email']) ? $user_inputs['email'] : $user_inputs['phone']) , null, $user_inputs);
-
                     if (!empty($request->check_param)) {
+                        // Find password reset by email or phone API
+                        $apiURL = $request->check_param == 'email' ? getApiURL() . '/password_reset/search_by_email/' . $user_inputs['email'] : getApiURL() . '/password_reset/search_by_phone/' . $user_inputs['phone'];
+                        $password_reset = $this::$api_client_manager::call('GET', $apiURL, null, $user_inputs);
+
                         if ($password_reset->success) {
                             return view('auth.register', [
                                 'redirect' => $request->redirect,
@@ -188,6 +189,9 @@ class RegisteredUserController extends Controller
                         }
 
                     } else {
+                        // Find password reset by email or phone API
+                        $password_reset = $this::$api_client_manager::call('GET', getApiURL() . '/password_reset/search_by_email_or_phone/' . (!empty($user_inputs['email']) ? $user_inputs['email'] : $user_inputs['phone']) , null, $user_inputs);
+
                         if ($password_reset->success) {
                             return view('auth.register', [
                                 'redirect' => $request->redirect,
