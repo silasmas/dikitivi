@@ -71,7 +71,7 @@ class AuthenticatedSessionController extends Controller
                 }
 
             } else {
-                $error_data = $user->data . ', ' . $user->message . ', ' . __('notifications.error_title');
+                $error_data = $user->message . ', ' . $user->message . ', ' . __('notifications.error_title');
                 $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
                 return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
