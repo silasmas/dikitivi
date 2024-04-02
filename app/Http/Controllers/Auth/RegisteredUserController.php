@@ -68,7 +68,6 @@ class RegisteredUserController extends Controller
                     }
 
                     if ($request->redirect == 'login') {
-                        dd($request->check_param);
                         if (!empty($request->check_param)) {
                             if ($request->check_param == 'email') {
                                 return redirect('/' . $request->redirect)->with('success_message', __('auth.verified-email') . '. ' . __('miscellaneous.login_title2'));
