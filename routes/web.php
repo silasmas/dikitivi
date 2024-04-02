@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 // Generate symbolic link
-Route::get('/symlink', function () {return view('symlink');})->name('generate_symlink');
+Route::get('/symlink', function () { return view('symlink'); })->name('generate_symlink');
+// Choose age
+Route::get('/choose_age/{for_youth}', function ($for_youth) { session()->put('for_youth', $for_youth); return redirect()->back(); })->whereNumber('for_youth')->name('choose_age');
 // Home
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
