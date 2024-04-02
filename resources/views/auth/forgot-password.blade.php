@@ -22,7 +22,7 @@
     @if (request()->has('check'))
         @if (request()->get('check') == 'email')
                                             <input type="hidden" name="redirect" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : 'login' }}">
-                                            <input type="hidden" name="check_param" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : request()->get('check') }}">
+                                            <input type="hidden" name="check_param" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : 'email' }}">
 
                                             <div id="emailInput" class="form-floating mb-3">
                                                 <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[0] : '' }}" autofocus>
@@ -32,7 +32,7 @@
         @endif
         @if (request()->get('check') == 'phone')
                                             <input type="hidden" name="redirect" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : 'login' }}">
-                                            <input type="hidden" name="check_param" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[1] : request()->get('check') }}">
+                                            <input type="hidden" name="check_param" value="{{ \Session::has('error_message') ? explode('-', explode('~', \Session::get('error_message'))[1])[2] : 'phone' }}">
 
                                             <div id="phoneInput" class="row g-3 mb-3">
                                                 <div class="col-sm-5">
