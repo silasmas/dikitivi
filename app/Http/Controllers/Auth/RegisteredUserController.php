@@ -121,7 +121,7 @@ class RegisteredUserController extends Controller
                 'address_2' => $request->register_address_2,
                 'p_o_box' => $request->register_p_o_box,
                 'email' => !empty($temporary_user) && !empty($temporary_user->data->email) ? $temporary_user->data->email : $request->register_email,
-                'phone' => !empty($temporary_user) && !empty($temporary_user->data->phone) ? $temporary_user->data->phone : $request->phone_code . $request->phone_number,
+                'phone' => !empty($temporary_user) && !empty($temporary_user->data->phone) ? $temporary_user->data->phone : (trim($request->phone_code) == null AND trim($request->phone_number) == null ? $request->phone_code . $request->phone_number : null),
                 'username' => $request->register_username,
                 'password' => $request->register_password,
                 'confirm_password' => $request->confirm_password,

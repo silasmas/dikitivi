@@ -25,7 +25,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create()
     {
         return view('auth.login');
     }
@@ -50,6 +50,7 @@ class AuthenticatedSessionController extends Controller
             $auth_username = Auth::attempt(['username' => $user->data->username, 'password' => $inputs['password']], $request->remember);
 
             if ($auth_phone || $auth_email || $auth_username) {
+                dd($user->data);
                 $request->session()->regenerate();
 
                 return redirect()->route('home');
@@ -61,20 +62,20 @@ class AuthenticatedSessionController extends Controller
                     $error_data = $user->message . ', ' . __('notifications.unverified_token_phone') . '.<br><strong><a href="' . route('password.request', ['check' => 'phone']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
                     $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
-                    return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
+                    return redirect()->back()->with('error_message_login', $error_data . '~' . $inputs_data);
 
                 } else {
                     $error_data = $user->message . ', ' . __('notifications.unverified_token_email') . '.<br><strong><a href="' . route('password.request', ['check' => 'email']) . '">' . __('miscellaneous.check_now') . '</a></strong>' . ', ' . __('notifications.error_title');
                     $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
-                    return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
+                    return redirect()->back()->with('error_message_login', $error_data . '~' . $inputs_data);
                 }
 
             } else {
                 $error_data = $user->message . ', ' . $user->message . ', ' . __('notifications.error_title');
                 $inputs_data = $inputs['username'] . ', ' . $inputs['password'];
 
-                return redirect('/login')->with('error_message_login', $error_data . '~' . $inputs_data);
+                return redirect()->back()->with('error_message_login', $error_data . '~' . $inputs_data);
             }
         }
     }
