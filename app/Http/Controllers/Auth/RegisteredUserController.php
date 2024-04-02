@@ -26,7 +26,7 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(): View
+    public function create()
     {
         // Find users having the role "Membre" to verify if the register page can be displayed or not
         $role_data = 'Membre';
@@ -45,7 +45,7 @@ class RegisteredUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse | \Illuminate\View\View
      */
-    public function store(Request $request): RedirectResponse|View
+    public function store(Request $request)
     {
         if (!empty($request->token)) {
             $given_token = $request->check_digit_1 . $request->check_digit_2 . $request->check_digit_3 . $request->check_digit_4 . $request->check_digit_5 . $request->check_digit_6 . $request->check_digit_7;
