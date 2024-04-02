@@ -50,7 +50,6 @@ class AuthenticatedSessionController extends Controller
             $auth_username = Auth::attempt(['username' => $user->data->username, 'password' => $inputs['password']], $request->remember);
 
             if ($auth_phone || $auth_email || $auth_username) {
-                dd($user->data);
                 $request->session()->regenerate();
 
                 return redirect()->route('home');
