@@ -170,6 +170,8 @@ class RegisteredUserController extends Controller
                         $apiURL = $request->check_param == 'email' ? getApiURL() . '/password_reset/search_by_email/' . $user_inputs['email'] : getApiURL() . '/password_reset/search_by_phone/' . $user_inputs['phone'];
                         $password_reset = $this::$api_client_manager::call('GET', $apiURL, null, $user_inputs);
 
+                        dd($request->check_param);
+
                         if ($password_reset->success) {
                             return view('auth.register', [
                                 'redirect' => $request->redirect,
