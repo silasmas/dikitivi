@@ -45,7 +45,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (session()->has('age') OR Auth::check()) {
+        if (session()->has('for_youth') OR Auth::check()) {
             return view('home');
 
         } else {
