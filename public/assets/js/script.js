@@ -68,7 +68,7 @@ if (isWebview) {
  * Set theme to light
  */
 function themeLight() {
-    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-dark').removeClass('text-white');
+    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i').addClass('text-dark').removeClass('text-white');
     $('.fotter-socail li a, .footer-list li a').removeClass('text-light');
     $('.mobile-menu').addClass('menu-black');
     $('#mdb-style').attr('href', MDB_LIGHT);
@@ -80,7 +80,7 @@ function themeLight() {
  * Set theme to dark
  */
 function themeDark() {
-    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-white').removeClass('text-dark');
+    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i').addClass('text-white').removeClass('text-dark');
     $('.fotter-socail li a, .footer-list li a').addClass('text-light');
     $('.mobile-menu').removeClass('menu-black');
     $('#mdb-style').attr('href', MDB_DARK);
@@ -95,13 +95,13 @@ function themeAuto() {
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 
     if (darkThemeMq.matches) {
-        $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-white').removeClass('text-dark');
+        $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i').addClass('text-white').removeClass('text-dark');
         $('.fotter-socail li a, .footer-list li a').addClass('text-white');
         $('.mobile-menu').removeClass('menu-black');
         $('#mdb-style').attr('href', MDB_DARK);
 
     } else {
-        $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-dark').removeClass('text-white');
+        $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i').addClass('text-dark').removeClass('text-white');
         $('.fotter-socail li a, .footer-list li a').removeClass('text-white');
         $('.mobile-menu').addClass('menu-black');
         $('#mdb-style').attr('href', MDB_LIGHT);

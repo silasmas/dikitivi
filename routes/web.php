@@ -38,6 +38,8 @@ Route::get('/series/{id}', 'App\Http\Controllers\Web\HomeController@seriesDatas'
 Route::get('/series/{id}/{episodeId}', 'App\Http\Controllers\Web\HomeController@episodeDatas')->whereNumber(['id', 'episodeId'])->name('series.episode.datas');
 Route::get('/programmes', 'App\Http\Controllers\Web\HomeController@programmes')->name('programmes.home');
 Route::get('/programmes/{id}', 'App\Http\Controllers\Web\HomeController@programmeDatas')->whereNumber('id')->name('programme.datas');
+Route::get('/programmes/{entity}', 'App\Http\Controllers\Web\HomeController@programmesEntity')->name('programmes.entity.home');
+Route::get('/programmes/{entity}/{id}', 'App\Http\Controllers\Web\HomeController@programmeEntityDatas')->whereNumber('id')->name('programme.entity.datas');
 Route::get('/songs', 'App\Http\Controllers\Web\HomeController@songs')->name('songs.home');
 Route::get('/songs/{id}', 'App\Http\Controllers\Web\HomeController@songDatas')->whereNumber('id')->name('song.datas');
 Route::get('/books', 'App\Http\Controllers\Web\HomeController@books')->name('books.home');

@@ -219,27 +219,32 @@
                                         <nav class="main-navigation">
                                             <ul>
                                                 <li>
-                                                    <a href="index-3.html">
-                                                        <i class="zmdi zmdi-tv-alt-play"></i> TV Series
+                                                    <a href="{{ route('live.home') }}">
+                                                        <i class="bi bi-broadcast"></i> @lang('miscellaneous.menu.live')
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="playlists.html">
-                                                        <i class="zmdi zmdi-collection-music"></i> Playlist
+                                                    <a href="{{ route('films.home') }}">
+                                                        <i class="bi bi-film"></i> @lang('miscellaneous.menu.films')
                                                     </a></li>
                                                 <li>
-                                                    <a href="new-arrivals.html">
-                                                        <i class="zmdi zmdi-cocktail"></i> New Arrivals
+                                                    <a href="{{ route('series.home') }}">
+                                                        <i class="bi bi-collection-play"></i> @lang('miscellaneous.menu.series')
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="animation.html">
-                                                        <i class="zmdi zmdi-slideshare"></i> Animation
+                                                    <a href="{{ route('programmes.home') }}">
+                                                        <i class="bi bi-camera-reels"></i> @lang('miscellaneous.menu.programmes')
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="talk-show.html">
-                                                        <i class="zmdi zmdi-accounts-alt"></i> Talk Show
+                                                    <a href="{{ route('programmes.entity.home', ['entity' => 'preach']) }}">
+                                                        <i class="bi bi-mic"></i> @lang('miscellaneous.menu.preach')
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('songs.home') }}">
+                                                        <i class="bi bi-music-note-list"></i> @lang('miscellaneous.menu.songs')
                                                     </a>
                                                 </li>
                                             </ul>
@@ -261,39 +266,39 @@
                 <nav class="sidebar-menu" data-simplebar>
                     <ul>
                         <li class="normal-item-pro">
-                            <a href="index-3.html">
-                                <i class="zmdi zmdi-tv-alt-play"></i>
-                                <span>TV Series</span>
+                            <a href="{{ route('live.home') }}" style="border-color: #f00;">
+                                <i class="bi bi-broadcast fs-3 text-white" style="color: #f00!important;"></i>
+                                <span style="color: #f00!important;">@lang('miscellaneous.menu.live')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="playlists.html">
-                                <i class="zmdi zmdi-collection-music"></i>
-                                <span>Playlist</span>
+                            <a href="{{ route('programmes.entity.home', ['entity' => 'preach']) }}">
+                                <i class="bi bi-mic fs-3"></i>
+                                <span>@lang('miscellaneous.menu.preach')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="new-arrivals.html">
-                                <i class="zmdi zmdi-cocktail"></i>
-                                <span>New Arrivals</span>
+                            <a href="{{ route('films.home') }}">
+                                <i class="bi bi-film fs-3"></i>
+                                <span>@lang('miscellaneous.menu.films')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="animation.html">
-                                <i class="zmdi zmdi-slideshare"></i>
-                                <span>Animation</span>
+                            <a href="{{ route('series.home') }}">
+                                <i class="bi bi-collection-play fs-3"></i>
+                                <span>@lang('miscellaneous.menu.series')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="talk-show.html">
-                                <i class="zmdi zmdi-accounts-alt"></i>
-                                <span>Talk Show</span>
+                            <a href="{{ route('programmes.home') }}">
+                                <i class="bi bi-camera-reels fs-3"></i>
+                                <span>@lang('miscellaneous.menu.programmes')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="coming-soon.html">
-                                <i class="zmdi zmdi-spinner"></i>
-                                <span>Coming Soon</span>
+                            <a href="{{ route('songs.home') }}">
+                                <i class="bi bi-music-note-list fs-3"></i>
+                                <span>@lang('miscellaneous.menu.songs')</span>
                             </a>
                         </li>
                     </ul>
@@ -354,7 +359,7 @@
 
                                         <div class="footer-contet">
                                             <ul class="footer-contact-list">
-                                                <li> <i class="zmdi zmdi-phone"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.phone')</a></li>
+                                                {{-- <li> <i class="zmdi zmdi-phone"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.phone')</a></li> --}}
                                                 <li> <i class="zmdi zmdi-home"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.address')</a></li>
                                                 <li> <i class="zmdi zmdi-email"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.email')</a></li>
                                             </ul>
