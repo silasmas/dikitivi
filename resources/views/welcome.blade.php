@@ -16,10 +16,10 @@
                                 <div class="slider-button two-c-theme">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <a href="" class="default-btn shakespeare btn-block py-3 rounded-pill fs-5 shadow-0 text-center">@lang('miscellaneous.public.home.hero.link1')</a>
+                                            <a href="{{ route('choose_age', ['for_youth' => 0]) }}" class="default-btn shakespeare btn-block py-3 rounded-pill fs-5 shadow-0 text-center">@lang('miscellaneous.public.home.hero.link1')</a>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a href="" class="default-btn bg-tow btn-block py-3 rounded-pill fs-5 shadow-0 text-center">@lang('miscellaneous.public.home.hero.link2')</a>
+                                            <a href="{{ route('choose_age', ['for_youth' => 1]) }}" class="default-btn bg-tow btn-block py-3 rounded-pill fs-5 shadow-0 text-center">@lang('miscellaneous.public.home.hero.link2')</a>
                                         </div>
                                         <div class="col-lg-6 d-lg-none d-inline-block">
                                             <div class="login-button pe-0">

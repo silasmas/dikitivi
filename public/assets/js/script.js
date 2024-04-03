@@ -758,4 +758,28 @@ $(function () {
             });
         }
     });
+
+    /* Mark all user notifications as "Read" */
+    $('#markAllRead').on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            headers: headers,
+            type: 'PUT',
+            contentType: 'application/json',
+            url: apiHost + '/notification/mark_all_read/' + currentUser,
+            data: JSON.stringify({ 'id': currentUser }),
+            success: function () {
+                $(this).unbind('click');
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+            },
+            error: function (xhr, error, status_description) {
+                console.log(xhr.responseJSON);
+                console.log(xhr.status);
+                console.log(error);
+                console.log(status_description);
+            }
+        });
+    });
 });

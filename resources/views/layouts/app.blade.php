@@ -105,20 +105,22 @@
                                     <div class="notifications-bar btn-group shadow-0">
                                         <a href="#" class="notifications-iocn shadow-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="zmdi zmdi-notifications"></i>
-    @if (count($current_user->notifications) > 0)
-                                            <span>{{ count($current_user->notifications) }}</span>
+    @if (count($unread_notifications) > 0)
+                                            <span style="color: #fff!important;">{{ count($unread_notifications) }}</span>
     @endif
                                         </a>
-    @if (count($current_user->notifications) > 0)
+    @if (count($unread_notifications) > 0)
                                         <div class="dropdown-menu">
-                                            <h5 style="color: #333!important;">@lang('miscellaneous.menu.notifications')</h5>
+                                            <div>
+                                                <a role="button" class="float-end position-relative" style="top: -6px;" title="@lang('miscellaneous.mark_all_read')" data-bs-toggle="tooltip">
+                                                    <i style="color: #555!important;" class="bi bi-circle"></i>
+                                                </a>
+                                                <h5 style="color: #333!important;">@lang('miscellaneous.menu.notifications')</h5>
+                                            </div>
                                             <ul>
-        @forelse ($current_user->notifications as $notif)
+        @forelse ($unread_notifications as $notif)
             @if ($loop->index < 4)
                                                 <li class="single-notifications pb-2 border-bottom" style="border-color: #d4d4d4!important;">
-                                                    <a role="button" class="float-end" title="@lang('miscellaneous.mark_read')">
-                                                        <i style="color: #555!important;" class="bi {{ $notif->status->id == 12 ? 'bi-circle' : 'bi-circle-fill' }}"></i>
-                                                    </a>
                                                     <a href="{{ $notif->notification_url }}">
                                                         <span id="notifIcon">
                                                             <i style="color: #555!important;" class="{{ $notif->icon }} fs-4"></i>
@@ -276,7 +278,7 @@
                                     <div class="footer-widget">
                                         <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
                                         <div class="footer-contet">
-                                            <p>@lang('miscellaneous.public.about.description')</p>
+                                            <p style="color: #fff!important;">@lang('miscellaneous.public.about.description')</p>
                                             <ul class="fotter-socail">
                                                 <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
                                                 <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
@@ -295,6 +297,10 @@
 
                                         <div class="footer-contet">
                                             <ul class="footer-list">
+@empty(Auth::check())
+                                                <li><a href="{{ route('login') }}" class="text-light">@lang('miscellaneous.login_title1')</a></li>
+                                                <li><a href="{{ route('register') }}" class="text-light">@lang('miscellaneous.register_title1')</a></li>
+@endempty
                                                 <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
                                                 <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
                                             </ul>
@@ -326,13 +332,12 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                                    <p class="copyright-text">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
+                                    <p class="copyright-text" style="color: #fff!important;">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <ul class="footer-bottom-list">
-                                        <li><a href="{{ route('home') }}" class="text-light">@lang('miscellaneous.menu.home')</a></li>
-                                        <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
-                                        <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="text-light">@lang('miscellaneous.public.about.privacy_policy.title')</a></li>
+                                        <li><a href="{{ route('about.entity', ['entity' => 'term_of_use']) }}" class="text-light">@lang('miscellaneous.menu.terms_of_use')</a></li>
+                                        <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="text-light">@lang('miscellaneous.menu.privacy_policy')</a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -278,7 +278,7 @@ return [
         'account' => 'My account',
         'about' => 'About',
         'terms_of_use' => 'Terms',
-        'privacy_policy' => 'Privacy policy',
+        'privacy_policy' => 'Privacy',
         'pricing' => 'Premium pricing',
         'contact' => 'Contact',
         'notifications' => 'Notifications',

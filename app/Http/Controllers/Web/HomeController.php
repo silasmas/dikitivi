@@ -45,16 +45,29 @@ class HomeController extends Controller
     public function index()
     {
         if (session()->has('for_youth') OR Auth::check()) {
-            // Select a user API
-            $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // Select a status by name API
+                $unread = 'Non lue';
+                $status_unread = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread, Auth::user()->api_token);
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $status_unread->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
 
-            return view('home', [
-                'current_user' => $user->data
-            ]);
+                return view('home', [
+                    'current_user' => $user->data,
+                    'unread_notifications' => $notifications->data
+                ]);
+
+            } else {
+                return view('home', [
+                    'for_youth' => session()->get('for_youth')
+                ]);
+            }
 
         } else {
-            // return view('welcome');
-            return view('coming-soon', ['comingSoon' => 'yes']);
+            return view('welcome');
+            // return view('coming-soon', ['comingSoon' => 'yes']);
         }
     }
 
