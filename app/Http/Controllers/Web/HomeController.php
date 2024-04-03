@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +45,12 @@ class HomeController extends Controller
     public function index()
     {
         if (session()->has('for_youth') OR Auth::check()) {
-            return view('home');
+            // Select a user API
+            $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+
+            return view('home', [
+                'current_user' => $user->data
+            ]);
 
         } else {
             // return view('welcome');

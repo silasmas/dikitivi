@@ -70,6 +70,7 @@ return [
     'lock' => 'Bloquer',
     'unlock' => 'Débloquer',
     'search' => 'Rechercher ...',
+    'mark_read' => 'Marquer comme lue',
     'mark_all_read' => 'Tout marquer comme lue',
     'empty_list' => 'La liste est vide',
     'see_more' => 'Voir plus',
@@ -291,6 +292,8 @@ return [
     // ===== EVERY ROLES PAGES
     // Account settings
     'account' => [
+        'watchlist' => 'Ma watchlist',
+        'parental_control' => 'Contrôle parental',
         'on_going' => 'Compte en attente d\'activation',
         'deactivated' => 'Vous avez désactivé votre compte',
         'locked' => 'Votre compte est bloqué par l\'administrateur',

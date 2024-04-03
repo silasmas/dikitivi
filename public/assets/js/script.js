@@ -70,6 +70,7 @@ if (isWebview) {
 function themeLight() {
     $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-dark').removeClass('text-white');
     $('.fotter-socail li a, .footer-list li a').removeClass('text-light');
+    $('.mobile-menu').addClass('menu-black');
     $('#mdb-style').attr('href', MDB_LIGHT);
 
     document.cookie = "theme=light";
@@ -81,6 +82,7 @@ function themeLight() {
 function themeDark() {
     $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-white').removeClass('text-dark');
     $('.fotter-socail li a, .footer-list li a').addClass('text-light');
+    $('.mobile-menu').removeClass('menu-black');
     $('#mdb-style').attr('href', MDB_DARK);
 
     document.cookie = "theme=dark";
@@ -95,11 +97,13 @@ function themeAuto() {
     if (darkThemeMq.matches) {
         $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-white').removeClass('text-dark');
         $('.fotter-socail li a, .footer-list li a').addClass('text-white');
+        $('.mobile-menu').removeClass('menu-black');
         $('#mdb-style').attr('href', MDB_DARK);
 
     } else {
         $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *').addClass('text-dark').removeClass('text-white');
         $('.fotter-socail li a, .footer-list li a').removeClass('text-white');
+        $('.mobile-menu').addClass('menu-black');
         $('#mdb-style').attr('href', MDB_LIGHT);
     }
 
@@ -670,9 +674,12 @@ $(function () {
     $('#themeToggler .light').on('click', function (e) {
         e.preventDefault();
         $('#themeToggler .current-theme').html('<i class="bi bi-sun"></i>');
+        themeLight();
 
         // If user is connected, set is theme preference
         if (isNumeric(currentUser)) {
+            themeLight();
+
             $.ajax({
                 headers: headers,
                 type: 'PUT',
@@ -691,10 +698,6 @@ $(function () {
                     console.log(status_description);
                 }
             });
-
-            // Otherwise, change is theme locally
-        } else {
-            themeLight();
         }
     });
 
@@ -702,6 +705,7 @@ $(function () {
     $('#themeToggler .dark').on('click', function (e) {
         e.preventDefault();
         $('#themeToggler .current-theme').html('<i class="bi bi-moon-fill"></i>');
+        themeDark();
 
         // If user is connected, set is theme preference
         if (isNumeric(currentUser)) {
@@ -723,10 +727,6 @@ $(function () {
                     console.log(status_description);
                 }
             });
-
-            // Otherwise, change is theme locally
-        } else {
-            themeDark();
         }
     });
 
@@ -734,6 +734,7 @@ $(function () {
     $('#themeToggler .auto').on('click', function (e) {
         e.preventDefault();
         $('#themeToggler .current-theme').html('<i class="bi bi-circle-half"></i>');
+        themeAuto();
 
         // If user is connected, set is theme preference
         if (isNumeric(currentUser)) {
@@ -755,10 +756,6 @@ $(function () {
                     console.log(status_description);
                 }
             });
-
-            // Otherwise, change is theme locally
-        } else {
-            themeAuto();
         }
     });
 });

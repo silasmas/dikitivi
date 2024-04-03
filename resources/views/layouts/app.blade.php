@@ -1,3 +1,4 @@
+{{-- {{ dd($current_user) }} --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -6,9 +7,9 @@
         <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
         <meta name="dktv-api-url" content="{{ getApiURL() }}">
-        <meta name="dktv-visitor" content="{{ !empty(Auth::user()) ? Auth::user()->id : null }}">
+        <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="dktv-ref" content="{{ !empty(Auth::user()) ? Auth::user()->api_token : null }}">
+        <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- ============ Favicon ============ -->
@@ -35,20 +36,25 @@
         <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/plugins.css') }}">
         <link rel="stylesheet" id="custom-style" href="{{ asset('assets/addons/streamo/css/style.css') }}">
 
-        <!-- ============ Modernizer JS ============ -->
-        <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
-
         <!-- ============ Custom CSS ============ -->
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 @if (request()->hasHeader('HTTP_X_REQUESTED_WITH'))
         <style>
             .detect-webview { display: none; }
+            .mobile-menu { color: #a0a0a0; }
+            @media only screen (max-width: 900px) {
+                .header-medea-inner-area { padding: 30px 80px; }
+            }
+            #notifIcon i { color: inherit!important; }
         </style>
 @endif
 
+        <!-- ============ Modernizer JS ============ -->
+        <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+
         <title>
             DikiTivi / 
-@if (Route::is('home_mockup'))
+@if (Route::is('home'))
             @lang('miscellaneous.menu.home')
 @endif
 @if (Route::is('live'))
@@ -81,10 +87,10 @@
                 <div class="container-fluid">
                     <div class="row g-0">
                         <div class="col-lg-12">
-                            <div class="header-medea-inner-area">
+                            <div class="header-medea-inner-area py-3">
                                 <div class="left-side">
                                     <div class="logo-medea">
-                                        <a href="{{ route('home_mockup') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt="" width="140"></a>
+                                        <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt="" width="140"></a>
                                     </div>
                                 </div>
                                 <div class="right-side d-flex">
@@ -94,115 +100,113 @@
                                         <button><i class="bi bi-search"></i></button>
                                     </div>
                                     <!-- search-input-box end -->
-
+@if (Auth::check())
                                     <!-- notifications start -->
-                                    <div class="notifications-bar btn-group">
-                                        <a href="#" class="notifications-iocn"
-                                            data-bs-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false">
-                                            <i
-                                                class="zmdi zmdi-notifications"></i>
-                                            <span>5</span>
+                                    <div class="notifications-bar btn-group shadow-0">
+                                        <a href="#" class="notifications-iocn shadow-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="zmdi zmdi-notifications"></i>
+    @if (count($current_user->notifications) > 0)
+                                            <span>{{ count($current_user->notifications) }}</span>
+    @endif
                                         </a>
+    @if (count($current_user->notifications) > 0)
                                         <div class="dropdown-menu">
-                                            <h5>Notifications</h5>
+                                            <h5 style="color: #333!important;">@lang('miscellaneous.menu.notifications')</h5>
                                             <ul>
-                                                <li
-                                                    class="single-notifications">
-                                                    <a href="#">
-                                                        <span class="image"><img
-                                                                src="assets/images/review/author-01.png"
-                                                                alt></span>
-                                                        <span
-                                                            class="notific-contents">
-                                                            <span>Lorem ipsum
-                                                                dolor sit amet
-                                                                consectetur.</span>
-                                                            <span
-                                                                class="time">21
-                                                                hours ago</span>
+        @forelse ($current_user->notifications as $notif)
+            @if ($loop->index < 4)
+                                                <li class="single-notifications pb-2 border-bottom" style="border-color: #d4d4d4!important;">
+                                                    <a role="button" class="float-end" title="@lang('miscellaneous.mark_read')">
+                                                        <i style="color: #555!important;" class="bi {{ $notif->status->id == 12 ? 'bi-circle' : 'bi-circle-fill' }}"></i>
+                                                    </a>
+                                                    <a href="{{ $notif->notification_url }}">
+                                                        <span id="notifIcon">
+                                                            <i style="color: #555!important;" class="{{ $notif->icon }} fs-4"></i>
                                                         </span>
-
+                                                        <span class="notific-contents">
+                                                            <span style="color: #555!important; font-weight: {{ $notif->status->id == 12 ? 'normal' : 'bold' }}!important;" data-bs-toggle="tooltip">
+                                                                {{ Str::limit($notif->notification_content, 46, '...') }}
+                                                            </span>
+                                                            <span class="time small" style="color: #aaa!important;">{{ $notif->created_at }}</span>
+                                                        </span>
                                                     </a>
                                                 </li>
-                                                <li
-                                                    class="single-notifications">
-                                                    <a href="#">
-                                                        <span class="image"><img
-                                                                src="assets/images/review/author-01.png"
-                                                                alt></span>
-                                                        <span
-                                                            class="notific-contents">
-                                                            <span>Lorem ipsum
-                                                                dolor sit amet
-                                                                consectetur.</span>
-                                                            <span
-                                                                class="time">21
-                                                                hours ago</span>
-                                                        </span>
-
-                                                    </a>
-                                                </li>
+            @endif
+        @empty
+        @endforelse
                                             </ul>
+                                            <p class="m-0 pt-2 pb-0 text-center">
+                                                <a href="{{ route('notification.home') }}" class="small dktv-text-blue">@lang('miscellaneous.see_all_notifications')</a>
+                                            </p>
                                         </div>
+    @endif
                                     </div>
                                     <!-- notifications end -->
 
                                     <!-- our-profile-area start -->
                                     <div class="our-profile-area ">
-                                        <a href="#" class="our-profile-pc"
-                                            data-bs-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false">
-                                            <img
-                                                src="assets/images/review/author-01.png"
-                                                alt>
+                                        <a href="#" class="our-profile-pc" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="37" class="rounded-circle">
                                         </a>
                                         <div class="dropdown-menu">
                                             <ul>
-                                                <li class="single-list"><a
-                                                        href="my-profile.html">My
-                                                        Profile</a></li>
-                                                <li class="single-list"><a
-                                                        href="my-account.html">My
-                                                        Account</a></li>
-                                                <li class="single-list"><a
-                                                        href="login-and-register.html">Log
-                                                        Out</a></li>
+                                                <li class="single-list">
+                                                    <a href="{{ route('account') }}">@lang('miscellaneous.menu.account')</a>
+                                                </li>
+                                                <li class="single-list">
+                                                    <a href="{{ route('account.entity', ['entity' => 'watchlist']) }}">@lang('miscellaneous.account.watchlist')</a>
+                                                </li>
+                                                <li class="single-list">
+                                                    <a href="{{ route('account.entity', ['entity' => 'parental_control']) }}">@lang('miscellaneous.account.parental_control')</a>
+                                                </li>
+                                                <li class="dropdown-divider"></li>
+                                                <li class="single-list">
+                                                    <a href="{{ route('logout') }}">@lang('miscellaneous.logout')</a>
+                                                </li>
+                                                <li class="dropdown-divider"></li>
+                                                <li id="themeToggler" class="d-flex justify-content-between" aria-label="Theme toggler">
+                                                    <a role="button" class="btn bg-transparent light"><i class="bi bi-sun"></i></a>
+                                                    <a role="button" class="btn bg-transparent dark"><i class="bi bi-moon-fill"></i></a>
+                                                    <a role="button" class="btn bg-transparent auto"><i class="bi bi-circle-half"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <!-- our-profile-area end -->
+@else
+@endif
                                     <div class="main-menu d-block d-lg-none">
                                         <nav class="main-navigation">
                                             <ul>
-                                                <li><a href="index-3.html"><i
-                                                            class="zmdi zmdi-tv-alt-play"></i>
-                                                        TV Series</a></li>
-                                                <li><a href="playlists.html"><i
-                                                            class="zmdi zmdi-collection-music"></i>
-                                                        Playlist</a></li>
-                                                <li><a
-                                                        href="new-arrivals.html"><i
-                                                            class="zmdi zmdi-cocktail"></i>
-                                                        New Arrivals</a></li>
-                                                <li><a href="animation.html"><i
-                                                            class="zmdi zmdi-slideshare"></i>
-                                                        Animation</a></li>
-                                                <li><a href="talk-show.html"><i
-                                                            class="zmdi zmdi-accounts-alt"></i>
-                                                        Talk Show</a></li>
-                                                <li><a
-                                                        href="coming-soon.html"><i
-                                                            class="zmdi zmdi-spinner"></i>
-                                                        Coming Soon</a></li>
+                                                <li>
+                                                    <a href="index-3.html">
+                                                        <i class="zmdi zmdi-tv-alt-play"></i> TV Series
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="playlists.html">
+                                                        <i class="zmdi zmdi-collection-music"></i> Playlist
+                                                    </a></li>
+                                                <li>
+                                                    <a href="new-arrivals.html">
+                                                        <i class="zmdi zmdi-cocktail"></i> New Arrivals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="animation.html">
+                                                        <i class="zmdi zmdi-slideshare"></i> Animation
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="talk-show.html">
+                                                        <i class="zmdi zmdi-accounts-alt"></i> Talk Show
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </nav>
                                     </div>
                                     <!-- mobile-menu start -->
-                                    <div
-                                        class="mobile-menu menu-black d-block d-lg-none"></div>
+                                    <div class="mobile-menu d-block d-lg-none"></div>
                                     <!-- mobile-menu end -->
                                 </div>
                             </div>
@@ -257,81 +261,86 @@
             </div>
             <!--// side-main-menu -->
 
+            <!-- Page Conttent -->
+            <main class="page-content-wrapper">
 @yield('app-content')
 
-            <!-- Footer Area -->
-            <footer class="footer-area">
-                <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-custom-4 mt--50">
-                                <!-- footer-widget -->
-                                <div class="footer-widget">
-                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
-                                    <div class="footer-contet">
-                                        <p>@lang('miscellaneous.public.about.description')</p>
-                                        <ul class="fotter-socail">
-                                            <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
-                                            <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
-                                            <li><a href="#" class="fs-4"><i class="bi bi-twitter-x align-middle"></i></a></li>
-                                            <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
-                                        </ul>
+                <!-- Footer Area -->
+                <footer class="footer-area detect-webview">
+                    {{-- <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}"> --}}
+                    <div class="footer-top-tow dktv-bg-blue">
+                        <div class="container px-sm-5">
+                            <div class="row">
+                                <div class="col-custom-4 mt--50">
+                                    <!-- footer-widget -->
+                                    <div class="footer-widget">
+                                        <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
+                                        <div class="footer-contet">
+                                            <p>@lang('miscellaneous.public.about.description')</p>
+                                            <ul class="fotter-socail">
+                                                <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
+                                                <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
+                                                <li><a href="#" class="fs-4"><i class="bi bi-twitter-x align-middle"></i></a></li>
+                                                <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <!--// footer-widget -->
                                 </div>
-                                <!--// footer-widget -->
-                            </div>
 
-                            <div class="col-custom-4 mt--50">
-                                <!-- footer-widget -->
-                                <div class="footer-widget">
-                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.useful_links')</h4>
+                                <div class="col-custom-4 mt--50">
+                                    <!-- footer-widget -->
+                                    <div class="footer-widget">
+                                        <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.useful_links')</h4>
 
-                                    <div class="footer-contet">
-                                        <ul class="footer-list">
-                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
-                                        </ul>
+                                        <div class="footer-contet">
+                                            <ul class="footer-list">
+                                                <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
+                                                <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <!--// footer-widget -->
                                 </div>
-                                <!--// footer-widget -->
-                            </div>
 
-                            <div class="col-custom-4 mt--50">
-                                <!-- footer-widget -->
-                                <div class="footer-widget">
-                                    <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
+                                <div class="col-custom-4 mt--50">
+                                    <!-- footer-widget -->
+                                    <div class="footer-widget">
+                                        <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
 
-                                    <div class="footer-contet">
-                                        <ul class="footer-contact-list">
-                                            <li> <i class="zmdi zmdi-phone"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></li>
-                                            <li> <i class="zmdi zmdi-home"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.address')</a></li>
-                                            <li> <i class="zmdi zmdi-email"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.email')</a></li>
-                                        </ul>
+                                        <div class="footer-contet">
+                                            <ul class="footer-contact-list">
+                                                <li> <i class="zmdi zmdi-phone"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.phone')</a></li>
+                                                <li> <i class="zmdi zmdi-home"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.address')</a></li>
+                                                <li> <i class="zmdi zmdi-email"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.email')</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <!--// footer-widget -->
                                 </div>
-                                <!--// footer-widget -->
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <p class="copyright-text">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <ul class="footer-bottom-list">
-                                    <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}">@lang('miscellaneous.public.about.terms_of_use.title')</a></li>
-                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}">@lang('miscellaneous.public.about.privacy_policy.title')</a></li>
-                                </ul>
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <p class="copyright-text">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <ul class="footer-bottom-list">
+                                        <li><a href="{{ route('home') }}" class="text-light">@lang('miscellaneous.menu.home')</a></li>
+                                        <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
+                                        <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="text-light">@lang('miscellaneous.public.about.privacy_policy.title')</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </footer>
-            <!--// Footer Area -->
+                </footer>
+                <!--// Footer Area -->
+            </main>
         </div>
         <!-- Main Wrapper End -->
 
