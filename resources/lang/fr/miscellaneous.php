@@ -29,6 +29,8 @@ return [
     'loading' => 'Chargement ...',
     'yes' => 'Oui',
     'no' => 'Non',
+    'for_child' => 'Pour enfants',
+    'for_adult' => 'Pour adultes',
     'connection' => 'Connexion',
     'register' => 'Enregistrer',
     'send' => 'Envoyer',

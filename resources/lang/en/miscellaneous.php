@@ -29,6 +29,8 @@ return [
     'loading' => 'Loading...',
     'yes' => 'Yes',
     'no' => 'No',
+    'for_child' => 'For children',
+    'for_adult' => 'For adults',
     'connection' => 'Connection',
     'register' => 'Register',
     'send' => 'Send',

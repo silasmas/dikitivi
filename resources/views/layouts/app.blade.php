@@ -100,6 +100,18 @@
                                         <button><i class="bi bi-search"></i></button>
                                     </div>
                                     <!-- search-input-box end -->
+
+                                    <!-- donation start -->
+                                    <div>
+                                        <a href="{{ route('donation') }}" class="btn dktv-btn-pink ms-3 px-3 rounded-pill shadow-0" title="@lang('miscellaneous.menu.donate')">
+                                            <i class="bi bi-heart-fill align-middle me-sm-2"></i>
+                                            <span class="d-lg-inline-block d-none">
+                                                @lang('miscellaneous.menu.donate')
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <!-- donation end -->
+
 @if (Auth::check())
                                     <!-- notifications start -->
                                     <div class="notifications-bar btn-group shadow-0">
@@ -176,6 +188,32 @@
                                     </div>
                                     <!-- our-profile-area end -->
 @else
+                                    <!-- for-youth settings start -->
+                                    <div class="dropdown">
+                                        <a role="button" class="btn {{ $for_youth == 1 ? 'dktv-btn-yellow' : 'dktv-btn-blue' }} ms-3 rounded-pill shadow-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="@lang('miscellaneous.change')" style="padding-top: 0.45rem!important; padding-right: 0.65rem!important; padding-bottom: 0.1rem!important; padding-left: 0.65rem!important;">
+    @if ($for_youth == 1)
+                                            <i class="bi bi-arrow-bar-down me-sm-2 fs-5" style="vertical-align: -3px;"></i><span class="d-sm-inline-block d-none">@lang('miscellaneous.for_child')</span>
+    @endif
+    @if ($for_youth == 0)
+                                            <i class="bi bi-arrow-bar-up me-sm-2 fs-5" style="vertical-align: -3px;"></i><span class="d-sm-inline-block d-none">@lang('miscellaneous.for_adult')</span>
+    @endif
+                                        </a>
+                                        <div class="dropdown-menu rounded">
+                                            <ul>
+                                                <li class="dropdown-item">
+                                                    <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
+                                                        <i class="bi bi-arrow-bar-down me-2 fs-5" style="vertical-align: -3px;"></i>@lang('miscellaneous.for_child')
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="{{ route('choose_age', ['for_youth' => 0]) }}">
+                                                        <i class="bi bi-arrow-bar-up me-2 fs-5" style="vertical-align: -3px;"></i>@lang('miscellaneous.for_adult')
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- for-youth settings end -->
 @endif
                                     <div class="main-menu d-block d-lg-none">
                                         <nav class="main-navigation">
