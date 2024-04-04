@@ -63,6 +63,9 @@ class HomeController extends Controller
             // -- SONGS
             $song_type_name = 'Chanson';
             $song_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $song_type_name);
+            // -- ALBUMS
+            $album_type_name = 'Album musique';
+            $album_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $album_type_name);
 
             if (Auth::check()) {
                 // Select a user API
@@ -84,6 +87,8 @@ class HomeController extends Controller
                 $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id, null, null, $request->ip(), Auth::user()->id);
                 // -- SONGS
                 $medias_songs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $song_type->data->id, null, null, $request->ip(), Auth::user()->id);
+                // -- ALBUMS
+                $medias_albums = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $album_type->data->id, null, null, $request->ip(), Auth::user()->id);
 
                 return view('home', [
                     'for_youth' => $for_youth,
@@ -95,6 +100,7 @@ class HomeController extends Controller
                     'series' => $medias_series->data,
                     'programs' => $medias_programs->data,
                     'songs' => $medias_songs->data,
+                    'albums' => $medias_albums->data,
                 ]);
 
             } else {
@@ -113,6 +119,8 @@ class HomeController extends Controller
                 $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id, null, null, $request->ip());
                 // -- SONGS
                 $medias_songs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $song_type->data->id, null, null, $request->ip());
+                // -- ALBUMS
+                $medias_albums = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $album_type->data->id, null, null, $request->ip());
 
                 return view('home', [
                     'for_youth' => $for_youth,
@@ -122,6 +130,7 @@ class HomeController extends Controller
                     'series' => $medias_series->data,
                     'programs' => $medias_programs->data,
                     'songs' => $medias_songs->data,
+                    'albums' => $medias_albums->data,
                 ]);
             }
 

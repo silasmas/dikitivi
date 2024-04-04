@@ -20,6 +20,11 @@ return [
     'follow_us' => 'Follow us:',
     'call_us' => 'Call us:',
     'toggle_theme' => 'Toggle theme',
+    'theme' => [
+        'light' => 'Light',
+        'dark' => 'Dark',
+        'auto' => 'Automatic',
+    ],
     'your_language' => 'Your language',
     'back_home' => 'Return to the home',
     'back_list' => 'Return to the list',

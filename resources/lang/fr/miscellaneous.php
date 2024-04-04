@@ -20,6 +20,11 @@ return [
     'follow_us' => 'Suivez-nous :',
     'call_us' => 'Appelez-nous :',
     'toggle_theme' => 'Changer de thème',
+    'theme' => [
+        'light' => 'Clair',
+        'dark' => 'Sombre',
+        'auto' => 'Automatique',
+    ],
     'your_language' => 'Votre langue',
     'back_home' => 'Retour à l\'accueil',
     'back_list' => 'Retourner à la liste',

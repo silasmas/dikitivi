@@ -180,18 +180,18 @@
 
                                     <!-- for-youth settings start -->
                                     <div title="@lang('miscellaneous.change')" data-bs-toggle="tooltip">
-                                        <a class="btn bg-transparent dktv-text-gray ms-3 px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="btn bg-transparent text-muted ms-3 px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     @if ($for_youth == 1)
-                                            <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>
+                                            <i class="bi bi-person-down d-sm-none d-inline-block fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.public.home.hero.link2')</pan>
     @endif
     @if ($for_youth == 0)
-                                            <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>
+                                            <i class="bi bi-person-up d-sm-none d-inline-block fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.public.home.hero.link1')</pan>
     @endif
                                         </a>
 
-                                        <div class="dropdown-menu">
+                                        <div class="dropdown-menu rounded-0">
                                             <ul>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
@@ -207,6 +207,34 @@
                                         </div>
                                     </div>
                                     <!-- for-youth settings end -->
+
+                                    <!-- theme toggle start -->
+                                    <div title="@lang('miscellaneous.toggle_theme')" data-bs-toggle="tooltip">
+                                        <a role="button" id="dropdownTheme" class="btn bg-transparent text-muted border btn-sm dropdown-toggle py-1 px-2 hidden-arrow shadow-0" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-circle-half align-middle"></i>
+                                        </a>
+                    
+                                        <div class="dropdown-menu" aria-labelledby="dropdownTheme">
+                                            <ul id="themeToggler">
+                                                <li role="button" class="dropdown-item light">
+                                                    <a>
+                                                        <i class="bi bi-sun me-2 fs-5" style="vertical-align: -3px;"></i>@lang('miscellaneous.theme.light')
+                                                    </a>
+                                                </li>
+                                                <li role="button" class="dropdown-item dark">
+                                                    <a>
+                                                        <i class="bi bi-moon-fill me-2 fs-5" style="vertical-align: -3px;"></i>@lang('miscellaneous.theme.dark')
+                                                    </a>
+                                                </li>
+                                                <li role="button" class="dropdown-item auto">
+                                                    <a>
+                                                        <i class="bi bi-circle-half me-2 fs-5" style="vertical-align: -3px;"></i>@lang('miscellaneous.theme.auto')
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- theme toggle end -->
 @endif
                                     <div class="main-menu d-block d-lg-none">
                                         <nav class="main-navigation">
