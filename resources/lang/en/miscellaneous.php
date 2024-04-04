@@ -257,6 +257,10 @@ return [
     'currency' => 'Choose currency',
     'usd' => 'American dollar',
     'cdf' => 'Congolese franc',
+    'category' => [
+        'animation' => 'Animation',
+        'preach' => 'Preach',
+    ],
     // Alert message
     'registered_data' => 'Data registered',
     'no_data' => 'This datas don\'t exist',

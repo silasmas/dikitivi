@@ -101,17 +101,6 @@
                                     </div>
                                     <!-- search-input-box end -->
 
-                                    <!-- donation start -->
-                                    <div>
-                                        <a href="{{ route('donation') }}" class="btn dktv-btn-pink ms-3 px-3 rounded-pill shadow-0" title="@lang('miscellaneous.menu.donate')">
-                                            <i class="bi bi-heart-fill align-middle me-sm-2"></i>
-                                            <span class="d-lg-inline-block d-none">
-                                                @lang('miscellaneous.menu.donate')
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <!-- donation end -->
-
 @if (Auth::check())
                                     <!-- notifications start -->
                                     <div class="notifications-bar btn-group shadow-0">
@@ -188,26 +177,30 @@
                                     </div>
                                     <!-- our-profile-area end -->
 @else
+
                                     <!-- for-youth settings start -->
-                                    <div class="dropdown">
-                                        <a role="button" class="btn {{ $for_youth == 1 ? 'dktv-btn-yellow' : 'dktv-btn-blue' }} ms-3 rounded-pill shadow-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="@lang('miscellaneous.change')" style="padding-top: 0.45rem!important; padding-right: 0.65rem!important; padding-bottom: 0.1rem!important; padding-left: 0.65rem!important;">
+                                    <div title="@lang('miscellaneous.change')" data-bs-toggle="tooltip">
+                                        <a class="btn bg-transparent dktv-text-gray ms-3 px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     @if ($for_youth == 1)
-                                            <i class="bi bi-arrow-bar-down me-sm-2 fs-5" style="vertical-align: -3px;"></i><span class="d-sm-inline-block d-none">@lang('miscellaneous.for_child')</span>
+                                            <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>
+                                            <pan class="d-sm-inline-block d-none">@lang('miscellaneous.public.home.hero.link2')</pan>
     @endif
     @if ($for_youth == 0)
-                                            <i class="bi bi-arrow-bar-up me-sm-2 fs-5" style="vertical-align: -3px;"></i><span class="d-sm-inline-block d-none">@lang('miscellaneous.for_adult')</span>
+                                            <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>
+                                            <pan class="d-sm-inline-block d-none">@lang('miscellaneous.public.home.hero.link1')</pan>
     @endif
                                         </a>
-                                        <div class="dropdown-menu rounded">
+
+                                        <div class="dropdown-menu">
                                             <ul>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
-                                                        <i class="bi bi-arrow-bar-down me-2 fs-5" style="vertical-align: -3px;"></i>@lang('miscellaneous.for_child')
+                                                        <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.public.home.hero.link2')
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 0]) }}">
-                                                        <i class="bi bi-arrow-bar-up me-2 fs-5" style="vertical-align: -3px;"></i>@lang('miscellaneous.for_adult')
+                                                        <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.public.home.hero.link1')
                                                     </a>
                                                 </li>
                                             </ul>
@@ -264,11 +257,18 @@
             <!-- side-main-menu -->
             <div class="side-main-menu">
                 <nav class="sidebar-menu" data-simplebar>
+                    <!-- donation start -->
+                    <a href="{{ route('donation') }}" class="btn dktv-btn-pink w-100 mb-1 rounded" style="margin-bottom: 0.2rem;">
+                        <is class="bi bi-heart-fill me-2 fs-5" style="vertical-align: -2px;"></is>
+                        <pan>@lang('miscellaneous.menu.donate')</pan>
+                    </a>
+                    <!-- donation end -->
+
                     <ul>
                         <li class="normal-item-pro">
-                            <a href="{{ route('live.home') }}" style="border-color: #f00;">
-                                <i class="bi bi-broadcast fs-3 text-white" style="color: #f00!important;"></i>
-                                <span style="color: #f00!important;">@lang('miscellaneous.menu.live')</span>
+                            <a href="{{ route('live.home') }}">
+                                <i class="bi bi-broadcast fs-3"></i>
+                                <span>@lang('miscellaneous.menu.live')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">

@@ -257,6 +257,10 @@ return [
     'currency' => 'Choisir devise',
     'usd' => 'Dollar américain',
     'cdf' => 'Franc congolais',
+    'category' => [
+        'animation' => 'Animation',
+        'preach' => 'Prédication',
+    ],
     // Alert message
     'registered_data' => 'Données enregistrées',
     'no_data' => 'Ces données n\'existent pas',
