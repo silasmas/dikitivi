@@ -179,7 +179,7 @@
 @else
 
                                     <!-- for-youth settings start -->
-                                    <div title="@lang('miscellaneous.change')" data-bs-toggle="tooltip">
+                                    <div title="@lang('miscellaneous.change')">
                                         <a class="btn bg-transparent text-muted ms-3 px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     @if ($for_youth == 1)
                                             <i class="bi bi-person-down d-sm-none d-inline-block fs-3 align-middle"></i>
@@ -208,8 +208,8 @@
                                     </div>
                                     <!-- for-youth settings end -->
 
-                                    <!-- theme toggle start -->
-                                    <div title="@lang('miscellaneous.toggle_theme')" data-bs-toggle="tooltip">
+                                    <!-- theme toggler start -->
+                                    <div title="@lang('miscellaneous.toggle_theme')">
                                         <a role="button" id="dropdownTheme" class="btn bg-transparent text-muted border btn-sm dropdown-toggle py-1 px-2 hidden-arrow shadow-0" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bi bi-circle-half align-middle"></i>
                                         </a>
@@ -234,7 +234,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <!-- theme toggle end -->
+                                    <!-- theme toggler end -->
 @endif
                                     <div class="main-menu d-block d-lg-none">
                                         <nav class="main-navigation">
