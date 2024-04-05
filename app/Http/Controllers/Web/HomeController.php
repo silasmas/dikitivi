@@ -101,6 +101,7 @@ class HomeController extends Controller
                     'programs' => $medias_programs->data,
                     'songs' => $medias_songs->data,
                     'albums' => $medias_albums->data,
+                    'api_client_manager' => $this::$api_client_manager,
                 ]);
 
             } else {
@@ -131,6 +132,7 @@ class HomeController extends Controller
                     'programs' => $medias_programs->data,
                     'songs' => $medias_songs->data,
                     'albums' => $medias_albums->data,
+                    'api_client_manager' => $this::$api_client_manager,
                 ]);
             }
 

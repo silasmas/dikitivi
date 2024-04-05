@@ -101,7 +101,7 @@
                 <!-- Hero Slider end -->
 
                 <!-- Our-product-area Area  -->
-                <div class="our-product-area py-5">
+                <div class="our-product-area pt-5 pb-0">
                     <div class="container-coustom">
                         <div class="row">
                             <div class="col-lg-12">
@@ -114,7 +114,6 @@
                         <div class="row product-carousl-active">
     @forelse ($trends as $med)
 <?php
-$api_client_manager = new \App\Http\Controllers\ApiClientManager();
 // Views & Likes for a media
 $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
@@ -143,6 +142,279 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                 <!--// single-product-wrap -->        
                             </div>
     @empty
+                            <div class="col-12">
+                                <p class="lead">@lang('miscellaneous.empty_list')</p>
+                            </div>
+    @endforelse
+
+                        </div>
+                    </div>
+                </div>
+                <!--// Our-product-area Area  -->
+
+                <!-- Our-product-area Area  -->
+                <div class="our-product-area pt-5 pb-0">
+                    <div class="container-coustom">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title-3">
+                                    <h2>@lang('miscellaneous.public.home.lives.title')</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row product-carousl-active">
+    @forelse ($lives as $med)
+        @if ($loop->index < 7)
+<?php
+// Views & Likes for a media
+$views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
+$likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+?>
+                            <div class="col-lg-3">
+                                <!-- single-product-wrap -->
+                                <div class="single-product-wrap mt--15">
+                                    <div class="product-image">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+            @if (!empty($med->cover_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @endif
+                                        </a>
+                                    </div>
+                                    <div class="product-contents">
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <div class="pro-quality">
+                                            <span>
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// single-product-wrap -->        
+                            </div>
+        @endif
+    @empty
+                            <div class="col-12">
+                                <p class="lead">@lang('miscellaneous.empty_list')</p>
+                            </div>
+    @endforelse
+
+                        </div>
+                    </div>
+                </div>
+                <!--// Our-product-area Area  -->
+
+                <!-- Our-product-area Area  -->
+                <div class="our-product-area pt-5 pb-0">
+                    <div class="container-coustom">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title-3">
+                                    <h2>@lang('miscellaneous.public.home.films.title')</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row product-carousl-active">
+    @forelse ($films as $med)
+        @if ($loop->index < 7)
+<?php
+// Views & Likes for a media
+$views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
+$likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+?>
+                            <div class="col-lg-3">
+                                <!-- single-product-wrap -->
+                                <div class="single-product-wrap mt--15">
+                                    <div class="product-image">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+            @if (!empty($med->cover_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @endif
+                                        </a>
+                                    </div>
+                                    <div class="product-contents">
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <div class="pro-quality">
+                                            <span>
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// single-product-wrap -->        
+                            </div>
+        @endif
+    @empty
+                            <div class="col-12">
+                                <p class="lead">@lang('miscellaneous.empty_list')</p>
+                            </div>
+    @endforelse
+
+                        </div>
+                    </div>
+                </div>
+                <!--// Our-product-area Area  -->
+
+                <!-- Our-product-area Area  -->
+                <div class="our-product-area pt-5 pb-0">
+                    <div class="container-coustom">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title-3">
+                                    <h2>@lang('miscellaneous.public.home.series.title')</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row product-carousl-active">
+    @forelse ($series as $med)
+        @if ($loop->index < 7)
+<?php
+// Views & Likes for a media
+$views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
+$likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+?>
+                            <div class="col-lg-3">
+                                <!-- single-product-wrap -->
+                                <div class="single-product-wrap mt--15">
+                                    <div class="product-image">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+            @if (!empty($med->cover_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @endif
+                                        </a>
+                                    </div>
+                                    <div class="product-contents">
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <div class="pro-quality">
+                                            <span>
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// single-product-wrap -->        
+                            </div>
+        @endif
+    @empty
+                            <div class="col-12">
+                                <p class="lead">@lang('miscellaneous.empty_list')</p>
+                            </div>
+    @endforelse
+
+                        </div>
+                    </div>
+                </div>
+                <!--// Our-product-area Area  -->
+
+                <!-- Our-product-area Area  -->
+                <div class="our-product-area pt-5 pb-0">
+                    <div class="container-coustom">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title-3">
+                                    <h2>@lang('miscellaneous.public.home.programs.title')</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row product-carousl-active">
+    @forelse ($programs as $med)
+        @if ($loop->index < 7)
+<?php
+// Views & Likes for a media
+$views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
+$likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+?>
+                            <div class="col-lg-3">
+                                <!-- single-product-wrap -->
+                                <div class="single-product-wrap mt--15">
+                                    <div class="product-image">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+            @if (!empty($med->cover_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @endif
+                                        </a>
+                                    </div>
+                                    <div class="product-contents">
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <div class="pro-quality">
+                                            <span>
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// single-product-wrap -->        
+                            </div>
+        @endif
+    @empty
+                            <div class="col-12">
+                                <p class="lead">@lang('miscellaneous.empty_list')</p>
+                            </div>
+    @endforelse
+
+                        </div>
+                    </div>
+                </div>
+                <!--// Our-product-area Area  -->
+
+                <!-- Our-product-area Area  -->
+                <div class="our-product-area py-5">
+                    <div class="container-coustom">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title-3">
+                                    <h2>@lang('miscellaneous.public.home.songs.title')</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row product-carousl-active">
+    @forelse ($songs as $med)
+        @if ($loop->index < 7)
+<?php
+// Views & Likes for a media
+$views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
+$likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+?>
+                            <div class="col-lg-3">
+                                <!-- single-product-wrap -->
+                                <div class="single-product-wrap mt--15">
+                                    <div class="product-image">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+            @if (!empty($med->cover_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @endif
+                                        </a>
+                                    </div>
+                                    <div class="product-contents">
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <div class="pro-quality">
+                                            <span>
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// single-product-wrap -->        
+                            </div>
+        @endif
+    @empty
+                            <div class="col-12">
+                                <p class="lead">@lang('miscellaneous.empty_list')</p>
+                            </div>
     @endforelse
 
                         </div>

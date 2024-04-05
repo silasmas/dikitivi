@@ -404,6 +404,9 @@ return [
             'films' => [
                 'title' => 'Recent films',
             ],
+            'lives' => [
+                'title' => 'Live',
+            ],
             'series' => [
                 'title' => 'Recent series',
             ],

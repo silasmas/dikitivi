@@ -404,6 +404,9 @@ return [
             'films' => [
                 'title' => 'Films récents',
             ],
+            'lives' => [
+                'title' => 'En direct',
+            ],
             'series' => [
                 'title' => 'Séries récentes',
             ],
