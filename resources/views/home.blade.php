@@ -17,7 +17,7 @@
                                         <h1 class="dktv-text-green">{{ Str::limit($liv->media_title, 14, '...') }}</h1>
                                         <p style="color: #fff!important">{{ Str::limit($liv->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
-                                            <a href="{{ route('series.datas', ['id' => $liv->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
+                                            <a href="{{ route('media.datas', ['id' => $liv->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
             @if ($liv->teaser_url != null)
                                             <a href="#Video-one" class="video-play-btn afterglow ml--10">
                                                 <i class="zmdi zmdi-play"></i>
@@ -48,7 +48,7 @@
                                         <h1 class="dktv-text-yellow">{{ Str::limit($ser->media_title, 14, '...') }}</h1>
                                         <p style="color: #fff!important">{{ Str::limit($ser->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
-                                            <a href="{{ route('series.datas', ['id' => $ser->id]) }}" class="default-btn dktv-btn-blue mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
+                                            <a href="{{ route('media.datas', ['id' => $ser->id]) }}" class="default-btn dktv-btn-blue mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
             @if ($ser->teaser_url != null)
                                             <a href="#Video-one" class="video-play-btn afterglow ml--10">
                                                 <i class="zmdi zmdi-play"></i>
@@ -79,7 +79,7 @@
                                         <h1 class="dktv-text-blue">{{ Str::limit($alb->media_title, 14, '...') }}</h1>
                                         <p style="color: #fff!important">{{ Str::limit($alb->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
-                                            <a href="{{ route('song.datas', ['id' => $alb->id]) }}" class="default-btn dktv-btn-green mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
+                                            <a href="{{ route('media.datas', ['id' => $alb->id]) }}" class="default-btn dktv-btn-green mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
             @if ($alb->teaser_url != null)
                                             <a href="#Video-one" class="video-play-btn afterglow ml--10">
                                                 <i class="zmdi zmdi-play"></i>
@@ -99,5 +99,55 @@
     @endforeach
                 </div>
                 <!-- Hero Slider end -->
+
+                <!-- Our-product-area Area  -->
+                <div class="our-product-area py-5">
+                    <div class="container-coustom">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title-3">
+                                    <h2>@lang('miscellaneous.public.home.trends.title')</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row product-carousl-active">
+    @forelse ($trends as $med)
+<?php
+$api_client_manager = new \App\Http\Controllers\ApiClientManager();
+// Views & Likes for a media
+$views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
+$likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+?>
+                            <div class="col-lg-3">
+                                <!-- single-product-wrap -->
+                                <div class="single-product-wrap mt--15">
+                                    <div class="product-image">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+        @if (!empty($med->cover_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+        @endif
+                                        </a>
+                                    </div>
+                                    <div class="product-contents">
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <div class="pro-quality">
+                                            <span>
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// single-product-wrap -->        
+                            </div>
+    @empty
+    @endforelse
+
+                        </div>
+                    </div>
+                </div>
+                <!--// Our-product-area Area  -->
 
 @endsection

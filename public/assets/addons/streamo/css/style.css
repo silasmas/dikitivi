@@ -211,6 +211,10 @@ span {
   outline: none !important;
 }
 
+a {
+  transition: all .5s ease;
+}
+
 a:focus {
   outline: none;
   text-decoration: none;
@@ -7022,7 +7026,9 @@ only screen and (max-width: 767px) {
 }
 
 .single-product-wrap .product-image a {
+  position: relative;
   display: block;
+  overflow: hidden;
 }
 
 .single-product-wrap .product-image a img {

@@ -138,21 +138,40 @@ a.dktv-bg-blue-transparent:hover {
 .dktv-text-pink {
     color: #e3106f !important;
 }
+a:hover.dktv-text-pink {
+    color: #d30f67 !important;
+}
 
 .dktv-text-blue {
     color: #0f9cd8 !important;
+}
+
+a:hover.dktv-text-blue {
+    color: #108bc0 !important;
 }
 
 .dktv-text-yellow {
     color: #f7b233 !important;
 }
 
+a:hover.dktv-text-yellow {
+    color: #dd9819 !important;
+}
+
 .dktv-text-green {
     color: #96bd1f !important;
 }
 
+a:hover.dktv-text-green {
+    color: #7fa314 !important;
+}
+
 .dktv-text-gray {
     color: #757575 !important;
+}
+
+a:hover.dktv-text-gray {
+    color: #636363 !important;
 }
 
 /* paragraph */

@@ -26,6 +26,8 @@ return [
         'auto' => 'Automatique',
     ],
     'your_language' => 'Votre langue',
+    'views' => 'Vues',
+    'likes' => 'Likes',
     'back_home' => 'Retour à l\'accueil',
     'back_list' => 'Retourner à la liste',
     'back_form' => 'Retourner au formulaire',
@@ -276,6 +278,16 @@ return [
     'transaction_type_error' => 'Veuillez choisir le type de transaction',
     'new_partner_message' => 'Vous pouvez maintenant vous connecter en tant que partenaire avec votre n° de téléphone. Mot de passe temportaire :',
 
+    // ===== TYPES
+    'media_types' => [
+        'feature_film' => 'Long métrage',
+        'tv_series' => 'Série TV',
+        'episode' => 'Episode',
+        'tv_program' => 'Programme TV',
+        'music_album' => 'Album musique',
+        'song' => 'Chanson'
+    ],
+
     // ===== NAVIGATION MENU
     'menu' => [
         'home' => 'Accueil',
@@ -385,6 +397,21 @@ return [
             'pricing' => [
                 'title' => 'Plan tarifaire',
                 'content' => 'Vous pouvez dès maintenant acheter un plan pour suivre des vidéos premiums.',
+            ],
+            'trends' => [
+                'title' => 'Tendances actuelles',
+            ],
+            'films' => [
+                'title' => 'Films récents',
+            ],
+            'series' => [
+                'title' => 'Séries récentes',
+            ],
+            'programs' => [
+                'title' => 'Programmes récents',
+            ],
+            'songs' => [
+                'title' => 'Chansons récentes',
             ],
         ],
 

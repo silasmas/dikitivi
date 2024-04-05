@@ -26,6 +26,8 @@ return [
         'auto' => 'Automatic',
     ],
     'your_language' => 'Your language',
+    'views' => 'Views',
+    'likes' => 'Likes',
     'back_home' => 'Return to the home',
     'back_list' => 'Return to the list',
     'back_form' => 'Return to the form',
@@ -276,6 +278,16 @@ return [
     'transaction_type_error' => 'Please select transaction type',
     'new_partner_message' => 'You can now log in as a partner with your phone number. Temporary password:',
 
+    // ===== TYPES
+    'media_types' => [
+        'feature_film' => 'Feature film',
+        'tv_series' => 'TV series',
+        'episode' => 'Episode',
+        'tv_program' => 'TV program',
+        'music_album' => 'Music album',
+        'song' => 'Song'
+    ],
+
     // ===== NAVIGATION MENU
     'menu' => [
         'home' => 'Home',
@@ -385,6 +397,21 @@ return [
             'pricing' => [
                 'title' => 'Pricing plan',
                 'content' => 'You can now purchase a plan to follow premium videos.',
+            ],
+            'trends' => [
+                'title' => 'Current trends',
+            ],
+            'films' => [
+                'title' => 'Recent films',
+            ],
+            'series' => [
+                'title' => 'Recent series',
+            ],
+            'programs' => [
+                'title' => 'Recent programs',
+            ],
+            'songs' => [
+                'title' => 'Recent songs',
             ],
         ],
 
