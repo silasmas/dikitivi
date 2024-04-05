@@ -269,6 +269,7 @@ return [
         'preach' => 'Prédication',
     ],
     // Alert message
+    'adult_content' => 'Ce contenu n\'est pas de votre âge',
     'registered_data' => 'Données enregistrées',
     'no_data' => 'Ces données n\'existent pas',
     'required_fields' => 'Veuillez vérifier les champs obligatoires',
@@ -785,6 +786,14 @@ return [
                     'title' => 'Autre don',
                     'description' => 'Description de votre don'
                 ],
+            ],
+        ],
+
+        // Media
+        'media' => [
+            'title' => 'Infos sur le média',
+            'datas' => [
+                '' => '',
             ],
         ],
     ],

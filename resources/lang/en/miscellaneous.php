@@ -269,6 +269,7 @@ return [
         'preach' => 'Preach',
     ],
     // Alert message
+    'adult_content' => 'This content is not for your age',
     'registered_data' => 'Data registered',
     'no_data' => 'This datas don\'t exist',
     'required_fields' => 'Please check the required fields',
@@ -785,6 +786,14 @@ return [
                     'title' => 'Other donation',
                     'description' => 'Description of your donation',
                 ],
+            ],
+        ],
+
+        // Media
+        'media' => [
+            'title' => 'Infos about the media',
+            'datas' => [
+                '' => '',
             ],
         ],
     ],
