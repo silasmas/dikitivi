@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
         $this::$api_client_manager = new ApiClientManager();
 
-        $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
+        // $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -132,6 +132,62 @@ class HomeController extends Controller
                     'programs' => $medias_programs->data,
                     'songs' => $medias_songs->data,
                     'albums' => $medias_albums->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
+            }
+
+        } else {
+            return view('welcome');
+        }
+    }
+
+    /**
+     * GET: Home page
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int $id
+     * @return \Illuminate\View\View
+     */
+    public function mediaDatas(Request $request, $id)
+    {
+        if (session()->has('for_youth') OR Auth::check()) {
+            // Select a status by name API
+            $unread_status_name = 'Non lue';
+            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // User age
+                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // Select the current media API
+                $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
+                // Select other medias by current media type ID
+                $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
+
+                return view('partials.media.datas', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data,
+                    'unread_notifications' => $notifications->data,
+                    'current_media' => $current_media->data,
+                    'other_medias' => $other_medias->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
+
+            } else {
+                // User age
+                $for_youth = session()->get('for_youth');
+                // Select the current media API
+                $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, null, null, $request->ip());
+                // Select other medias by current media type ID
+                $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, null, null, $request->ip());
+
+                return view('partials.media.datas', [
+                    'for_youth' => $for_youth,
+                    'current_media' => $current_media->data,
+                    'other_medias' => $other_medias->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
             }

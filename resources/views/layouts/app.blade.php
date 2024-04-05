@@ -53,27 +53,31 @@
         <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
 
         <title>
+@if (!empty($current_media))
+            {{ $current_media->media_title }}
+@else
             DikiTivi / 
-@if (Route::is('home'))
+    @if (Route::is('home'))
             @lang('miscellaneous.menu.home')
-@endif
-@if (Route::is('live'))
+    @endif
+    @if (Route::is('live'))
             @lang('miscellaneous.menu.live')
-@endif
-@if (Route::is('films.home') || Route::is('film.datas'))
+    @endif
+    @if (Route::is('films.home') || Route::is('film.datas'))
             @lang('miscellaneous.menu.films')
-@endif
-@if (Route::is('series.home') || Route::is('series.datas') || Route::is('series.episode.datas'))
+    @endif
+    @if (Route::is('series.home') || Route::is('series.datas') || Route::is('series.episode.datas'))
             @lang('miscellaneous.menu.series')
-@endif
-@if (Route::is('programmes.home') || Route::is('programme.datas'))
+    @endif
+    @if (Route::is('programmes.home') || Route::is('programme.datas'))
             @lang('miscellaneous.menu.programmes')
-@endif
-@if (Route::is('songs.home') || Route::is('songs.datas'))
+    @endif
+    @if (Route::is('songs.home') || Route::is('songs.datas'))
             @lang('miscellaneous.menu.songs')
-@endif
-@if (Route::is('books.home') || Route::is('books.datas'))
+    @endif
+    @if (Route::is('books.home') || Route::is('books.datas'))
             @lang('miscellaneous.menu.books')
+    @endif
 @endif
         </title>
     </head>
@@ -87,7 +91,7 @@
                 <div class="container-fluid">
                     <div class="row g-0">
                         <div class="col-lg-12">
-                            <div class="header-medea-inner-area py-3">
+                            <div class="header-medea-inner-area px-2 py-3">
                                 <div class="left-side">
                                     <div class="logo-medea">
                                         <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-text.png') }}" alt="" width="140"></a>

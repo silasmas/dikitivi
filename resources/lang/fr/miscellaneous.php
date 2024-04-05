@@ -296,7 +296,7 @@ return [
         'films' => 'Films',
         'series' => 'Séries TV',
         'programmes' => 'Programmes',
-        'preach' => 'Enseignement',
+        'preach' => 'Enseignements',
         'songs' => 'Musique',
         'books' => 'Livres',
         'account' => 'Mon compte',

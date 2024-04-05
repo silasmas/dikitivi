@@ -14,7 +14,7 @@
                                 <div class="col-lg-12">
                                     <div class="slider-text-info position-relative" style="z-index: 9;">
                                         <h3 class="text-muted"><i class="bi bi-camera-reels me-2"></i>{{ $liv->type->type_name }}</h3>
-                                        <h1 class="dktv-text-green">{{ Str::limit($liv->media_title, 14, '...') }}</h1>
+                                        <h1 class="dktv-text-green" title="{{ $liv->media_title }}">{{ Str::limit($liv->media_title, 14, '...') }}</h1>
                                         <p style="color: #fff!important">{{ Str::limit($liv->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
                                             <a href="{{ route('media.datas', ['id' => $liv->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
@@ -45,7 +45,7 @@
                                 <div class="col-lg-12">
                                     <div class="slider-text-info position-relative" style="z-index: 9;">
                                         <h3 class="dktv-text-green"><i class="bi bi-collection-play me-2"></i>{{ $ser->type->type_name }}</h3>
-                                        <h1 class="dktv-text-yellow">{{ Str::limit($ser->media_title, 14, '...') }}</h1>
+                                        <h1 class="dktv-text-yellow" title="{{ $ser->media_title }}">{{ Str::limit($ser->media_title, 14, '...') }}</h1>
                                         <p style="color: #fff!important">{{ Str::limit($ser->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
                                             <a href="{{ route('media.datas', ['id' => $ser->id]) }}" class="default-btn dktv-btn-blue mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
@@ -76,7 +76,7 @@
                                 <div class="col-lg-12">
                                     <div class="slider-text-info position-relative" style="z-index: 9;">
                                         <h3 class="dktv-text-yellow"><i class="bi bi-music-note-list me-2"></i>{{ $alb->type->type_name }}</h3>
-                                        <h1 class="dktv-text-blue">{{ Str::limit($alb->media_title, 14, '...') }}</h1>
+                                        <h1 class="dktv-text-blue" title="{{ $alb->media_title }}">{{ Str::limit($alb->media_title, 14, '...') }}</h1>
                                         <p style="color: #fff!important">{{ Str::limit($alb->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
                                             <a href="{{ route('media.datas', ['id' => $alb->id]) }}" class="default-btn dktv-btn-green mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
@@ -130,7 +130,7 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
@@ -183,7 +183,7 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
@@ -237,7 +237,7 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
@@ -291,7 +291,7 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
@@ -345,7 +345,7 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
@@ -399,7 +399,7 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
