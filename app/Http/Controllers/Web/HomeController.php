@@ -167,14 +167,19 @@ class HomeController extends Controller
                 // Select other medias by current media type ID
                 $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
 
-                return view('partials.media.datas', [
-                    'for_youth' => $for_youth,
-                    'current_user' => $user->data,
-                    'unread_notifications' => $notifications->data,
-                    'current_media' => $current_media->data,
-                    'other_medias' => $other_medias->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
+                    return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
+
+                } else {
+                    return view('partials.media.datas', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data,
+                        'unread_notifications' => $notifications->data,
+                        'current_media' => $current_media->data,
+                        'other_medias' => $other_medias->data,
+                        'api_client_manager' => $this::$api_client_manager,
+                    ]);
+                }
 
             } else {
                 // User age
@@ -184,12 +189,17 @@ class HomeController extends Controller
                 // Select other medias by current media type ID
                 $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, null, null, $request->ip());
 
-                return view('partials.media.datas', [
-                    'for_youth' => $for_youth,
-                    'current_media' => $current_media->data,
-                    'other_medias' => $other_medias->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
+                    return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
+
+                } else {
+                    return view('partials.media.datas', [
+                        'for_youth' => $for_youth,
+                        'current_media' => $current_media->data,
+                        'other_medias' => $other_medias->data,
+                        'api_client_manager' => $this::$api_client_manager,
+                    ]);
+                }
             }
 
         } else {
