@@ -46,7 +46,7 @@ if (!empty($current_media->belongs_to)) {
                                 <a href="{{ route('songs.home') }}" class="btn bg-transparent text-muted text-start rounded-0 shadow-0"><i class="bi bi-arrow-left me-3 fs-4 align-middle"></i>Voir toutes les chansons</a>
             @break
         @case(__('miscellaneous.media_types.tv_program'))
-                                <a href="{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? route('programmes.entity.home', ['entity' => 'preach']) : route('programmes.home') }}" class="btn bg-transparent text-muted text-start rounded-0 shadow-0"><i class="bi bi-arrow-left me-3 fs-4 align-middle"></i>{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? 'Voir les autres enseignements' : 'Voir les autres émissions' }}</a>
+                                <a href="{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? route('programs.entity.home', ['entity' => 'preach']) : route('programs.home') }}" class="btn bg-transparent text-muted text-start rounded-0 shadow-0"><i class="bi bi-arrow-left me-3 fs-4 align-middle"></i>{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? 'Voir les autres enseignements' : 'Voir les autres émissions' }}</a>
             @break
         @default
                                 <a href="{{ route('home') }}" class="btn bg-transparent text-muted text-start rounded-0 shadow-0"><i class="bi bi-arrow-left me-3 fs-4 align-middle"></i>@lang('miscellaneous.back_home')</a>

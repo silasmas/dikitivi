@@ -296,7 +296,7 @@ return [
         'live' => 'Live',
         'films' => 'Films',
         'series' => 'TV series',
-        'programmes' => 'Programmes',
+        'programs' => 'Programs',
         'preach' => 'Preach',
         'songs' => 'Music',
         'books' => 'Books',

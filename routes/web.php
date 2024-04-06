@@ -34,8 +34,8 @@ Route::get('/media/{id}', 'App\Http\Controllers\Web\HomeController@mediaDatas')-
 Route::get('/live', 'App\Http\Controllers\Web\HomeController@live')->name('live.home');
 Route::get('/films', 'App\Http\Controllers\Web\HomeController@films')->name('films.home');
 Route::get('/series', 'App\Http\Controllers\Web\HomeController@series')->name('series.home');
-Route::get('/programmes', 'App\Http\Controllers\Web\HomeController@programmes')->name('programmes.home');
-Route::get('/programmes/{entity}', 'App\Http\Controllers\Web\HomeController@programmesEntity')->name('programmes.entity.home');
+Route::get('/programs', 'App\Http\Controllers\Web\HomeController@programs')->name('programs.home');
+Route::get('/programs/{entity}', 'App\Http\Controllers\Web\HomeController@programsEntity')->name('programs.entity.home');
 Route::get('/songs', 'App\Http\Controllers\Web\HomeController@songs')->name('songs.home');
 Route::get('/books', 'App\Http\Controllers\Web\HomeController@books')->name('books.home');
 Route::get('/books/{id}', 'App\Http\Controllers\Web\HomeController@bookDatas')->whereNumber('id')->name('book.datas');

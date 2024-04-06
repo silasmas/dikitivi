@@ -296,7 +296,7 @@ return [
         'live' => 'En direct',
         'films' => 'Films',
         'series' => 'Séries TV',
-        'programmes' => 'Programmes',
+        'programs' => 'Programmes',
         'preach' => 'Enseignements',
         'songs' => 'Musique',
         'books' => 'Livres',

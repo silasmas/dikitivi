@@ -60,19 +60,22 @@
     @if (Route::is('home'))
             @lang('miscellaneous.menu.home')
     @endif
-    @if (Route::is('live'))
+    @if (Route::is('live.home'))
             @lang('miscellaneous.menu.live')
     @endif
-    @if (Route::is('films.home') || Route::is('film.datas'))
+    @if (Route::is('films.home'))
             @lang('miscellaneous.menu.films')
     @endif
-    @if (Route::is('series.home') || Route::is('series.datas') || Route::is('series.episode.datas'))
+    @if (Route::is('series.home'))
             @lang('miscellaneous.menu.series')
     @endif
-    @if (Route::is('programmes.home') || Route::is('programme.datas'))
-            @lang('miscellaneous.menu.programmes')
+    @if (Route::is('programs.home'))
+            @lang('miscellaneous.menu.programs')
     @endif
-    @if (Route::is('songs.home') || Route::is('songs.datas'))
+    @if (Route::is('programs.entity.home'))
+            {{ $entity_title }}
+    @endif
+    @if (Route::is('songs.home'))
             @lang('miscellaneous.menu.songs')
     @endif
     @if (Route::is('books.home') || Route::is('books.datas'))
@@ -258,12 +261,12 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('programmes.home') }}">
-                                                        <i class="bi bi-camera-reels"></i> @lang('miscellaneous.menu.programmes')
+                                                    <a href="{{ route('programs.home') }}">
+                                                        <i class="bi bi-camera-reels"></i> @lang('miscellaneous.menu.programs')
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('programmes.entity.home', ['entity' => 'preach']) }}">
+                                                    <a href="{{ route('programs.entity.home', ['entity' => 'preach']) }}">
                                                         <i class="bi bi-mic"></i> @lang('miscellaneous.menu.preach')
                                                     </a>
                                                 </li>
@@ -349,7 +352,7 @@
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="{{ route('programmes.entity.home', ['entity' => 'preach']) }}">
+                            <a href="{{ route('programs.entity.home', ['entity' => 'preach']) }}">
                                 <i class="bi bi-mic fs-3"></i>
                                 <span>@lang('miscellaneous.menu.preach')</span>
                             </a>
@@ -367,9 +370,9 @@
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="{{ route('programmes.home') }}">
+                            <a href="{{ route('programs.home') }}">
                                 <i class="bi bi-camera-reels fs-3"></i>
-                                <span>@lang('miscellaneous.menu.programmes')</span>
+                                <span>@lang('miscellaneous.menu.programs')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
