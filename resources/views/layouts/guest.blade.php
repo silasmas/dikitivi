@@ -40,9 +40,9 @@
 
         <!-- ============ Custom CSS ============ -->
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-@if (request()->hasHeader('HTTP_X_REQUESTED_WITH'))
+@if (request()->has('app_id'))
         <style>
-            .detect-webview { display: none; }
+            .detect-webview { display: none;!important }
         </style>
 @endif
 
@@ -247,8 +247,9 @@
 
 @empty($comingSoon)
             <!-- Footer Area -->
-            <footer class="footer-area">
-                <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}">
+            <footer class="footer-area detect-webview">
+                {{-- <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}"> --}}
+                <div class="footer-top-tow dktv-bg-blue">
                     <div class="container">
                         <div class="row">
                             <div class="col-custom-4 mt--50">
@@ -275,8 +276,16 @@
 
                                     <div class="footer-contet">
                                         <ul class="footer-list">
-                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
+@empty(Auth::check())
+    @if (request()->is('register') || request()->is('register/*'))
+                                                <li><a href="{{ route('login') }}" class="text-light">@lang('miscellaneous.login_title1')</a></li>
+    @endif
+    @if (request()->is('login') || request()->is('login/*'))
+                                                <li><a href="{{ route('register') }}" class="text-light">@lang('miscellaneous.register_title1')</a></li>
+    @endif
+@endempty
+                                                <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
+                                                <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -290,9 +299,9 @@
 
                                     <div class="footer-contet">
                                         <ul class="footer-contact-list">
-                                            <li> <i class="zmdi zmdi-phone"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></li>
-                                            <li> <i class="zmdi zmdi-home"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.address')</a></li>
-                                            <li> <i class="zmdi zmdi-email"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.email')</a></li>
+                                            {{-- <li> <i class="zmdi zmdi-phone"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.phone')</a></li> --}}
+                                            <li> <i class="zmdi zmdi-home"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.address')</a></li>
+                                            <li> <i class="zmdi zmdi-email"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.email')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -306,12 +315,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                                <p class="copyright-text">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
+                                <p class="copyright-text" style="color: #fff!important;">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <ul class="footer-bottom-list">
-                                    <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}">@lang('miscellaneous.public.about.terms_of_use.title')</a></li>
-                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}">@lang('miscellaneous.public.about.privacy_policy.title')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'term_of_use']) }}" class="text-light">@lang('miscellaneous.menu.terms_of_use')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="text-light">@lang('miscellaneous.menu.privacy_policy')</a></li>
                                 </ul>
                             </div>
                         </div>

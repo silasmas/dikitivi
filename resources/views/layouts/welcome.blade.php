@@ -39,7 +39,7 @@
 
         <!-- ============ Custom CSS ============ -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-@if (request()->hasHeader('HTTP_X_REQUESTED_WITH'))
+@if (request()->has('app_id'))
         <style>
             .detect-webview { display: none; }
         </style>
@@ -50,6 +50,10 @@
             @lang('miscellaneous.welcome')
 @else
             DikiTivi
+    @if (Route::is('donation'))
+             / @lang('miscellaneous.menu.donate')
+    @endif
+
     @if (Route::is('about'))
              / @lang('miscellaneous.menu.about')
     @endif
@@ -66,7 +70,7 @@
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
             <header class="header-area inner-header detect-webview">
-                <div class="container relative">
+                <div class="container-sm container-fluid relative">
                     <div class="row{{ Route::is('home') ? ' align-items-center' : '' }}">
                         <div class="col-lg-3 col-7">
                             <!-- Logo -->
@@ -186,7 +190,7 @@
                 </div>
             </header>
 
-@if (Route::is('about') || Route::is('about.entity'))
+@if (Route::is('donation') || Route::is('about') || Route::is('about.entity'))
     @include('partials.breacrumb')
 @endif
 
@@ -203,7 +207,7 @@
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
                                     <div class="footer-contet">
-                                        <p>@lang('miscellaneous.public.about.description')</p>
+                                        <p style="color: #fff!important;">@lang('miscellaneous.public.about.description')</p>
                                         <ul class="fotter-socail">
                                             <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
                                             <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
@@ -221,10 +225,10 @@
 
                                     <div class="footer-contet">
                                         <ul class="footer-list">
-                                            <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
-                                            <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
-                                            <li><a href="{{ route('login') }}">@lang('miscellaneous.login_title1')</a></li>
+                                            <li><a href="{{ route('home') }}" class="text-light">@lang('miscellaneous.menu.home')</a></li>
+                                            <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
+                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
+                                            <li><a href="{{ route('login') }}" class="text-light">@lang('miscellaneous.login_title1')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -238,9 +242,9 @@
 
                                     <div class="footer-contet">
                                         <ul class="footer-contact-list">
-                                            {{-- <li> <i class="zmdi zmdi-phone"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.phone')</a></li> --}}
-                                            <li> <i class="zmdi zmdi-home"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.address')</a></li>
-                                            <li> <i class="zmdi zmdi-email"></i> <a href="#">@lang('miscellaneous.public.footer.head_office.email')</a></li>
+                                            {{-- <li> <i class="zmdi zmdi-phone"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.phone')</a></li> --}}
+                                            <li> <i class="zmdi zmdi-home"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.address')</a></li>
+                                            <li> <i class="zmdi zmdi-email"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.email')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -258,8 +262,8 @@
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <ul class="footer-bottom-list">
-                                    <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}">@lang('miscellaneous.public.about.terms_of_use.title')</a></li>
-                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}">@lang('miscellaneous.public.about.privacy_policy.title')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'term_of_use']) }}" class="text-light">@lang('miscellaneous.menu.terms_of_use')</a></li>
+                                    <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="text-light">@lang('miscellaneous.menu.privacy_policy')</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -297,5 +301,68 @@
         <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
+        <!-- Custom JS -->
+        <script type="text/javascript">
+            $(function () {
+                /* On select change, update de country phone code */
+                $('#select_country1').on('change', function () {
+                    var countryData = $(this).val();
+                    var countryDataArray = countryData.split('-');
+                    // Get ID and Phone code from splitted data
+                    var countryId = countryDataArray[1];
+                    var countryPhoneCode = countryDataArray[0];
+
+                    $('#phone_code_text1 .text-value').text(countryPhoneCode);
+                    $('#country_id1').val(countryId);
+                    $('#phone_code1').val(countryPhoneCode);
+                });
+                $('#select_country2').on('change', function () {
+                    var countryData = $(this).val();
+                    var countryDataArray = countryData.split('-');
+                    // Get ID and Phone code from splitted data
+                    var countryId = countryDataArray[1];
+                    var countryPhoneCode = countryDataArray[0];
+
+                    $('#phone_code_text2 .text-value').text(countryPhoneCode);
+                    $('#country_id2').val(countryId);
+                    $('#phone_code2').val(countryPhoneCode);
+                });
+                $('#select_country3').on('change', function () {
+                    var countryData = $(this).val();
+                    var countryDataArray = countryData.split('-');
+                    // Get ID and Phone code from splitted data
+                    var countryId = countryDataArray[1];
+                    var countryPhoneCode = countryDataArray[0];
+
+                    $('#phone_code_text3 .text-value').text(countryPhoneCode);
+                    $('#country_id3').val(countryId);
+                    $('#phone_code3').val(countryPhoneCode);
+                });
+
+                /* On check, show/hide some blocs */
+                // OFFER TYPE
+                $('#donationType .form-check-input').each(function () {
+                    $(this).on('click', function () {
+                        if ($('#anonyme').is(':checked')) {
+                            $('#donorIdentity, #otherDonation').addClass('d-none');
+
+                        } else {
+                            $('#donorIdentity, #otherDonation').removeClass('d-none');
+                        }
+                    });
+                });
+                // TRANSACTION TYPE
+                $('#paymentMethod .form-check-input').each(function () {
+                    $(this).on('click', function () {
+                        if ($('#bank_card').is(':checked')) {
+                            $('#phoneNumberForMoney').addClass('d-none');
+
+                        } else {
+                            $('#phoneNumberForMoney').removeClass('d-none');
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

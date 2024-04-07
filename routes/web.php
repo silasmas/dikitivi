@@ -27,7 +27,7 @@ Route::get('/choose_age/{for_youth}', function ($for_youth) { session()->put('fo
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
 Route::get('/notification', 'App\Http\Controllers\Web\HomeController@notification')->name('notification.home');
-Route::get('/donation', 'App\Http\Controllers\Web\HomeController@index')->name('donation');
+Route::get('/donation', 'App\Http\Controllers\Web\HomeController@donate')->name('donation');
 Route::get('/about', 'App\Http\Controllers\Web\HomeController@about')->name('about');
 Route::get('/about/{entity}', 'App\Http\Controllers\Web\HomeController@aboutEntity')->name('about.entity');
 Route::get('/media/{id}', 'App\Http\Controllers\Web\HomeController@mediaDatas')->whereNumber('id')->name('media.datas');

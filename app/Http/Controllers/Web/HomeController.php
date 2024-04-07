@@ -154,6 +154,8 @@ class HomeController extends Controller
             // Select a status by name API
             $unread_status_name = 'Non lue';
             $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+            $views = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $id);
+            $likes = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $id);
 
             if (Auth::check()) {
                 // Select a user API
@@ -177,6 +179,8 @@ class HomeController extends Controller
                         'unread_notifications' => $notifications->data,
                         'current_media' => $current_media->data,
                         'other_medias' => $other_medias->data,
+                        'views' => $views,
+                        'likes' => $likes,
                         'api_client_manager' => $this::$api_client_manager,
                     ]);
                 }
@@ -197,6 +201,8 @@ class HomeController extends Controller
                         'for_youth' => $for_youth,
                         'current_media' => $current_media->data,
                         'other_medias' => $other_medias->data,
+                        'views' => $views,
+                        'likes' => $likes,
                         'api_client_manager' => $this::$api_client_manager,
                     ]);
                 }
@@ -520,6 +526,25 @@ class HomeController extends Controller
         } else {
             return view('welcome');
         }
+    }
+
+    /**
+     * GET: Donation page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function donate()
+    {
+        // Select all types by group API
+        $transaction_types_name = 'Type de transaction';
+        $transaction_types = $this::$api_client_manager::call('GET', getApiURL() . '/type/find_by_group/fr/' . $transaction_types_name);
+        // Select all countries API
+        $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
+
+        return view('donate', [
+            'transaction_types' => $transaction_types->data,
+            'countries' => $countries->data
+        ]);
     }
 
     /**

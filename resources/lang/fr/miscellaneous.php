@@ -773,7 +773,7 @@ return [
                 'description' => 'En soutenant le ministère DikiTivi, non seulement vous contribuez à l\'amélioration de vie du peuple de Dieu, mais aussi vous contribuez à l\'aide qu\'apporte le ministère aux ophelins et aux démunis.',
                 'content1' => 'Si c\'est l\'argent que vous voulez envoyer, vous n\'avez qu\'à sélectionner le mode de paiement ; ensuite, vous l\'envoyez directement en ligne.',
                 'content2' => 'Si vous voulez donner autre chose que de l\'argent, vous n\'avez qu\'à donner la description de votre don.',
-                'anonyme' => 'Faire un don anonyme',
+                'anonyme' => 'Faites votre don',
                 'partner' => 'Devenir partenaire',
                 'your_identity' => 'Votre identité',
                 'send_money' => [
@@ -791,9 +791,30 @@ return [
 
         // Media
         'media' => [
-            'title' => 'Infos sur le média',
+            'categories' => 'Catégories',
+            'label' => [
+                'title' => 'Titre',
+                'description' => 'Description',
+                'author' => 'Auteur',
+                'series' => 'Série',
+                'album' => 'Album',
+                'artist' => 'Artist(s)',
+                'writter' => 'Écrit par',
+                'director' => 'Dirigé par',
+                'published_date' => 'Date de publication',
+            ],
             'datas' => [
-                '' => '',
+                'return_link' => [
+                    'film' => 'Voir tous les films',
+                    'episode' => 'Autres épisodes de la série',
+                    'series' => 'Voir toutes les séries TV',
+                    'song' => 'Autres chansons de l\'album',
+                    'album' => 'Voir toutes les chansons',
+                    'program' => [
+                        'default' => 'Voir les autres émissions',
+                        'preach' => 'Voir les autres enseignements',
+                    ],
+                ],
             ],
         ],
     ],

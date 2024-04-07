@@ -5,6 +5,19 @@
                     <div class="in-breadcrumb">
                         <div class="row">
                             <div class="col text-center">
+@if (Route::is('donation'))
+                                <h2>@lang('miscellaneous.public.about.donate.anonyme')</h2>
+
+                                <!-- breadcrumb-list start -->
+                                <ul class="breadcrumb-list">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ route('home') }}" class="text-white">@lang('miscellaneous.menu.home')</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">@lang('miscellaneous.menu.donate')</li>
+                                </ul>
+                                <!-- breadcrumb-list end -->
+@endif
+
 @if (Route::is('about'))
                                 <h2>@lang('miscellaneous.public.about.title')</h2>
 

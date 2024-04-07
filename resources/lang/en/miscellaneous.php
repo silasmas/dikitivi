@@ -773,7 +773,7 @@ return [
                 'description' => 'By supporting the DikiTivi ministry, you not only contribute to the improvement of life of the people of God, but also you contribute to the help that the ministry brings to the ophelines and the poor.',
                 'content1' => 'If it\'s money you want to send, just select the payment method; then you send it directly online.',
                 'content2' => 'If you want to donate something other than money, just enter a description of your donation.',
-                'anonyme' => 'Make an anonymous donation',
+                'anonyme' => 'Make your donation',
                 'partner' => 'Become a partner',
                 'your_identity' => 'Your identity',
                 'send_money' => [
@@ -791,9 +791,30 @@ return [
 
         // Media
         'media' => [
-            'title' => 'Infos about the media',
+            'categories' => 'Categories',
+            'label' => [
+                'title' => 'Title',
+                'description' => 'Description',
+                'author' => 'Author',
+                'series' => 'Series',
+                'album' => 'Album',
+                'artist' => 'Artist(s)',
+                'writter' => 'Written by',
+                'director' => 'Directed by',
+                'published_date' => 'Publishing date',
+            ],
             'datas' => [
-                '' => '',
+                'return_link' => [
+                    'film' => 'See all films',
+                    'episode' => 'Other episodes of the series',
+                    'series' => 'See all TV series',
+                    'song' => 'Other songs of the album',
+                    'album' => 'See all songs',
+                    'program' => [
+                        'default' => 'See all programs',
+                        'preach' => 'See other preaches',
+                    ],
+                ],
             ],
         ],
     ],

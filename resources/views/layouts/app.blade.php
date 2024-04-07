@@ -1,4 +1,3 @@
-{{-- {{ dd($current_user) }} --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -38,9 +37,9 @@
 
         <!-- ============ Custom CSS ============ -->
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-@if (request()->hasHeader('HTTP_X_REQUESTED_WITH'))
+@if (request()->has('app_id'))
         <style>
-            .detect-webview { display: none; }
+            .detect-webview { display: none;!important }
             .mobile-menu { color: #a0a0a0; }
             @media only screen (max-width: 900px) {
                 .header-medea-inner-area { padding: 30px 80px; }
@@ -79,6 +78,9 @@
             @lang('miscellaneous.menu.songs')
     @endif
     @if (Route::is('books.home') || Route::is('books.datas'))
+            @lang('miscellaneous.menu.books')
+    @endif
+    @if (Route::is('dona'))
             @lang('miscellaneous.menu.books')
     @endif
 @endif
@@ -405,7 +407,6 @@
                                             <ul class="fotter-socail">
                                                 <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
                                                 <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
-                                                <li><a href="#" class="fs-4"><i class="bi bi-twitter-x align-middle"></i></a></li>
                                                 <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
                                             </ul>
                                         </div>
@@ -499,6 +500,7 @@
         <script src="{{ asset('assets/addons/custom/autosize/js/autosize.min.js') }}"></script>
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
+        <!-- Custom JS -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
     </body>
 </html>
