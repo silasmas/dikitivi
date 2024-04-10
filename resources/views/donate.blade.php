@@ -91,9 +91,8 @@
                                             </span>
 
                                             <div class="form-floating">
-                                                <input type="hidden" id="country_id1" name="country_id" value="">
-                                                <input type="hidden" id="phone_code1" name="phone_code" value="">
-                                                <input type="tel" name="phone_number" id="phone_number" class="form-control" placeholder="@lang('miscellaneous.phone')">
+                                                <input type="hidden" id="phone_code1" name="other_phone_code" value="">
+                                                <input type="tel" name="other_phone_number" id="phone_number" class="form-control" placeholder="@lang('miscellaneous.phone')">
                                                 <label for="phone_number">@lang('miscellaneous.phone')</label>
                                             </div>
                                         </div>

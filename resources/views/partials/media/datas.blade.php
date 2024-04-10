@@ -65,7 +65,7 @@ if (!empty($current_media->belongs_to)) {
 
     @if ($current_media->type->type_name != __('miscellaneous.media_types.tv_series') && $current_media->type->type_name != __('miscellaneous.media_types.music_album'))
                                 <div class="ratio ratio-16x9">
-                                    <iframe src="{{ $current_media->media_url }}?showInfo=0&amp;rel=0"></iframe>
+                                    <iframe id="ytplayer" src="{{ $current_media->media_url }}?showinfo=0&modestbranding=1&enablejsapi=1&origin={{ getWebURL() }}"frameborder="0"></iframe>
                                 </div>
     @endif
 
@@ -130,7 +130,7 @@ if (!empty($current_media->belongs_to)) {
                             </div>
 
                             <div class="col-lg-2 col-sm-3 mx-auto">
-                                <h3 class="text-secondary border-bottom">@lang('miscellaneous.public.media.categories')</h3>
+                                <h3 class="text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.categories')</h3>
 
     @forelse ($current_media->categories as $cat)
                                 <h3 class="me-lg-0 me-2">

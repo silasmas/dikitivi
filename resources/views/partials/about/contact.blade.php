@@ -16,7 +16,7 @@
 
                 <div class="row">
                     <div class="col-sm-8">
-                        <div class="contact-form-wrap">
+                        {{-- <div class="contact-form-wrap">
                             <form id="contact-form" action="assets/php/mail.php" method="POST">
                                 <div class="contact-page-form">
                                     <div class="row contact-input">
@@ -42,5 +42,5 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>

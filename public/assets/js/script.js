@@ -68,7 +68,7 @@ if (isWebview) {
  * Set theme to light
  */
 function themeLight() {
-    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
+    $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
     $('.fotter-socail li a, .footer-list li a').removeClass('text-light');
     $('.mobile-menu').addClass('menu-black');
     $('.header-medea').addClass('bg-white').removeClass('bg-dark');
@@ -82,7 +82,7 @@ function themeLight() {
  * Set theme to dark
  */
 function themeDark() {
-    $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i,.section-title-3 h2').addClass('text-white').removeClass('text-dark');
+    $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i,.section-title-3 h2').addClass('text-white').removeClass('text-dark');
     $('.fotter-socail li a, .footer-list li a').addClass('text-light');
     $('.header-medea').removeClass('bg-white').addClass('bg-dark');
     $('.mobile-menu').removeClass('menu-black');
@@ -99,7 +99,7 @@ function themeAuto() {
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 
     if (darkThemeMq.matches) {
-        $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-white').removeClass('text-dark');
+        $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-white').removeClass('text-dark');
         $('.fotter-socail li a, .footer-list li a').addClass('text-white');
         $('.header-medea').removeClass('bg-white').addClass('bg-dark');
         $('.mobile-menu').removeClass('menu-black');
@@ -107,7 +107,7 @@ function themeAuto() {
         $('#mdb-style').attr('href', MDB_DARK);
 
     } else {
-        $('p, span, small, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
+        $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
         $('.fotter-socail li a, .footer-list li a').removeClass('text-white');
         $('.header-medea').addClass('bg-white').removeClass('bg-dark');
         $('.mobile-menu').addClass('menu-black');

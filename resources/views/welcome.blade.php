@@ -135,7 +135,7 @@
         <!--// About Area -->
 
         <!-- Contact Area -->
-        <div id="contact" class="contact-us-wrapper section-ptb py-5">
+        {{-- <div id="contact" class="contact-us-wrapper section-ptb py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 m-auto">
@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!--// Contact Area -->
 
         <!-- Map location Area -->

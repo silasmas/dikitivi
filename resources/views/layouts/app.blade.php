@@ -298,7 +298,7 @@
                     <div class="col-lg-5 col-sm-6 mx-auto">
                         <div class="alert alert-success alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
                             <i class="bi bi-info-circle me-2 fs-4" style="vertical-align: -3px;"></i> {!! \Session::get('success_message') !!}
-                            <button type="button" class="btn-close text-success" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     </div>
                 </div>
@@ -313,7 +313,7 @@
                     <div class="col-lg-5 col-sm-6 mx-auto">
                         <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
                             <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! preg_match('/~/', \Session::get('error_message')) ? explode('-', explode('~', \Session::get('error_message'))[0])[1] : \Session::get('error_message') !!}
-                            <button type="button" class="btn-close text-danger" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     </div>
                 </div>
@@ -328,7 +328,7 @@
                     <div class="col-lg-5 col-sm-6 mx-auto">
                         <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
                             <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! $error_message !!}
-                            <button type="button" class="btn-close text-danger" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     </div>
                 </div>
@@ -502,5 +502,37 @@
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <!-- Custom JS -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
+@if (Route::is('media.datas'))
+        <script>
+            // Load the IFrame Player API code asynchronously.
+            var tag = document.createElement('script');
+
+            tag.src = "https://www.youtube.com/player_api";
+
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            // Replace the 'ytplayer' element with an <iframe> and YouTube player after the API code downloads.
+            var player;
+
+            function onYouTubePlayerAPIReady() {
+                player = new YT.Player('ytplayer', {
+                    // height: '',
+                    // width: '',
+                    // videoId: '',
+                    playerVars: {
+                        rel: 0,
+                        autoplay: 0,
+                        autohide: 1,
+                        iv_load_policy: 3,
+                        modestbranding: 1,
+                        showinfo: 0,
+                        showsearch: 0
+                    }
+                });
+            }
+        </script>
+@endif
     </body>
 </html>

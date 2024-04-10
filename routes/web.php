@@ -27,7 +27,6 @@ Route::get('/choose_age/{for_youth}', function ($for_youth) { session()->put('fo
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
 Route::get('/notification', 'App\Http\Controllers\Web\HomeController@notification')->name('notification.home');
-Route::get('/donation', 'App\Http\Controllers\Web\HomeController@donate')->name('donation');
 Route::get('/about', 'App\Http\Controllers\Web\HomeController@about')->name('about');
 Route::get('/about/{entity}', 'App\Http\Controllers\Web\HomeController@aboutEntity')->name('about.entity');
 Route::get('/media/{id}', 'App\Http\Controllers\Web\HomeController@mediaDatas')->whereNumber('id')->name('media.datas');
@@ -39,8 +38,12 @@ Route::get('/programs/{entity}', 'App\Http\Controllers\Web\HomeController@progra
 Route::get('/songs', 'App\Http\Controllers\Web\HomeController@songs')->name('songs.home');
 Route::get('/books', 'App\Http\Controllers\Web\HomeController@books')->name('books.home');
 Route::get('/books/{id}', 'App\Http\Controllers\Web\HomeController@bookDatas')->whereNumber('id')->name('book.datas');
+// Donation
+Route::get('/donation', 'App\Http\Controllers\Web\HomeController@donate')->name('donation');
+Route::post('/donation', 'App\Http\Controllers\Web\HomeController@runDonate');
 Route::get('/transaction_waiting', 'App\Http\Controllers\Web\HomeController@transactionWaiting')->name('transaction.waiting');
-Route::get('/transaction_message/{orderNumber}/{userId}/{password}', 'App\Http\Controllers\Web\HomeController@transactionMessage')->whereNumber('userId')->name('transaction.message');
+Route::get('/transaction_message/{orderNumber}/{userId}', 'App\Http\Controllers\Web\HomeController@transactionMessage')->name('transaction.message');
+Route::get('/donated/{amount}/{currency}/{code}/{user_id}', 'App\Http\Controllers\Web\HomeController@donated')->whereNumber(['amount', 'code'])->name('donated');
 // Account
 Route::get('/account', 'App\Http\Controllers\Web\AccountController@account')->name('account');
 Route::get('/account/{entity}', 'App\Http\Controllers\Web\AccountController@accountEntity')->name('account.entity');
