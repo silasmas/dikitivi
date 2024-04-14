@@ -776,6 +776,11 @@ return [
                 'anonyme' => 'Make your donation',
                 'partner' => 'Become a partner',
                 'your_identity' => 'Your identity',
+                'period' => [
+                    'title' => 'Period',
+                    'choose' => 'Choose a period',
+                    'unique' => 'One-time payment'
+                ],
                 'send_money' => [
                     'title' => 'Send money',
                     'description' => 'Choose payment method',

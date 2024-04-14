@@ -208,7 +208,7 @@
             </div>
             <!-- Alert End -->
 @endif
-@if ($success_message)
+@if (!empty($success_message))
 
             <!-- Alert Start -->
             <div class="position-relative">

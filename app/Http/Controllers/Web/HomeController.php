@@ -541,10 +541,13 @@ class HomeController extends Controller
         $transaction_types = $this::$api_client_manager::call('GET', getApiURL() . '/type/find_by_group/fr/' . $transaction_types_name);
         // Select all countries API
         $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
+        // Select all pricings API
+        $pricings = $this::$api_client_manager::call('GET', getApiURL() . '/pricing');
 
         return view('donate', [
             'transaction_types' => $transaction_types->data,
-            'countries' => $countries->data
+            'countries' => $countries->data,
+            'pricings' => $pricings->data
         ]);
     }
 
@@ -683,6 +686,7 @@ class HomeController extends Controller
             'amount' => $request->register_amount,
             'other_phone' => $request->other_phone_code . $request->other_phone_number,
             'currency' => $request->select_currency,
+            'pricing_id' => !empty($request->select_pricing) AND is_numeric($request->select_pricing) ? $request->select_pricing : null,
             'app_url' => $request->app_url,
             'user_id' => !empty($request->user_id) AND is_numeric($request->user_id) ? $request->user_id : 'anonymous',
         ];
