@@ -28,6 +28,8 @@ return [
     'your_language' => 'Votre langue',
     'views' => 'Vues',
     'likes' => 'Likes',
+    'iam_child' => 'Je suis enfant',
+    'iam_adult' => 'Je suis adulte',
     'back_home' => 'Retour à l\'accueil',
     'back_list' => 'Retourner à la liste',
     'back_form' => 'Retourner au formulaire',
@@ -215,6 +217,7 @@ return [
     'firstname' => 'Prénom',
     'lastname' => 'Nom',
     'surname' => 'Post-nom',
+    'parental_code' => 'Code parental',
     'lastname_surname' => 'Nom / Post-nom',
     'nationality' => 'Nationalité',
     'p_o_box' => 'Boîte postale',
@@ -388,8 +391,8 @@ return [
             'hero' => [
                 'title' => 'Médias chrétiens',
                 'content' => 'Pour commencez, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">identifiez-vous</a> ou choisissez votre tranche d\'âge afin de trouver les médias qui vous correspondent.',
-                'link1' => 'Je suis majeur.e',
-                'link2' => 'Je suis mineur.e'
+                'link1' => 'Voir tous les médias',
+                'link2' => 'Jeunesse'
             ],
             'download_mobile_app' => [
                 'title' => 'Télécharger l\'appli mobile DikiTivi',

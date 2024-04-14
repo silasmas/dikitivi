@@ -20,6 +20,8 @@
                     <div class="row">
                         <div id="donate" class="col-lg-6 col-sm-7 col-11 mx-auto text-sm-center text-start">
                             <form method="POST" action="{{ route('donation') }}">
+                                <input type="hidden" name="app_url" value="{{ getWebURL() }}">
+                                <input type="hidden" name="user_id" value="{{ !empty($current_user) ? $current_user->id : 'anonymous' }}">
     @csrf
                                 <div id="financialDonation" class="row g-3 mb-4">
                                     <div class="col-12">
@@ -52,12 +54,12 @@
 
                                 <div class="row mb-3">
                                     <div class="col-md-12">
-                                        <div class="input-group overflow-hidden border">
-                                            <button type="button" class="btn btn-light border shadow-0 disabled" style="text-transform: inherit!important;">
+                                        <div class="input-group overflow-hidden border border-secondary rounded">
+                                            <button type="button" class="btn btn-light shadow-0 disabled" style="text-transform: inherit!important;">
                                                 @lang('miscellaneous.public.about.donate.period.title')
                                             </button>
 
-                                            <select name="select_pricing" id="select_pricing" class="form-select py-2">
+                                            <select name="select_pricing" id="select_pricing" class="form-select border-start border-secondary py-2 border-0">
                                                 <option class="small" selected disabled>@lang('miscellaneous.public.about.donate.period.choose')</option>
                                                 <option>@lang('miscellaneous.public.about.donate.period.unique')</option>
     @forelse ($pricings as $pricing)

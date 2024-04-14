@@ -28,6 +28,8 @@ return [
     'your_language' => 'Your language',
     'views' => 'Views',
     'likes' => 'Likes',
+    'iam_child' => 'I am child',
+    'iam_adult' => 'I am adult',
     'back_home' => 'Return to the home',
     'back_list' => 'Return to the list',
     'back_form' => 'Return to the form',
@@ -215,6 +217,7 @@ return [
     'firstname' => 'First name',
     'lastname' => 'Last name',
     'surname' => 'Surname',
+    'parental_code' => 'Parental code',
     'lastname_surname' => 'Last name / Surname',
     'nationality' => 'Nationality',
     'p_o_box' => 'P.O. box',
@@ -388,8 +391,8 @@ return [
             'hero' => [
                 'title' => 'Christian medias',
                 'content' => 'To get started, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">log in</a> or choose your age group in order to find the media that suit you.',
-                'link1' => 'I am older',
-                'link2' => 'I am a minor'
+                'link1' => 'See all media',
+                'link2' => 'Youth'
             ],
             'download_mobile_app' => [
                 'title' => 'Download the DikiTivi mobile app',

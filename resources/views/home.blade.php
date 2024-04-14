@@ -4,88 +4,26 @@
 
                 <!-- Hero Slider start -->
                 <div class="hero-slider hero-slider-three">
-    @foreach ($lives as $liv)
+    @foreach ($slides_data as $media)
         @if ($loop->first)
-                    <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $liv->cover_url }}">
+                    <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $media->cover_url }}">
                         <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
                         <!-- Hero Content One Start -->
                         <div class="hero-content-three container-fluid">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="slider-text-info position-relative" style="z-index: 9;">
-                                        <h3 class="text-muted"><i class="bi bi-camera-reels me-2"></i>{{ $liv->type->type_name }}</h3>
-                                        <h1 class="dktv-text-green" title="{{ $liv->media_title }}">{{ Str::limit($liv->media_title, 14, '...') }}</h1>
-                                        <p style="color: #fff!important">{{ Str::limit($liv->media_description, 140, '...') }}</p>
+                                        <h3 class="text-muted"><i class="bi bi-camera-reels me-2"></i>{{ $media->type->type_name }}</h3>
+                                        <h1 class="dktv-text-green" title="{{ $media->media_title }}">{{ Str::limit($media->media_title, 14, '...') }}</h1>
+                                        <p style="color: #fff!important">{{ Str::limit($media->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
-                                            <a href="{{ route('media.datas', ['id' => $liv->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
-            @if ($liv->teaser_url != null)
+                                            <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
+            @if ($media->teaser_url != null)
                                             <a href="#Video-one" class="video-play-btn afterglow ml--10">
                                                 <i class="zmdi zmdi-play"></i>
                                             </a>
                                             <video id="Video-one" width="960" height="540">
-                                                <source src="{{ $liv->teaser_url }}" type="video/*">
-                                            </video>
-            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Hero Content One End -->
-                    </div>
-        @endif
-    @endforeach
-    @foreach ($series as $ser)
-        @if ($loop->first)
-                    <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $ser->cover_url }}">
-                        <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
-                        <!-- Hero Content One Start -->
-                        <div class="hero-content-three container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="slider-text-info position-relative" style="z-index: 9;">
-                                        <h3 class="dktv-text-green"><i class="bi bi-collection-play me-2"></i>{{ $ser->type->type_name }}</h3>
-                                        <h1 class="dktv-text-yellow" title="{{ $ser->media_title }}">{{ Str::limit($ser->media_title, 14, '...') }}</h1>
-                                        <p style="color: #fff!important">{{ Str::limit($ser->media_description, 140, '...') }}</p>
-                                        <div class="slider-button">
-                                            <a href="{{ route('media.datas', ['id' => $ser->id]) }}" class="default-btn dktv-btn-blue mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
-            @if ($ser->teaser_url != null)
-                                            <a href="#Video-one" class="video-play-btn afterglow ml--10">
-                                                <i class="zmdi zmdi-play"></i>
-                                            </a>
-                                            <video id="Video-one" width="960" height="540">
-                                                <source src="{{ $ser->teaser_url }}" type="video/*">
-                                            </video>
-            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Hero Content One End -->
-                    </div>
-        @endif
-    @endforeach
-    @foreach ($albums as $alb)
-        @if ($loop->first)
-                    <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $alb->cover_url }}">
-                        <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
-                        <!-- Hero Content One Start -->
-                        <div class="hero-content-three container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="slider-text-info position-relative" style="z-index: 9;">
-                                        <h3 class="dktv-text-yellow"><i class="bi bi-music-note-list me-2"></i>{{ $alb->type->type_name }}</h3>
-                                        <h1 class="dktv-text-blue" title="{{ $alb->media_title }}">{{ Str::limit($alb->media_title, 14, '...') }}</h1>
-                                        <p style="color: #fff!important">{{ Str::limit($alb->media_description, 140, '...') }}</p>
-                                        <div class="slider-button">
-                                            <a href="{{ route('media.datas', ['id' => $alb->id]) }}" class="default-btn dktv-btn-green mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
-            @if ($alb->teaser_url != null)
-                                            <a href="#Video-one" class="video-play-btn afterglow ml--10">
-                                                <i class="zmdi zmdi-play"></i>
-                                            </a>
-                                            <video id="Video-one" width="960" height="540">
-                                                <source src="{{ $alb->teaser_url }}" type="video/*">
+                                                <source src="{{ $media->teaser_url }}" type="video/*">
                                             </video>
             @endif
                                         </div>

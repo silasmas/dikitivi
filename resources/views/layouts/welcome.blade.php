@@ -92,7 +92,7 @@
                                         </ul>
                                     </nav>
                                     <div class="login-button">
-                                        <a href="{{ route('about.entity', ['entity' => 'donate']) }}" class="login-btn brilliantrose border-r-5 me-sm-2 me-1" title="@lang('miscellaneous.menu.donate')">
+                                        <a href="{{ route('donation') }}" class="login-btn brilliantrose border-r-5 me-sm-2 me-1" title="@lang('miscellaneous.menu.donate')">
                                             <i class="bi bi-heart-fill align-middle me-sm-2"></i>
                                             <span class="d-lg-inline-block d-none">
                                                 @lang('miscellaneous.menu.donate')
