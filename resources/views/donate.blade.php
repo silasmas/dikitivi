@@ -21,7 +21,7 @@
                         <div id="donate" class="col-lg-6 col-sm-7 col-11 mx-auto text-sm-center text-start">
                             <form method="POST" action="{{ route('donation') }}">
                                 <input type="hidden" name="app_url" value="{{ getWebURL() }}">
-                                <input type="hidden" name="user_id" value="{{ !empty($current_user) ? $current_user->id : 'anonymous' }}">
+                                <input type="hidden" name="user_id" value="{{ !empty($current_user) ? $current_user->user->id : 'anonymous' }}">
     @csrf
                                 <div id="financialDonation" class="row g-3 mb-4">
                                     <div class="col-12">
