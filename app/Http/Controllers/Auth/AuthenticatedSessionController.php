@@ -41,7 +41,7 @@ class AuthenticatedSessionController extends Controller
                 return view('auth.login', 'children', $users->data);
 
             } else {
-                $error_data = $user->message . ', ' . $user->message . ', ' . __('notifications.error_title');
+                $error_data = $users->message . ', ' . $users->message . ', ' . __('notifications.error_title');
 
                 return redirect()->back()->with('error_message_login', $error_data . '~' . $request->login_parental_code);
             }
