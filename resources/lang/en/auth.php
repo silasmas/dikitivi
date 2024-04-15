@@ -31,6 +31,7 @@ return [
     'otp-check' => 'Write the code you received by mail or SMS',
     'otp-check-email' => 'Write the code you received by mail',
     'otp-check-phone' => 'Write the code you received by SMS',
+    'select-your-profile' => 'Select your profile',
     // Error messages
     'unauthorized' => 'This space is reserved for the administrator',
     'failed' => 'These credentials do not match our records.',
