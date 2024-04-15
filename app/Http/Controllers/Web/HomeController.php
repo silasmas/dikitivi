@@ -20,8 +20,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this::$api_client_manager = new ApiClientManager();
-
-        // $this->middleware('auth')->except(['changeLanguage', 'index', 'about', 'aboutEntity']);
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -248,11 +246,11 @@ class HomeController extends Controller
      */
     public function live(Request $request)
     {
-        if (session()->has('for_youth') OR Auth::check()) {
-            // Select a status by name API
-            $unread_status_name = 'Non lue';
-            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
 
+        if (session()->has('for_youth')) {
             if (Auth::check()) {
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
@@ -272,20 +270,31 @@ class HomeController extends Controller
                 ]);
 
             } else {
-                // User age
-                $for_youth = session()->get('for_youth');
-                // Select media lives API
-                $medias_lives = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_live/' . $for_youth, null, null, $request->ip());
-
-                return view('partials.media.live', [
-                    'for_youth' => $for_youth,
-                    'lives' => $medias_lives->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                return redirect()->route('login');
             }
 
         } else {
-            return view('welcome');
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // User age
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // Select media lives API
+                $medias_lives = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_live/' . $for_youth, null, null, $request->ip(), Auth::user()->id);
+
+                return view('partials.media.live', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'lives' => $medias_lives->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
+
+            } else {
+                return view('welcome');
+            }
         }
     }
 
@@ -297,14 +306,14 @@ class HomeController extends Controller
      */
     public function films(Request $request)
     {
-        if (session()->has('for_youth') OR Auth::check()) {
-            // Select a status by name API
-            $unread_status_name = 'Non lue';
-            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
-            // Select a media by type API
-            $film_type_name = 'Long métrage';
-            $film_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $film_type_name);
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // Select a media by type API
+        $film_type_name = 'Long métrage';
+        $film_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $film_type_name);
 
+        if (session()->has('for_youth')) {
             if (Auth::check()) {
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
@@ -324,20 +333,31 @@ class HomeController extends Controller
                 ]);
 
             } else {
-                // User age
-                $for_youth = session()->get('for_youth');
-                // Select medias by type API
-                $medias_films = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $film_type->data->id, null, null, $request->ip());
-
-                return view('partials.media.films', [
-                    'for_youth' => $for_youth,
-                    'films' => $medias_films->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                return redirect()->route('login');
             }
 
         } else {
-            return view('welcome');
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // User age
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // Select medias by type API
+                $medias_films = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $film_type->data->id, null, null, $request->ip(), Auth::user()->id);
+
+                return view('partials.media.films', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'films' => $medias_films->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
+
+            } else {
+                return view('welcome');
+            }
         }
     }
 
@@ -349,14 +369,14 @@ class HomeController extends Controller
      */
     public function series(Request $request)
     {
-        if (session()->has('for_youth') OR Auth::check()) {
-            // Select a status by name API
-            $unread_status_name = 'Non lue';
-            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
-            // Select a media by type API
-            $series_type_name = 'Série TV';
-            $series_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $series_type_name);
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // Select a media by type API
+        $series_type_name = 'Série TV';
+        $series_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $series_type_name);
 
+        if (session()->has('for_youth')) {
             if (Auth::check()) {
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
@@ -376,20 +396,31 @@ class HomeController extends Controller
                 ]);
 
             } else {
-                // User age
-                $for_youth = session()->get('for_youth');
-                // Select medias by type API
-                $medias_series = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $series_type->data->id, null, null, $request->ip());
-
-                return view('partials.media.series', [
-                    'for_youth' => $for_youth,
-                    'series' => $medias_series->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                return redirect()->route('login');
             }
 
         } else {
-            return view('welcome');
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // User age
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // Select medias by type API
+                $medias_series = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $series_type->data->id, null, null, $request->ip(), Auth::user()->id);
+
+                return view('partials.media.series', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'series' => $medias_series->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
+
+            } else {
+                return view('welcome');
+            }
         }
     }
 
@@ -401,14 +432,14 @@ class HomeController extends Controller
      */
     public function programs(Request $request)
     {
-        if (session()->has('for_youth') OR Auth::check()) {
-            // Select a status by name API
-            $unread_status_name = 'Non lue';
-            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
-            // Select a media by type API
-            $program_type_name = 'Programme TV';
-            $program_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $program_type_name);
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // Select a media by type API
+        $program_type_name = 'Programme TV';
+        $program_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $program_type_name);
 
+        if (session()->has('for_youth')) {
             if (Auth::check()) {
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
@@ -428,20 +459,31 @@ class HomeController extends Controller
                 ]);
 
             } else {
-                // User age
-                $for_youth = session()->get('for_youth');
-                // Select medias by type API
-                $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id, null, null, $request->ip());
-
-                return view('partials.media.programs', [
-                    'for_youth' => $for_youth,
-                    'programs' => $medias_programs->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                return redirect()->route('login');
             }
 
         } else {
-            return view('welcome');
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // User age
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // Select medias by type API
+                $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id, null, null, $request->ip(), Auth::user()->id);
+
+                return view('partials.media.programs', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'programs' => $medias_programs->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
+
+            } else {
+                return view('welcome');
+            }
         }
     }
 
@@ -453,14 +495,14 @@ class HomeController extends Controller
      */
     public function programsEntity(Request $request, $entity)
     {
-        if (session()->has('for_youth') OR Auth::check()) {
-            // Select a status by name API
-            $unread_status_name = 'Non lue';
-            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
-            // Select a media by type API
-            $program_type_name = 'Programme TV';
-            $program_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $program_type_name);
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // Select a media by type API
+        $program_type_name = 'Programme TV';
+        $program_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $program_type_name);
 
+        if (session()->has('for_youth')) {
             if (Auth::check()) {
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
@@ -483,23 +525,34 @@ class HomeController extends Controller
                 }
 
             } else {
+                return redirect()->route('login');
+            }
+
+        } else {
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = session()->get('for_youth');
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
-                $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id, null, null, $request->ip());
+                $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id, null, null, $request->ip(), Auth::user()->id);
 
                 if ($entity == 'preach') {
                     return view('partials.media.programs', [
                         'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'unread_notifications' => $notifications->data,
                         'programs' => $medias_programs->data,
                         'api_client_manager' => $this::$api_client_manager,
                         'entity_title' => __('miscellaneous.menu.preach'),
                     ]);
                 }
-            }
 
-        } else {
-            return view('welcome');
+            } else {
+                return view('welcome');
+            }
         }
     }
 
@@ -511,14 +564,14 @@ class HomeController extends Controller
      */
     public function songs(Request $request)
     {
-        if (session()->has('for_youth') OR Auth::check()) {
-            // Select a status by name API
-            $unread_status_name = 'Non lue';
-            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
-            // Select a media by type API
-            $song_type_name = 'Chanson';
-            $song_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $song_type_name);
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // Select a media by type API
+        $song_type_name = 'Chanson';
+        $song_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $song_type_name);
 
+        if (session()->has('for_youth')) {
             if (Auth::check()) {
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
@@ -538,20 +591,31 @@ class HomeController extends Controller
                 ]);
 
             } else {
-                // User age
-                $for_youth = session()->get('for_youth');
-                // Select medias by type API
-                $medias_songs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $song_type->data->id, null, null, $request->ip());
-
-                return view('partials.media.songs', [
-                    'for_youth' => $for_youth,
-                    'songs' => $medias_songs->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                return redirect()->route('login');
             }
 
         } else {
-            return view('welcome');
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // User age
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // Select medias by type API
+                $medias_songs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $song_type->data->id, null, null, $request->ip(), Auth::user()->id);
+
+                return view('partials.media.songs', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'songs' => $medias_songs->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
+
+            } else {
+                return view('welcome');
+            }
         }
     }
 
@@ -578,7 +642,7 @@ class HomeController extends Controller
     }
 
     /**
-     * GET: Home page
+     * GET: About page
      *
      * @return \Illuminate\View\View
      */
@@ -590,7 +654,7 @@ class HomeController extends Controller
     }
 
     /**
-     * GET: Home page
+     * GET: About, inner pages
      *
      * @return \Illuminate\View\View
      */
