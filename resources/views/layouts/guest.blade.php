@@ -55,39 +55,42 @@
     @endif
 
     @if (empty($error_title) && Session::get('error_message') == null)
-		@if (Route::is('login'))
+        @if (!empty($children))
+            @lang('auth.select-your-profile')
+        @endif
+        @if (Route::is('login'))
             @if (request()->has('check_param'))
                 @if (request()->get('check_param') == 'email')
-                    @lang('auth.verified-email')
+            @lang('auth.verified-email')
                 @endif
                 @if (request()->get('check_param') == 'phone')
-                    @lang('auth.verified-phone')
+            @lang('auth.verified-phone')
                 @endif
             @else
-                @lang('auth.login')
+            @lang('auth.login')
             @endif
 		@endif
 
 		@if (Route::is('register') || !empty($request->temporary_user_id))
             @if (!empty($token_sent))
-                @lang('auth.otp-code')
+            @lang('auth.otp-code')
             @else
                 @if (!empty($temporary_user))
-                    @lang('miscellaneous.account.personal_infos.title')
+            @lang('miscellaneous.account.personal_infos.title')
                 @else
                     @if (!empty($request->redirect))
                         @if (request()->has('check'))
                             @if (request()->get('check') == 'email')
-                                @lang('auth.verify-email')
+            @lang('auth.verify-email')
                             @endif
                             @if (request()->get('check') == 'phone')
-                                @lang('auth.verify-phone')
+            @lang('auth.verify-phone')
                             @endif
                         @else
-                            @lang('auth.reset-password')
+            @lang('auth.reset-password')
                         @endif
                     @else
-                        @lang('auth.register')
+            @lang('auth.register')
                     @endif
                 @endif
             @endif
@@ -225,7 +228,9 @@
 @endif
                                     </div>
                                 </div>
+
 @yield('guest-content')
+
                                 <p class="mt-3 mb-0 text-center">@lang('miscellaneous.toggle_theme')</p>
 
                                 <div class="d-flex justify-content-center">

@@ -17,6 +17,8 @@ const modalUser = $('#cropModalUser');
 const retrievedAvatar = document.getElementById('retrieved_image');
 const retrievedMediaCover = document.getElementById('retrieved_media_cover');
 const currentMediaCover = document.querySelector('#mediaCoverWrapper img');
+const retrievedImageProfile = document.getElementById('retrieved_image_profile');
+const currentImageProfile = document.querySelector('#profileImageWrapper img');
 const retrievedImageRecto = document.getElementById('retrieved_image_recto');
 const currentImageRecto = document.querySelector('#rectoImageWrapper img');
 const retrievedImageVerso = document.getElementById('retrieved_image_verso');
@@ -368,7 +370,7 @@ $(function () {
         });
     });
 
-    // AVATAR
+    // AVATAR with ajax
     $('#avatar').on('change', function (e) {
         var files = e.target.files;
         var done = function (url) {
@@ -445,6 +447,59 @@ $(function () {
         });
     });
 
+    // AVATAR without ajax
+    $('#image_profile').on('change', function (e) {
+        var files = e.target.files;
+        var done = function (url) {
+            retrievedImageProfile.src = url;
+            var modal = new bootstrap.Modal(document.getElementById('cropModal_profile'), { keyboard: false });
+
+            modal.show();
+        };
+
+        if (files && files.length > 0) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                done(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
+        }
+    });
+
+    $('#cropModal_profile').on('shown.bs.modal', function () {
+        cropper = new Cropper(retrievedImageProfile, {
+            aspectRatio: 1,
+            viewMode: 3,
+            preview: '#cropModal_profile .preview'
+        });
+
+    }).on('hidden.bs.modal', function () {
+        cropper.destroy();
+
+        cropper = null;
+    });
+
+    $('#cropModal_profile #crop_profile').on('click', function () {
+        var canvas = cropper.getCroppedCanvas({
+            width: 700,
+            height: 700
+        });
+
+        canvas.toBlob(function (blob) {
+            URL.createObjectURL(blob);
+            var reader = new FileReader();
+
+            reader.readAsDataURL(blob);
+            reader.onloadend = function () {
+                var base64_data = reader.result;
+
+                $(currentImageProfile).attr('src', base64_data);
+                $('#data_profile').attr('value', base64_data);
+            };
+        });
+    });
+
     // RECTO
     $('#image_recto').on('change', function (e) {
         var files = e.target.files;
@@ -467,7 +522,7 @@ $(function () {
 
     $('#cropModal_recto').on('shown.bs.modal', function () {
         cropper = new Cropper(retrievedImageRecto, {
-            // aspectRatio: 4 / 3,
+            aspectRatio: 4 / 3,
             viewMode: 3,
             preview: '#cropModal_recto .preview'
         });
@@ -481,7 +536,7 @@ $(function () {
     $('#cropModal_recto #crop_recto').on('click', function () {
         var canvas = cropper.getCroppedCanvas({
             width: 1280,
-            height: 827
+            height: 960
         });
 
         canvas.toBlob(function (blob) {
@@ -520,7 +575,7 @@ $(function () {
 
     $('#cropModal_verso').on('shown.bs.modal', function () {
         cropper = new Cropper(retrievedImageVerso, {
-            // aspectRatio: 4 / 3,
+            aspectRatio: 4 / 3,
             viewMode: 3,
             preview: '#cropModal_verso .preview'
         });
@@ -534,7 +589,7 @@ $(function () {
     $('#cropModal_verso #crop_verso').on('click', function () {
         var canvas = cropper.getCroppedCanvas({
             width: 1280,
-            height: 827
+            height: 960
         });
 
         canvas.toBlob(function (blob) {
@@ -573,7 +628,7 @@ $(function () {
 
     $('#cropModal_media_cover').on('shown.bs.modal', function () {
         cropper = new Cropper(retrievedMediaCover, {
-            aspectRatio: 1,
+            aspectRatio: 16 / 9,
             viewMode: 3,
             preview: '#cropModal_media_cover .preview'
         });
@@ -586,8 +641,8 @@ $(function () {
 
     $('#cropModal_media_cover #crop_media_cover').on('click', function () {
         var canvas = cropper.getCroppedCanvas({
-            width: 700,
-            height: 700
+            width: 1280,
+            height: 720
         });
 
         canvas.toBlob(function (blob) {
