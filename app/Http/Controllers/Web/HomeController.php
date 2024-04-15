@@ -72,7 +72,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select media trends API
@@ -95,7 +95,7 @@ class HomeController extends Controller
 
                 return view('home', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data,
+                    'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'trends' => $medias_trends->data,
                     'lives' => $medias_lives->data,
@@ -116,7 +116,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select media trends API
@@ -139,7 +139,7 @@ class HomeController extends Controller
 
                 return view('home', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data,
+                    'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'trends' => $medias_trends->data,
                     'lives' => $medias_lives->data,
@@ -166,18 +166,18 @@ class HomeController extends Controller
      */
     public function mediaDatas(Request $request, $id)
     {
-        if (session()->has('for_youth') OR Auth::check()) {
-            // Select a status by name API
-            $unread_status_name = 'Non lue';
-            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
-            $views = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $id);
-            $likes = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $id);
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        $views = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $id);
+        $likes = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $id);
 
+        if (session()->has('for_youth')) {
             if (Auth::check()) {
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select the current media API
@@ -191,7 +191,7 @@ class HomeController extends Controller
                 } else {
                     return view('partials.media.datas', [
                         'for_youth' => $for_youth,
-                        'current_user' => $user->data,
+                        'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'current_media' => $current_media->data,
                         'other_medias' => $other_medias->data,
@@ -202,12 +202,21 @@ class HomeController extends Controller
                 }
 
             } else {
+                return redirect()->route('login');
+            }
+
+        } else {
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = session()->get('for_youth');
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select all unread notifications API
+                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select the current media API
-                $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, null, null, $request->ip());
+                $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
                 // Select other medias by current media type ID
-                $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, null, null, $request->ip());
+                $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
 
                 if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
@@ -215,6 +224,8 @@ class HomeController extends Controller
                 } else {
                     return view('partials.media.datas', [
                         'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'unread_notifications' => $notifications->data,
                         'current_media' => $current_media->data,
                         'other_medias' => $other_medias->data,
                         'views' => $views,
@@ -222,10 +233,10 @@ class HomeController extends Controller
                         'api_client_manager' => $this::$api_client_manager,
                     ]);
                 }
-            }
 
-        } else {
-            return view('welcome');
+            } else {
+                return view('welcome');
+            }
         }
     }
 
@@ -246,7 +257,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select media lives API
@@ -254,7 +265,7 @@ class HomeController extends Controller
 
                 return view('partials.media.live', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data,
+                    'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'lives' => $medias_lives->data,
                     'api_client_manager' => $this::$api_client_manager,
@@ -298,7 +309,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
@@ -306,7 +317,7 @@ class HomeController extends Controller
 
                 return view('partials.media.films', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data,
+                    'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'films' => $medias_films->data,
                     'api_client_manager' => $this::$api_client_manager,
@@ -350,7 +361,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
@@ -358,7 +369,7 @@ class HomeController extends Controller
 
                 return view('partials.media.series', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data,
+                    'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'series' => $medias_series->data,
                     'api_client_manager' => $this::$api_client_manager,
@@ -402,7 +413,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
@@ -410,7 +421,7 @@ class HomeController extends Controller
 
                 return view('partials.media.programs', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data,
+                    'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'programs' => $medias_programs->data,
                     'api_client_manager' => $this::$api_client_manager,
@@ -454,7 +465,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
@@ -463,7 +474,7 @@ class HomeController extends Controller
                 if ($entity == 'preach') {
                     return view('partials.media.programs', [
                         'for_youth' => $for_youth,
-                        'current_user' => $user->data,
+                        'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'programs' => $medias_programs->data,
                         'api_client_manager' => $this::$api_client_manager,
@@ -512,7 +523,7 @@ class HomeController extends Controller
                 // Select a user API
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
-                $for_youth = !empty($user->data->age) ? ($user->data->age < 18 ? 1 : 0) : 1;
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
@@ -520,7 +531,7 @@ class HomeController extends Controller
 
                 return view('partials.media.songs', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data,
+                    'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'songs' => $medias_songs->data,
                     'api_client_manager' => $this::$api_client_manager,

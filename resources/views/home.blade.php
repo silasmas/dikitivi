@@ -5,7 +5,6 @@
                 <!-- Hero Slider start -->
                 <div class="hero-slider hero-slider-three">
     @foreach ($slides_data as $media)
-        @if ($loop->first)
                     <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $media->cover_url }}">
                         <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
                         <!-- Hero Content One Start -->
@@ -18,14 +17,14 @@
                                         <p style="color: #fff!important">{{ Str::limit($media->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
                                             <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
-            @if ($media->teaser_url != null)
+        @if ($media->teaser_url != null)
                                             <a href="#Video-one" class="video-play-btn afterglow ml--10">
                                                 <i class="zmdi zmdi-play"></i>
                                             </a>
                                             <video id="Video-one" width="960" height="540">
                                                 <source src="{{ $media->teaser_url }}" type="video/*">
                                             </video>
-            @endif
+        @endif
                                         </div>
                                     </div>
                                 </div>
@@ -33,7 +32,6 @@
                         </div>
                         <!-- Hero Content One End -->
                     </div>
-        @endif
     @endforeach
                 </div>
                 <!-- Hero Slider end -->

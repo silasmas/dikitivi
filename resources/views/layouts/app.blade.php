@@ -6,9 +6,9 @@
         <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
         <meta name="dktv-api-url" content="{{ getApiURL() }}">
-        <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->user->id : null }}">
+        <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->user->api_token : null }}">
+        <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- ============ Favicon ============ -->
@@ -158,7 +158,7 @@
                                     <!-- our-profile-area start -->
                                     <div class="our-profile-area ">
                                         <a href="#" class="our-profile-pc" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <img src="{{ $current_user->user->avatar_url }}" alt="{{ $current_user->user->firstname . ' ' . $current_user->user->lastname }}" width="37" class="rounded-circle">
+                                            <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="37" class="rounded-circle">
                                         </a>
                                         <div class="dropdown-menu">
                                             <ul>
