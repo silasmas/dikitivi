@@ -38,6 +38,7 @@ Route::get('/programs/{entity}', 'App\Http\Controllers\Web\HomeController@progra
 Route::get('/songs', 'App\Http\Controllers\Web\HomeController@songs')->name('songs.home');
 Route::get('/books', 'App\Http\Controllers\Web\HomeController@books')->name('books.home');
 Route::get('/books/{id}', 'App\Http\Controllers\Web\HomeController@bookDatas')->whereNumber('id')->name('book.datas');
+Route::post('/action/{entity}', 'App\Http\Controllers\Web\HomeController@action')->name('action.entity');
 // Donation
 Route::get('/donation', 'App\Http\Controllers\Web\HomeController@donate')->name('donation');
 Route::post('/donation', 'App\Http\Controllers\Web\HomeController@runDonate');

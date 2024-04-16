@@ -122,9 +122,14 @@ if (!empty($current_media->belongs_to)) {
                                 </div>
 
                                 <div class="d-flex justify-content-between">
-                                    <div class="count">
-                                        <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
-                                        <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                    <div class="count text-muted">
+                                        @lang('miscellaneous.views')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block me-3">{{ count($views->data) }}</span>
+                                        @lang('miscellaneous.likes')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block">{{ count($likes->data) }}</span>
+                                    </div>
+
+                                    <div class="action">
+                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $likes->data, 'user_id') ? 'dktv-btn-blue' : 'btn-light text-muted' }} shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'watchlist')"><i class="bi bi-plus fs-4"></i></button>
+                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $views->data, 'user_id') ? 'dktv-btn-pink' : 'btn-light text-muted' }} ms-3 pt-2 shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'like')"><i class="bi bi-heart fs-4"></i></button>
                                     </div>
                                 </div>
                             </div>
