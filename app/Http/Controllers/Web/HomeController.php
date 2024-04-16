@@ -187,6 +187,8 @@ class HomeController extends Controller
                 $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
                 // Select other medias by current media type ID
                 $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id . '/', Auth::user()->api_token);
 
                 if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
@@ -198,8 +200,9 @@ class HomeController extends Controller
                         'unread_notifications' => $notifications->data,
                         'current_media' => $current_media->data,
                         'other_medias' => $other_medias->data,
-                        'views' => $views,
-                        'likes' => $likes,
+                        'views' => $views->data,
+                        'likes' => $likes->data,
+                        'watchlist' => $user_watchlist->data->orders,
                         'api_client_manager' => $this::$api_client_manager,
                     ]);
                 }
@@ -221,10 +224,7 @@ class HomeController extends Controller
                 // Select other medias by current media type ID
                 $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
                 // All user carts by type (Watchlist) API
-                $user_carts = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id . '/', Auth::user()->api_token);
-                $watchlist = array_slice($user_carts->data, 0, 1);
-
-                dd($watchlist);
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id . '/', Auth::user()->api_token);
 
                 if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
@@ -236,8 +236,9 @@ class HomeController extends Controller
                         'unread_notifications' => $notifications->data,
                         'current_media' => $current_media->data,
                         'other_medias' => $other_medias->data,
-                        'views' => $views,
-                        'likes' => $likes,
+                        'views' => $views->data,
+                        'likes' => $likes->data,
+                        'watchlist' => $user_watchlist->data->orders,
                         'api_client_manager' => $this::$api_client_manager,
                     ]);
                 }

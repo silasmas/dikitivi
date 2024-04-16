@@ -123,13 +123,13 @@ if (!empty($current_media->belongs_to)) {
 
                                 <div class="d-flex justify-content-between">
                                     <div class="count text-muted">
-                                        @lang('miscellaneous.views')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block me-3">{{ count($views->data) }}</span>
-                                        @lang('miscellaneous.likes')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block">{{ count($likes->data) }}</span>
+                                        @lang('miscellaneous.views')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block me-3">{{ count($views) }}</span>
+                                        @lang('miscellaneous.likes')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block">{{ count($likes) }}</span>
                                     </div>
 
                                     <div class="action">
-                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $likes->data, 'user_id') ? 'dktv-btn-blue' : 'btn-light text-muted' }} shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'watchlist')"><i class="bi bi-plus fs-4"></i></button>
-                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $views->data, 'user_id') ? 'dktv-btn-pink' : 'btn-light text-muted' }} ms-3 pt-2 shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'like')"><i class="bi bi-heart fs-4"></i></button>
+                                        <button type="button" class="btn btn-floating {{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'dktv-btn-green' : 'btn-light text-muted' }} shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'watchlist')"><i class="bi bi-{{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'check' : 'plus' }} fs-3 align-top"></i></button>
+                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $likes, 'user_id') ? 'dktv-btn-pink' : 'btn-light text-muted' }} ms-3 shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'like')" style="padding-top: 0.18rem;"><i class="bi bi-heart fs-4"></i></button>
                                     </div>
                                 </div>
                             </div>

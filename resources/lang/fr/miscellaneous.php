@@ -27,7 +27,7 @@ return [
     ],
     'your_language' => 'Votre langue',
     'views' => 'Vues',
-    'likes' => 'Likes',
+    'likes' => 'J\'aimes',
     'iam_child' => 'Je suis un enfant',
     'iam_adult' => 'Je suis un adulte',
     'back_home' => 'Retour à l\'accueil',
