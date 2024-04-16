@@ -167,8 +167,13 @@ class HomeController extends Controller
         // Select a status by name API
         $unread_status_name = 'Non lue';
         $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // All media views API
         $views = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $id);
+        // All media likes API
         $likes = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $id);
+        // Select a type by name API
+        $watchlist_type_name = 'Watchlist';
+        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
 
         if (session()->has('for_youth')) {
             if (Auth::check()) {
@@ -215,6 +220,11 @@ class HomeController extends Controller
                 $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
                 // Select other medias by current media type ID
                 $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_carts = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id . '/', Auth::user()->api_token);
+                $watchlist = array_slice($user_carts->data, 0, 1);
+
+                dd($watchlist);
 
                 if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
