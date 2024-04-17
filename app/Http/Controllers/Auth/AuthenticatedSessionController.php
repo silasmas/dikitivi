@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @author Xanders
@@ -25,6 +27,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
+        Session::put('url.intended', URL::previous());
+
         return view('auth.login');
     }
 
@@ -59,7 +63,7 @@ class AuthenticatedSessionController extends Controller
                 if ($auth_phone || $auth_email || $auth_username) {
                     $request->session()->regenerate();
 
-                    return redirect()->route('home');
+                    return redirect()->to(Session::get('url.intended'));
                 }
 
             } else {
@@ -80,7 +84,7 @@ class AuthenticatedSessionController extends Controller
                     if ($auth_phone || $auth_email || $auth_username) {
                         $request->session()->regenerate();
 
-                        return redirect()->route('home');
+                        return redirect()->to(Session::get('url.intended'));
                     }
 
                 } else {

@@ -128,8 +128,12 @@ if (!empty($current_media->belongs_to)) {
                                     </div>
 
                                     <div class="action">
-                                        <button type="button" class="btn btn-floating {{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'dktv-btn-green' : 'btn-light text-muted' }} shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'watchlist')"><i class="bi bi-{{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'check' : 'plus' }} fs-3 align-top"></i></button>
-                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $likes, 'user_id') ? 'dktv-btn-pink' : 'btn-light text-muted' }} ms-3 shadow-0" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'like')" style="padding-top: 0.18rem;"><i class="bi bi-heart fs-4"></i></button>
+                                        <button type="button" class="btn btn-floating {{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'dktv-btn-green' : 'btn-light text-muted' }} shadow-0" data-mdb-ripple-init onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'watchlist')">
+                                            <i class="bi bi-{{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'check' : 'plus' }} fs-3"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $likes, 'user_id') ? 'dktv-btn-pink' : 'btn-light text-muted' }} ms-3 shadow-0" data-mdb-ripple-init style="padding-top: 0.18rem;" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'like')">
+                                            <i class="bi bi-heart fs-4"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

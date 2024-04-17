@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @author Xanders
@@ -244,6 +245,8 @@ class HomeController extends Controller
                 }
 
             } else {
+                Session::put('url.intended', URL::previous());
+
                 return view('welcome');
             }
         }
@@ -304,6 +307,8 @@ class HomeController extends Controller
                 ]);
 
             } else {
+                Session::put('url.intended', URL::previous());
+
                 return view('welcome');
             }
         }
@@ -367,6 +372,8 @@ class HomeController extends Controller
                 ]);
 
             } else {
+                Session::put('url.intended', URL::previous());
+
                 return view('welcome');
             }
         }
@@ -430,6 +437,8 @@ class HomeController extends Controller
                 ]);
 
             } else {
+                Session::put('url.intended', URL::previous());
+
                 return view('welcome');
             }
         }
@@ -493,6 +502,8 @@ class HomeController extends Controller
                 ]);
 
             } else {
+                Session::put('url.intended', URL::previous());
+
                 return view('welcome');
             }
         }
@@ -562,6 +573,8 @@ class HomeController extends Controller
                 }
 
             } else {
+                Session::put('url.intended', URL::previous());
+
                 return view('welcome');
             }
         }
@@ -625,6 +638,8 @@ class HomeController extends Controller
                 ]);
 
             } else {
+                Session::put('url.intended', URL::previous());
+
                 return view('welcome');
             }
         }

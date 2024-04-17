@@ -37,16 +37,20 @@
 
         <!-- ============ Custom CSS ============ -->
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-@if (request()->has('app_id'))
         <style>
+<?php
+if (request()->has('app_id')) {
+?>
             .detect-webview { display: none;!important }
+<?php
+}
+?>
             .mobile-menu { color: #a0a0a0; }
             @media only screen (max-width: 900px) {
                 .header-medea-inner-area { padding: 30px 80px; }
             }
             #notifIcon i { color: inherit!important; }
         </style>
-@endif
 
         <!-- ============ Modernizer JS ============ -->
         <script src="{{ asset('assets/addons/streamo/js/vendor/modernizr-3.6.0.min.js') }}"></script>
