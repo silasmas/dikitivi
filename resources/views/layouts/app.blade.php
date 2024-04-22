@@ -656,7 +656,7 @@ if (request()->has('app_id')) {
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <ul class="footer-bottom-list">
-                                        <li><a href="{{ route('about.entity', ['entity' => 'term_of_use']) }}" class="text-light">@lang('miscellaneous.menu.terms_of_use')</a></li>
+                                        <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}" class="text-light">@lang('miscellaneous.menu.terms_of_use')</a></li>
                                         <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="text-light">@lang('miscellaneous.menu.privacy_policy')</a></li>
                                     </ul>
                                 </div>
