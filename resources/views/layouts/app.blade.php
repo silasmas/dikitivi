@@ -365,7 +365,7 @@ if (request()->has('app_id')) {
                                                     <a href="{{ route('account.entity', ['entity' => 'watchlist']) }}">@lang('miscellaneous.account.watchlist')</a>
                                                 </li>
                                                 <li class="single-list">
-                                                    <a href="{{ route('account.entity', ['entity' => 'parental_control']) }}">@lang('miscellaneous.account.parental_control')</a>
+                                                    <a href="{{ route('account.entity', ['entity' => 'children']) }}">@lang('miscellaneous.account.parental_control')</a>
                                                 </li>
                                                 <li class="dropdown-divider"></li>
                                                 <li class="single-list">

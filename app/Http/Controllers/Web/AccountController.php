@@ -29,10 +29,9 @@ class AccountController extends Controller
     /**
      * GET: Welcome/Home page
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
-    public function account(Request $request)
+    public function account()
     {
         // Select a status by name API
         $unread_status_name = 'Non lue';
@@ -51,6 +50,48 @@ class AccountController extends Controller
             'unread_notifications' => $notifications->data,
             'api_client_manager' => $this::$api_client_manager,
         ]);
+    }
+
+    /**
+     * GET: Welcome/Home page
+     *
+     * @param  $entity
+     * @return \Illuminate\View\View
+     */
+    public function accountEntity($entity)
+    {
+        // Select a status by name API
+        $unread_status_name = 'Non lue';
+        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+
+        // Select a user API
+        $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+        // User age
+        $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+        // Select all unread notifications API
+        $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+
+        if ($entity == 'watchlist') {
+            return view('account', [
+                'for_youth' => $for_youth,
+                'current_user' => $user->data->user,
+                'unread_notifications' => $notifications->data,
+                'api_client_manager' => $this::$api_client_manager,
+                'entity' => $entity,
+                'entity_title' => __('miscellaneous.account.watchlist'),
+            ]);
+        }
+
+        if ($entity == 'children') {
+            return view('account', [
+                'for_youth' => $for_youth,
+                'current_user' => $user->data->user,
+                'unread_notifications' => $notifications->data,
+                'api_client_manager' => $this::$api_client_manager,
+                'entity' => $entity,
+                'entity_title' => __('miscellaneous.account.child.title'),
+            ]);
+        }
     }
 
     // ==================================== HTTP POST METHODS ====================================
