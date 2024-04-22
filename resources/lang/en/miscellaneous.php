@@ -11,7 +11,7 @@ return [
     | Miscellaneous Language Lines
     |--------------------------------------------------------------------------
     |
-     */
+    */
     'app_name' => 'DikiTivi',
     'coming_soon' => 'You will watch your TV very soon!',
     'welcome' => 'Welcome to Diki Tivi',
@@ -26,6 +26,8 @@ return [
         'auto' => 'Automatic',
     ],
     'your_language' => 'Your language',
+    'verified' => 'Verified',
+    'unverified' => 'Not verified',
     'views' => 'Views',
     'likes' => 'Likes',
     'iam_child' => 'I\'m a child',
@@ -40,6 +42,8 @@ return [
     'no' => 'No',
     'for_child' => 'For children',
     'for_adult' => 'For adults',
+    'settings' => 'Settings',
+    'refresh' => 'Refresh',
     'connection' => 'Connection',
     'register' => 'Register',
     'send' => 'Send',
@@ -323,8 +327,15 @@ return [
         'watchlist' => 'My watchlist',
         'parental_control' => 'Parental control',
         'on_going' => 'Account awaiting activation',
-        'deactivated' => 'You have deactivated your account',
+        'deactivated' => [
+            'message' => 'You have deactivated your account',
+            'link' => 'Disable my account',
+        ],
         'locked' => 'Your account is blocked by the administrator',
+        'delete' => [
+            'confirm' => 'Are you sure you want to delete your account?<strong>This action is irreversible!</strong>',
+            'link' => 'Delete account',
+        ],
         'personal_infos' => [
             'title' => 'Personal Infos',
             'change_avatar' => 'Change the avatar',
@@ -357,6 +368,12 @@ return [
                 'mobile_money' => 'Mobile money',
                 'bank_card' => 'Bank card',
             ],
+        ],
+        'child' => [
+            'title' => 'Manage your children',
+            'description' => 'Add your children to allow them to play media while keeping an eye on what they are watching.',
+            'add' => 'Add a child',
+            'click_to_change_picture' => 'Click to change the picture',
         ],
     ],
 

@@ -47,6 +47,7 @@ Route::get('/transaction_message/{orderNumber}/{userId}', 'App\Http\Controllers\
 Route::get('/donated/{amount}/{currency}/{code}/{user_id}', 'App\Http\Controllers\Web\HomeController@donated')->whereNumber(['amount', 'code'])->name('donated');
 // Account
 Route::get('/account', 'App\Http\Controllers\Web\AccountController@account')->name('account');
+Route::post('/account', 'App\Http\Controllers\Web\AccountController@updateAccount');
 Route::get('/account/{entity}', 'App\Http\Controllers\Web\AccountController@accountEntity')->name('account.entity');
 Route::get('/account/{entity}/{id}', 'App\Http\Controllers\Web\AccountController@accountEntityDatas')->whereNumber('id')->name('account.entity.datas');
 Route::get('/members/{id}', 'App\Http\Controllers\Web\AccountController@memberDetails')->whereNumber('id')->name('members');

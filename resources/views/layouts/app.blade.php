@@ -63,6 +63,12 @@ if (request()->has('app_id')) {
     @if (Route::is('home'))
             @lang('miscellaneous.menu.home')
     @endif
+    @if (Route::is('account'))
+            @lang('miscellaneous.menu.account')
+    @endif
+    @if (Route::is('account.entity') || Route::is('account.entity.datas'))
+            {{ $entity_title }}
+    @endif
     @if (Route::is('live.home'))
             @lang('miscellaneous.menu.live')
     @endif
@@ -92,6 +98,192 @@ if (request()->has('app_id')) {
     </head>
 
     <body>
+        <!-- MODALS-->
+@if (Route::is('account') || Route::is('account.entity') || Route::is('account.entity.datas'))
+        <!-- ### Add a child ### -->
+        <div class="modal fade" id="registerModalChild" tabindex="-1" aria-labelledby="registerModalChildLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="registerModalChildLabel">{{ __('miscellaneous.account.child.add') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{ route('account.entity', ['entity' => 'children']) }}">
+    @csrf
+
+                            <!-- First name -->
+                            <div class="form-floating mt-3">
+                                <input type="text" name="register_firstname" id="register_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" required />
+                                <label class="form-label" for="register_firstname">@lang('miscellaneous.firstname')</label>
+                            </div>
+
+                            <!-- Last name -->
+                            <div class="form-floating mt-3">
+                                <input type="text" name="register_lastname" id="register_lastname" class="form-control" placeholder="@lang('miscellaneous.lastname')" />
+                                <label class="form-label" for="register_lastname">@lang('miscellaneous.lastname')</label>
+                            </div>
+
+                            <!-- Birth date -->
+                            <div class="form-floating mt-sm-0 mt-2">
+                                <input type="text" name="register_birth_date" id="register_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" />
+                                <label class="form-label" for="register_birthdate">@lang('miscellaneous.birth_date.label')</label>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="mt-3 text-center">
+                                <p class="mb-lg-1 mb-0">@lang('miscellaneous.gender_title')</p>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="register_gender" id="male" value="M">
+                                    <label class="form-check-label" for="male">@lang('miscellaneous.gender1')</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="register_gender" id="female" value="F">
+                                    <label class="form-check-label" for="female">@lang('miscellaneous.gender2')</label>
+                                </div>
+                            </div>
+
+                            <div id="profileImageWrapper" class="row mt-3">
+                                <div class="col-sm-7 col-9 mx-auto">
+                                    <p class="small mb-1 text-center">@lang('miscellaneous.account.child.click_to_change_picture')</p>
+
+                                    <div class="bg-image hover-overlay">
+                                        <img src="{{ asset('assets/img/user.png') }}" alt="" class="other-user-image img-fluid rounded-4">
+                                        <div class="mask rounded-4" style="background-color: rgba(5, 5, 5, 0.5);">
+                                            <label role="button" for="image_profile" class="d-flex h-100 justify-content-center align-items-center">
+                                                <i class="bi bi-pencil-fill text-white fs-2"></i>
+                                                <input type="file" name="image_profile" id="image_profile" class="d-none">
+                                            </label>
+                                            <input type="hidden" name="data_profile" id="data_profile">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-2 mt-3">
+                                <div class="col-sm-6">
+                                    <button class="btn btn-primary btn-block rounded-pill" type="submit">@lang('miscellaneous.register')</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="button" class="btn btn-light btn-block border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ### Crop user image ### -->
+        <div class="modal fade" id="cropModalUser" tabindex="-1" aria-labelledby="cropModalUserLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="cropModalUserLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mb-sm-0 mb-4">
+                                    <div class="bg-image">
+                                        <img src="" id="retrieved_image" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
+                        <button type="button" id="crop_avatar" class="btn btn-primary rounded-pill"data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ### Crop other user image ### -->
+        <div class="modal fade" id="cropModal_profile" tabindex="-1" aria-labelledby="cropModal_profileLabel" aria-hidden="true" data-bs-backdrop="{{ Route::is('branch.home') ? 'static' : 'true' }}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="cropModal_profileLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mb-sm-0 mb-4">
+                                    <div class="bg-image">
+                                        <img src="" id="retrieved_image_profile" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
+                        <button type="button" id="crop_profile" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ### Crop recto image ### -->
+        <div class="modal fade" id="cropModal_recto" tabindex="-1" aria-labelledby="cropModalRectoLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="cropModalRectoLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mb-sm-0 mb-4">
+                                    <div class="bg-image">
+                                        <img src="" id="retrieved_image_recto" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light border border-default shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.cancel') }}</button>
+                        <button type="button" id="crop_recto" class="btn btn-primary btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ### Crop verso image ### -->
+        <div class="modal fade" id="cropModal_verso" tabindex="-1" aria-labelledby="cropModalVersoLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="cropModalVersoLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mb-sm-0 mb-4">
+                                    <div class="bg-image">
+                                        <img src="" id="retrieved_image_verso" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light border border-default shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.cancel') }}</button>
+                        <button type="button" id="crop_verso" class="btn btn-primary btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MODALS-->
+@endif
+
         <span class="d-none perfect-scrollbar"></span>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">

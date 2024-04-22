@@ -70,8 +70,9 @@ if (isWebview) {
  * Set theme to light
  */
 function themeLight() {
-    $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
+    $('p, span, small, .list-group-item, .modal-title, .card-header, .card-body, .card-body h1, .card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body h6, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
     $('.fotter-socail li a, .footer-list li a').removeClass('text-light');
+    $('.btn').removeClass('text-dark');
     $('.mobile-menu').addClass('menu-black');
     $('.header-medea').addClass('bg-white').removeClass('bg-dark');
     $('.product-contents h4 a, .movie-details-info h2').addClass('dktv-text-blue').removeClass('dktv-text-yellow');
@@ -84,8 +85,9 @@ function themeLight() {
  * Set theme to dark
  */
 function themeDark() {
-    $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i,.section-title-3 h2').addClass('text-white').removeClass('text-dark');
+    $('p, span, small, .list-group-item, .modal-title, .card-header, .card-body, .card-body h1, .card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body h6, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i,.section-title-3 h2').addClass('text-white').removeClass('text-dark');
     $('.fotter-socail li a, .footer-list li a').addClass('text-light');
+    $('.btn').addClass('text-dark');
     $('.header-medea').removeClass('bg-white').addClass('bg-dark');
     $('.mobile-menu').removeClass('menu-black');
     $('.product-contents h4 a, .movie-details-info h2').removeClass('dktv-text-blue').addClass('dktv-text-yellow');
@@ -101,16 +103,18 @@ function themeAuto() {
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 
     if (darkThemeMq.matches) {
-        $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-white').removeClass('text-dark');
+        $('p, span, small, .list-group-item, .modal-title, .card-header, .card-body, .card-body h1, .card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body h6, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-white').removeClass('text-dark');
         $('.fotter-socail li a, .footer-list li a').addClass('text-white');
+        $('.btn').addClass('text-dark');
         $('.header-medea').removeClass('bg-white').addClass('bg-dark');
         $('.mobile-menu').removeClass('menu-black');
         $('.product-contents h4 a, .movie-details-info h2').removeClass('dktv-text-blue').addClass('dktv-text-yellow');
         $('#mdb-style').attr('href', MDB_DARK);
 
     } else {
-        $('p, span, small, .btn-close, .list-group-item, .card-header, .card-body, .card-body h4, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
+        $('p, span, small, .list-group-item, .modal-title, .card-header, .card-body, .card-body h1, .card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body h6, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
         $('.fotter-socail li a, .footer-list li a').removeClass('text-white');
+        $('.btn').removeClass('text-dark');
         $('.header-medea').addClass('bg-white').removeClass('bg-dark');
         $('.mobile-menu').addClass('menu-black');
         $('.product-contents h4 a, .movie-details-info h2').addClass('dktv-text-blue').removeClass('dktv-text-yellow');

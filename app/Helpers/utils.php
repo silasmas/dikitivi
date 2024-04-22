@@ -96,3 +96,23 @@ if (!function_exists('addItemsToExplodedArray')) {
         return implode($separator, $saved);
     }
 }
+
+// Friendly username from names
+if (!function_exists("friendlyUsername")) {
+    function friendlyUsername($str)
+    {
+        // convert to entities
+        $string = htmlentities($str, ENT_QUOTES, 'UTF-8');
+        // regex to convert accented chars into their closest a-z ASCII equivelent
+        $string = preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', $string);
+        // convert back from entities
+        $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');
+        // any straggling characters that are not strict alphanumeric are replaced with an underscore
+        $string = preg_replace('~[^0-9a-z]+~i', '_', $string);
+        // trim / cleanup / all lowercase
+        $string = trim($string, '-');
+        $string = strtolower($string);
+
+        return $string;
+    }
+}

@@ -26,6 +26,8 @@ return [
         'auto' => 'Automatique',
     ],
     'your_language' => 'Votre langue',
+    'verified' => 'Vérifié',
+    'unverified' => 'Non vérifié',
     'views' => 'Vues',
     'likes' => 'J\'aimes',
     'iam_child' => 'Je suis un enfant',
@@ -40,6 +42,8 @@ return [
     'no' => 'Non',
     'for_child' => 'Pour enfants',
     'for_adult' => 'Pour adultes',
+    'settings' => 'Paramètres',
+    'refresh' => 'Actualiser',
     'connection' => 'Connexion',
     'register' => 'Enregistrer',
     'send' => 'Envoyer',
@@ -323,8 +327,15 @@ return [
         'watchlist' => 'Ma watchlist',
         'parental_control' => 'Contrôle parental',
         'on_going' => 'Compte en attente d\'activation',
-        'deactivated' => 'Vous avez désactivé votre compte',
+        'deactivated' => [
+            'message' => 'Vous avez désactivé votre compte',
+            'link' => 'Désactiver mon compte',
+        ],
         'locked' => 'Votre compte est bloqué par l\'administrateur',
+        'delete' => [
+            'confirm' => 'Voulez-vous vraiment supprimer votre compte ?<strong>Cette action est irreversible !</strong>',
+            'link' => 'Delete account',
+        ],
         'personal_infos' => [
             'title' => 'Infos personnelles',
             'change_avatar' => 'Modifier l\'avatar',
@@ -357,6 +368,12 @@ return [
                 'mobile_money' => 'Mobile money',
                 'bank_card' => 'Carte bancaire'
             ],
+        ],
+        'child' => [
+            'title' => 'Gérer mes enfants',
+            'description' => 'Ajouter vos enfants pour leur permettre de lire des médias tout en gardant un &oelig;il sur ceux qu\'ils regardent.',
+            'add' => 'Ajouter un enfant',
+            'click_to_change_picture' => 'Cliquer pour modifier l\'image',
         ],
     ],
 
