@@ -30,9 +30,15 @@
                                 </div>
 
                                 <div class="list-group">
-                                    <a href="{{ route('account') }}" class="list-group-item list-group-item-action{{ Route::is('account') ? ' active' : '' }}">@lang('miscellaneous.account.personal_infos.title')</a>
-                                    <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'children' ? ' active' : '' }}">@lang('miscellaneous.account.child.title')</a>
-                                    <a href="{{ route('account.entity', ['entity' => 'watchlist']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'watchlist' ? ' active' : '' }}">@lang('miscellaneous.account.watchlist')</a>
+                                    <a href="{{ route('account') }}" class="list-group-item list-group-item-action{{ Route::is('account') ? ' active' : '' }}">
+                                        <i class="bi bi-person-lines-fill me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.personal_infos.title')
+                                    </a>
+                                    <a href="{{ route('account.entity', ['entity' => 'watchlist']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'watchlist' ? ' active' : '' }}">
+                                        <i class="bi bi-file-play me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.watchlist')
+                                    </a>
+                                    <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'children' ? ' active' : '' }}">
+                                        <i class="bi bi-people me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.child.title')
+                                    </a>
                                 </div>
                             </div>
 
@@ -119,7 +125,7 @@
                                                         <tr>
                                                             <td><strong>@lang('miscellaneous.birth_date.label')</strong></td>
                                                             <td>@lang('miscellaneous.colon_after_word')</td>
-                                                            <td>{{ !empty($current_user->birth_date) ? __('miscellaneous.on_date') . ' ' .(str_starts_with(app()->getLocale(), 'fr') ? \Carbon\Carbon::createFromFormat('Y-m-d', $current_user->birth_date)->format('d/m/Y') : \Carbon\Carbon::createFromFormat('Y-m-d', $current_user->birth_date)->format('m/d/Y')) : '- - - - - -' }}</td>
+                                                            <td>{{ !empty($current_user->birth_date) ? ucfirst(__('miscellaneous.on_date') . ' ' . explicitDate($current_user->birth_date))  : '- - - - - -' }}</td>
                                                         </tr>
 
                                                         <!-- E-mail -->
@@ -339,7 +345,7 @@
 
                                                             <div class="row g-2 mt-3">
                                                                 <div class="col-lg-6 mx-auto">
-                                                                    <button class="btn btn-primary btn-block rounded-pill" type="submit">@lang('miscellaneous.register')</button>
+                                                                    <button class="btn dktv-btn-blue btn-block rounded-pill" type="submit">@lang('miscellaneous.register')</button>
                                                                 </div>
                                                                 <div class="col-lg-6 mx-auto">
                                                                     <button class="btn btn-light btn-block border rounded-pill" type="reset">@lang('miscellaneous.reset')</button>

@@ -162,7 +162,7 @@ if (request()->has('app_id')) {
 
                             <div class="row g-2 mt-3">
                                 <div class="col-sm-6">
-                                    <button class="btn btn-primary btn-block rounded-pill" type="submit">@lang('miscellaneous.register')</button>
+                                    <button class="btn dktv-btn-blue btn-block rounded-pill" type="submit">@lang('miscellaneous.register')</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-light btn-block border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
@@ -195,7 +195,7 @@ if (request()->has('app_id')) {
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
-                        <button type="button" id="crop_avatar" class="btn btn-primary rounded-pill"data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                        <button type="button" id="crop_avatar" class="btn dktv-btn-blue rounded-pill"data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@ if (request()->has('app_id')) {
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
-                        <button type="button" id="crop_profile" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                        <button type="button" id="crop_profile" class="btn dktv-btn-green rounded-pill" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
                 </div>
             </div>
@@ -249,7 +249,7 @@ if (request()->has('app_id')) {
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-light border border-default shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.cancel') }}</button>
-                        <button type="button" id="crop_recto" class="btn btn-primary btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                        <button type="button" id="crop_recto" class="btn dktv-btn-blue btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
                 </div>
             </div>
@@ -276,7 +276,7 @@ if (request()->has('app_id')) {
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-light border border-default shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.cancel') }}</button>
-                        <button type="button" id="crop_verso" class="btn btn-primary btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                        <button type="button" id="crop_verso" class="btn dktv-btn-blue btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
                 </div>
             </div>
@@ -354,7 +354,7 @@ if (request()->has('app_id')) {
                                     <!-- our-profile-area start -->
                                     <div class="our-profile-area ">
                                         <a href="#" class="our-profile-pc" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="37" class="rounded-circle">
+                                            <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="37" class="user-image rounded-circle">
                                         </a>
                                         <div class="dropdown-menu">
                                             <ul>

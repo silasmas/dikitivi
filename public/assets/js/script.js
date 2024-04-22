@@ -426,7 +426,7 @@ $(function () {
             reader.readAsDataURL(blob);
             reader.onloadend = function () {
                 var base64_data = reader.result;
-                var mUrl = apiURL + '/api/user/update_avatar_picture/' + parseInt(currentUser);
+                var mUrl = apiHost + '/user/update_avatar_picture/' + parseInt(currentUser);
                 var datas = JSON.stringify({ 'id': parseInt(currentUser), 'user_id': currentUser, 'image_64': base64_data });
 
                 $.ajax({
