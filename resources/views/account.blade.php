@@ -7,7 +7,7 @@
                     <div class="container-coustom">
                         <div class="row g-3">
                             <div class="col-lg-4 col-sm-5 mx-auto">
-                                <div class="card mb-3 rounded-4">
+                                <div class="card border mb-3 rounded-4">
                                     <div class="card-body text-center">
                                         <div class="bg-image mb-3">
                                             <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" class="user-image img-fluid img-thumbnail rounded">

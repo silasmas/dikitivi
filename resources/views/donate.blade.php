@@ -96,7 +96,7 @@
                                             <select name="select_country" id="select_country1" class="form-select pt-2 shadow-0">
                                                 <option class="small" selected disabled>@lang('miscellaneous.choose_country')</option>
     @forelse ($countries as $country)
-                                                <option value="{{ '+' . $country->country_phone_code . '-' . $country->id }}">{{ $country->country_name }}</option>
+                                                <option value="{{ $country->country_phone_code . '-' . $country->id }}">{{ $country->country_name }}</option>
     @empty
                                                 <option>@lang('miscellaneous.empty_list')</option>
     @endforelse
