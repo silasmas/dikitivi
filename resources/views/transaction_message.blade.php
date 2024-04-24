@@ -26,9 +26,9 @@
                                         <h3 class="h3 mb-4">{{ \Session::has('error_message') ? \Session::get('error_message') : $message_content }}</h3>
 
         @if (!empty($payment))
-                                        <div class="card mb-4 shadow-0">
+                                        <div class="card border mb-4 shadow-0">
                                             <div class="card-body d-flex justify-content-between align-items-center">
-                                                <div class="px-2 py-1 border-start border-3 border-{{ $payment->status->color }}">
+                                                <div class="px-2 py-1 border-start border-3 border-{{ $payment->status->color }} text-start">
                                                     <p class="m-0 text-black">{{ $payment->reference }}</p>
                                                     <h4 class="h4 mt-0 mb-1 fw-bold text-{{ $payment->status->color }} text-truncate" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
                                                         {{ $payment->amount . ' ' . $payment->currency }}
@@ -38,9 +38,9 @@
 
                                                 <div class="px-3 py-1 text-center">
                                                     <p class="m-0 text-black text-uppercase text-truncate">{{ $payment->channel }}</p>
-                                                    <span class="badge badge-{{ $payment->status->color }} p-2 rounded-pill fw-normal">
+                                                    <div class="badge badge-{{ $payment->status->color }} p-2 rounded-pill fw-normal">
                                                         {{ $payment->status->status_name }}
-                                                    </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
