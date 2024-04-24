@@ -799,7 +799,7 @@ class HomeController extends Controller
     {
         $inputs = [
             'transaction_type_id' => $request->transaction_type_id,
-            'pricing_id' => !empty($request->select_pricing) AND is_numeric($request->select_pricing) ? $request->select_pricing : null,
+            'pricing_id' => !empty($request->select_pricing) && is_numeric($request->select_pricing) ? $request->select_pricing : null,
             'amount' => $request->register_amount,
             'currency' => $request->select_currency,
             'other_phone' => $request->other_phone_code . $request->other_phone_number,
@@ -828,7 +828,7 @@ class HomeController extends Controller
 
                 if ($donation->success) {
                     return redirect()->route('transaction.waiting', [
-                        'success_message' => $donation->data->result_response->order_number . '-' . $inputs['user_id'],
+                        'success_message' => $donation->data->result_response->order_number . '-' . (!empty($inputs['user_id']) ? $inputs['user_id'] : 'anonymous'),
                     ]);
 
                 } else {
