@@ -804,7 +804,7 @@ class HomeController extends Controller
             'currency' => $request->select_currency,
             'other_phone' => $request->other_phone_code . $request->other_phone_number,
             'app_url' => $request->app_url,
-            'user_id' => $request->user_id,
+            'user_id' => !empty($request->user_id) ? $request->user_id : null,
         ];
         // Find type by name API
         // -- MOBILE MONEY
