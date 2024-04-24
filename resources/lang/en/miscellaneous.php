@@ -280,6 +280,7 @@ return [
     'registered_data' => 'Data registered',
     'no_data' => 'This datas don\'t exist',
     'required_fields' => 'Please check the required fields',
+    'bank_transaction_description' => 'Money transaction',
     'transaction_waiting' => 'Please confirm the message from your operator on your phone. Then press the button below.',
     'transaction_done' => 'Your transaction is complete!',
     'transaction_failed' => 'Failed to send your payment.',

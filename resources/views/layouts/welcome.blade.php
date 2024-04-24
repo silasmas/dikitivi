@@ -54,6 +54,14 @@
              / @lang('miscellaneous.menu.donate')
     @endif
 
+    @if (Route::is('transaction.waiting') || Route::is('transaction.message'))
+             / @lang('miscellaneous.bank_transaction_description')
+    @endif
+
+    @if (Route::is('donated'))
+             / {{ \Session::has('error_message') ? \Session::get('error_message') : $message_content }}
+    @endif
+
     @if (Route::is('about'))
              / @lang('miscellaneous.menu.about')
     @endif

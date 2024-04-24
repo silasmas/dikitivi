@@ -280,6 +280,7 @@ return [
     'registered_data' => 'Données enregistrées',
     'no_data' => 'Ces données n\'existent pas',
     'required_fields' => 'Veuillez vérifier les champs obligatoires',
+    'bank_transaction_description' => 'Transaction d\'argent',
     'transaction_waiting' => 'Veuillez valider le message de votre opérateur sur votre téléphone. Ensuite appuyez sur le bouton ci-dessous.',
     'transaction_done' => 'Votre opération est terminée !',
     'transaction_failed' => 'L\'envoi de votre paiement a échoué',
