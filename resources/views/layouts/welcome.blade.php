@@ -264,6 +264,8 @@
 
 @yield('welcome-content')
 
+@if(Route::is('about.entity'))
+@else
             <!-- Footer Area -->
             <footer class="footer-area">
                 {{-- <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}"> --}}
@@ -339,6 +341,7 @@
                 </div>
             </footer>
             <!--// Footer Area -->
+@endif
         </div>
         <!-- Main Wrapper End -->
 
@@ -372,6 +375,35 @@
         <!-- Custom JS -->
         <script type="text/javascript">
             $(function () {
+				/* Register form-data */
+				$('form#data').submit(function (e) {
+					e.preventDefault();
+					$('#data p').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
+
+					var formData = new FormData(this);
+
+					$.ajax({
+						headers: { 'Authorization': 'Bearer 227|fUTn1tx9ziTvK3GZgDWjdUPxhUKOneptwmmh9YPJ9c14bac5', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
+						type: 'POST',
+						url: $('meta[name="dktv-api-url"]').attr('content') + '/media',
+						data: formData,
+						success: function (res) {
+							$('#data p').addClass('text-success').html(res.message);
+							location.reload();
+						},
+						cache: false,
+						contentType: false,
+						processData: false,
+						error: function (xhr, error, status_description) {
+							$('#data p').addClass('text-danger').html(xhr.responseJSON.message + ' : ' + xhr.responseJSON.error);
+							console.log(xhr.responseJSON);
+							console.log(xhr.status);
+							console.log(error);
+							console.log(status_description);
+						}
+					});
+				});
+
                 /* On select change, update de country phone code */
                 $('#select_country1').on('change', function () {
                     var countryData = $(this).val();
