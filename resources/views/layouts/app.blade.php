@@ -50,6 +50,7 @@ if (request()->has('app_id')) {
                 .header-medea-inner-area { padding: 30px 80px; }
             }
             #notifIcon i { color: inherit!important; }
+            .single-hero-img-2 a, .movie-img a { position: relative; display: block; overflow: hidden; }
         </style>
 
         <!-- ============ Modernizer JS ============ -->

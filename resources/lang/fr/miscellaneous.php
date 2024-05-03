@@ -387,6 +387,9 @@ return [
 
     // ===== PUBLIC PAGES
     'public' => [
+        'add_watchlist' => 'Ajouter à la watchlist',
+        'watch_now' => 'Voir maintenant',
+
         // Footer
         'footer' => [
             'useful_links' => 'Liens utiles',
@@ -842,6 +845,11 @@ return [
                     ],
                 ],
             ],
+        ],
+
+        // Lives
+        'lives' => [
+            '' => '',
         ],
     ],
 ];

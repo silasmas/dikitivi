@@ -7084,7 +7084,7 @@ only screen and (max-width: 767px) {
   font-size: 18px;
   height: 35px;
   position: absolute;
-  top: -70px;
+  bottom: -30px; /* top: -70px; */
   width: 40px;
   z-index: 9;
   -webkit-transition: 0.4s;

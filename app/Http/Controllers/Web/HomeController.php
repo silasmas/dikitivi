@@ -280,6 +280,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'lives' => $medias_lives->data,
+                    'lastPage' => $medias_lives->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -303,6 +304,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'lives' => $medias_lives->data,
+                    'lastPage' => $medias_lives->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -345,6 +347,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'films' => $medias_films->data,
+                    'lastPage' => $medias_films->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -368,6 +371,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'films' => $medias_films->data,
+                    'lastPage' => $medias_films->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -410,6 +414,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'series' => $medias_series->data,
+                    'lastPage' => $medias_series->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -434,6 +439,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'series' => $medias_series->data,
+                    'lastPage' => $medias_series->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -476,6 +482,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'programs' => $medias_programs->data,
+                    'lastPage' => $medias_programs->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -499,6 +506,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'programs' => $medias_programs->data,
+                    'lastPage' => $medias_programs->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -543,6 +551,7 @@ class HomeController extends Controller
                         'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'preachs' => $medias_preachs->data,
+                        'lastPage' => $medias_preachs->lastPage,
                         'api_client_manager' => $this::$api_client_manager,
                         'entity_title' => __('miscellaneous.menu.preach'),
                     ]);
@@ -570,6 +579,7 @@ class HomeController extends Controller
                         'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'preachs' => $medias_preachs->data,
+                        'lastPage' => $medias_preachs->lastPage,
                         'api_client_manager' => $this::$api_client_manager,
                         'entity_title' => __('miscellaneous.menu.preach'),
                     ]);
@@ -614,6 +624,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'songs' => $medias_songs->data,
+                    'lastPage' => $medias_songs->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -637,6 +648,7 @@ class HomeController extends Controller
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'songs' => $medias_songs->data,
+                    'lastPage' => $medias_songs->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
