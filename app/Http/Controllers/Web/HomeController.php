@@ -553,6 +553,7 @@ class HomeController extends Controller
                         'preachs' => $medias_preachs->data,
                         'lastPage' => $medias_preachs->lastPage,
                         'api_client_manager' => $this::$api_client_manager,
+                        'entity' => $entity,
                         'entity_title' => __('miscellaneous.menu.preach'),
                     ]);
                 }
@@ -581,6 +582,7 @@ class HomeController extends Controller
                         'preachs' => $medias_preachs->data,
                         'lastPage' => $medias_preachs->lastPage,
                         'api_client_manager' => $this::$api_client_manager,
+                        'entity' => $entity,
                         'entity_title' => __('miscellaneous.menu.preach'),
                     ]);
                 }

@@ -10,7 +10,7 @@
         @foreach ($lives as $media)
             @if ($loop->index < 2)
                             <div class="single-hero-img-2">
-                                <a href="{{ route('media.datas', ['id' => $media->id]) }}">
+                                <a href="{{ route('media.datas', ['id' => $media->id]) }}" title="{{ $media->media_title }}">
                                     <img src="{{ asset('assets/img/blank-media-slider-01.png') }}" alt="{{ $media->media_title }}">
                 @if (!empty($media->cover_url))
                                     <div class="position-absolute w-100 h-100" style="top: 0; background: transparent url({{ $media->cover_url }}) no-repeat center center; background-size: cover;"></div>
@@ -36,7 +36,7 @@
                             <div class="col-xxl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                                 <div class="movie-wrap text-center mb-30">
                                     <div class="movie-img">
-                                        <a href="{{ route('media.datas', ['id' => $media->id]) }}">
+                                        <a href="{{ route('media.datas', ['id' => $media->id]) }}" title="{{ $media->media_title }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $media->media_title }}">
         @if (!empty($med->cover_url))
                                             <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
@@ -45,7 +45,7 @@
                                         <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button"><i class="zmdi zmdi-plus"></i></button> 
                                     </div>
                                     <div class="movie-content">
-                                        <h3 class="title mb-2"><a href="{{ route('media.datas', ['id' => $media->id]) }}l">{{ Str::limit($media->media_title, 19, '...') }}</a></h3>
+                                        <h3 class="title mb-2"><a href="{{ route('media.datas', ['id' => $media->id]) }}l">{{ Str::limit($media->media_title, 20, '...') }}</a></h3>
                                         <div class="movie-btn">
                                             <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="btn-style-hm4-2 animated">@lang('miscellaneous.public.watch_now')</a>
                                         </div>
@@ -53,24 +53,14 @@
                                 </div>
                             </div>
     @empty
-    @endforelse
-
-    @if ($lastPage > 1)
-                            <div class="pagination-style mt-30">
-                                <ul>
-                                    <li><a class="prev{{ !request()->has('page') || request()->get('page') == 1 ? ' d-none' : '' }}" href="?page=1"><i class="zmdi zmdi-chevron-left"></i></a></li>
-        @for ($i = 1; $i <= $lastPage; $i++)
-            @if (!request()->has('page') || request()->get('page') == 1)
-                                    <li><a class="active" href="?page={{ $i }}">{{ $i }}</a></li>
-            @else
-                                    <li><a class="{{ request()->has('page') && request()->get('page') == $lastPage ? 'active' : '' }}" href="?page={{ $i }}">{{ $i }}</a></li>
-            @endif
-        @endfor
-                                    <li><a class="next{{ !request()->has('page') || request()->get('page') == $lastPage ? ' d-none' : '' }}" href="?page={{ $lastPage }}"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                                </ul>
+                            <div class="col-12 justify-content-center text-center">
+                                <h1 class="display-1 dktv-text-green"><i class="bi bi-exclamation-circle"></i></h1>
+                                <h4 class="text-muted">@lang('miscellaneous.empty_list')</h4>
                             </div>
-    @endif
+    @endforelse
                         </div>
+
+    @include('partials.pagination')
                     </div>
                 </div>
                 <!--// movies list end  -->

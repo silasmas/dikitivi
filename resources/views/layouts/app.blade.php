@@ -51,6 +51,7 @@ if (request()->has('app_id')) {
             }
             #notifIcon i { color: inherit!important; }
             .single-hero-img-2 a, .movie-img a { position: relative; display: block; overflow: hidden; }
+            a.disabled { color: gray; pointer-events: none; }
         </style>
 
         <!-- ============ Modernizer JS ============ -->
