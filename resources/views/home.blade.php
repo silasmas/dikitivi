@@ -69,8 +69,8 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -122,8 +122,8 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -176,8 +176,8 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -230,8 +230,8 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -284,8 +284,8 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -338,8 +338,8 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ count($views->data) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ count($likes->data) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>

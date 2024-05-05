@@ -123,8 +123,8 @@ if (!empty($current_media->belongs_to)) {
 
                                 <div class="d-flex justify-content-between">
                                     <div class="count text-muted">
-                                        @lang('miscellaneous.views')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block me-3">{{ count($views) }}</span>
-                                        @lang('miscellaneous.likes')@lang('miscellaneous.colon_after_word') <span class="countable d-inline-block">{{ count($likes) }}</span>
+                                        @lang('miscellaneous.views')@lang('miscellaneous.colon_after_word') <span class="d-inline-block me-3">{{ thousandsCurrencyFormat(count($views)) }}</span>
+                                        @lang('miscellaneous.likes')@lang('miscellaneous.colon_after_word') <span class="d-inline-block">{{ thousandsCurrencyFormat(count($likes)) }}</span>
                                     </div>
 
                                     <div class="action">
