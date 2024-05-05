@@ -44,7 +44,7 @@
                                             <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $media->cover_url }}) no-repeat right top; background-size: cover;"></div>
                 @endif
                                         </a>
-                                        <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button"><i class="zmdi zmdi-plus"></i></button> 
+                                        <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button" onclick="event.preventDefault(); toggleAction({{ $media->id }}, {{ $current_user->id }}, 'watchlist')"><i class="zmdi zmdi-plus"></i></button>
                                     </div>
                                     <div class="movie-content">
                                         <h3 class="title mb-2"><a href="{{ route('media.datas', ['id' => $media->id]) }}l">{{ Str::limit($media->media_title, 20, '...') }}</a></h3>
@@ -104,11 +104,11 @@
                                     <div class="movie-img">
                                         <a href="{{ route('media.datas', ['id' => $media->id]) }}" title="{{ $media->media_title }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $media->media_title }}">
-            @if (!empty($med->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @if (!empty($media->cover_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $media->cover_url }}) no-repeat right top; background-size: cover;"></div>
             @endif
                                         </a>
-                                        <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button"><i class="zmdi zmdi-plus"></i></button> 
+                                        <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button" onclick="event.preventDefault(); toggleAction({{ $media->id }}, {{ $current_user->id }}, 'watchlist')"><i class="zmdi zmdi-plus"></i></button>
                                     </div>
                                     <div class="movie-content">
                                         <h3 class="title mb-2"><a href="{{ route('media.datas', ['id' => $media->id]) }}l">{{ Str::limit($media->media_title, 20, '...') }}</a></h3>
