@@ -6,7 +6,7 @@
                     <div class="col-lg-6 m-auto">
                         <!-- Section Title -->
                         <div class="section-title mb-3 text-center">
-                            <h2>TEST: Add a media</h2>
+                            <h2>TEST: Add/Update a media</h2>
                             <p>A form to test media registering</p>
                         </div><!--// Section Title -->
                     </div>
@@ -18,7 +18,7 @@
                     <div class="col-sm-6">
 						<div class="card border rounded-5 overflow-hidden shadow-0">
 							<div class="card-header py-3">
-								<h3 class="mb-0 text-center fw-bold">Add a media</h3>
+								<h3 class="mb-0 text-center fw-bold">Add/Update a media</h3>
 							</div>
 
 							<div class="card-body">
@@ -94,7 +94,7 @@
 									</div>
 
 									<div class="mb-1 text-center">
-										<label for="author_names" class="form-label mb-0 d-block">Is the media for children?</label>
+										<label class="form-label mb-0 d-block">Is the media for children?</label>
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="radio" name="for_youth" id="for_youth_1" value="1"{{ !empty($current_media) && $current_media->for_youth == 1 ? ' checked' : '' }}>
 											<label class="form-check-label" for="for_youth_1">Yes</label>
@@ -121,7 +121,7 @@
 									</div>
 
 									<div class="mb-3">
-										<label for="cover_url" class="form-label mb-0">Belongs to</label>
+										<label for="belongs_to" class="form-label mb-0">Belongs to</label>
 										<select name="belongs_to" id="belongs_to" class="form-select" aria-label="Choose a media">
 											<option class="small" disabled{{ empty($current_media) || empty($current_media->belongs_to) ? ' selected' : '' }}>Choose a media</option>
 @forelse ($belonging_medias as $media)
@@ -132,7 +132,7 @@
 									</div>
 
 									<div class="mb-4 text-center">
-										<label for="author_names" class="form-label mb-0 d-block">Is the media live?</label>
+										<label class="form-label mb-0 d-block">Is the media live?</label>
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="radio" name="is_live" id="is_live_1" value="1"{{ !empty($current_media) && $current_media->is_live == 1 ? ' checked' : '' }}>
 											<label class="form-check-label" for="is_live_1">Yes</label>
@@ -144,11 +144,11 @@
 									</div>
 
 									<div class="mb-4 pt-2 p-3 border rounded-4 text-center">
-										<label for="categories" class="form-label mb-0 d-block">Check media categories</label>
+										<label class="form-label mb-0 d-block">Check media categories</label>
 										<hr class="mt-2 mb-3">
 @forelse ($categories as $category)
 										<div class="form-check form-check-inline">
-											<input type="checkbox" name="categories_ids[]" id="category_{{ $category->id }}" class="form-check-input" value="{{ $category->category_name }}"{{ !empty($current_media) && inArrayR($category->id, $current_media->categories, 'id') ? ' checked' : '' }}>
+											<input type="checkbox" name="categories_ids[]" id="category_{{ $category->id }}" class="form-check-input" value="{{ $category->id }}"{{ !empty($current_media) && inArrayR($category->id, $current_media->categories, 'id') ? ' checked' : '' }}>
 											<label for="category_{{ $category->id }}" class="form-check-label">{{ $category->category_name }}</label>
 										</div>
 @empty
