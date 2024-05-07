@@ -381,27 +381,30 @@
 					$('#data p').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
 
 					var formData = new FormData(this);
+					var urlPost = $('meta[name="dktv-api-url"]').attr('content') + '/media';
+					var urlPut = $('meta[name="dktv-api-url"]').attr('content') + '/media/' + $('input[name="id"]').val();
 
-					$.ajax({
-						headers: { 'Authorization': 'Bearer 227|fUTn1tx9ziTvK3GZgDWjdUPxhUKOneptwmmh9YPJ9c14bac5', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
-						type: 'POST',
-						url: $('meta[name="dktv-api-url"]').attr('content') + '/media',
-						data: formData,
-						success: function (res) {
-							$('#data p').addClass('text-success').html(res.message);
-							location.reload();
-						},
-						cache: false,
-						contentType: false,
-						processData: false,
-						error: function (xhr, error, status_description) {
-							$('#data p').addClass('text-danger').html(xhr.responseJSON.message + ' : ' + xhr.responseJSON.error);
-							console.log(xhr.responseJSON);
-							console.log(xhr.status);
-							console.log(error);
-							console.log(status_description);
-						}
-					});
+					console.log($('input[name="id"]').val() === undefined ? 'POST' : 'PUT');
+					// $.ajax({
+						// headers: { 'Authorization': 'Bearer 227|fUTn1tx9ziTvK3GZgDWjdUPxhUKOneptwmmh9YPJ9c14bac5', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
+						// type: $('input[name="id"]').val() === undefined ? 'POST' : 'PUT',
+						// url: $('input[name="id"]').val() === undefined ? urlPost : urlPut,
+						// data: formData,
+						// success: function (res) {
+							// $('#data p').addClass('text-success').html(res.message);
+							// location.reload();
+						// },
+						// cache: false,
+						// contentType: false,
+						// processData: false,
+						// error: function (xhr, error, status_description) {
+							// $('#data p').addClass('text-danger').html(xhr.responseJSON.message + ' : ' + xhr.responseJSON.error);
+							// console.log(xhr.responseJSON);
+							// console.log(xhr.status);
+							// console.log(error);
+							// console.log(status_description);
+						// }
+					// });
 				});
 
                 /* On select change, update de country phone code */
