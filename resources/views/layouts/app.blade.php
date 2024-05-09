@@ -701,6 +701,13 @@ if (request()->has('app_id')) {
         <script src="{{ asset('assets/js/script.js') }}"></script>
         <script type="text/javascript">
             /**
+             * Refresh an element every second
+             */
+            setInterval(function() {
+                $('.count').load(window.location.href + ' .count', function() { console.log('loaded'); });
+            }, 1000);
+
+            /**
              * Toggle an action on a button
              * 
              * @param string element
