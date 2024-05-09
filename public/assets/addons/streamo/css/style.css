@@ -1595,10 +1595,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   margin-left: 10px;
 }
 .btn.theme-color-four {
-  background: #f4181c;
+  background: #e3106f;
 }
 .btn.theme-color-four:hover {
-  color: #f4181c;
+  color: #e3106f;
   background-color: #ffffff;
 }
 .btn:hover, .btn:active {
@@ -1613,7 +1613,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   border-radius: 5px;
   padding: 11px 25px;
   display: inline-block;
-  background-color: #f4181c;
+  background-color: #e3106f;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1624,7 +1624,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .btn-style-hm4:hover {
   background-color: #ffffff;
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .btn-style-hm4:focus {
@@ -1635,14 +1635,14 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   padding: 6px 12px;
   border-radius: 4px;
   color: #ffffff;
-  background-color: #f4181c;
+  background-color: #e3106f;
   display: inline-block;
   line-height: 1;
 }
 
 .btn-style-hm4-2:hover {
   background-color: #ffffff;
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .member-btn-style {
@@ -1652,11 +1652,11 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   line-height: 1;
   font-size: 16px;
   border-radius: 4px;
-  background-color: #f4181c;
+  background-color: #e3106f;
 }
 
 .member-btn-style:hover {
-  color: #f4181c;
+  color: #e3106f;
   background-color: #ffffff;
 }
 
@@ -1680,7 +1680,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   border-radius: 4px;
   display: inline-block;
   padding: 13px 31px 14px;
-  background-color: #f4181c;
+  background-color: #e3106f;
   line-height: 1;
   font-size: 18px;
   font-weight: 600;
@@ -1695,7 +1695,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .sign-in-up-btn-style:hover {
   background-color: #ffffff;
-  color: #f4181c;
+  color: #e3106f;
 }
 
 /*--
@@ -2084,7 +2084,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .breadcrumb-style-2 .breadcrumb-list-2.black li a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 /*--
@@ -2933,15 +2933,15 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .main-menu.main-theme-color-four ul>li .sub-menu {
-  border-bottom: 2px solid #f4181c;
+  border-bottom: 2px solid #e3106f;
 }
 
 .main-menu.main-theme-color-four ul>li .sub-menu li>a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .main-menu.main-theme-color-four ul>li:hover>a {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .login-button {
@@ -3369,7 +3369,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .notifications-bar .dropdown-menu.red li a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 @media only screen and (max-width: 767px) {
@@ -3442,7 +3442,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .our-profile-area .dropdown-menu.red li a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 @media only screen and (max-width: 767px) {
@@ -3460,7 +3460,7 @@ nav.sidebar-menu ul li a:hover {
   line-height: 1;
   padding: 10px 15px;
   font-weight: 500;
-  background-color: #f4181c;
+  background-color: #e3106f;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
   margin-left: 15px;
@@ -3719,7 +3719,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .search-wrap-2 form button.button-search:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .search-wrap-2.search-open {
@@ -3766,7 +3766,7 @@ nav.sidebar-menu ul li a:hover {
 }
 
 .modal-dialog .modal-content .modal-header .subscribe-btn-close {
-  color: #f4181c;
+  color: #e3106f;
   font-size: 30px;
   padding: 0;
   border: none;
@@ -4451,7 +4451,7 @@ only screen and (max-width: 767px) {
 }
 
 .slider-content-hm4 .combo-pack-price span.new-price {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .slider-content-hm4 .combo-pack-price span.old-price {
@@ -4470,7 +4470,7 @@ only screen and (max-width: 767px) {
   background-color: transparent;
   border: none;
   font-size: 70px;
-  color: #f4181c;
+  color: #e3106f;
   opacity: 0;
   visibility: hidden;
 }
@@ -4923,12 +4923,12 @@ only screen and (max-width: 767px) {
 
 .video-inner-wrap .video-btn.red {
   background-image: none;
-  background-color: #f4181c;
+  background-color: #e3106f;
 }
 
 .video-inner-wrap .video-btn.red:hover {
   background-color: #ffffff;
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .section-pb-b {
@@ -5748,7 +5748,7 @@ only screen and (min-width: 1200px) and (max-width: 1600px) {
 }
 
 .footer-quicklink ul li a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .footer-quicklink-2 ul {
@@ -5790,7 +5790,7 @@ only screen and (min-width: 1200px) and (max-width: 1600px) {
 }
 
 .footer-quicklink-2 ul li a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .brand-logo-wrap {
@@ -5870,8 +5870,8 @@ only screen and (min-width: 1200px) and (max-width: 1600px) {
 }
 
 .login-alert p a:hover {
-  color: #f4181c;
-  border-bottom: 1px solid #f4181c;
+  color: #e3106f;
+  border-bottom: 1px solid #e3106f;
 }
 
 .footer-bottom-ptb {
@@ -5885,7 +5885,7 @@ only screen and (min-width: 1200px) and (max-width: 1600px) {
 }
 
 .copyright .copyright-text i {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .copyright .copyright-text a {
@@ -5893,7 +5893,7 @@ only screen and (min-width: 1200px) and (max-width: 1600px) {
 }
 
 .copyright .copyright-text a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -6045,7 +6045,7 @@ only screen and (min-width: 1200px) and (max-width: 1600px) {
 }
 
 .single-team .team-socail.red ul li a {
-  background: #f4181c;
+  background: #e3106f;
 }
 
 .single-team .team-info {
@@ -6774,11 +6774,11 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .pricing-panel.modify-pricing-panel.active .pricing-heading::before {
-  background: #f4181c none repeat scroll 0 0;
+  background: #e3106f none repeat scroll 0 0;
 }
 
 .pricing-panel.modify-pricing-panel.active .pricing-footer .plan-btn {
-  background: #f4181c;
+  background: #e3106f;
 }
 
 .pricing-panel.modify-pricing-panel:hover::after {
@@ -6786,7 +6786,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .pricing-panel.modify-pricing-panel:hover .pricing-heading::before {
-  background: #f4181c;
+  background: #e3106f;
 }
 
 .pricing-panel.modify-pricing-panel:hover .pricing-body ul li {
@@ -6794,7 +6794,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .pricing-panel.modify-pricing-panel:hover .pricing-footer .plan-btn {
-  background: #f4181c;
+  background: #e3106f;
   color: #fff;
 }
 
@@ -7337,7 +7337,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 .nav-style-2 button:hover,
 .nav-style-3 button:hover {
   color: #ffffff;
-  background-color: #f4181c;
+  background-color: #e3106f;
 }
 
 .movie-wrap {
@@ -7402,7 +7402,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   border-radius: 100%;
   -webkit-transition: all 0.7s ease 0s;
   transition: all 0.7s ease 0s;
-  background-color: #f4181c;
+  background-color: #e3106f;
   border: none;
   opacity: 0;
   visibility: hidden;
@@ -7448,7 +7448,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .movie-wrap .movie-content .title a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .movie-wrap .movie-content .movie-view-rank {
@@ -7471,7 +7471,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .movie-wrap .movie-content .movie-view-rank ul li {
-  color: #f4181c;
+  color: #e3106f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7638,7 +7638,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .pagination-style ul li a:hover,
 .pagination-style ul li a.active {
-  background-color: #f4181c;
+  background-color: #e3106f;
   color: #ffffff;
 }
 
@@ -7698,7 +7698,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .login-register-tab-list.login-register-tab-list.white a.active h4,
 .login-register-tab-list.login-register-tab-list.white a:hover h4 {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .login-input-box input {
@@ -7772,12 +7772,12 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .black-style .login-btn,
 .black-style .register-btn {
-  background-color: #f4181c;
+  background-color: #e3106f;
 }
 
 .black-style .login-btn:hover,
 .black-style .register-btn:hover {
-  color: #f4181c;
+  color: #e3106f;
   background-color: #ffffff;
 }
 
@@ -8068,7 +8068,7 @@ only screen and (max-width: 767px) {
 }
 
 .btn-two-style.theme-color-four {
-  background-color: #f4181c;
+  background-color: #e3106f;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
@@ -8165,7 +8165,7 @@ only screen and (max-width: 767px) {
 }
 
 .dashboard-list.white .tablist-btn.active {
-  border-bottom: 2px solid #f4181c;
+  border-bottom: 2px solid #e3106f;
 }
 
 .white .section-title-plan h3 {
@@ -8240,7 +8240,7 @@ only screen and (max-width: 767px) {
   font-size: 18px;
   display: inline-block;
   margin-right: 10px;
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .movie-details-content p {
@@ -8298,7 +8298,7 @@ only screen and (max-width: 767px) {
   font-size: 18px;
   display: inline-block;
   margin-right: 10px;
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .like-dislike-style {
@@ -8316,7 +8316,7 @@ only screen and (max-width: 767px) {
 }
 
 .like-dislike-style:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .hero-landing-area {
@@ -8459,7 +8459,7 @@ only screen and (max-width: 767px) {
   height: 100%;
   border: none;
   padding: 2px 25px;
-  background-color: #f4181c;
+  background-color: #e3106f;
   color: #ffffff;
   font-size: 18px;
   border-radius: 0 4px 4px 0;
@@ -8678,7 +8678,7 @@ only screen and (max-width: 767px) {
 }
 
 .funfact-wrap .value {
-  color: #f4181c;
+  color: #e3106f;
   font-size: 50px;
   font-weight: 600;
   line-height: 1;
@@ -8754,7 +8754,7 @@ only screen and (max-width: 767px) {
 
 .accordion-button:not(.collapsed) {
   color: #ffffff;
-  background-color: #f4181c;
+  background-color: #e3106f;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-top-left-radius: calc(.25rem - 1px);
@@ -8834,7 +8834,7 @@ only screen and (max-width: 767px) {
   color: #ffffff;
   font-weight: 600;
   border-radius: 4px;
-  background-color: #f4181c;
+  background-color: #e3106f;
   padding: 6px 18px;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
@@ -8848,7 +8848,7 @@ only screen and (max-width: 767px) {
 
 .movie-list-top-bar .movie-list-clear .Watch-list-clear-btn:hover {
   background-color: #ffffff;
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .single-movielist {
@@ -8948,7 +8948,7 @@ only screen and (max-width: 767px) {
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
   font-size: 35px;
-  color: #f4181c;
+  color: #e3106f;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   z-index: 5;
@@ -8984,7 +8984,7 @@ only screen and (max-width: 767px) {
 }
 
 .single-movielist .movielist-img-content .movielist-content .title a:hover {
-  color: #f4181c;
+  color: #e3106f;
 }
 
 .single-movielist .movielist-img-content .movielist-content p {
@@ -9025,7 +9025,7 @@ only screen and (max-width: 767px) {
 }
 
 .single-movielist .movielist-close a {
-  color: #f4181c;
+  color: #e3106f;
   font-size: 30px;
 }
 

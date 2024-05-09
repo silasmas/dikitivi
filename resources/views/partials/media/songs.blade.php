@@ -42,7 +42,9 @@
                                             <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $media->cover_url }}) no-repeat right top; background-size: cover;"></div>
         @endif
                                         </a>
-                                        <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button" onclick="event.preventDefault(); toggleAction({{ $media->id }}, {{ $current_user->id }}, 'watchlist')"><i class="zmdi zmdi-plus"></i></button>
+                                        <button title="{{ inArrayR($media->id, $watchlist->orders, 'media_id') ? __('miscellaneous.public.withdraw_watchlist') : __('miscellaneous.public.add_watchlist') }}" class="Watch-list-btn{{ inArrayR($media->id, $watchlist->orders, 'media_id') ? ' dktv-btn-green' : '' }}" type="button" data-status="{{ inArrayR($media->id, $watchlist->orders, 'media_id') ? 'added' : 'withdrawn' }}" data-watchlist-id="{{ $watchlist->id }}" onclick="event.preventDefault(); toggleAction(this, {{ $media->id }}, 'watchlist');">
+                                            <i class="zmdi zmdi-{{ inArrayR($media->id, $watchlist->orders, 'media_id') ? 'check' : 'plus' }}"></i>
+                                        </button>
                                     </div>
                                     <div class="movie-content">
                                         <h3 class="title mb-2"><a href="{{ route('media.datas', ['id' => $media->id]) }}l">{{ Str::limit($media->media_title, 20, '...') }}</a></h3>

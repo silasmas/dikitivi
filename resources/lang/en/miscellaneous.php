@@ -30,8 +30,8 @@ return [
     'unverified' => 'Not verified',
     'views' => 'Views',
     'likes' => 'Likes',
-    'iam_child' => 'I\'m a child',
-    'iam_adult' => 'I\'m an adult',
+    'iam_child' => 'I’m a child',
+    'iam_adult' => 'I’m an adult',
     'back_home' => 'Return to the home',
     'back_list' => 'Return to the list',
     'back_form' => 'Return to the form',
@@ -202,13 +202,13 @@ return [
     // ===== LOGIN PAGE
     'login_title1' => 'Log in',
     'login_title2' => 'Identify yourself',
-    'login_description' => 'Your data is safe with us. So you need to identify yourself to be sure it\'s you.',
+    'login_description' => 'Your data is safe with us. So you need to identify yourself to be sure it’s you.',
     'login_username' => 'Phone number, E-mail or Username',
     'remember_me' => 'Remember me',
     'forgotten_password' => 'Forgotten password?',
     'not_member' => 'Not a member?',
     'signup_with' => 'or sign up with:',
-    'go_register' => 'I don\'t have an account',
+    'go_register' => 'I don’t have an account',
 
     // ===== REGISTER PAGE
     'register_title1' => 'Sign up',
@@ -260,7 +260,7 @@ return [
     ],
     'confirm_password' => [
         'label' => 'Confirm password',
-        'error' => 'Your confirmation doesn\'t match the new password',
+        'error' => 'Your confirmation doesn’t match the new password',
     ],
     'choose_role' => 'Choose a role',
     'use_email' => 'Use the Email address',
@@ -278,7 +278,7 @@ return [
     // Alert message
     'adult_content' => 'This content is not for your age',
     'registered_data' => 'Data registered',
-    'no_data' => 'This datas don\'t exist',
+    'no_data' => 'This datas don’t exist',
     'required_fields' => 'Please check the required fields',
     'bank_transaction_description' => 'Money transaction',
     'transaction_waiting' => 'Please confirm the message from your operator on your phone. Then press the button below.',
@@ -387,7 +387,10 @@ return [
 
     // ===== PUBLIC PAGES
     'public' => [
-        'add_watchlist' => 'Add to watchlist',
+        'add_watchlist' => 'Add to my watchlist',
+        'withdraw_watchlist' => 'Withraw from my watchlist',
+        'send_like' => 'I like',
+        'retire_like' => 'I don’t like',
         'watch_now' => 'Watch now',
 
         // Footer
@@ -491,7 +494,7 @@ return [
                             ],
                             [
                                 'subtitle' => 'December 2023',
-                                'content' => 'Decision to expand DikiTivi\'s audience to children of all ages and create the DikiTivi application.',
+                                'content' => 'Decision to expand DikiTivi’s audience to children of all ages and create the DikiTivi application.',
                             ]
                         ]
                     ],
@@ -795,7 +798,7 @@ return [
             'donate' => [
                 'title' => 'Make a donation to support DikiTivi',
                 'description' => 'By supporting the DikiTivi ministry, you not only contribute to the improvement of life of the people of God, but also you contribute to the help that the ministry brings to the ophelines and the poor.',
-                'content1' => 'If it\'s money you want to send, just select the payment method; then you send it directly online.',
+                'content1' => 'If it’s money you want to send, just select the payment method; then you send it directly online.',
                 'content2' => 'If you want to donate something other than money, just enter a description of your donation.',
                 'anonyme' => 'Make your donation',
                 'partner' => 'Become a partner',

@@ -128,11 +128,11 @@ if (!empty($current_media->belongs_to)) {
                                     </div>
 
                                     <div class="action">
-                                        <button type="button" class="btn btn-floating {{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'dktv-btn-green' : 'btn-light text-muted' }} shadow-0" data-mdb-ripple-init onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'watchlist')">
-                                            <i class="bi bi-{{ inArrayR($current_media->id, $watchlist, 'media_id') ? 'check' : 'plus' }} fs-3"></i>
+                                        <button title="{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? __('miscellaneous.public.withdraw_watchlist') : __('miscellaneous.public.add_watchlist') }}" class="Watch-list-btn{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? ' dktv-btn-green' : '' }}" type="button" data-status="{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? 'added' : 'withdrawn' }}" data-watchlist-id="{{ $watchlist->id }}" onclick="event.preventDefault(); toggleAction(this, {{ $current_media->id }}, 'watchlist');">
+                                            <i class="zmdi zmdi-{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? 'check' : 'plus' }}"></i>
                                         </button>
-                                        <button type="button" class="btn btn-floating {{ inArrayR($current_user->id, $likes, 'user_id') ? 'dktv-btn-pink' : 'btn-light text-muted' }} ms-3 shadow-0" data-mdb-ripple-init style="padding-top: 0.18rem;" onclick="event.preventDefault(); toggleAction({{ $current_media->id }}, {{ $current_user->id }}, 'like')">
-                                            <i class="bi bi-heart fs-4"></i>
+                                        <button title="{{ inArrayR($current_user->email, $likes, 'email') ? __('miscellaneous.public.retire_like') : __('miscellaneous.public.send_like') }}" class="Watch-list-btn ms-2{{ inArrayR($current_user->email, $likes, 'email') ? ' dktv-btn-pink' : '' }}" type="button" data-status="{{ inArrayR($current_user->email, $likes, 'email') ? 'liked' : 'unliked' }}" onclick="event.preventDefault(); toggleAction(this, {{ $current_media->id }}, 'like');">
+                                            <i class="bi bi-{{ inArrayR($current_user->email, $likes, 'email') ? 'heart-fill' : 'heart' }} align-text-bottom"></i>
                                         </button>
                                     </div>
                                 </div>

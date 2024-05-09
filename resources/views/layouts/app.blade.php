@@ -51,7 +51,9 @@ if (request()->has('app_id')) {
             }
             #notifIcon i { color: inherit!important; }
             .single-hero-img-2 a, .movie-img a { position: relative; display: block; overflow: hidden; }
-            a.disabled { color: gray; pointer-events: none; }
+            .action .Watch-list-btn { width: 40px; height: 40px; font-size: 22px; color: #000; background-color: #cfcfcf; border-radius: 100%; -webkit-transition: all 0.7s ease 0s; transition: all 0.7s ease 0s; border: none; }
+            .action .Watch-list-btn:hover { color: #fff; background-color: #000000; }
+            a.disabled, button.disabled { color: gray; pointer-events: none; }
         </style>
 
         <!-- ============ Modernizer JS ============ -->
@@ -90,9 +92,6 @@ if (request()->has('app_id')) {
             @lang('miscellaneous.menu.songs')
     @endif
     @if (Route::is('books.home') || Route::is('books.datas'))
-            @lang('miscellaneous.menu.books')
-    @endif
-    @if (Route::is('dona'))
             @lang('miscellaneous.menu.books')
     @endif
 @endif
@@ -700,37 +699,113 @@ if (request()->has('app_id')) {
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <!-- Custom JS -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
-@if (Route::is('media.datas'))
-        <script>
-            // Load the IFrame Player API code asynchronously.
-            var tag = document.createElement('script');
+        <script type="text/javascript">
+            /**
+             * Toggle an action on a button
+             * 
+             * @param string element
+             * @param int mediaId
+             * @param int userId
+             * @param string action
+             */
+            function toggleAction(element, mediaId, action) {
+                // Add to / Withdraw from watchlist
+                if (action == 'watchlist') {
+                    // If the media is withdrawn, add it to watchlist
+                    if (element.getAttribute('data-status') === 'withdrawn') {
+                        element.setAttribute('data-status', 'added');
+                        element.setAttribute('title', '<?= __("miscellaneous.public.withdraw_watchlist") ?>');
+                        element.classList.add('dktv-btn-green');
+                        element.innerHTML = '<i class="zmdi zmdi-check"></i>';
 
-            tag.src = "https://www.youtube.com/player_api";
+                        var datas = JSON.stringify({ 'locale': 'fr', 'type_name': 'Watchlist', 'media_id': parseInt(mediaId), 'user_id': parseInt(currentUser) });
 
-            var firstScriptTag = document.getElementsByTagName('script')[0];
+                        $.ajax({
+                            headers: headers,
+                            type: 'PUT',
+                            contentType: 'application/json',
+                            url: apiHost + '/cart/add_to_cart/fr/Watchlist/' + parseInt(mediaId) + '/' + parseInt(currentUser),
+                            dataType: 'json',
+                            data: datas,
+                            success: function (result) {
+                                console.log(result.message);
+                            },
+                            error: function (xhr, error, status_description) {
+                                console.log(xhr.responseJSON);
+                                console.log(xhr.status);
+                                console.log(error);
+                                console.log(status_description);
+                            }
+                        });
 
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                    // Otherwise, withdraw it from watchlist
+                    } else {
+                        element.setAttribute('data-status', 'withdrawn');
+                        element.setAttribute('title', '<?= __("miscellaneous.public.add_watchlist") ?>');
+                        element.classList.remove('dktv-btn-green');
+                        element.innerHTML = '<i class="zmdi zmdi-plus"></i>';
 
-            // Replace the 'ytplayer' element with an <iframe> and YouTube player after the API code downloads.
-            var player;
+                        var cartId = element.getAttribute('data-watchlist-id');
+                        var datas = JSON.stringify({ 'cart_id': parseInt(cartId), 'media_id': parseInt(mediaId) });
 
-            function onYouTubePlayerAPIReady() {
-                player = new YT.Player('ytplayer', {
-                    // height: '',
-                    // width: '',
-                    // videoId: '',
-                    playerVars: {
-                        rel: 0,
-                        autoplay: 0,
-                        autohide: 1,
-                        iv_load_policy: 3,
-                        modestbranding: 1,
-                        showinfo: 0,
-                        showsearch: 0
+                        $.ajax({
+                            headers: headers,
+                            type: 'DELETE',
+                            contentType: 'application/json',
+                            url: apiHost + '/cart/remove_from_cart/' + parseInt(cartId) + '/' + parseInt(mediaId),
+                            dataType: 'json',
+                            data: datas,
+                            success: function (result) {
+                                console.log(result.message);
+                            },
+                            error: function (xhr, error, status_description) {
+                                console.log(xhr.responseJSON);
+                                console.log(xhr.status);
+                                console.log(error);
+                                console.log(status_description);
+                            }
+                        });
                     }
-                });
+                }
+
+                // Like / Unlike a media
+                if (action == 'like') {
+                    // If the media is unliked, send like
+                    if (element.getAttribute('data-status') === 'unliked') {
+                        element.setAttribute('data-status', 'liked');
+                        element.setAttribute('title', '<?= __("miscellaneous.public.retire_like") ?>');
+                        element.classList.add('dktv-btn-pink');
+                        element.innerHTML = '<i class="bi bi-heart-fill align-text-bottom"></i>';
+
+                    // Otherwise, retire like
+                    } else {
+                        element.setAttribute('data-status', 'unliked');
+                        element.setAttribute('title', '<?= __("miscellaneous.public.send_like") ?>');
+                        element.classList.remove('dktv-btn-pink');
+                        element.innerHTML = '<i class="bi bi-heart align-text-bottom"></i>';
+                    }
+
+                    var datas = JSON.stringify({ 'user_id': parseInt(currentUser), 'media_id': parseInt(mediaId) });
+
+                    $.ajax({
+                        headers: headers,
+                        type: 'PUT',
+                        contentType: 'application/json',
+                        url: apiHost + '/media/switch_like/' + parseInt(currentUser) + '/' + parseInt(mediaId),
+                        dataType: 'json',
+                        data: datas,
+                        success: function (result) {
+                            console.log(result.message);
+                        },
+                        error: function (xhr, error, status_description) {
+                            console.log(xhr.responseJSON);
+                            console.log(xhr.status);
+                            console.log(error);
+                            console.log(status_description);
+                        }
+                    });
+                }
             }
         </script>
-@endif
     </body>
 </html>

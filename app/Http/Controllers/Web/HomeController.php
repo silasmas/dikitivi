@@ -189,7 +189,7 @@ class HomeController extends Controller
                 // Select other medias by current media type ID
                 $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
                 // All user carts by type (Watchlist) API
-                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id . '/', Auth::user()->api_token);
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
@@ -203,7 +203,7 @@ class HomeController extends Controller
                         'other_medias' => $other_medias->data,
                         'views' => $views->data,
                         'likes' => $likes->data,
-                        'watchlist' => $user_watchlist->data->orders,
+                        'watchlist' => $user_watchlist->data,
                         'api_client_manager' => $this::$api_client_manager,
                     ]);
                 }
@@ -225,8 +225,9 @@ class HomeController extends Controller
                 // Select other medias by current media type ID
                 $other_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $current_media->data->type->id, Auth::user()->api_token, null, $request->ip(), Auth::user()->id);
                 // All user carts by type (Watchlist) API
-                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id . '/', Auth::user()->api_token);
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
+                // dd($user_watchlist->data);
                 if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
 
@@ -239,7 +240,7 @@ class HomeController extends Controller
                         'other_medias' => $other_medias->data,
                         'views' => $views->data,
                         'likes' => $likes->data,
-                        'watchlist' => $user_watchlist->data->orders,
+                        'watchlist' => $user_watchlist->data,
                         'api_client_manager' => $this::$api_client_manager,
                     ]);
                 }
@@ -263,6 +264,9 @@ class HomeController extends Controller
         // Select a status by name API
         $unread_status_name = 'Non lue';
         $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+        // Select a type by name API
+        $watchlist_type_name = 'Watchlist';
+        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
 
         if (session()->has('for_youth')) {
             if (Auth::check()) {
@@ -274,6 +278,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select media lives API
                 $medias_lives = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_live/' . $for_youth . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.live', [
                     'for_youth' => $for_youth,
@@ -281,6 +287,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'lives' => $medias_lives->data,
                     'lastPage' => $medias_lives->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -298,6 +305,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select media lives API
                 $medias_lives = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_live/' . $for_youth . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.live', [
                     'for_youth' => $for_youth,
@@ -305,6 +314,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'lives' => $medias_lives->data,
                     'lastPage' => $medias_lives->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -330,6 +340,9 @@ class HomeController extends Controller
         // Select a media by type API
         $film_type_name = 'Long métrage';
         $film_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $film_type_name);
+        // Select a type by name API
+        $watchlist_type_name = 'Watchlist';
+        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
 
         if (session()->has('for_youth')) {
             if (Auth::check()) {
@@ -341,6 +354,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
                 $medias_films = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $film_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.films', [
                     'for_youth' => $for_youth,
@@ -348,6 +363,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'films' => $medias_films->data,
                     'lastPage' => $medias_films->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -365,6 +381,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
                 $medias_films = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $film_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.films', [
                     'for_youth' => $for_youth,
@@ -372,6 +390,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'films' => $medias_films->data,
                     'lastPage' => $medias_films->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -397,6 +416,9 @@ class HomeController extends Controller
         // Select a media by type API
         $series_type_name = 'Série TV';
         $series_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $series_type_name);
+        // Select a type by name API
+        $watchlist_type_name = 'Watchlist';
+        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
 
         if (session()->has('for_youth')) {
             if (Auth::check()) {
@@ -408,6 +430,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
                 $medias_series = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $series_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.series', [
                     'for_youth' => $for_youth,
@@ -415,6 +439,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'series' => $medias_series->data,
                     'lastPage' => $medias_series->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -430,9 +455,10 @@ class HomeController extends Controller
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
-
                 // Select medias by type API
                 $medias_series = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $series_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.series', [
                     'for_youth' => $for_youth,
@@ -440,6 +466,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'series' => $medias_series->data,
                     'lastPage' => $medias_series->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -465,6 +492,9 @@ class HomeController extends Controller
         // Select a media by type API
         $program_type_name = 'Programme TV';
         $program_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $program_type_name);
+        // Select a type by name API
+        $watchlist_type_name = 'Watchlist';
+        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
 
         if (session()->has('for_youth')) {
             if (Auth::check()) {
@@ -476,6 +506,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
                 $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.programs', [
                     'for_youth' => $for_youth,
@@ -483,6 +515,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'programs' => $medias_programs->data,
                     'lastPage' => $medias_programs->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -500,6 +533,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
                 $medias_programs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $program_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.programs', [
                     'for_youth' => $for_youth,
@@ -507,6 +542,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'programs' => $medias_programs->data,
                     'lastPage' => $medias_programs->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -532,6 +568,9 @@ class HomeController extends Controller
         // Select a category by name API
         $preach_category_name = 'Prédication';
         $preach_category = $this::$api_client_manager::call('GET', getApiURL() . '/category/search/fr/' . $preach_category_name);
+        // Select a type by name API
+        $watchlist_type_name = 'Watchlist';
+        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
 
         if (session()->has('for_youth')) {
             if (Auth::check()) {
@@ -541,6 +580,8 @@ class HomeController extends Controller
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 if ($entity == 'preach') {
                     // Select medias by categories API
@@ -552,6 +593,7 @@ class HomeController extends Controller
                         'unread_notifications' => $notifications->data,
                         'preachs' => $medias_preachs->data,
                         'lastPage' => $medias_preachs->lastPage,
+                        'watchlist' => $user_watchlist->data,
                         'api_client_manager' => $this::$api_client_manager,
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.menu.preach'),
@@ -570,6 +612,8 @@ class HomeController extends Controller
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select all unread notifications API
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 if ($entity == 'preach') {
                     // Select medias by categories API
@@ -581,6 +625,7 @@ class HomeController extends Controller
                         'unread_notifications' => $notifications->data,
                         'preachs' => $medias_preachs->data,
                         'lastPage' => $medias_preachs->lastPage,
+                        'watchlist' => $user_watchlist->data,
                         'api_client_manager' => $this::$api_client_manager,
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.menu.preach'),
@@ -609,6 +654,9 @@ class HomeController extends Controller
         // Select a media by type API
         $song_type_name = 'Chanson';
         $song_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $song_type_name);
+        // Select a type by name API
+        $watchlist_type_name = 'Watchlist';
+        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
 
         if (session()->has('for_youth')) {
             if (Auth::check()) {
@@ -620,6 +668,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
                 $medias_songs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $song_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.songs', [
                     'for_youth' => $for_youth,
@@ -627,6 +677,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'songs' => $medias_songs->data,
                     'lastPage' => $medias_songs->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 
@@ -644,6 +695,8 @@ class HomeController extends Controller
                 $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
                 // Select medias by type API
                 $medias_songs = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $song_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), Auth::user()->id);
+                // All user carts by type (Watchlist) API
+                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
 
                 return view('partials.media.songs', [
                     'for_youth' => $for_youth,
@@ -651,6 +704,7 @@ class HomeController extends Controller
                     'unread_notifications' => $notifications->data,
                     'songs' => $medias_songs->data,
                     'lastPage' => $medias_songs->lastPage,
+                    'watchlist' => $user_watchlist->data,
                     'api_client_manager' => $this::$api_client_manager,
                 ]);
 

@@ -29,10 +29,10 @@ return [
     'verified' => 'Vérifié',
     'unverified' => 'Non vérifié',
     'views' => 'Vues',
-    'likes' => 'J\'aimes',
+    'likes' => 'J’aime',
     'iam_child' => 'Je suis un enfant',
     'iam_adult' => 'Je suis un adulte',
-    'back_home' => 'Retour à l\'accueil',
+    'back_home' => 'Retour à l’accueil',
     'back_list' => 'Retourner à la liste',
     'back_form' => 'Retourner au formulaire',
     'back_toc' => 'Retourner à la table des matières',
@@ -62,7 +62,7 @@ return [
     'logout' => 'Déconnexion',
     'register_update' => 'Enregistrer les modifications',
     'change_image' => 'Modifier la photo',
-    'crop_before_save' => 'Recadrer l\'image avant de l\'enregistrer',
+    'crop_before_save' => 'Recadrer l’image avant de l’enregistrer',
     'cancel' => 'Annuler',
     'details' => 'Détails',
     'attention_delete' => 'Attention suppression',
@@ -157,7 +157,7 @@ return [
     'a_minute_ago' => 'il y a une minute',
     '30_minutes_ago' => 'il y a 30 minutes',
     'an_hour_ago' => 'il y a une heure',
-    'today' => 'aujourd\'hui',
+    'today' => 'aujourd’hui',
     'yesterday' => 'hier',
     'before_yesterday' => 'avant-hier',
 
@@ -166,8 +166,8 @@ return [
     'semicolon_after_word' => ' ;',
     'the_masculine' => 'le',
     'the_feminine' => 'la',
-    'the_masculine_before_vowel' => 'l\'',
-    'the_feminine_before_vowel' => 'l\'',
+    'the_masculine_before_vowel' => 'l’',
+    'the_feminine_before_vowel' => 'l’',
     'the_plural' => 'les',
     'a_masculine' => 'un',
     'a_feminine' => 'une',
@@ -202,16 +202,16 @@ return [
     // ===== LOGIN PAGE
     'login_title1' => 'Se connecter',
     'login_title2' => 'Identifiez-vous',
-    'login_description' => 'Vos données sont sécurisées avec nous. Alors vous devez vous identifier pour être sûr que c\'est bien vous.',
+    'login_description' => 'Vos données sont sécurisées avec nous. Alors vous devez vous identifier pour être sûr que c’est bien vous.',
     'login_username' => 'N° de téléphone, E-mail ou Pseudo',
     'remember_me' => 'Se souvenir de moi',
     'forgotten_password' => 'Mot de passe oublié ?',
     'not_member' => 'Pas encore membre ?',
-    'signup_with' => 'ou s\'inscrire avec :',
-    'go_register' => 'Je n\'ai pas de compte',
+    'signup_with' => 'ou s’inscrire avec :',
+    'go_register' => 'Je n’ai pas de compte',
 
     // ===== REGISTER PAGE
-    'register_title1' => 'S\'inscrire',
+    'register_title1' => 'S’inscrire',
     'register_title2' => 'Inscrivez-vous pour commencer',
     'register_title3' => 'Ecrivez le code que vous avez reçu',
     'serial_number' => 'N° de série',
@@ -245,7 +245,7 @@ return [
         'placeholder' => 'Ecrire adresse ...',
         'residence' => 'Résidence actuelle',
         'legal' => 'Adresse légale',
-        'type' => 'Type d\'adresse',
+        'type' => 'Type d’adresse',
         'line1' => 'Adresse ligne 1',
         'line2' => 'Adresse ligne 2 (Facultative)',
         'neighborhood' => 'Quartier',
@@ -265,7 +265,7 @@ return [
     'choose_role' => 'Choisir un rôle',
     'use_email' => 'Utiliser l’adresse Email',
     'use_phone' => 'Utiliser le n° de téléphone',
-    'go_login' => 'J\'ai déjà un compte',
+    'go_login' => 'J’ai déjà un compte',
     'api_token' => 'Votre clé pour utiliser les APIs',
     'amount' => 'Montant',
     'currency' => 'Choisir devise',
@@ -276,14 +276,14 @@ return [
         'preach' => 'Prédication',
     ],
     // Alert message
-    'adult_content' => 'Ce contenu n\'est pas de votre âge',
+    'adult_content' => 'Ce contenu n’est pas de votre âge',
     'registered_data' => 'Données enregistrées',
-    'no_data' => 'Ces données n\'existent pas',
+    'no_data' => 'Ces données n’existent pas',
     'required_fields' => 'Veuillez vérifier les champs obligatoires',
-    'bank_transaction_description' => 'Transaction d\'argent',
+    'bank_transaction_description' => 'Transaction d’argent',
     'transaction_waiting' => 'Veuillez valider le message de votre opérateur sur votre téléphone. Ensuite appuyez sur le bouton ci-dessous.',
     'transaction_done' => 'Votre opération est terminée !',
-    'transaction_failed' => 'L\'envoi de votre paiement a échoué',
+    'transaction_failed' => 'L’envoi de votre paiement a échoué',
     'transaction_type_error' => 'Veuillez choisir le type de transaction',
     'new_partner_message' => 'Vous pouvez maintenant vous connecter en tant que partenaire avec votre n° de téléphone. Mot de passe temportaire :',
 
@@ -327,19 +327,19 @@ return [
     'account' => [
         'watchlist' => 'Ma watchlist',
         'parental_control' => 'Contrôle parental',
-        'on_going' => 'Compte en attente d\'activation',
+        'on_going' => 'Compte en attente d’activation',
         'deactivated' => [
             'message' => 'Vous avez désactivé votre compte',
             'link' => 'Désactiver mon compte',
         ],
-        'locked' => 'Votre compte est bloqué par l\'administrateur',
+        'locked' => 'Votre compte est bloqué par l’administrateur',
         'delete' => [
             'confirm' => 'Voulez-vous vraiment supprimer votre compte ?<strong>Cette action est irreversible !</strong>',
             'link' => 'Delete account',
         ],
         'personal_infos' => [
             'title' => 'Infos personnelles',
-            'change_avatar' => 'Modifier l\'avatar',
+            'change_avatar' => 'Modifier l’avatar',
             'link' => 'Enregistrer mise à jour',
         ],
         'update_password' => [
@@ -349,16 +349,16 @@ return [
             'confirm_password' => 'Confirmer nouveau mot de passe',
         ],
         'identity_document' => [
-            'title' => 'Pièce d\'identité',
+            'title' => 'Pièce d’identité',
             'choose_type' => [
-                'title' => 'Choisir le type de pièce d\'identité',
-                'identity_card' => 'Carte d\'identité',
-                'voter_card' => 'Carte d\'électeur',
+                'title' => 'Choisir le type de pièce d’identité',
+                'identity_card' => 'Carte d’identité',
+                'voter_card' => 'Carte d’électeur',
                 'passport' => 'Passeport',
                 'driving_license' => 'Permis de conduire',
                 'other' => 'Autre',
             ],
-            'other_descriprion' => 'Décrivez votre pièce d\'identité',
+            'other_descriprion' => 'Décrivez votre pièce d’identité',
             'click_to_change' => 'Cliquer sur la photo pour modifier',
         ],
         'payment' => [
@@ -372,9 +372,9 @@ return [
         ],
         'child' => [
             'title' => 'Gérer mes enfants',
-            'description' => 'Ajouter vos enfants pour leur permettre de lire des médias tout en gardant un &oelig;il sur ceux qu\'ils regardent.',
+            'description' => 'Ajouter vos enfants pour leur permettre de lire des médias tout en gardant un &oelig;il sur ceux qu’ils regardent.',
             'add' => 'Ajouter un enfant',
-            'click_to_change_picture' => 'Cliquer pour modifier l\'image',
+            'click_to_change_picture' => 'Cliquer pour modifier l’image',
         ],
     ],
 
@@ -387,7 +387,10 @@ return [
 
     // ===== PUBLIC PAGES
     'public' => [
-        'add_watchlist' => 'Ajouter à la watchlist',
+        'add_watchlist' => 'Ajouter à ma watchlist',
+        'withdraw_watchlist' => 'Retirer de ma watchlist',
+        'send_like' => 'J’aime',
+        'retire_like' => 'Je n’aime pas',
         'watch_now' => 'Voir maintenant',
 
         // Footer
@@ -411,13 +414,13 @@ return [
         'home' => [
             'hero' => [
                 'title' => 'Médias chrétiens',
-                'content' => 'Pour commencez, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">identifiez-vous</a> ou choisissez votre tranche d\'âge afin de trouver les médias qui vous correspondent.',
+                'content' => 'Pour commencez, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">identifiez-vous</a> ou choisissez votre tranche d’âge afin de trouver les médias qui vous correspondent.',
                 'link1' => 'Voir tous les médias',
                 'link2' => 'Jeunesse'
             ],
             'download_mobile_app' => [
-                'title' => 'Télécharger l\'appli mobile DikiTivi',
-                'content' => 'L\'appli mobile DikiTivi vous aide à suivre vos vidéos sur votre smartphone, tablette ou smart-TV et à bénéficier de tous nos avantages.'
+                'title' => 'Télécharger l’appli mobile DikiTivi',
+                'content' => 'L’appli mobile DikiTivi vous aide à suivre vos vidéos sur votre smartphone, tablette ou smart-TV et à bénéficier de tous nos avantages.'
             ],
             'pricing' => [
                 'title' => 'Plan tarifaire',
@@ -449,9 +452,9 @@ return [
             'description' => 'Diki Tivi est une chaîne de télé chrétienne visant à offrir aux parents une plateforme leur permettant de trouver, <i>pour eux et pour leurs enfants</i>, des médias sains, ludiques et Divins.',
             'other_links' => [
                 'title' => 'Autres liens',
-                'link1' => 'Conditions d\'utilisation',
+                'link1' => 'Conditions d’utilisation',
                 'link2' => 'Politique de confidentialité',
-                'link3' => 'Centre d\'aide',
+                'link3' => 'Centre d’aide',
                 'link4' => 'FAQ'
             ],
 
@@ -491,7 +494,7 @@ return [
                             ],
                             [
                                 'subtitle' => 'Décembre 2023',
-                                'content' => 'Décision d\'élargir l\'audience de DikiTivi aux enfants de tous les âges et de créer l\'application DikiTivi.',
+                                'content' => 'Décision d’élargir l’audience de DikiTivi aux enfants de tous les âges et de créer l’application DikiTivi.',
                             ]
                         ]
                     ],
@@ -502,7 +505,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Offrir aux enfants, aux familles des programmes ludiques, amusants, instructifs, sains et Divins, leurs permettant de se divertir et d\'assurer leur  croissance spirituelle en Christ ;',
+                                'content' => 'Offrir aux enfants, aux familles des programmes ludiques, amusants, instructifs, sains et Divins, leurs permettant de se divertir et d’assurer leur  croissance spirituelle en Christ ;',
                             ],
                             [
                                 'subtitle' => '',
@@ -521,7 +524,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Faire des enfants de tous les âges et de toutes les nations  des disciples du Christ et des vases d\'honneurs.',
+                                'content' => 'Faire des enfants de tous les âges et de toutes les nations  des disciples du Christ et des vases d’honneurs.',
                             ]
                         ]
                     ],
@@ -554,7 +557,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Les photos utilisées sur le site et l\'application sont originales libres de droit ou achetées principalement sur des sites spécialisés avec les droits d\'exploitation. Dans ce cas, elles ne sont utilisées qu\'à des fins purement illustratives et les personnes représentées sur les photos ne sont que des modèles.',
+                                'content' => 'Les photos utilisées sur le site et l’application sont originales libres de droit ou achetées principalement sur des sites spécialisés avec les droits d’exploitation. Dans ce cas, elles ne sont utilisées qu’à des fins purement illustratives et les personnes représentées sur les photos ne sont que des modèles.',
                             ]
                         ]
                     ],
@@ -565,7 +568,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Tous droits réservés. Toute reproduction est interdite sans autorisation. Tous les textes, photos, vidéos, mp3, données, logos et autres éléments reproduits sur ce site sont protégés par le droit d\'auteur selon les règles de droit Congolais et international.',
+                                'content' => 'Tous droits réservés. Toute reproduction est interdite sans autorisation. Tous les textes, photos, vidéos, mp3, données, logos et autres éléments reproduits sur ce site sont protégés par le droit d’auteur selon les règles de droit Congolais et international.',
                             ]
                         ]
                     ],
@@ -576,7 +579,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Le site <strong>dikitivi.com</strong>, l\'application, ainsi que les fichiers audio et vidéos sont hébergés sur des serveurs que nous louons à la société « Hostinger » et « Amazon ».',
+                                'content' => 'Le site <strong>dikitivi.com</strong>, l’application, ainsi que les fichiers audio et vidéos sont hébergés sur des serveurs que nous louons à la société « Hostinger » et « Amazon ».',
                             ]
                         ]
                     ],
@@ -587,7 +590,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Les vidéos diffusées sur Internet (service "replay") sont hébergées et diffusées par YouTube. Nous vous invitons à consulter les conditions générales d\'utilisation de YouTube à cette adresse : <a href="https://policies.google.com/privacy?hl=en" class="dktv-text-blue">https://policies.google.com/privacy?hl=fr</a>.',
+                                'content' => 'Les vidéos diffusées sur Internet (service "replay") sont hébergées et diffusées par YouTube. Nous vous invitons à consulter les conditions générales d’utilisation de YouTube à cette adresse : <a href="https://policies.google.com/privacy?hl=en" class="dktv-text-blue">https://policies.google.com/privacy?hl=fr</a>.',
                             ]
                         ]
                     ]
@@ -596,8 +599,8 @@ return [
 
             // Terms of use
             'terms_of_use' => [
-                'title' => 'Conditions d\'utilisation',
-                'description' => 'En utilisant nos services, vous acceptez nos conditions d\'utilisation. Alors nous vous suggérons de prendre un peu de votre temps pour lire ces conditions, car vous êtes sur le point de conclure un contrat qui vous engage.',
+                'title' => 'Conditions d’utilisation',
+                'description' => 'En utilisant nos services, vous acceptez nos conditions d’utilisation. Alors nous vous suggérons de prendre un peu de votre temps pour lire ces conditions, car vous êtes sur le point de conclure un contrat qui vous engage.',
                 'titles' =>
                 [
                     [
@@ -622,7 +625,7 @@ return [
                 [
                     [
                         'ref' => 'information_collection',
-                        'title' => 'Collecte de l\'information',
+                        'title' => 'Collecte de l’information',
                         'contents' =>
                         [
                             [
@@ -631,7 +634,7 @@ return [
                             ],
                             [
                                 'subtitle' => '',
-                                'content' => 'Dans le cadre d\'un don par exemple, nous vous demandons votre pays (obligatoire), votre prénom et nom (obligatoire), votre adresse e-mail (obligatoire), votre numéro de téléphone, votre adresse postale, votre organisme le cas échéant, et votre mode de paiement.'
+                                'content' => 'Dans le cadre d’un don par exemple, nous vous demandons votre pays (obligatoire), votre prénom et nom (obligatoire), votre adresse e-mail (obligatoire), votre numéro de téléphone, votre adresse postale, votre organisme le cas échéant, et votre mode de paiement.'
                             ],
                             [
                                 'subtitle' => '',
@@ -673,15 +676,15 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Nous ne vendons, n\'échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. Cela ne comprend pas les tierces parties de confiance qui nous aident à exploiter notre site internet, tant que ces parties conviennent de garder ces informations confidentielles.'
+                                'content' => 'Nous ne vendons, n’échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. Cela ne comprend pas les tierces parties de confiance qui nous aident à exploiter notre site internet, tant que ces parties conviennent de garder ces informations confidentielles.'
                             ],
                             [
                                 'subtitle' => '',
-                                'content' => 'Nous pensons qu\'il est nécessaire de partager des informations afin d\'enquêter, de prévenir ou de prendre des mesures concernant des activités illégales, fraudes présumées, situations impliquant des menaces potentielles à la sécurité physique de toute personne, violations de nos conditions d\'utilisation, ou quand la loi nous y contraint.'
+                                'content' => 'Nous pensons qu’il est nécessaire de partager des informations afin d’enquêter, de prévenir ou de prendre des mesures concernant des activités illégales, fraudes présumées, situations impliquant des menaces potentielles à la sécurité physique de toute personne, violations de nos conditions d’utilisation, ou quand la loi nous y contraint.'
                             ],
                             [
                                 'subtitle' => '',
-                                'content' => 'Les informations non-privées, cependant, peuvent être fournies à d\'autres parties majoritairement pour des besoins d\'amélioration de notre site internet.'
+                                'content' => 'Les informations non-privées, cependant, peuvent être fournies à d’autres parties majoritairement pour des besoins d’amélioration de notre site internet.'
                             ]
                         ]
                     ],
@@ -692,26 +695,26 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Seuls les employés qui ont besoin d\'effectuer un travail spécifique ont accès aux informations personnelles identifiables. Les ordinateurs et serveurs utilisés pour stocker des informations personnelles identifiables sont conservés dans un environnement sécurisé.'
+                                'content' => 'Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Seuls les employés qui ont besoin d’effectuer un travail spécifique ont accès aux informations personnelles identifiables. Les ordinateurs et serveurs utilisés pour stocker des informations personnelles identifiables sont conservés dans un environnement sécurisé.'
                             ],
                             [
                                 'subtitle' => '',
-                                'content' => 'Aucune information bancaire n\'est enregistrée dans nos bases de données hormis les coordonnées bancaires.'
+                                'content' => 'Aucune information bancaire n’est enregistrée dans nos bases de données hormis les coordonnées bancaires.'
                             ],
                             [
                                 'subtitle' => '',
-                                'content' => 'Est-ce que nous utilisons des cookies ? Oui. Nos cookies améliorent l\'accès à notre site et identifient les visiteurs réguliers. En outre, nos cookies améliorent l\'expérience d\'utilisateur grâce au suivi et au ciblage de ses intérêts. Cependant, cette utilisation des cookies n\'est en aucune façon liée à des informations personnelles identifiables sur notre site.'
+                                'content' => 'Est-ce que nous utilisons des cookies ? Oui. Nos cookies améliorent l’accès à notre site et identifient les visiteurs réguliers. En outre, nos cookies améliorent l’expérience d’utilisateur grâce au suivi et au ciblage de ses intérêts. Cependant, cette utilisation des cookies n’est en aucune façon liée à des informations personnelles identifiables sur notre site.'
                             ]
                         ]
                     ],
                     [
                         'ref' => 'data_retirement',
-                        'title' => 'Droit d\'opposition, de retrait de vos informations',
+                        'title' => 'Droit d’opposition, de retrait de vos informations',
                         'contents' =>
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Nous nous engageons à vous offrir un droit d\'opposition et de retrait quant à vos renseignements personnels. Le droit d\'opposition s\'entend comme étant la possibilité offerte aux internautes de refuser que leurs renseignements personnels soient utilisés à certaines fins mentionnées lors de la collecte. Le droit de retrait s\'entend comme étant la possibilité offerte aux internautes de demander à ce que leurs renseignements personnels ne figurent plus, par exemple, dans une liste de diffusion.'
+                                'content' => 'Nous nous engageons à vous offrir un droit d’opposition et de retrait quant à vos renseignements personnels. Le droit d’opposition s’entend comme étant la possibilité offerte aux internautes de refuser que leurs renseignements personnels soient utilisés à certaines fins mentionnées lors de la collecte. Le droit de retrait s’entend comme étant la possibilité offerte aux internautes de demander à ce que leurs renseignements personnels ne figurent plus, par exemple, dans une liste de diffusion.'
                             ],
                             [
                                 'subtitle' => '',
@@ -726,7 +729,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Les paiements en ligne ne font pas l\'objet d\'un droit de rétractation. Tout paiement est ferme et définitif.'
+                                'content' => 'Les paiements en ligne ne font pas l’objet d’un droit de rétractation. Tout paiement est ferme et définitif.'
                             ],
                             [
                                 'subtitle' => '',
@@ -736,16 +739,16 @@ return [
                     ],
                     [
                         'ref' => 'access_right',
-                        'title' => 'Droit d\'accès',
+                        'title' => 'Droit d’accès',
                         'contents' =>
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Nous nous engageons à reconnaître un droit d\'accès et de rectification aux personnes concernées désireuses de consulter, modifier, voire radier les informations les concernant.'
+                                'content' => 'Nous nous engageons à reconnaître un droit d’accès et de rectification aux personnes concernées désireuses de consulter, modifier, voire radier les informations les concernant.'
                             ],
                             [
                                 'subtitle' => '',
-                                'content' => 'Pour exercer ce droit d\'accès veuillez nous écrire en vous rendant sur la page contact de notre site internet.'
+                                'content' => 'Pour exercer ce droit d’accès veuillez nous écrire en vous rendant sur la page contact de notre site internet.'
                             ]
                         ]
                     ],
@@ -756,7 +759,7 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'Nous utilisons l\'adresse e-mail que vous fournissez pour vous envoyer des informations et mises à jour relatives à votre don, des nouvelles de notre ministère (si vous avez choisi de recevoir de nos nouvelles), etc. Si à n\'importe quel moment vous souhaitez vous désinscrire et ne plus recevoir d\'e-mails, des instructions de désabonnement détaillées sont incluses en bas de chaque e-mail, ou bien écrivez-nous par e-mail à <strong>contact@dikitivi.com</strong>.'
+                                'content' => 'Nous utilisons l’adresse e-mail que vous fournissez pour vous envoyer des informations et mises à jour relatives à votre don, des nouvelles de notre ministère (si vous avez choisi de recevoir de nos nouvelles), etc. Si à n’importe quel moment vous souhaitez vous désinscrire et ne plus recevoir d’e-mails, des instructions de désabonnement détaillées sont incluses en bas de chaque e-mail, ou bien écrivez-nous par e-mail à <strong>contact@dikitivi.com</strong>.'
                             ]
                         ]
                     ],
@@ -767,11 +770,11 @@ return [
                         [
                             [
                                 'subtitle' => '',
-                                'content' => 'En utilisant notre site ou notre application, vous consentez implicitement à nos conditions générales d\'utilisation, ainsi que celle de YouTube.'
+                                'content' => 'En utilisant notre site ou notre application, vous consentez implicitement à nos conditions générales d’utilisation, ainsi que celle de YouTube.'
                             ],
                             [
                                 'subtitle' => '',
-                                'content' => 'Nous vous invitons à consulter les conditions générales d\'utilisation de YouTube à cette adresse : <a href="https://policies.google.com/privacy?hl=fr" class="dktv-text-blue">https://policies.google.com/privacy?hl=fr</a>'
+                                'content' => 'Nous vous invitons à consulter les conditions générales d’utilisation de YouTube à cette adresse : <a href="https://policies.google.com/privacy?hl=fr" class="dktv-text-blue">https://policies.google.com/privacy?hl=fr</a>'
                             ]
                         ]
                     ],
@@ -794,9 +797,9 @@ return [
             // Donate
             'donate' => [
                 'title' => 'Faire un don pour soutenir DikiTivi',
-                'description' => 'En soutenant le ministère DikiTivi, non seulement vous contribuez à l\'amélioration de vie du peuple de Dieu, mais aussi vous contribuez à l\'aide qu\'apporte le ministère aux ophelins et aux démunis.',
-                'content1' => 'Si c\'est l\'argent que vous voulez envoyer, vous n\'avez qu\'à sélectionner le mode de paiement ; ensuite, vous l\'envoyez directement en ligne.',
-                'content2' => 'Si vous voulez donner autre chose que de l\'argent, vous n\'avez qu\'à donner la description de votre don.',
+                'description' => 'En soutenant le ministère DikiTivi, non seulement vous contribuez à l’amélioration de vie du peuple de Dieu, mais aussi vous contribuez à l’aide qu’apporte le ministère aux ophelins et aux démunis.',
+                'content1' => 'Si c’est l’argent que vous voulez envoyer, vous n’avez qu’à sélectionner le mode de paiement ; ensuite, vous l’envoyez directement en ligne.',
+                'content2' => 'Si vous voulez donner autre chose que de l’argent, vous n’avez qu’à donner la description de votre don.',
                 'anonyme' => 'Faites votre don',
                 'partner' => 'Devenir partenaire',
                 'your_identity' => 'Votre identité',
@@ -806,7 +809,7 @@ return [
                     'unique' => 'Paiement unique',
                 ],
                 'send_money' => [
-                    'title' => 'Envoyer l\'argent',
+                    'title' => 'Envoyer l’argent',
                     'description' => 'Choisir le mode de paiement',
                     'mobile_money' => 'Mobile money',
                     'bank_card' => 'Carte bancaire'
@@ -837,7 +840,7 @@ return [
                     'film' => 'Voir tous les films',
                     'episode' => 'Autres épisodes de la série',
                     'series' => 'Voir toutes les séries TV',
-                    'song' => 'Autres chansons de l\'album',
+                    'song' => 'Autres chansons de l’album',
                     'album' => 'Voir toutes les chansons',
                     'program' => [
                         'default' => 'Voir les autres émissions',
