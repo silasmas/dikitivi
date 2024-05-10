@@ -46,6 +46,8 @@ if (request()->has('app_id')) {
 <?php
 }
 ?>
+
+            #loader.fadeOut { opacity: 0; visibility: hidden; }
             .mobile-menu { color: #a0a0a0; }
             @media only screen (max-width: 900px) {
                 .header-medea-inner-area { padding: 30px 80px; }
@@ -284,9 +286,15 @@ if (request()->has('app_id')) {
             </div>
         </div>
         <!-- END MODALS-->
+
+        <div id="loadingMask" class="perfect-scrollbar d-flex position-fixed dktv-bg-blue w-100 justify-items-center align-items-center" style="z-index: 9999; height: 100vh;">
+            <div class="spinner-border mx-auto" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">@lang('miscellaneous.loading')</span>
+            </div>
+        </div>
+
 @endif
 
-        <span class="d-none perfect-scrollbar"></span>
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
             <!-- header-medea -->
