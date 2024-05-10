@@ -14,7 +14,7 @@ return [
     */
     'app_name' => 'DikiTivi',
     'coming_soon' => 'You will watch your TV very soon!',
-    'welcome' => 'Welcome to Diki Tivi',
+    'welcome' => 'Welcome to DikiTivi',
     'keywords' => 'dikitivi,diki,tivi,video,film,series,episode,cartoon,documentary,preaching',
     'all_right_reserved' => 'All right reserved',
     'follow_us' => 'Follow us:',
@@ -448,8 +448,8 @@ return [
 
         // About
         'about' => [
-            'title' => 'About Diki Tivi',
-            'description' => 'Diki Tivi is a Christian TV channel aiming to offer parents a platform allowing them to find, <i>for themselves and for their children</i>, healthy, fun and Divine media.',
+            'title' => 'About DikiTivi',
+            'description' => 'DikiTivi is a Christian TV channel aiming to offer parents a platform allowing them to find, <i>for themselves and for their children</i>, healthy, fun and Divine media.',
             'other_links' => [
                 'title' => 'Other links',
                 'link1' => 'Terms of use',

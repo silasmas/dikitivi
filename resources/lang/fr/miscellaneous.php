@@ -14,7 +14,7 @@ return [
     */
     'app_name' => 'DikiTivi',
     'coming_soon' => 'Vous allez suivre votre télé très bientôt !',
-    'welcome' => 'Bienvenue sur Diki Tivi',
+    'welcome' => 'Bienvenue sur DikiTivi',
     'keywords' => 'dikitivi,diki,tivi,vidéo,film,séries,épisode,dessin animé,documentaire,prédication',
     'all_right_reserved' => 'Tous droits réservés',
     'follow_us' => 'Suivez-nous :',
@@ -448,8 +448,8 @@ return [
 
         // About
         'about' => [
-            'title' => 'A propos de Diki Tivi',
-            'description' => 'Diki Tivi est une chaîne de télé chrétienne visant à offrir aux parents une plateforme leur permettant de trouver, <i>pour eux et pour leurs enfants</i>, des médias sains, ludiques et Divins.',
+            'title' => 'A propos de DikiTivi',
+            'description' => 'DikiTivi est une chaîne de télé chrétienne visant à offrir aux parents une plateforme leur permettant de trouver, <i>pour eux et pour leurs enfants</i>, des médias sains, ludiques et Divins.',
             'other_links' => [
                 'title' => 'Autres liens',
                 'link1' => 'Conditions d’utilisation',
