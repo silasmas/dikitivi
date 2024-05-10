@@ -267,8 +267,8 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
 <?php
 // Views & Likes for a media
 $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-dd($views);
 $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+dd($likes);
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
