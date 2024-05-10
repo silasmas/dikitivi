@@ -35,7 +35,7 @@ const standalone = navigator.standalone;
 const isIos = /ip(ad|hone|od)/.test(normalizedUserAgent) || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
 const isAndroid = /android/.test(normalizedUserAgent);
 const isSafari = /safari/.test(normalizedUserAgent);
-const isWebview = (isAndroid && /; wv\)/.test(normalizedUserAgent)) || (isIos && !standalone && !isSafari);
+const isWebview = (isAndroid && /; wv\)/.test(normalizedUserAgent)) || (isIos && !standalone && !isSafari);
 
 /**
  * If the window is webview, hide some elements
@@ -77,7 +77,7 @@ function themeLight() {
     $('.header-medea').addClass('bg-white').removeClass('bg-dark');
     $('.product-contents h4 a, .movie-details-info h2').addClass('dktv-text-blue').removeClass('dktv-text-yellow');
     $('#mdb-style').attr('href', MDB_LIGHT);
-    $('.btn-style-hm4-2').css('color', '#ffffff').hover(function () { $(this).css('color', '#e3106f'); }, function () { $(this).css('color', '#ffffff'); });
+    $('.btn-style-hm4-2').css('color', '#ffffff').hover(function() { $(this).css('color', '#e3106f'); }, function() { $(this).css('color', '#ffffff'); });
 
     document.cookie = 'theme=light';
 }
@@ -93,7 +93,7 @@ function themeDark() {
     $('.mobile-menu').removeClass('menu-black');
     $('.product-contents h4 a, .movie-details-info h2').removeClass('dktv-text-blue').addClass('dktv-text-yellow');
     $('#mdb-style').attr('href', MDB_DARK);
-    $('.btn-style-hm4-2').css('color', '#ffffff').hover(function () { $(this).css('color', '#e3106f'); }, function () { $(this).css('color', '#ffffff'); });
+    $('.btn-style-hm4-2').css('color', '#ffffff').hover(function() { $(this).css('color', '#e3106f'); }, function() { $(this).css('color', '#ffffff'); });
 
     document.cookie = 'theme=dark';
 }
@@ -112,7 +112,7 @@ function themeAuto() {
         $('.mobile-menu').removeClass('menu-black');
         $('.product-contents h4 a, .movie-details-info h2').removeClass('dktv-text-blue').addClass('dktv-text-yellow');
         $('#mdb-style').attr('href', MDB_DARK);
-        $('.btn-style-hm4-2').css('color', '#ffffff').hover(function () { $(this).css('color', '#e3106f'); }, function () { $(this).css('color', '#ffffff'); });
+        $('.btn-style-hm4-2').css('color', '#ffffff').hover(function() { $(this).css('color', '#e3106f'); }, function() { $(this).css('color', '#ffffff'); });
 
     } else {
         $('p, span, small, .list-group-item, .modal-title, .card-header, .card-body, .card-body h1, .card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body h6, .dropdown-menu, .dropdown-menu *, .main-menu a i, .side-main-menu a i, .section-title-3 h2').addClass('text-dark').removeClass('text-white');
@@ -122,7 +122,7 @@ function themeAuto() {
         $('.mobile-menu').addClass('menu-black');
         $('.product-contents h4 a, .movie-details-info h2').addClass('dktv-text-blue').removeClass('dktv-text-yellow');
         $('#mdb-style').attr('href', MDB_LIGHT);
-        $('.btn-style-hm4-2').css('color', '#ffffff').hover(function () { $(this).css('color', '#e3106f'); }, function () { $(this).css('color', '#ffffff'); });
+        $('.btn-style-hm4-2').css('color', '#ffffff').hover(function() { $(this).css('color', '#e3106f'); }, function() { $(this).css('color', '#ffffff'); });
     }
 
     document.cookie = 'theme=auto';
@@ -267,7 +267,7 @@ function loadAllJS() {
     $.getScript('/assets/js/script.js');
 }
 
-$(document).ready(function () {
+$(function () {
     $('.navbar, .card, .btn').addClass('shadow-0');
     $('.btn').css({ textTransform: 'inherit', paddingBottom: '0.5rem' });
     $('.back-to-top').click(function (e) {
@@ -853,7 +853,4 @@ $(document).ready(function () {
             }
         });
     });
-
-    // At the bottom of your jQuery code, put this:
-    $('#loadingMask').fadeOut().removeClass('d-flex').addClass('d-none');;
 });
