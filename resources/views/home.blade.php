@@ -268,7 +268,6 @@ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $
 // Views & Likes for a media
 $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-dd('VIEWS: ' . count($views->data) . ', LIKES: ' . count($likes->data));
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
@@ -286,6 +285,9 @@ dd('VIEWS: ' . count($views->data) . ', LIKES: ' . count($likes->data));
                                         <div class="pro-quality">
                                             <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+<?php
+dd('VIEWS: ' . count($views->data) . ', LIKES: ' . count($likes->data));
+?>
                                                 <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
