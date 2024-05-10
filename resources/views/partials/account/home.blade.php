@@ -1,4 +1,4 @@
-                                <div class="card rounded-4">
+                                <div class="card border rounded-4">
                                     <div class="card-body text-center">
                                         <ul id="account" class="nav nav-tabs nav-justified mb-3" role="tablist">
                                             <!-- TAB 1 : Personal infos -->

@@ -27,7 +27,7 @@ class AccountController extends Controller
 
     // ==================================== HTTP GET METHODS ====================================
     /**
-     * GET: Welcome/Home page
+     * GET: Account page
      *
      * @return \Illuminate\View\View
      */
@@ -53,7 +53,7 @@ class AccountController extends Controller
     }
 
     /**
-     * GET: Welcome/Home page
+     * GET: Other account pages
      *
      * @param  $entity
      * @return \Illuminate\View\View
@@ -72,10 +72,17 @@ class AccountController extends Controller
         $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
 
         if ($entity == 'watchlist') {
+            // Select a type by name API
+            $watchlist_type_name = 'Watchlist';
+            $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
+            // All user carts by type (Watchlist) API
+            $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
+
             return view('account', [
                 'for_youth' => $for_youth,
                 'current_user' => $user->data->user,
                 'unread_notifications' => $notifications->data,
+                'watchlist' => $user_watchlist->data->orders,
                 'api_client_manager' => $this::$api_client_manager,
                 'entity' => $entity,
                 'entity_title' => __('miscellaneous.account.watchlist'),
