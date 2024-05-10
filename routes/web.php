@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 // Generate symbolic link
 Route::get('/symlink', function () { return view('symlink'); })->name('generate_symlink');
+Route::get('/count', 'App\Http\Controllers\Web\HomeController@countActions')->name('count_actions');
 // Choose age
 Route::get('/choose_age/{for_youth}', function ($for_youth) { session()->put('for_youth', $for_youth); return redirect()->back(); })->whereNumber('for_youth')->name('choose_age');
 // Home

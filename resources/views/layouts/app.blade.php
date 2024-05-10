@@ -7,6 +7,7 @@
         <meta name="dktv-url" content="{{ getWebURL() }}">
         <meta name="dktv-api-url" content="{{ getApiURL() }}">
         <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
+        <meta name="dktv-media" content="{{ !empty($current_media) ? $current_media->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -704,8 +705,10 @@ if (request()->has('app_id')) {
              * Refresh an element every second
              */
             setInterval(function() {
-                $('.count').load(window.location.href + ' .count', function() { console.log('loaded'); });
-            }, 1000);
+                const url = currentHost + '/count?media_id=' + $('[name="dktv-media"]').attr('content');
+
+                $('.count').load(url + ' .count');
+            }, 500);
 
             /**
              * Toggle an action on a button

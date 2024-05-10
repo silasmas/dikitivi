@@ -157,6 +157,26 @@ class HomeController extends Controller
     }
 
     /**
+     * GET: Count Like/Watchlist actions
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int $id
+     * @return \Illuminate\View\View
+     */
+    public function countActions()
+    {
+        // All media views API
+        $views = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_views/' . request()->get('media_id'));
+        // All media likes API
+        $likes = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . request()->get('media_id'));
+
+        return view('partials.count', [
+            'views' => $views->data,
+            'likes' => $likes->data
+        ]);
+    }
+
+    /**
      * GET: Media details page
      *
      * @param  \Illuminate\Http\Request  $request

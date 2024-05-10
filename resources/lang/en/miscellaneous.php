@@ -824,6 +824,9 @@ return [
         // Media
         'media' => [
             'categories' => 'Categories',
+            'all_episodes' => 'Episodes of the series',
+            'all_songs' => 'Songs from the album',
+
             'label' => [
                 'title' => 'Title',
                 'description' => 'Description',

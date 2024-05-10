@@ -58,14 +58,14 @@ if (!empty($current_media->belongs_to)) {
                             <div class="col-lg-10 col-sm-9 mx-auto">
     @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album'))
                                 <div class="bg-image">
-                                    <img src="{{ $current_media->cover_url }}" alt="{{ $current_media->media_title }}" class="w-100 rounded-4">
+                                    <img src="{{ !empty($current_media->cover_url) ? $current_media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $current_media->media_title }}" class="w-100 rounded-4">
                                     <div class="mask"></div>
                                 </div>
     @endif
 
     @if ($current_media->type->type_name != __('miscellaneous.media_types.tv_series') && $current_media->type->type_name != __('miscellaneous.media_types.music_album'))
                                 <div class="ratio ratio-16x9">
-                                    <iframe id="ytplayer" src="{{ $current_media->media_url }}?showinfo=0&modestbranding=1&enablejsapi=1&origin={{ getWebURL() }}"frameborder="0"></iframe>
+                                    <iframe src="{{ $current_media->media_url }}?rel=0"frameborder="0"></iframe>
                                 </div>
     @endif
 
@@ -122,11 +122,7 @@ if (!empty($current_media->belongs_to)) {
                                 </div>
 
                                 <div class="d-flex justify-content-between">
-                                    <div class="count text-muted">
-                                        @lang('miscellaneous.views')@lang('miscellaneous.colon_after_word') <span class="d-inline-block me-3">{{ thousandsCurrencyFormat(count($views)) }}</span>
-                                        @lang('miscellaneous.likes')@lang('miscellaneous.colon_after_word') <span class="d-inline-block">{{ thousandsCurrencyFormat(count($likes)) }}</span>
-                                    </div>
-
+    @include('partials.count')
                                     <div class="action">
                                         <button title="{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? __('miscellaneous.public.withdraw_watchlist') : __('miscellaneous.public.add_watchlist') }}" class="Watch-list-btn{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? ' dktv-btn-green' : '' }}" type="button" data-status="{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? 'added' : 'withdrawn' }}" data-watchlist-id="{{ $watchlist->id }}" onclick="event.preventDefault(); toggleAction(this, {{ $current_media->id }}, 'watchlist');">
                                             <i class="zmdi zmdi-{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? 'check' : 'plus' }}"></i>
@@ -149,6 +145,40 @@ if (!empty($current_media->belongs_to)) {
     @endforelse
                             </div>
                         </div>
+
+    @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album'))
+<?php
+$belonging_medias = $api_client_manager::call('GET', getApiURL() . '/media/find_by_belongs_to/' . $current_media->id);
+?>
+
+        @if ($belonging_medias->success)
+            @if (count($belonging_medias->data) > 0)
+                        <div class="row">
+                            <div class="col-12">
+                                <h3 class="mt-4 mb-3 text-muted fw-bold">
+                @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series'))
+                                    @lang('miscellaneous.public.media.all_episodes')
+                @endif
+                @if ($current_media->type->type_name == __('miscellaneous.media_types.music_album'))
+                                    @lang('miscellaneous.public.media.all_songs')
+                @endif
+                                </h3>
+                            </div>
+                            <div class="col-12">
+                                <div class="list-group list-group-flush">
+                @foreach ($belonging_medias->data as $media)
+                                    <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="list-group-item list-group-item-action">
+                                        <img src="{{ !empty($media->cover_url) ? $media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $media->media_title }}" width="190" class="float-start rounded-4 me-3">
+                                        <h4 class="my-2 dktv-text-green fw-bold">{{ $media->media_title }}</h4>
+                                        <p class="text-muted">{{ !empty($media->media_description) ? Str::limit($media->media_description, 20, '...') :$media->author_names }}</p>
+                                    </a>
+                @endforeach
+                                </div>
+                            </div>
+                        </div>
+            @endif
+        @endif
+    @endif
                     </div>
                 </div>
                 <!--// Our-product-area Area  -->
