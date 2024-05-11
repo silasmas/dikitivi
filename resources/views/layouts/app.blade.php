@@ -359,6 +359,11 @@ if (request()->has('app_id')) {
                                             <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="37" class="user-image rounded-circle">
                                         </a>
                                         <div class="dropdown-menu">
+                                            <div class="bg-image py-2 text-center">
+                                                <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="73" class="rounded-circle">
+                                                <div class="mask"><a href="{{ route('account') }}" class="stretched-link"></a></div>
+                                            </div>
+
                                             <ul>
                                                 <li class="single-list">
                                                     <a href="{{ route('account') }}">@lang('miscellaneous.menu.account')</a>
