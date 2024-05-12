@@ -90,14 +90,31 @@ class AccountController extends Controller
         }
 
         if ($entity == 'children') {
-            return view('account', [
-                'for_youth' => $for_youth,
-                'current_user' => $user->data->user,
-                'unread_notifications' => $notifications->data,
-                'api_client_manager' => $this::$api_client_manager,
-                'entity' => $entity,
-                'entity_title' => __('miscellaneous.account.child.title'),
-            ]);
+            dd(Auth::user());
+            if (!empty(Auth::user()->parental_code)) {
+                // All user children API
+                $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . Auth::user()->parental_code, Auth::user()->api_token);
+
+                return view('account', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                    'children' => $children->data,
+                    'entity' => $entity,
+                    'entity_title' => __('miscellaneous.account.child.title'),
+                ]);
+
+            } else {
+                return view('account', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                    'entity' => $entity,
+                    'entity_title' => __('miscellaneous.account.child.title'),
+                ]);
+            }
         }
     }
 

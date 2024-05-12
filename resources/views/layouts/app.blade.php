@@ -106,17 +106,18 @@ if (request()->has('app_id')) {
         <div class="modal fade" id="registerModalChild" tabindex="-1" aria-labelledby="registerModalChildLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="registerModalChildLabel">{{ __('miscellaneous.account.child.add') }}</h5>
+                    <div class="modal-header pt-2 pb-0">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <h5 class="modal-title text-center text-uppercase" id="registerModalChildLabel">{{ __('miscellaneous.account.child.add') }}</h5>
+
                         <form method="POST" action="{{ route('account.entity', ['entity' => 'children']) }}">
     @csrf
 
                             <!-- First name -->
                             <div class="form-floating mt-3">
-                                <input type="text" name="register_firstname" id="register_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" required />
+                                <input type="text" name="register_firstname" id="register_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" required autofocus />
                                 <label class="form-label" for="register_firstname">@lang('miscellaneous.firstname')</label>
                             </div>
 
@@ -127,7 +128,7 @@ if (request()->has('app_id')) {
                             </div>
 
                             <!-- Birth date -->
-                            <div class="form-floating mt-sm-0 mt-2">
+                            <div class="form-floating mt-3">
                                 <input type="text" name="register_birth_date" id="register_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" />
                                 <label class="form-label" for="register_birthdate">@lang('miscellaneous.birth_date.label')</label>
                             </div>
@@ -137,11 +138,11 @@ if (request()->has('app_id')) {
                                 <p class="mb-lg-1 mb-0">@lang('miscellaneous.gender_title')</p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="register_gender" id="male" value="M">
-                                    <label class="form-check-label" for="male">@lang('miscellaneous.gender1')</label>
+                                    <label class="form-check-label text-muted" for="male">@lang('miscellaneous.gender1')</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="register_gender" id="female" value="F">
-                                    <label class="form-check-label" for="female">@lang('miscellaneous.gender2')</label>
+                                    <label class="form-check-label text-muted" for="female">@lang('miscellaneous.gender2')</label>
                                 </div>
                             </div>
 
@@ -375,7 +376,7 @@ if (request()->has('app_id')) {
                                                     <a href="{{ route('account.entity', ['entity' => 'children']) }}">@lang('miscellaneous.account.parental_control')</a>
                                                 </li>
                                                 <li class="dropdown-divider"></li>
-                                                <li class="single-list">
+                                                <li class="single-list pt-1">
                                                     <a href="{{ route('logout') }}">@lang('miscellaneous.logout')</a>
                                                 </li>
                                                 <li class="dropdown-divider"></li>

@@ -327,6 +327,10 @@ return [
     'account' => [
         'watchlist' => 'Ma watchlist',
         'parental_control' => 'Contrôle parental',
+        'add_child' => [
+            'message' => 'En ajoutant vos enfants, vous leur permettez de se connecter pour regarder les vidéos de DikiTivi et vous serez en mesure de voir ce qu’ils ont regardé.',
+            'link' => 'Ajouter un enfant'
+        ],
         'on_going' => 'Compte en attente d’activation',
         'deactivated' => [
             'message' => 'Vous avez désactivé votre compte',
