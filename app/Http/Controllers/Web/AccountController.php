@@ -90,7 +90,6 @@ class AccountController extends Controller
         }
 
         if ($entity == 'children') {
-            dd($user->data->user);
             if (!empty($user->data->user->parental_code)) {
                 // All user children API
                 $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->parental_code, $user->data->user->api_token);

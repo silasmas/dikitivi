@@ -55,6 +55,8 @@ if (request()->has('app_id')) {
             .action .Watch-list-btn { width: 40px; height: 40px; font-size: 22px; color: #000; background-color: #cfcfcf; border-radius: 100%; -webkit-transition: all 0.7s ease 0s; transition: all 0.7s ease 0s; border: none; }
             .action .Watch-list-btn:hover { color: #fff; background-color: #000000; }
             a.disabled, button.disabled { color: gray; pointer-events: none; }
+            .animate-icon { transition: 0.4s; }
+            .rotate { transform: rotate(135deg); }
         </style>
 
         <!-- ============ Modernizer JS ============ -->
@@ -101,7 +103,7 @@ if (request()->has('app_id')) {
 
     <body>
         <!-- MODALS-->
-@if (Route::is('account') || Route::is('account.entity') || Route::is('account.entity.datas'))
+@if (Route::is('account.entity') || Route::is('account.entity.datas'))
         <!-- ### Add a child ### -->
         <div class="modal fade" id="registerModalChild" tabindex="-1" aria-labelledby="registerModalChildLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -172,33 +174,6 @@ if (request()->has('app_id')) {
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ### Crop user image ### -->
-        <div class="modal fade" id="cropModalUser" tabindex="-1" aria-labelledby="cropModalUserLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="cropModalUserLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 mb-sm-0 mb-4">
-                                    <div class="bg-image">
-                                        <img src="" id="retrieved_image" class="img-fluid">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
-                        <button type="button" id="crop_avatar" class="btn dktv-btn-blue rounded-pill"data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
                 </div>
             </div>
@@ -284,8 +259,37 @@ if (request()->has('app_id')) {
                 </div>
             </div>
         </div>
-        <!-- END MODALS-->
 @endif
+
+@if (Route::is('account') || Route::is('account.entity') || Route::is('account.entity.datas'))
+        <!-- ### Crop user image ### -->
+        <div class="modal fade" id="cropModalUser" tabindex="-1" aria-labelledby="cropModalUserLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="cropModalUserLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mb-sm-0 mb-4">
+                                    <div class="bg-image">
+                                        <img src="" id="retrieved_image" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
+                        <button type="button" id="crop_avatar" class="btn dktv-btn-blue rounded-pill"data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endif
+        <!-- END MODALS-->
 
         <div id="loadingMask" class="perfect-scrollbar d-flex position-fixed dktv-bg-blue w-100 justify-items-center align-items-center" style="z-index: 9999; height: 100vh;">
             <div class="spinner-border mx-auto" style="width: 3rem; height: 3rem;" role="status">
@@ -720,6 +724,59 @@ if (request()->has('app_id')) {
 
                 $('.count').load(url + ' .count');
             }, 500);
+
+            /**
+             * Generate random strings
+             * 
+             * @param int length
+             */
+            function randomString(length) {
+                // declare all characters
+                const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                let result = ' ';
+
+                const charactersLength = characters.length;
+
+                for ( let i = 0; i < length; i++ ) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                }
+
+                return result;
+            }
+
+            /**
+             * Update parental code
+             * 
+             * @param string element
+             */
+            function refreshParentalCode(element) {
+                var icon = document.getElementById('refresh');
+                var refreshIntervalId = setInterval(function() {
+                    element.classList.toggle('rotate');
+                }, 200);
+                console.log(icon);
+                var datas = JSON.stringify({ 'id': parseInt(currentUser), 'parental_code': randomString(7) });
+
+                $.ajax({
+                    headers: headers,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    url: apiHost + '/user/' + parseInt(currentUser),
+                    dataType: 'json',
+                    data: datas,
+                    success: function (result) {
+                        $('#parentalCode').load(currentHost + '/account #parentalCode', function () {
+                            clearInterval(refreshIntervalId);
+                        });
+                    },
+                    error: function (xhr, error, status_description) {
+                        console.log(xhr.responseJSON);
+                        console.log(xhr.status);
+                        console.log(error);
+                        console.log(status_description);
+                    }
+                });
+            }
 
             /**
              * Toggle an action on a button

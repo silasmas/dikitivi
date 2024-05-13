@@ -36,7 +36,10 @@
                                                             <td><strong>@lang('miscellaneous.parental_code')</strong></td>
                                                             <td>@lang('miscellaneous.colon_after_word')</td>
                                                             <td>
-                                                                {{ $current_user->parental_code }} <button class="btn dktv-btn-green rounded-pill" title="@lang('miscellaneous.refresh')" onclick="event.preventDefault(); refreshParentalCode();"><i class="bi bi-arrow-repeat ms-3"></i></button>
+                                                                <div class="d-inline" id="parentalCode">{{ $current_user->parental_code }}</div>
+                                                                <a role="button" class="btn btn-link dktv-btn-green ms-2 py-0 rounded-pill fs-5 animate-icon" style="padding-left: 0.3rem; padding-right: 0.3rem;" title="@lang('miscellaneous.refresh')" onclick="event.preventDefault(); refreshParentalCode(this);" data-bs-toggle="tooltip" data-bs-placement="right">
+                                                                    <i id="refresh" class="bi bi-arrow-repeat"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
     @endif
