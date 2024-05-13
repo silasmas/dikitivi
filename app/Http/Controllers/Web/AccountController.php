@@ -42,7 +42,7 @@ class AccountController extends Controller
         // User age
         $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
         // Select all unread notifications API
-        $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+        $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
 
         return view('account', [
             'for_youth' => $for_youth,
@@ -69,14 +69,14 @@ class AccountController extends Controller
         // User age
         $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
         // Select all unread notifications API
-        $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . Auth::user()->id, Auth::user()->api_token);
+        $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
 
         if ($entity == 'watchlist') {
             // Select a type by name API
             $watchlist_type_name = 'Watchlist';
             $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
             // All user carts by type (Watchlist) API
-            $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . Auth::user()->id . '/' . $watchlist_type->data->id, Auth::user()->api_token);
+            $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . $user->data->user->id . '/' . $watchlist_type->data->id, $user->data->user->api_token);
 
             return view('account', [
                 'for_youth' => $for_youth,
@@ -90,10 +90,10 @@ class AccountController extends Controller
         }
 
         if ($entity == 'children') {
-            dd(Auth::user());
-            if (!empty(Auth::user()->parental_code)) {
+            dd($user->data->user);
+            if (!empty($user->data->user->parental_code)) {
                 // All user children API
-                $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . Auth::user()->parental_code, Auth::user()->api_token);
+                $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->parental_code, $user->data->user->api_token);
 
                 return view('account', [
                     'for_youth' => $for_youth,

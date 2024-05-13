@@ -287,7 +287,12 @@ if (request()->has('app_id')) {
         <!-- END MODALS-->
 @endif
 
-        <span class="d-none perfect-scrollbar"></span>
+        <div id="loadingMask" class="perfect-scrollbar d-flex position-fixed dktv-bg-blue w-100 justify-items-center align-items-center" style="z-index: 9999; height: 100vh;">
+            <div class="spinner-border mx-auto" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">@lang('miscellaneous.loading')</span>
+            </div>
+        </div>
+
         <!-- Main Wrapper Start -->
         <div class="main-wrapper">
             <!-- header-medea -->
@@ -822,6 +827,11 @@ if (request()->has('app_id')) {
                     });
                 }
             }
+
+            $(document).ready(function () {
+                // At the bottom of your jQuery code, put this:
+                $('#loadingMask').fadeOut().removeClass('d-flex').addClass('d-none');
+            });
         </script>
     </body>
 </html>
