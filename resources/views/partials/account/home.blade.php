@@ -3,21 +3,21 @@
                                         <ul id="account" class="nav nav-tabs nav-justified mb-3" role="tablist">
                                             <!-- TAB 1 : Personal infos -->
                                             <li class="nav-item" role="presentation">
-                                                <a id="account-tab-1" class="nav-link px-lg-1{{ \Session::has('error_message') == false && \Session::has('error_pw_message') == false ? ' active' : '' }}" data-bs-toggle="tab" href="#account-tabs-1" role="tab" aria-controls="account-tabs-1" aria-selected="true">
+                                                <a id="account-tab-1" class="nav-link px-lg-1 active" data-bs-toggle="tab" href="#account-tabs-1" role="tab" aria-controls="account-tabs-1" aria-selected="true">
                                                     <i class="bi bi-list-ul me-lg-2 align-middle fs-4"></i><span class="d-lg-inline d-none">@lang('miscellaneous.account.personal_infos.title')</span>
                                                 </a>
                                             </li>
 
                                             <!-- TAB 2 : Account settings -->
                                             <li class="nav-item" role="presentation">
-                                                <a id="account-tab-2" class="nav-link px-lg-1{{ \Session::has('error_message') && explode('_', \Session::get('error_message'))[0] == 'account-tabs-2' ? ' active' : '' }}" data-bs-toggle="tab" href="#account-tabs-2" role="tab" aria-controls="account-tabs-2" aria-selected="false" onclick="document.getElementById('register_firstname').focus();">
+                                                <a id="account-tab-2" class="nav-link px-lg-1" data-bs-toggle="tab" href="#account-tabs-2" role="tab" aria-controls="account-tabs-2" aria-selected="false" onclick="document.getElementById('register_firstname').focus();">
                                                     <i class="bi bi-gear me-lg-2 align-middle fs-4"></i><span class="d-lg-inline d-none">@lang('miscellaneous.settings')</span>
                                                 </a>
                                             </li>
 
                                             <!-- TAB 3 : Update password -->
                                             <li class="nav-item" role="presentation">
-                                                <a id="account-tab-3" class="nav-link px-lg-1{{ \Session::has('error_pw_message') && explode('~', \Session::get('error_pw_message'))[0] == 'account-tabs-3' ? ' active' : '' }}" data-bs-toggle="tab" href="#account-tabs-3" role="tab" aria-controls="account-tabs-3" aria-selected="false" onclick="document.getElementById('register_former_password').focus();">
+                                                <a id="account-tab-3" class="nav-link px-lg-1" data-bs-toggle="tab" href="#account-tabs-3" role="tab" aria-controls="account-tabs-3" aria-selected="false" onclick="document.getElementById('register_former_password').focus();">
                                                     <i class="bi bi-shield-lock me-lg-2 align-middle fs-4"></i><span class="d-lg-inline d-none">@lang('miscellaneous.account.update_password.title')</span>
                                                 </a>
                                             </li>
@@ -25,12 +25,12 @@
 
                                         <div id="account-content" class="tab-content p-3">
                                             <!-- TAB-CONTENT 1 : Personal infos -->
-                                            <div class="tab-pane text-start fade{{ \Session::has('error_message') == false && \Session::has('error_pw_message') == false ? ' show active' : '' }}" id="account-tabs-1" role="tabpanel" aria-labelledby="account-tab-1">
+                                            <div class="tab-pane text-start fade show active" id="account-tabs-1" role="tabpanel" aria-labelledby="account-tab-1">
                                                 <h1 class="h1 d-lg-none mb-4 text-center fw-bold">@lang('miscellaneous.account.personal_infos.title')</h1>
 
                                                 <div class="table-responsive">
                                                     <table class="table">
-    @if (!empty($current_user->parental_code))
+@if (!empty($current_user->parental_code))
                                                         <!-- Parental code -->
                                                         <tr>
                                                             <td><strong>@lang('miscellaneous.parental_code')</strong></td>
@@ -42,7 +42,7 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-    @endif
+@endif
 
                                                         <!-- First name -->
                                                         <tr>
@@ -101,7 +101,7 @@
                                                         </tr>
 
                                                         <!-- Addresses -->
-    @if (!empty($current_user->address_1) && !empty($current_user->address_2))
+@if (!empty($current_user->address_1) && !empty($current_user->address_2))
                                                         <tr>
                                                             <td><strong>@lang('miscellaneous.addresses')</strong></td>
                                                             <td>@lang('miscellaneous.colon_after_word')</td>
@@ -116,13 +116,13 @@
                                                                 </ul>
                                                             </td>
                                                         </tr>
-    @else
+@else
                                                         <tr>
                                                             <td><strong>@lang('miscellaneous.address.title')</strong></td>
                                                             <td>@lang('miscellaneous.colon_after_word')</td>
                                                             <td>{{ !empty($current_user->address_1) ? $current_user->address_1 : (!empty($current_user->address_2) ? $current_user->address_2 : '- - - - - -') }}</td>
                                                         </tr>
-    @endif
+@endif
 
                                                         <!-- P.O. box -->
                                                         <tr>
@@ -135,11 +135,11 @@
                                             </div>
 
                                             <!-- TAB-CONTENT 2 : Account settings -->
-                                            <div class="tab-pane fade{{ \Session::has('error_message') && explode('_', \Session::get('error_message'))[0] == 'account-tabs-2' ? ' show active' : '' }}" id="account-tabs-2" role="tabpanel" aria-labelledby="account-tab-2">
+                                            <div class="tab-pane fade" id="account-tabs-2" role="tabpanel" aria-labelledby="account-tab-2">
                                                 <h1 class="h1 d-lg-none mb-4 fw-bold">@lang('miscellaneous.settings')</h1>
 
                                                 <form method="POST" action="{{ route('account') }}">
-    @csrf
+@csrf
                                                     <input type="hidden" name="user_id" value="{{ $current_user->id }}">
                                                     <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
@@ -211,11 +211,11 @@
                                                                 <input type="text" name="register_phone" id="register_phone" class="form-control" placeholder="@lang('miscellaneous.phone')" aria-describedby="phone_error_message" value="{{ $current_user->phone }}" />
                                                                 <label class="form-label" for="register_phone">@lang('miscellaneous.phone')</label>
                                                             </div>
-    @if (!empty($current_user->phone_verified_at))
+@if (!empty($current_user->phone_verified_at))
                                                             <p id="phone_error_message" class="text-end text-success small"><i class="bi bi-check-circle"></i> @lang('miscellaneous.verified')</p>
-    @else
+@else
                                                             <p id="phone_error_message" class="text-end text-danger small"><i class="bi bi-x-circle"></i> @lang('miscellaneous.unverified')</p>
-    @endif
+@endif
                                                         </div>
                                                     </div>
 
@@ -226,11 +226,11 @@
                                                                 <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ $current_user->email }}" />
                                                                 <label class="form-label" for="register_email">@lang('miscellaneous.email')</label>
                                                             </div>
-    @if (!empty($current_user->email_verified_at))
+@if (!empty($current_user->email_verified_at))
                                                             <p id="phone_error_message" class="text-end text-success small"><i class="bi bi-check-circle"></i> @lang('miscellaneous.verified')</p>
-    @else
+@else
                                                             <p id="phone_error_message" class="text-end text-danger small"><i class="bi bi-x-circle"></i> @lang('miscellaneous.unverified')</p>
-    @endif
+@endif
                                                         </div>
 
                                                         <div class="col-lg-6">
@@ -266,11 +266,11 @@
                                                             <div class="form-floating pt-0">
                                                                 <select name="country_id" id="country_id" class="form-select pt-2 shadow-0">
                                                                     <option class="small" disabled>@lang('miscellaneous.choose_country')</option>
-    @forelse ($countries as $country)
+@forelse ($countries as $country)
                                                                     <option value="{{ $country->id }}"{{ $country->id == $current_user->country->id ? ' selected' : '' }}>{{ $country->country_name }}</option>
-    @empty
+@empty
                                                                     <option>@lang('miscellaneous.empty_list')</option>
-    @endforelse
+@endforelse
                                                                 </select>
                                                                 <label class="form-label" for="country_id">@lang('miscellaneous.country')</label>
                                                             </div>
@@ -300,13 +300,13 @@
                                             </div>
 
                                             <!-- TAB-CONTENT 3 : Update password -->
-                                            <div class="tab-pane fade{{ \Session::has('error_pw_message') && explode('~', \Session::get('error_pw_message'))[0] == 'account-tabs-3' ? ' show active' : '' }}" id="account-tabs-3" role="tabpanel" aria-labelledby="account-tab-3">
+                                            <div class="tab-pane fade" id="account-tabs-3" role="tabpanel" aria-labelledby="account-tab-3">
                                                 <h1 class="h1 d-lg-none mb-4 fw-bold">@lang('miscellaneous.account.update_password.title')</h1>
 
                                                 <div class="row py-4">
                                                     <div class="col-lg-7 col-sm-9 mx-auto">
                                                         <form method="POST" action="{{ route('account.entity', ['entity' => 'update_password']) }}">
-    @csrf
+@csrf
                                                             <input type="hidden" name="user_id" value="{{ $current_user->id }}">
                                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
@@ -336,12 +336,6 @@
                                                                     <button class="btn btn-light btn-block border rounded-pill" type="reset">@lang('miscellaneous.reset')</button>
                                                                 </div>
                                                             </div>
-
-    @if (\Session::has('error_pw_message'))
-                                                            <div class="alert alert-danger mt-3 mb-0 py-2 small rounded-0 dktv-line-height-1" role="alert">
-                                                                <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {{ explode('~', \Session::get('error_pw_message'))[5] }}
-                                                            </div>
-    @endif
                                                         </form>
                                                     </div>
                                                 </div>

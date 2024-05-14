@@ -800,6 +800,66 @@ if (request()->has('app_id')) {
              * @param string action
              */
             function toggleAction(element, mediaId, action) {
+                // Delete item
+                if (action == 'delete_from_watchlist') {
+                    var cartId = element.getAttribute('data-watchlist-id');
+                    var datas = JSON.stringify({ 'cart_id': parseInt(cartId), 'media_id': parseInt(mediaId) });
+
+                    Swal.fire({
+                        title: '<?= __("miscellaneous.attention_delete") ?>',
+                        text: '<?= __("miscellaneous.confirm_delete") ?>',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '<?= __("miscellaneous.yes") ?>',
+                        cancelButtonText: '<?= __("miscellaneous.no") ?>'
+
+                    }).then(function (result) {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                headers: headers,
+                                type: 'DELETE',
+                                contentType: 'application/json',
+                                url: apiHost + '/cart/remove_from_cart/' + parseInt(cartId) + '/' + parseInt(mediaId),
+                                dataType: 'json',
+                                data: datas,
+                                success: function (result) {
+                                    if (!result.success) {
+                                        Swal.fire({
+                                            title: '',
+                                            text: result.message,
+                                            icon: 'error'
+                                        });
+
+                                    } else {
+                                        Swal.fire({
+                                            title: '',
+                                            text: result.message,
+                                            icon: 'success'
+                                        });
+                                        location.reload();
+                                    }
+                                },
+                                error: function (xhr, error, status_description) {
+                                    Swal.fire({
+                                        title: xhr.responseJSON.error,
+                                        text: xhr.responseJSON.message,
+                                        icon: 'error'
+                                    });
+                                }
+                            });
+
+                        } else {
+                            Swal.fire({
+                                title: '',
+                                text: '<?= __("miscellaneous.delete_canceled") ?>',
+                                icon: 'error'
+                            });
+                        }
+                    });
+                }
+
                 // Add to / Withdraw from watchlist
                 if (action == 'watchlist') {
                     // If the media is withdrawn, add it to watchlist

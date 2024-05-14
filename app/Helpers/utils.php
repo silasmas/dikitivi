@@ -5,6 +5,7 @@
  */
 
 use Carbon\Carbon;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 // Get web URL
 if (!function_exists('getWebURL')) {
@@ -114,5 +115,16 @@ if (!function_exists("friendlyUsername")) {
         $string = strtolower($string);
 
         return $string;
+    }
+}
+
+// Paginate an array
+if (!function_exists("paginate")) {
+    function paginate(array $items, int $perPage = 5, ?int $page = null, $options = [])
+    {
+        $page = $page ?: (LengthAwarePaginator::resolveCurrentPage() ?: 1);
+        $items = collect($items);
+
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }

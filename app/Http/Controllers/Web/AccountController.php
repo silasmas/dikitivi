@@ -77,12 +77,16 @@ class AccountController extends Controller
             $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
             // All user carts by type (Watchlist) API
             $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . $user->data->user->id . '/' . $watchlist_type->data->id, $user->data->user->api_token);
+            // Paginate result
+            $paginate_result = paginate($user_watchlist->data->orders, 7);
 
             return view('account', [
                 'for_youth' => $for_youth,
                 'current_user' => $user->data->user,
                 'unread_notifications' => $notifications->data,
-                'watchlist' => $user_watchlist->data->orders,
+                'watchlist_id' => $user_watchlist->data->id,
+                'watchlist' => $paginate_result,
+                'lastPage' => $paginate_result->lastPage(),
                 'api_client_manager' => $this::$api_client_manager,
                 'entity' => $entity,
                 'entity_title' => __('miscellaneous.account.watchlist'),

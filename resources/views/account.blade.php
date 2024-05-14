@@ -37,7 +37,7 @@
                                         <i class="bi bi-file-play me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.watchlist')
                                     </a>
                                     <a href="{{ route('account.entity', ['entity' => 'videos']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'videos' ? ' active' : '' }}">
-                                        <i class="bi bi-file-play me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.my_videos')
+                                        <i class="bi bi-download me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.my_videos')
                                     </a>
                                     <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'children' ? ' active' : '' }}">
                                         <i class="bi bi-people me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.child.title')
