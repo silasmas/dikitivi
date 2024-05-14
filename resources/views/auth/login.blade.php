@@ -3,11 +3,11 @@
 @section('guest-content')
 
     @if (!empty($children))
-                                <h4 class="h4 mb-4 text-center">@lang('auth.select-your-profile')</h4>
+                                <h4 class="h4 mb-4 text-muted text-center">@lang('auth.select-your-profile')</h4>
 
-                                <div class="row g-2">
+                                <div class="row mb-4 g-2">
         @foreach ($children as $child)
-                                    <div class="col-lg-3 col-sm-4 col-11 mx-auto">
+                                    <div class="col-lg-5 col-sm-6 col-11 mx-auto">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="bg-image mb-3">
@@ -15,7 +15,9 @@
                                                     <div class="mask"></div>
                                                 </div>
 
+                                                <h5 class="mb-3 text-center text-truncate">{{ $child->firstname . ' ' . $child->lastname }}</h5>
                                                 <form method="POST" action="{{ route('login') }}">
+            @csrf
                                                     <input type="hidden" name="child_id" value="{{ $child->id }}">
                                                     <button type="submit" class="btn btn-block dktv-btn-green rounded-pill mb-4 shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.login_title1')</button>
                                                 </form>

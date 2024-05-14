@@ -42,7 +42,7 @@ class AuthenticatedSessionController extends Controller
             $users = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $request->login_parental_code);
 
             if ($users->success) {
-                return view('auth.login', 'children', $users->data);
+                return view('auth.login', ['children' => $users->data]);
 
             } else {
                 $error_data = $users->message . ', ' . $users->message . ', ' . __('notifications.error_title');

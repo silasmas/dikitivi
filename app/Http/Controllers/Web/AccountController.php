@@ -97,12 +97,16 @@ class AccountController extends Controller
             if (request()->has('id')) {
                 // Select a user API
                 $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
+                // Recently viewed medias API
+                $viewed_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_viewed_medias/' . $child->data->user->id, $user->data->user->api_token);
 
                 return view('account', [
                     'for_youth' => $for_youth,
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'child' => $child->data->user,
+                    'viewed_medias' => $viewed_medias->data,
+                    'lastPage' => $viewed_medias->lastPage,
                     'api_client_manager' => $this::$api_client_manager,
                     'entity' => $entity,
                     'entity_title' => __('miscellaneous.account.child.title'),
@@ -162,10 +166,10 @@ class AccountController extends Controller
             $user = $this::$api_client_manager::call('DELETE', getApiURL() . '/user/' . $id, Auth::user()->api_token);
 
             if ($user->success) {
-                return redirect()->back()->with('success_message', $user->message);
+                return redirect()->to('/account/children')->with('success_message', $user->message);
 
             } else {
-                return redirect()->back()->with('error_message', $user->message);
+                return redirect()->to('/account/children')->with('error_message', $user->message);
             }
         }
     }
