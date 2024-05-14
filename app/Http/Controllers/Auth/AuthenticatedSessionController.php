@@ -63,7 +63,12 @@ class AuthenticatedSessionController extends Controller
                 if ($auth_phone || $auth_email || $auth_username) {
                     $request->session()->regenerate();
 
-                    return redirect()->to(Session::get('url.intended'));
+                    if (Session::has('url.intended')) {
+                        return redirect()->to(Session::get('url.intended'));
+
+                    } else {
+                        return redirect()->to('/');
+                    }
                 }
 
             } else {
@@ -84,7 +89,12 @@ class AuthenticatedSessionController extends Controller
                     if ($auth_phone || $auth_email || $auth_username) {
                         $request->session()->regenerate();
 
-                        return redirect()->to(Session::get('url.intended'));
+                        if (Session::has('url.intended')) {
+                            return redirect()->to(Session::get('url.intended'));
+
+                        } else {
+                            return redirect()->to('/');
+                        }
                     }
 
                 } else {
