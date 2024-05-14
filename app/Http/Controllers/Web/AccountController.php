@@ -148,6 +148,28 @@ class AccountController extends Controller
         }
     }
 
+    /**
+     * GET: Other account datas pages
+     *
+     * @param  $entity
+     * @param  $id
+     * @return \Illuminate\View\View
+     */
+    public function accountEntityDatas($entity, $id)
+    {
+        if ($entity == 'children') {
+            // Delete a user API
+            $user = $this::$api_client_manager::call('DELETE', getApiURL() . '/user/' . $id, Auth::user()->api_token);
+
+            if ($user->success) {
+                return redirect()->back()->with('success_message', $user->message);
+
+            } else {
+                return redirect()->back()->with('error_message', $user->message);
+            }
+        }
+    }
+
     // ==================================== HTTP POST METHODS ====================================
     /**
      * POST: Update account
@@ -252,6 +274,7 @@ class AccountController extends Controller
                 'firstname' => $request->register_firstname,
                 'lastname' => $request->register_lastname,
                 'surname' => $request->register_surname,
+                'username' => $request->register_username,
                 'gender' => $request->register_gender,
                 'birth_date' => !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
                 'username' => $request->register_username

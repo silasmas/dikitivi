@@ -103,7 +103,36 @@ if (request()->has('app_id')) {
 
     <body>
         <!-- MODALS-->
-@if (Route::is('account.entity') || Route::is('account.entity.datas'))
+@if (Route::is('account.entity') && request()->has('id'))
+        <!-- ### Crop other user image ### -->
+        <div class="modal fade" id="cropModal_profile" tabindex="-1" aria-labelledby="cropModal_profileLabel" aria-hidden="true" data-bs-backdrop="{{ Route::is('branch.home') ? 'static' : 'true' }}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="cropModal_profileLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mb-sm-0 mb-4">
+                                    <div class="bg-image">
+                                        <img src="" id="retrieved_image_profile" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
+                        <button type="button" id="crop_profile" class="btn dktv-btn-green rounded-pill" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endif
+
+@if (Route::is('account.entity') && !request()->has('id'))
         <!-- ### Crop other user image ### -->
         <div class="modal fade" id="cropModal_profile" tabindex="-1" aria-labelledby="cropModal_profileLabel" aria-hidden="true" data-bs-backdrop="{{ Route::is('branch.home') ? 'static' : 'true' }}">
             <div class="modal-dialog" role="document">
@@ -166,7 +195,7 @@ if (request()->has('app_id')) {
 
                             <!-- Birth date -->
                             <div class="form-floating mt-3">
-                                <input type="text" name="register_birth_date" id="register_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" />
+                                <input type="text" name="register_birthdate" id="register_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" />
                                 <label class="form-label" for="register_birthdate">@lang('miscellaneous.birth_date.label')</label>
                             </div>
 

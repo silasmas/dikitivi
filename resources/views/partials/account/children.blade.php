@@ -1,7 +1,9 @@
                                 <div class="card border rounded-4">
 @if (request()->has('id'))
                                     <div class="card-header d-flex justify-content-between align-items-center bg-light">
-                                        <a href="{{ route('account.entity', ['entity' => 'children']) }}" class=" btn btn-link text-muted fw-semibold">@lang('miscellaneous.back_list')</a>
+                                        <a href="{{ route('account.entity', ['entity' => 'children']) }}" class=" btn btn-link text-muted fw-semibold">
+                                            <i class="bi bi-arrow-left me-3"></i>@lang('miscellaneous.back_list')
+                                        </a>
                                     </div>
 
                                     <div class="card-body">
@@ -11,14 +13,14 @@
                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
                                             <div class="row g-3">
-                                                <div class="col-lg-4 col-sm-3 mx-auto">
+                                                <div class="col-sm-5 mx-auto">
                                                     <div id="profileImageWrapper" class="row mt-3">
                                                         <div class="col-sm-7 col-9 mx-auto">
-                                                            <p class="small mb-1 text-center">@lang('miscellaneous.account.child.click_to_change_picture')</p>
+                                                            <p class="small mb-1 text-center dktv-line-height-1_4">@lang('miscellaneous.account.child.click_to_change_picture')</p>
 
                                                             <div class="bg-image hover-overlay">
                                                                 <img src="{{ asset($child->avatar_url) }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" class="other-user-image img-fluid rounded-circle">
-                                                                <div class="mask rounded-4" style="background-color: rgba(5, 5, 5, 0.5);">
+                                                                <div class="mask rounded-circle" style="background-color: rgba(5, 5, 5, 0.5);">
                                                                     <label role="button" for="image_profile" class="d-flex h-100 justify-content-center align-items-center">
                                                                         <i class="bi bi-pencil-fill text-white fs-2"></i>
                                                                         <input type="file" name="image_profile" id="image_profile" class="d-none">
@@ -30,7 +32,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-lg-8 col-sm-9 mx-auto">
+                                                <div class="col-sm-7 mx-auto">
                                                     <!-- First name -->
                                                     <div class="form-floating mt-3">
                                                         <input type="text" name="register_firstname" id="update_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" value="{{ $child->firstname }}" required autofocus />
@@ -49,9 +51,15 @@
                                                         <label class="form-label" for="update_surname">@lang('miscellaneous.surname')</label>
                                                     </div>
 
+                                                    <!-- Username -->
+                                                    <div class="form-floating mt-3">
+                                                        <input type="text" name="register_username" id="update_username" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ $child->username }}" />
+                                                        <label class="form-label" for="update_username">@lang('miscellaneous.username')</label>
+                                                    </div>
+
                                                     <!-- Birth date -->
                                                     <div class="form-floating mt-3">
-                                                        <input type="text" name="register_birth_date" id="update_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" value="{{ !empty($child->birth_date) ? str_starts_with(app()->getLocale(), 'fr') ? \Carbon\Carbon::createFromFormat('Y-m-d', $child->birth_date)->format('d/m/Y') : \Carbon\Carbon::createFromFormat('Y-m-d', $child->birth_date)->format('m/d/Y') : null }}" />
+                                                        <input type="text" name="register_birthdate" id="update_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" value="{{ !empty($child->birth_date) ? str_starts_with(app()->getLocale(), 'fr') ? \Carbon\Carbon::createFromFormat('Y-m-d', $child->birth_date)->format('d/m/Y') : \Carbon\Carbon::createFromFormat('Y-m-d', $child->birth_date)->format('m/d/Y') : null }}" />
                                                         <label class="form-label" for="update_birthdate">@lang('miscellaneous.birth_date.label')</label>
                                                     </div>
 
@@ -68,7 +76,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <button class="btn dktv-btn-green btn-block rounded-pill" type="submit">@lang('miscellaneous.register_update')</button>
+                                                    <button class="btn dktv-btn-green btn-block mt-3 rounded-pill" type="submit">@lang('miscellaneous.register_update')</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -89,6 +97,17 @@
                                             <div class="col-xl-6 col-sm-8 mx-auto">
                                                 <div class="card border">
                                                     <div class="card-body">
+                                                        <div class="dropdown float-end">
+                                                            <a role="button" id="childAction" class="btn btn-link p-1 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </a>
+
+                                                            <ul class="dropdown-menu" aria-labelledby="childAction">
+                                                                <li><a class="dropdown-item" href="{{ route('account.entity', ['entity' => 'children', 'id' => $child->id]) }}">@lang('miscellaneous.details')</a></li>
+                                                                <li><a class="dropdown-item" href="{{ route('account.entity.datas', ['entity' => 'children', 'id' => $child->id]) }}">@lang('miscellaneous.delete')</a></li>
+                                                            </ul>
+                                                        </div>
+
                                                         <img src="{{ $child->avatar_url }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" width="70" class="float-start rounded-circle me-3">
                                                         <h4 class="mt-2 mb-1 dktv-text-green fw-bold text-truncate">{{ $child->firstname . ' ' . $child->lastname }}</h4>
                                                         <p class="m-0 text-muted text-truncate">{{ '@' . $child->username }}</p>
