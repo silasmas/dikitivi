@@ -1,7 +1,7 @@
                                 <div class="card border rounded-4">
 @if (request()->has('id'))
                                     <div class="card-header d-flex justify-content-between align-items-center bg-light">
-                                        <a href="{{ route('account.entity', ['entity' => 'children']) }}" class=" btn btn-link text-muted fw-semibold">
+                                        <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="btn btn-link px-2 pt-1 text-muted fw-semibold">
                                             <i class="bi bi-arrow-left me-3"></i>@lang('miscellaneous.back_list')
                                         </a>
                                     </div>
