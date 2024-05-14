@@ -312,7 +312,7 @@ $(function () {
     });
 
     /* jQuery Date picker */
-    $('#register_birthdate').datepicker({
+    $('#register_birthdate, #update_birthdate').datepicker({
         dateFormat: currentLanguage.startsWith('fr') || currentLanguage.startsWith('ln') ? 'dd/mm/yy' : 'mm/dd/yy',
         onSelect: function () {
             $(this).focus();

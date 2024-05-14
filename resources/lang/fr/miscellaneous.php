@@ -326,6 +326,7 @@ return [
     // Account settings
     'account' => [
         'watchlist' => 'Ma watchlist',
+        'my_videos' => 'Mes vidéos',
         'parental_control' => 'Contrôle parental',
         'add_child' => [
             'message' => 'En ajoutant vos enfants, vous leur permettez de se connecter pour regarder les vidéos de DikiTivi et vous serez en mesure de voir ce qu’ils ont regardé.',

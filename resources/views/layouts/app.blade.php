@@ -114,7 +114,7 @@ if (request()->has('app_id')) {
                     <div class="modal-body">
                         <h5 class="modal-title text-center text-uppercase" id="registerModalChildLabel">{{ __('miscellaneous.account.child.add') }}</h5>
 
-                        <form method="POST" action="{{ route('account.entity', ['entity' => 'children']) }}">
+                        <form method="POST" action="{{ route('account.entity', ['entity' => 'add_child']) }}">
     @csrf
 
                             <!-- First name -->
@@ -380,6 +380,9 @@ if (request()->has('app_id')) {
                                                 </li>
                                                 <li class="single-list">
                                                     <a href="{{ route('account.entity', ['entity' => 'watchlist']) }}">@lang('miscellaneous.account.watchlist')</a>
+                                                </li>
+                                                <li class="single-list">
+                                                    <a href="{{ route('account.entity', ['entity' => 'videos']) }}">@lang('miscellaneous.account.my_videos')</a>
                                                 </li>
                                                 <li class="single-list">
                                                     <a href="{{ route('account.entity', ['entity' => 'children']) }}">@lang('miscellaneous.account.parental_control')</a>

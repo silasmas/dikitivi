@@ -6,9 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\URL;
 
 /**
  * @author Xanders
@@ -90,30 +87,57 @@ class AccountController extends Controller
         }
 
         if ($entity == 'children') {
-            if (!empty($user->data->user->parental_code)) {
-                // All user children API
-                $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->parental_code, $user->data->user->api_token);
+            if (request()->has('id')) {
+                // Select a user API
+                $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
 
                 return view('account', [
                     'for_youth' => $for_youth,
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
+                    'child' => $child->data->user,
                     'api_client_manager' => $this::$api_client_manager,
-                    'children' => $children->data,
                     'entity' => $entity,
                     'entity_title' => __('miscellaneous.account.child.title'),
                 ]);
 
             } else {
-                return view('account', [
-                    'for_youth' => $for_youth,
-                    'current_user' => $user->data->user,
-                    'unread_notifications' => $notifications->data,
-                    'api_client_manager' => $this::$api_client_manager,
-                    'entity' => $entity,
-                    'entity_title' => __('miscellaneous.account.child.title'),
-                ]);
+                if (!empty($user->data->user->parental_code)) {
+                    // All user children API
+                    $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->parental_code, $user->data->user->api_token);
+
+                    return view('account', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'unread_notifications' => $notifications->data,
+                        'api_client_manager' => $this::$api_client_manager,
+                        'children' => $children->data,
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.account.child.title'),
+                    ]);
+
+                } else {
+                    return view('account', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'unread_notifications' => $notifications->data,
+                        'api_client_manager' => $this::$api_client_manager,
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.account.child.title'),
+                    ]);
+                }
             }
+        }
+
+        if ($entity == 'videos') {
+            return view('account', [
+                'for_youth' => $for_youth,
+                'current_user' => $user->data->user,
+                'unread_notifications' => $notifications->data,
+                'api_client_manager' => $this::$api_client_manager,
+                'entity' => $entity,
+                'entity_title' => __('miscellaneous.account.watchlist'),
+            ]);
         }
     }
 
