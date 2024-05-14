@@ -58,7 +58,7 @@ class AuthenticatedSessionController extends Controller
                 // Authentication datas (E-mail or Phone number or rather username)
                 $auth_phone = Auth::attempt(['phone' => $user->data->user->phone, 'password' => $user->data->password_reset->former_password]);
                 $auth_email = Auth::attempt(['email' => $user->data->user->email, 'password' => $user->data->password_reset->former_password]);
-                $auth_username = Auth::attempt(['username' => $user->data->username, 'password' => $user->data->password_reset->former_password]);
+                $auth_username = Auth::attempt(['username' => $user->data->user->username, 'password' => $user->data->password_reset->former_password]);
 
                 if ($auth_phone || $auth_email || $auth_username) {
                     $request->session()->regenerate();
