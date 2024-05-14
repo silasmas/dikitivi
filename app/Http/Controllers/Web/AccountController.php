@@ -221,6 +221,7 @@ class AccountController extends Controller
                 'lastname' => $request->register_lastname,
                 'surname' => $request->register_surname,
                 'gender' => $request->register_gender,
+                'belongs_to' => $request->belongs_to,
                 'birth_date' => !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
                 'username' => friendlyUsername($request->register_firstname . ' ' . $request->register_lastname)
             ];
