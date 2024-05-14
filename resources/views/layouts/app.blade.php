@@ -116,6 +116,7 @@ if (request()->has('app_id')) {
 
                         <form method="POST" action="{{ route('account.entity', ['entity' => 'add_child']) }}">
     @csrf
+                            <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
                             <!-- First name -->
                             <div class="form-floating mt-3">
@@ -127,6 +128,12 @@ if (request()->has('app_id')) {
                             <div class="form-floating mt-3">
                                 <input type="text" name="register_lastname" id="register_lastname" class="form-control" placeholder="@lang('miscellaneous.lastname')" />
                                 <label class="form-label" for="register_lastname">@lang('miscellaneous.lastname')</label>
+                            </div>
+
+                            <!-- Surname -->
+                            <div class="form-floating mt-3">
+                                <input type="text" name="register_surname" id="register_surname" class="form-control" placeholder="@lang('miscellaneous.surname')" />
+                                <label class="form-label" for="register_surname">@lang('miscellaneous.surname')</label>
                             </div>
 
                             <!-- Birth date -->
@@ -370,10 +377,10 @@ if (request()->has('app_id')) {
                                         </a>
                                         <div class="dropdown-menu">
                                             <div class="d-flex align-items-center mb-2 clearfix">
-                                                <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="70" class="me-3 rounded-circle float-start">
+                                                <img src="{{ $current_user->avatar_url }}" alt="{{ $current_user->firstname . ' ' . $current_user->lastname }}" width="70" class="me-2 rounded-circle float-start">
                                                 <div>
-                                                    <h3 class="mb-0">{{ $current_user->firstname }}</h3>
-                                                    <p class="m-0 small text-muted text-truncate">{{ '@' . $current_user->username }}</p>
+                                                    <h5 class="mb-0 fw-semibold">{{ Str::limit($current_user->firstname, 10, '...') }}</h5>
+                                                    <p class="m-0 small text-muted text-truncate">{{ Str::limit('@' . $current_user->username, 16, '...') }}</p>
                                                 </div>
                                             </div>
 

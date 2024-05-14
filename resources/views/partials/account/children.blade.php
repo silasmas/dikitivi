@@ -7,6 +7,8 @@
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('account.entity', ['entity' => 'update_child']) }}">
     @csrf
+                                            <input type="hidden" name="user_id" value="{{ $child->id }}">
+                                            <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
                                             <div class="row g-3">
                                                 <div class="col-lg-4 col-sm-3 mx-auto">
@@ -39,6 +41,12 @@
                                                     <div class="form-floating mt-3">
                                                         <input type="text" name="register_lastname" id="update_lastname" class="form-control" placeholder="@lang('miscellaneous.lastname')" value="{{ $child->lastname }}" />
                                                         <label class="form-label" for="update_lastname">@lang('miscellaneous.lastname')</label>
+                                                    </div>
+
+                                                    <!-- Surname -->
+                                                    <div class="form-floating mt-3">
+                                                        <input type="text" name="register_surname" id="update_surname" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ $child->surname }}" />
+                                                        <label class="form-label" for="update_surname">@lang('miscellaneous.surname')</label>
                                                     </div>
 
                                                     <!-- Birth date -->

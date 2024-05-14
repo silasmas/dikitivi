@@ -50,6 +50,7 @@ Route::get('/donated/{amount}/{currency}/{code}/{user_id}', 'App\Http\Controller
 Route::get('/account', 'App\Http\Controllers\Web\AccountController@account')->name('account');
 Route::post('/account', 'App\Http\Controllers\Web\AccountController@updateAccount');
 Route::get('/account/{entity}', 'App\Http\Controllers\Web\AccountController@accountEntity')->name('account.entity');
+Route::post('/account/{entity}', 'App\Http\Controllers\Web\AccountController@updateAccountEntity');
 Route::get('/account/{entity}/{id}', 'App\Http\Controllers\Web\AccountController@accountEntityDatas')->whereNumber('id')->name('account.entity.datas');
 Route::get('/members/{id}', 'App\Http\Controllers\Web\AccountController@memberDetails')->whereNumber('id')->name('members');
 

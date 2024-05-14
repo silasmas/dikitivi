@@ -140,7 +140,8 @@
 
                                                 <form method="POST" action="{{ route('account') }}">
     @csrf
-                                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                    <input type="hidden" name="user_id" value="{{ $current_user->id }}">
+                                                    <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
                                                     <div class="row g-3 mb-3">
                                                         <div class="col-lg-6">
@@ -259,6 +260,31 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="row g-3 mb-3">
+                                                        <div class="col-lg-6">
+                                                            <!-- Country -->
+                                                            <div class="form-floating pt-0">
+                                                                <select name="country_id" id="country_id" class="form-select pt-2 shadow-0">
+                                                                    <option class="small" disabled>@lang('miscellaneous.choose_country')</option>
+    @forelse ($countries as $country)
+                                                                    <option value="{{ $country->id }}"{{ $country->id == $current_user->country->id ? ' selected' : '' }}>{{ $country->country_name }}</option>
+    @empty
+                                                                    <option>@lang('miscellaneous.empty_list')</option>
+    @endforelse
+                                                                </select>
+                                                                <label class="form-label" for="country_id">@lang('miscellaneous.country')</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <!-- City -->
+                                                            <div class="form-floating">
+                                                                <input type="text" name="register_city" id="register_city" class="form-control" placeholder="@lang('miscellaneous.address.city')" value="{{ $current_user->city }}" />
+                                                                <label class="form-label" for="register_city">@lang('miscellaneous.address.city')</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="row">
                                                         <div class="col-lg-6 col-sm-8 mx-auto">
                                                             <button class="btn dktv-btn-blue btn-block mt-2 rounded-pill" type="submit">@lang('miscellaneous.account.personal_infos.link')</button>
@@ -281,7 +307,8 @@
                                                     <div class="col-lg-7 col-sm-9 mx-auto">
                                                         <form method="POST" action="{{ route('account.entity', ['entity' => 'update_password']) }}">
     @csrf
-                                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                            <input type="hidden" name="user_id" value="{{ $current_user->id }}">
+                                                            <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
                                                             <!-- Former password -->
                                                             <div class="form-floating">
