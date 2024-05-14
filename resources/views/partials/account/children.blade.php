@@ -15,7 +15,7 @@
                                                     <div id="profileImageWrapper" class="row mt-3">
                                                         <div class="col-sm-7 col-9 mx-auto">
                                                             <p class="small mb-1 text-center">@lang('miscellaneous.account.child.click_to_change_picture')</p>
-                        
+
                                                             <div class="bg-image hover-overlay">
                                                                 <img src="{{ asset($child->avatar_url) }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" class="other-user-image img-fluid rounded-circle">
                                                                 <div class="mask rounded-4" style="background-color: rgba(5, 5, 5, 0.5);">
