@@ -152,8 +152,9 @@
                                     </div>
     @endif
 @else
-                                    <div class="card-body text-center">
-                                        <h1 class="m-0 text-muted">@lang('miscellaneous.adult_content')</h1>
+                                    <div class="card-body py-5 text-center">
+                                        <h1 class="display-1 dktv-text-pink"><i class="bi bi-exclamation-triangle-fill"></i></h1>
+                                        <h3 class="m-0 text-muted">@lang('miscellaneous.adult_content')</h3>
                                     </div>
 @endif
                                 </div>
