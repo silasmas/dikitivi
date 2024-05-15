@@ -53,8 +53,8 @@
 // Views & Likes for a media
 $views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : 0) : 0;
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : 0) : 0;
+$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
+$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
@@ -108,8 +108,8 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
 // Views & Likes for a media
 $views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : 0) : 0;
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : 0) : 0;
+$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
+$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
@@ -164,8 +164,8 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
 // Views & Likes for a media
 $views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : 0) : 0;
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : 0) : 0;
+$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
+$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
@@ -220,8 +220,8 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
 // Views & Likes for a media
 $views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : 0) : 0;
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : 0) : 0;
+$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
+$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
@@ -276,8 +276,8 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
 // Views & Likes for a media
 $views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : 0) : 0;
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : 0) : 0;
+$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
+$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
@@ -332,8 +332,8 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
 // Views & Likes for a media
 $views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : 0) : 0;
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : 0) : 0;
+$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
+$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
