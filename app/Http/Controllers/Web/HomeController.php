@@ -92,7 +92,7 @@ class HomeController extends Controller
                 // Slides data
                 $slides_data = array_merge((array_slice($medias_lives->data, 0, 2)), (array_slice($medias_series->data, 0, 2)), (array_slice($medias_albums->data, 0, 2)));
 
-                dd($medias_series);
+                dd($medias_programs);
                 return view('home', [
                     'for_youth' => $for_youth,
                     'current_user' => $user->data->user,
