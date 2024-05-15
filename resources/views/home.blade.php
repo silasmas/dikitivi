@@ -85,12 +85,12 @@
                                     </div>
                                     <div class="product-contents">
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
-                                        {{-- <div class="pro-quality">
-                                            <span>
+                                        <div class="pro-quality">
+                                            {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
                                                 <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
-                                            </span>
-                                        </div> --}}
+                                            </span> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--// single-product-wrap -->        
@@ -138,12 +138,12 @@
                                     </div>
                                     <div class="product-contents">
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
-                                        {{-- <div class="pro-quality">
-                                            <span>
+                                        <div class="pro-quality">
+                                            {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
                                                 <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
-                                            </span>
-                                        </div> --}}
+                                            </span> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--// single-product-wrap -->        
@@ -192,12 +192,12 @@
                                     </div>
                                     <div class="product-contents">
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
-                                        {{-- <div class="pro-quality">
-                                            <span>
+                                        <div class="pro-quality">
+                                            {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
                                                 <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
-                                            </span>
-                                        </div> --}}
+                                            </span> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--// single-product-wrap -->        
@@ -245,12 +245,12 @@
                                     </div>
                                     <div class="product-contents">
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
-                                        {{-- <div class="pro-quality">
-                                            <span>
+                                        <div class="pro-quality">
+                                            {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
                                                 <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
-                                            </span>
-                                        </div> --}}
+                                            </span> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--// single-product-wrap -->        
@@ -298,12 +298,12 @@
                                     </div>
                                     <div class="product-contents">
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
-                                        {{-- <div class="pro-quality">
-                                            <span>
+                                        <div class="pro-quality">
+                                            {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
                                                 <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
-                                            </span>
-                                        </div> --}}
+                                            </span> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--// single-product-wrap -->        
@@ -351,12 +351,12 @@
                                     </div>
                                     <div class="product-contents">
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
-                                        {{-- <div class="pro-quality">
-                                            <span>
+                                        <div class="pro-quality">
+                                            {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
                                                 <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
-                                            </span>
-                                        </div> --}}
+                                            </span> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--// single-product-wrap -->        
