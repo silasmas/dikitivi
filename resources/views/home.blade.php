@@ -53,7 +53,6 @@
 // Views & Likes for a media
 $views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
 $likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-dd($views_data);
 $views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
 $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
 ?>
