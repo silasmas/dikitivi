@@ -67,7 +67,8 @@
                         <div class="row product-carousl-active">
     @if (count($trends) > 0)
         @foreach ($trends as $med)
-            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); }}
+            {{ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -116,7 +117,8 @@
                         <div class="row product-carousl-active">
     @if (count($lives) > 0)
         @foreach ($lives as $med)
-            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); }}
+            {{ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -166,7 +168,8 @@
                         <div class="row product-carousl-active">
     @if (count($films) > 0)
         @foreach ($films as $med)
-            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); }}
+            {{ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -215,7 +218,8 @@
                         <div class="row product-carousl-active">
     @if (count($series) > 0)
         @foreach ($series as $med)
-            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); }}
+            {{ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -264,7 +268,8 @@
                         <div class="row product-carousl-active">
     @if (count($programs) > 0)
         @foreach ($programs as $med)
-            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); }}
+            {{ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -313,7 +318,8 @@
                         <div class="row product-carousl-active">
     @if (count($songs) > 0)
         @foreach ($songs as $med)
-            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); }}
+            {{ $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
