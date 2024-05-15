@@ -424,9 +424,11 @@ if (request()->has('app_id')) {
                                                 <li class="single-list">
                                                     <a href="{{ route('account.entity', ['entity' => 'videos']) }}">@lang('miscellaneous.account.my_videos')</a>
                                                 </li>
+    @if ($for_youth != 1)
                                                 <li class="single-list">
                                                     <a href="{{ route('account.entity', ['entity' => 'children']) }}">@lang('miscellaneous.account.parental_control')</a>
                                                 </li>
+    @endif
                                                 <li class="dropdown-divider"></li>
                                                 <li class="single-list pt-1">
                                                     <a href="{{ route('logout') }}">@lang('miscellaneous.logout')</a>
