@@ -4,7 +4,8 @@
 
                 <!-- Hero Slider start -->
                 <div class="hero-slider hero-slider-three">
-    @foreach ($slides_data as $media)
+    @if (count($slides_data) > 0)
+        @foreach ($slides_data as $media)
                     <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $media->cover_url }}">
                         <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
                         <!-- Hero Content One Start -->
@@ -17,14 +18,14 @@
                                         <p style="color: #fff!important">{{ Str::limit($media->media_description, 140, '...') }}</p>
                                         <div class="slider-button">
                                             <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
-        @if ($media->teaser_url != null)
+            @if ($media->teaser_url != null)
                                             <a href="#Video-one" class="video-play-btn afterglow ml--10">
                                                 <i class="zmdi zmdi-play"></i>
                                             </a>
                                             <video id="Video-one" width="960" height="540">
                                                 <source src="{{ $media->teaser_url }}" type="video/*">
                                             </video>
-        @endif
+            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +33,23 @@
                         </div>
                         <!-- Hero Content One End -->
                     </div>
-    @endforeach
+        @endforeach
+    @else
+                    <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="assets/img/blank-media-slider-01.png">
+                        <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
+                        <!-- Hero Content One Start -->
+                        <div class="hero-content-three container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="slider-text-info position-relative" style="z-index: 9;">
+                                        <h1 class="dktv-text-green">@lang('miscellaneous.public.home.trends.title')</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hero Content One End -->
+                    </div>
+    @endif
                 </div>
                 <!-- Hero Slider end -->
 
@@ -48,14 +65,9 @@
                         </div>
 
                         <div class="row product-carousl-active">
-    @forelse ($trends as $med)
-<?php
-// Views & Likes for a media
-$views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-$likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
-?>
+    @if (count($trends) > 0)
+        @foreach ($trends as $med)
+            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -79,12 +91,12 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                                 </div>
                                 <!--// single-product-wrap -->        
                             </div>
-    @empty
+        @endforeach
+    @else
                             <div class="col-12">
                                 <p class="lead">@lang('miscellaneous.empty_list')</p>
                             </div>
-    @endforelse
-
+    @endif
                         </div>
                     </div>
                 </div>
@@ -102,15 +114,9 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                         </div>
 
                         <div class="row product-carousl-active">
-    @forelse ($lives as $med)
-        @if ($loop->index < 7)
-<?php
-// Views & Likes for a media
-$views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-$likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
-?>
+    @if (count($lives) > 0)
+        @foreach ($lives as $med)
+            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -134,12 +140,12 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                                 </div>
                                 <!--// single-product-wrap -->        
                             </div>
-        @endif
-    @empty
+        @endforeach
+    @else
                             <div class="col-12">
                                 <p class="lead">@lang('miscellaneous.empty_list')</p>
                             </div>
-    @endforelse
+    @endif
 
                         </div>
                     </div>
@@ -158,15 +164,9 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                         </div>
 
                         <div class="row product-carousl-active">
-    @forelse ($films as $med)
-        @if ($loop->index < 7)
-<?php
-// Views & Likes for a media
-$views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-$likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
-?>
+    @if (count($films) > 0)
+        @foreach ($films as $med)
+            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -190,13 +190,12 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                                 </div>
                                 <!--// single-product-wrap -->        
                             </div>
-        @endif
-    @empty
+        @endforeach
+    @else
                             <div class="col-12">
                                 <p class="lead">@lang('miscellaneous.empty_list')</p>
                             </div>
-    @endforelse
-
+    @endif
                         </div>
                     </div>
                 </div>
@@ -214,15 +213,9 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                         </div>
 
                         <div class="row product-carousl-active">
-    @forelse ($series as $med)
-        @if ($loop->index < 7)
-<?php
-// Views & Likes for a media
-$views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-$likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
-?>
+    @if (count($series) > 0)
+        @foreach ($series as $med)
+            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -246,13 +239,12 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                                 </div>
                                 <!--// single-product-wrap -->        
                             </div>
-        @endif
-    @empty
+        @endforeach
+    @else
                             <div class="col-12">
                                 <p class="lead">@lang('miscellaneous.empty_list')</p>
                             </div>
-    @endforelse
-
+    @endif
                         </div>
                     </div>
                 </div>
@@ -270,15 +262,9 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                         </div>
 
                         <div class="row product-carousl-active">
-    @forelse ($programs as $med)
-        @if ($loop->index < 7)
-<?php
-// Views & Likes for a media
-$views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-$likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
-?>
+    @if (count($programs) > 0)
+        @foreach ($programs as $med)
+            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -302,13 +288,12 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                                 </div>
                                 <!--// single-product-wrap -->        
                             </div>
-        @endif
-    @empty
+        @endforeach
+    @else
                             <div class="col-12">
                                 <p class="lead">@lang('miscellaneous.empty_list')</p>
                             </div>
-    @endforelse
-
+    @endif
                         </div>
                     </div>
                 </div>
@@ -326,15 +311,9 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                         </div>
 
                         <div class="row product-carousl-active">
-    @forelse ($songs as $med)
-        @if ($loop->index < 7)
-<?php
-// Views & Likes for a media
-$views_data = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-$likes_data = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
-$views = $views_data->success ? (count($views_data->data) > 0 ? $views_data->data : []) : [];
-$likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->data : []) : [];
-?>
+    @if (count($songs) > 0)
+        @foreach ($songs as $med)
+            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -358,13 +337,12 @@ $likes = $likes_data->success ? (count($likes_data->data) > 0 ? $likes_data->dat
                                 </div>
                                 <!--// single-product-wrap -->        
                             </div>
-        @endif
-    @empty
+        @endforeach
+    @else
                             <div class="col-12">
                                 <p class="lead">@lang('miscellaneous.empty_list')</p>
                             </div>
-    @endforelse
-
+    @endif
                         </div>
                     </div>
                 </div>
