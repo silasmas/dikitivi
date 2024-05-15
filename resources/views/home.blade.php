@@ -67,7 +67,7 @@
                         <div class="row product-carousl-active">
     @if (count($trends) > 0)
         @foreach ($trends as $med)
-            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -83,8 +83,8 @@
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views)) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes)) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@
                         <div class="row product-carousl-active">
     @if (count($lives) > 0)
         @foreach ($lives as $med)
-            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -132,8 +132,8 @@
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views)) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes)) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -166,7 +166,7 @@
                         <div class="row product-carousl-active">
     @if (count($films) > 0)
         @foreach ($films as $med)
-            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -182,8 +182,8 @@
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views)) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes)) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@
                         <div class="row product-carousl-active">
     @if (count($series) > 0)
         @foreach ($series as $med)
-            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -231,8 +231,8 @@
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views)) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes)) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -264,7 +264,7 @@
                         <div class="row product-carousl-active">
     @if (count($programs) > 0)
         @foreach ($programs as $med)
-            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -280,8 +280,8 @@
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views)) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes)) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
@@ -313,7 +313,7 @@
                         <div class="row product-carousl-active">
     @if (count($songs) > 0)
         @foreach ($songs as $med)
-            {{ $views = ($api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id))->data; $likes = ($api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id))->data; }}
+            {{ $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id); $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id); }}
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
@@ -329,8 +329,8 @@
                                         <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
                                         <div class="pro-quality">
                                             <span>
-                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views)) }}
-                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes)) }}
+                                                <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
+                                                <i class="bi bi-heart ms-3" title="@lang('miscellaneous.likes')"></i> {{ thousandsCurrencyFormat(count($likes->data)) }}
                                             </span>
                                         </div>
                                     </div>
