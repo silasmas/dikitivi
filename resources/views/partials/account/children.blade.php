@@ -1,5 +1,6 @@
                                 <div class="card border rounded-4">
-@if (request()->has('id'))
+@if ($for_youth != 1)
+    @if (request()->has('id'))
                                     <div class="card-header d-flex justify-content-between align-items-center bg-light">
                                         <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="btn btn-link px-2 pt-1 text-muted fw-semibold">
                                             <i class="bi bi-arrow-left me-3"></i>@lang('miscellaneous.back_list')
@@ -8,7 +9,7 @@
 
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('account.entity', ['entity' => 'update_child']) }}">
-    @csrf
+        @csrf
                                             <input type="hidden" name="user_id" value="{{ $child->id }}">
                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
@@ -85,38 +86,38 @@
                                     <div class="card-body pt-3 border-top">
                                         <h3 class="text-muted fw-bold">@lang('miscellaneous.account.recently_watched_videos')</h3>
 
-    @if (count($viewed_medias) > 0)
+        @if (count($viewed_medias) > 0)
                                         <div class="list-group">
-        @foreach ($viewed_medias as $media)
+            @foreach ($viewed_medias as $media)
                                             <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="list-group-item list-group-item-action position-relative">
                                                 <img src="{{ !empty($media->cover_url) ? $media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $media->media_title }}" width="160" class="float-sm-start rounded-4 me-3">
                                                 <h4 class="my-2 dktv-text-green fw-bold">{{ $media->media_title }}</h4>
                                                 <p class="text-muted">{{ !empty($media->media_description) ? Str::limit($media->media_description, 20, '...') : $media->author_names }}</p>
                                             </a>
-        @endforeach
+            @endforeach
                                         </div>
 
                                         <div class="p-3 text-center">
-        @include('partials.pagination')
+            @include('partials.pagination')
                                         </div>
 
-    @else
+        @else
                                         <p class="pt-3 text-center">@lang('miscellaneous.empty_list')</p>
-    @endif
+        @endif
                                     </div>
-@else
+    @else
                                     <div class="card-header d-flex justify-content-between align-items-center bg-light">
                                         <h3 class="mb-0 text-muted fw-bold">@lang('miscellaneous.account.parental_control')</h3>
-    @if (count($children) > 0)
+        @if (count($children) > 0)
                                         <button type="button" class="btn dktv-btn-blue px-3 py-1 rounded-pill shadow-0" data-bs-toggle="modal" data-bs-target="#registerModalChild">
                                             <span class="zmdi zmdi-plus me-lg-3"></span><span class="d-lg-inline d-none">@lang('miscellaneous.account.add_child.link')</span>
                                         </button>
-    @endif
+        @endif
                                     </div>
 
                                     <div class="card-body">
                                         <div class="row g-3">
-    @forelse ($children as $child)
+        @forelse ($children as $child)
                                             <div class="col-xl-6 col-sm-8 mx-auto">
                                                 <div class="card border">
                                                     <div class="card-body">
@@ -137,7 +138,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-    @empty
+        @empty
                                             <div class="col-lg-7 col-sm-9 col-11 mx-auto">
                                                 <div class="text-center">
                                                     <p>@lang('miscellaneous.account.add_child.message')</p>
@@ -146,8 +147,13 @@
                                                     </button>
                                                 </div>
                                             </div>
-    @endforelse
+        @endforelse
                                         </div>
+                                    </div>
+    @endif
+@else
+                                    <div class="card-body text-center">
+                                        <h1 class="m-0 text-muted">@lang('miscellaneous.adult_content')</h1>
                                     </div>
 @endif
                                 </div>
