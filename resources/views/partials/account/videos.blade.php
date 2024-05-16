@@ -9,7 +9,9 @@
                                         <h5 class="mb-1"><i class="bi bi-exclamation-circle"></i></h5>
                                         <p class="m-0 fw-semibold">@lang('miscellaneous.account.identity_document.message2')</p>
 
-                                        <form method="POST" action="{{ route('account.update.identity_doc') }}">
+                                        <form method="POST" action="{{ route('account') }}">
+                                            <input type="hidden" name="user_id" value="{{ $current_user->id }}">
+                                            <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
         @csrf
                                             <div class="row g-4">
                                                 <div class="col-lg-5 col-sm-7 mx-auto">

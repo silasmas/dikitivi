@@ -183,32 +183,51 @@ class AccountController extends Controller
      */
     public function updateAccount(Request $request)
     {
-        // user inputs
-        $inputs = [
-            'id' => $request->user_id,
-            'firstname' => $request->register_firstname,
-            'lastname' => $request->register_lastname,
-            'surname' => $request->register_surname,
-            'gender' => $request->register_gender,
-            'birth_date' => !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
-            'city' => $request->register_city,
-            'address_1' => $request->register_address_1,
-            'address_2' => $request->register_address_2,
-            'p_o_box' => $request->register_p_o_box,
-            'email' => $request->register_email,
-            'phone' => $request->register_phone,
-            'username' => $request->register_username,
-            'country_id' => $request->country_id
-        ];
+        // Udpate avatar if it is set
+        if (isset($request->data_recto) OR !empty($request->data_recto)) {
+            // Update user identity API
+            $user = $this::$api_client_manager::call('PUT', getApiURL() . '/user/add_image/' . $request->user_id, $request->api_token, [
+                'user_id' => $request->user_id,
+                'image_name' => $request->register_image_name,
+                'image_64_recto' => $request->data_recto,
+                'image_64_verso' => $request->data_verso
+            ]);
 
-        // Update user API
-        $user = $this::$api_client_manager::call('PUT', getApiURL() . '/user/' . $request->user_id, $request->api_token, $inputs);
+            if ($user->success) {
+                return redirect()->back()->with('success_message', $user->message);
 
-        if ($user->success) {
-            return redirect()->back()->with('success_message', $user->message);
+            } else {
+                return redirect()->back()->with('error_message', $user->message);
+            }
 
         } else {
-            return redirect()->back()->with('error_message', $user->message);
+            // user inputs
+            $inputs = [
+                'id' => $request->user_id,
+                'firstname' => $request->register_firstname,
+                'lastname' => $request->register_lastname,
+                'surname' => $request->register_surname,
+                'gender' => $request->register_gender,
+                'birth_date' => !empty($request->register_birthdate) ? (str_starts_with(app()->getLocale(), 'fr') || str_starts_with(app()->getLocale(), 'ln') ? explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[1] . '-' . explode('/', $request->register_birthdate)[0] : explode('/', $request->register_birthdate)[2] . '-' . explode('/', $request->register_birthdate)[0] . '-' . explode('/', $request->register_birthdate)[1]) : null,
+                'city' => $request->register_city,
+                'address_1' => $request->register_address_1,
+                'address_2' => $request->register_address_2,
+                'p_o_box' => $request->register_p_o_box,
+                'email' => $request->register_email,
+                'phone' => $request->register_phone,
+                'username' => $request->register_username,
+                'country_id' => $request->country_id
+            ];
+
+            // Update user API
+            $user = $this::$api_client_manager::call('PUT', getApiURL() . '/user/' . $request->user_id, $request->api_token, $inputs);
+
+            if ($user->success) {
+                return redirect()->back()->with('success_message', $user->message);
+
+            } else {
+                return redirect()->back()->with('error_message', $user->message);
+            }
         }
     }
 
