@@ -31,7 +31,7 @@ return [
     'otp-check' => 'Ecrivez le code que vous avez reçu par mail ou SMS',
     'otp-check-email' => 'Ecrivez le code que vous avez reçu par mail',
     'otp-check-phone' => 'Ecrivez le code que vous avez reçu par SMS',
-    'select-your-profile' => 'Sélectionnez votre profil',
+    'select-your-profile' => 'Choisissez votre profil',
     // Error messages
     'unauthorized' => 'Cet espace est réservé à l\'administrateur',
     'failed' => 'Ces informations d\identification ne correspondent pas à nos enregistrement.',
