@@ -5,27 +5,29 @@
 
                                     <div class="card-body text-center">
 @if ($current_user->status->status_name == __('miscellaneous.user_statuses.intermediate'))
-                                        <h5 class="mb-4">@lang('miscellaneous.account.identity_document.message1')</h5>
-                                        <h5 class="mb-1"><i class="bi bi-exclamation-circle"></i></h5>
-                                        <p class="m-0 fw-semibold">@lang('miscellaneous.account.identity_document.message2')</p>
+                                        <p class="mb-3 px-sm-5 dktv-line-height-1_4">@lang('miscellaneous.account.identity_document.message1')</p>
+                                        <p class="mb-5 px-sm-5 fw-semibold dktv-line-height-1_4">@lang('miscellaneous.account.identity_document.message2')</p>
 
                                         <form method="POST" action="{{ route('account') }}">
                                             <input type="hidden" name="user_id" value="{{ $current_user->id }}">
                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
         @csrf
                                             <div class="row g-4">
-                                                <div class="col-lg-5 col-sm-7 mx-auto">
-                                                    <select name="register_image_name" id="register_image_name" class="form-control mb-3">
-                                                        <option class="small" {{ $current_user->id_card_recto != null ? '' : 'selected ' }}disabled>@lang('miscellaneous.account.identity_document.choose_type.title')</option>
-                                                        <option value="Carte d'identité"{{ $current_user->id_card_type == 'Carte d\'identité' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.identity_card')</option>
-                                                        <option value="Carte d'électeur"{{ $current_user->id_card_type == 'Carte d\'électeur' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.voter_card')</option>
-                                                        <option value="Passeport"{{ $current_user->id_card_type == 'Passeport' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.passport')</option>
-                                                        <option value="Permis de conduire"{{ $current_user->id_card_type == 'Permis de conduire' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.driving_license')</option>
-                                                        <option value="Autre"{{ $current_user->id_card_type == 'Autre' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.other')</option>
-                                                    </select>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-5 col-sm-7 mx-auto">
+                                                            <select name="register_image_name" id="register_image_name" class="form-select">
+                                                                <option class="small" {{ $current_user->id_card_recto != null ? '' : 'selected ' }}disabled>@lang('miscellaneous.account.identity_document.choose_type.title')</option>
+                                                                <option value="Carte d'identité"{{ $current_user->id_card_type == 'Carte d\'identité' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.identity_card')</option>
+                                                                <option value="Carte d'électeur"{{ $current_user->id_card_type == 'Carte d\'électeur' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.voter_card')</option>
+                                                                <option value="Passeport"{{ $current_user->id_card_type == 'Passeport' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.passport')</option>
+                                                                <option value="Permis de conduire"{{ $current_user->id_card_type == 'Permis de conduire' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.driving_license')</option>
+                                                                <option value="Autre"{{ $current_user->id_card_type == 'Autre' ? ' selected' : '' }}>@lang('miscellaneous.account.identity_document.choose_type.other')</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-7"></div>
-                                                <div class="col-sm-6">
+                                                <div id="rectoImageWrapper" class="col-sm-6">
                                                     <p class="m-0 small"><strong class="text-uppercase">@lang('miscellaneous.recto')</strong> (@lang('miscellaneous.account.identity_document.click_to_change'))</p>
                                                     <div class="bg-image rounded overflow-hidden overlay mb-2">
                                                         <img src="{{ $current_user->id_card_recto != null ? $current_user->id_card_recto : asset('assets/img/blank-id-doc.png') }}" alt="@lang('miscellaneous.recto')" class="identity-recto img-fluid">
@@ -38,7 +40,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6">
+                                                <div id="versoImageWrapper" class="col-sm-6">
                                                     <p class="m-0 small"><strong class="text-uppercase">@lang('miscellaneous.verso')</strong> (@lang('miscellaneous.account.identity_document.click_to_change'))</p>
                                                     <div class="bg-image rounded overflow-hidden overlay mb-3">
                                                         <img src="{{ $current_user->id_card_verso != null ? $current_user->id_card_verso : asset('assets/img/blank-id-doc.png') }}" alt="@lang('miscellaneous.verso')" class="identity-verso img-fluid">
@@ -53,7 +55,11 @@
                                                 </div>
                                             </div>
 
-                                            <button class="btn btn-block btn-light border border-default rounded-pill shadow-0" type="submit">@lang('miscellaneous.register')</button>
+                                            <div class="row mt-3">
+                                                <div class="col-lg-5 col-sm-7 mx-auto">
+                                                    <button class="btn btn-block dktv-btn-green rounded-pill shadow-0" type="submit">@lang('miscellaneous.register')</button>
+                                                </div>
+                                            </div>
                                         </form>
 
     @if ($current_user->id_card_recto != null)
