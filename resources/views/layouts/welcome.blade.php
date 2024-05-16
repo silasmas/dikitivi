@@ -266,6 +266,21 @@
             </div>
             <!-- Alert End -->
 @endif
+@if (\Session::has('error_message_login'))
+
+            <!-- Alert Start -->
+            <div class="position-relative">
+                <div class="row position-fixed w-100" style="opacity: 0.9; z-index: 999;">
+                    <div class="col-lg-5 col-sm-6 mx-auto">
+                        <div class="alert alert-danger alert-dismissible fade show rounded-0 cnpr-line-height-1_1" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2 fs-4" style="vertical-align: -3px;"></i> {!! preg_match('/~/', \Session::get('error_message_login')) ? explode(', ', explode('~', \Session::get('error_message_login'))[0])[1] : \Session::get('error_message_login') !!}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Alert End -->
+@endif
 
 @yield('welcome-content')
 
