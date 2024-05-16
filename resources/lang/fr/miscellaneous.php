@@ -28,6 +28,7 @@ return [
     'your_language' => 'Votre langue',
     'verified' => 'Vérifié',
     'unverified' => 'Non vérifié',
+    'awaiting_approval' => 'En attente d’approbation',
     'views' => 'Vues',
     'likes' => 'J’aime',
     'iam_child' => 'Je suis un enfant',
@@ -298,6 +299,14 @@ return [
         'song' => 'Chanson'
     ],
 
+    // ===== STATUSES
+    'user_statuses' => [
+        'activated' => 'Activé',
+        'intermediate' => 'Intermédiaire',
+        'disabled' => 'Désactivé',
+        'blocked' => 'Bloqué',
+    ],
+
     // ===== NAVIGATION MENU
     'menu' => [
         'home' => 'Accueil',
@@ -367,6 +376,8 @@ return [
             ],
             'other_descriprion' => 'Décrivez votre pièce d’identité',
             'click_to_change' => 'Cliquer sur la photo pour modifier',
+            'message1' => 'Pour être en mesure d’ajouter vos vidéos, vous devez mettre votre pièce identité qui sera analysé par nos administrateurs. Ensuite, si votre identité est approuvée, vous serez e mesure d’ajouter vos vidéos.',
+            'message2' => 'Notez aussi que, pour être sûr que vous respectez nos conditions d’utilisation, vos vidéos seront analysées avant qu’elles deviennent visibles pour le public.',
         ],
         'payment' => [
             'link' => 'Buy',

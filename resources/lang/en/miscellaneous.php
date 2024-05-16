@@ -28,6 +28,7 @@ return [
     'your_language' => 'Your language',
     'verified' => 'Verified',
     'unverified' => 'Not verified',
+    'awaiting_approval' => 'Awaiting Approval',
     'views' => 'Views',
     'likes' => 'Likes',
     'iam_child' => 'I’m a child',
@@ -298,6 +299,14 @@ return [
         'song' => 'Song'
     ],
 
+    // ===== STATUSES
+    'user_statuses' => [
+        'activated' => 'Activated',
+        'intermediate' => 'Intermediate',
+        'disabled' => 'Disabled',
+        'blocked' => 'Blocked',
+    ],
+
     // ===== NAVIGATION MENU
     'menu' => [
         'home' => 'Home',
@@ -367,6 +376,8 @@ return [
             ],
             'other_descriprion' => 'Describe your identity document',
             'click_to_change' => 'Click on photo to edit',
+            'message1' => 'To be able to add your videos, you must provide your identity document which will be analyzed by our administrators. Then, if your identity is approved, you will be able to add your videos.',
+            'message2' => 'Also note that, to ensure that you comply with our terms of use, your videos will be analyzed before they become visible to the public.',
         ],
         'payment' => [
             'link' => 'Buy',
