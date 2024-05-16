@@ -141,14 +141,39 @@ class AccountController extends Controller
         }
 
         if ($entity == 'videos') {
-            return view('account', [
-                'for_youth' => $for_youth,
-                'current_user' => $user->data->user,
-                'unread_notifications' => $notifications->data,
-                'api_client_manager' => $this::$api_client_manager,
-                'entity' => $entity,
-                'entity_title' => __('miscellaneous.account.my_videos'),
-            ]);
+            if (request()->has('act')) {
+                if (request()->get('act') == 'add') {
+                    return view('account', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'unread_notifications' => $notifications->data,
+                        'api_client_manager' => $this::$api_client_manager,
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.account.my_videos'),
+                    ]);
+                }
+
+                if (request()->get('act') == 'update') {
+                    return view('account', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'unread_notifications' => $notifications->data,
+                        'api_client_manager' => $this::$api_client_manager,
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.account.my_videos'),
+                    ]);
+                }
+
+            } else {
+                return view('account', [
+                    'for_youth' => $for_youth,
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                    'entity' => $entity,
+                    'entity_title' => __('miscellaneous.account.my_videos'),
+                ]);
+            }
         }
     }
 

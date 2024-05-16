@@ -8,7 +8,8 @@
                                         <p class="mb-3 px-sm-5 dktv-line-height-1_4">@lang('miscellaneous.account.identity_document.message1')</p>
                                         <p class="mb-5 px-sm-5 fw-semibold dktv-line-height-1_4">@lang('miscellaneous.account.identity_document.message2')</p>
 
-                                        <form method="POST" action="{{ route('account') }}">
+                                        {{-- <form method="POST" action="{{ route('account') }}"> --}}
+                                        <form>
                                             <input type="hidden" name="user_id" value="{{ $current_user->id }}">
                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
         @csrf
@@ -66,7 +67,41 @@
                                         <h5 class="mb-4 text-center dktv-bg-green">@lang('miscellaneous.awaiting_approval')</h5>
     @endif
 @else
-    
+    @if (request()->has('act'))
+        @if (request()->get('act') == 'add')
+        @endif
+
+        @if (request()->get('act') == 'update')
+        @endif
+    @else
+        @if (count($user_medias) > 0)
+                                    <div class="list-group list-group-flush">
+            @foreach ($user_medias as $med)
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="list-group-item list-group-item-action position-relative">
+                                            <button type="button" class="btn btn-link text-muted py-1 rounded-pill float-end position-relative" style="z-index: 999; padding-left: 0.47rem; padding-right: 0.47rem;" title="@lang('miscellaneous.public.withdraw_watchlist')" data-bs-toggle="tooltip" data-bs-placement="left" data-watchlist-id="{{ $watchlist_id }}" onclick="event.preventDefault(); toggleAction(this, {{ $med->id }}, 'delete_from_watchlist');">
+                                                <i class="bi bi-x-lg"></i>
+                                            </button>
+                                            <img src="{{ !empty($med->cover_url) ? $med->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $med->media_title }}" width="160" class="float-sm-start rounded-4 me-3">
+                                            <h4 class="my-2 dktv-text-green fw-bold">{{ $med->media_title }}</h4>
+                                            <p class="text-muted">{{ !empty($med->media_description) ? Str::limit($med->media_description, 20, '...') : $med->author_names }}</p>
+                                        </a>
+            @endforeach
+                                    </div>
+
+            @if ($lastPage > 1)
+                                    <div class="card-body text-center">
+                @include('partials.pagination')
+                                    </div>
+            @endif
+        @else
+                                    <div class="card-body text-center">
+                                        <h5 class="mb-4">@lang('miscellaneous.empty_list')</h5>
+                                        <a href="{{ route('account.entity', ['entity' => 'videos']) }}" class="btn dktv-btn-pink px-3 py-1 rounded-pill shadow-0">
+                                            <span class="zmdi zmdi-download me-3"></span>@lang('miscellaneous.account.videos.add')
+                                        </a>
+                                    </div>
+        @endif
+    @endif
 @endif
                                     </div>
                                 </div>

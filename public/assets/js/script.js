@@ -530,7 +530,7 @@ $(function () {
 
     $('#cropModal_recto').on('shown.bs.modal', function () {
         cropper = new Cropper(retrievedImageRecto, {
-            aspectRatio: 16 / 9,
+            // aspectRatio: 16 / 9,
             viewMode: 3,
             preview: '#cropModal_recto .preview'
         });
@@ -542,10 +542,7 @@ $(function () {
     });
 
     $('#cropModal_recto #crop_recto').on('click', function () {
-        var canvas = cropper.getCroppedCanvas({
-            width: 1280,
-            height: 720
-        });
+        var canvas = cropper.getCroppedCanvas(/*{ width: 1280, height: 720 }*/);
 
         canvas.toBlob(function (blob) {
             URL.createObjectURL(blob);
@@ -583,7 +580,7 @@ $(function () {
 
     $('#cropModal_verso').on('shown.bs.modal', function () {
         cropper = new Cropper(retrievedImageVerso, {
-            aspectRatio: 16 / 9,
+            // aspectRatio: 16 / 9,
             viewMode: 3,
             preview: '#cropModal_verso .preview'
         });
@@ -595,10 +592,7 @@ $(function () {
     });
 
     $('#cropModal_verso #crop_verso').on('click', function () {
-        var canvas = cropper.getCroppedCanvas({
-            width: 1280,
-            height: 720
-        });
+        var canvas = cropper.getCroppedCanvas(/*{ width: 1280, height: 720 }*/);
 
         canvas.toBlob(function (blob) {
             URL.createObjectURL(blob);

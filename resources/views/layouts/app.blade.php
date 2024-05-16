@@ -105,14 +105,15 @@ if (request()->has('app_id')) {
         <!-- MODALS-->
 @if (Route::is('account.entity') && request()->has('id'))
         <!-- ### Crop other user image ### -->
-        <div class="modal fade" id="cropModal_profile" tabindex="-1" aria-labelledby="cropModal_profileLabel" aria-hidden="true" data-bs-backdrop="{{ Route::is('branch.home') ? 'static' : 'true' }}">
+        <div class="modal fade" id="cropModal_profile" tabindex="-1" aria-hidden="true" data-bs-backdrop="{{ Route::is('branch.home') ? 'static' : 'true' }}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="cropModal_profileLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header py-0">
+                        <button type="button" class="btn-close mt-1" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <h5 class="text-center text-muted">{{ __('miscellaneous.crop_before_save') }}</h5>
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 mb-sm-0 mb-4">
@@ -123,7 +124,7 @@ if (request()->has('app_id')) {
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between">
+                    <div class="modal-footer pb-0 d-flex justify-content-between">
                         <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
                         <button type="button" id="crop_profile" class="btn dktv-btn-green rounded-pill" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
@@ -134,14 +135,15 @@ if (request()->has('app_id')) {
 
 @if (Route::is('account.entity') && !request()->has('id'))
         <!-- ### Crop other user image ### -->
-        <div class="modal fade" id="cropModal_profile" tabindex="-1" aria-labelledby="cropModal_profileLabel" aria-hidden="true" data-bs-backdrop="{{ Route::is('branch.home') ? 'static' : 'true' }}">
+        <div class="modal fade" id="cropModal_profile" tabindex="-1" aria-hidden="true" data-bs-backdrop="{{ Route::is('branch.home') ? 'static' : 'true' }}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="cropModal_profileLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header py-0">
+                        <button type="button" class="btn-close mt-1" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <h5 class="text-center text-muted">{{ __('miscellaneous.crop_before_save') }}</h5>
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 mb-sm-0 mb-4">
@@ -152,7 +154,7 @@ if (request()->has('app_id')) {
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between">
+                    <div class="modal-footer pb-0 d-flex justify-content-between">
                         <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
                         <button type="button" id="crop_profile" class="btn dktv-btn-green rounded-pill" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
@@ -161,14 +163,14 @@ if (request()->has('app_id')) {
         </div>
 
         <!-- ### Add a child ### -->
-        <div class="modal fade" id="registerModalChild" tabindex="-1" aria-labelledby="registerModalChildLabel" aria-hidden="true">
+        <div class="modal fade" id="registerModalChild" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header pt-2 pb-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header py-0">
+                        <button type="button" class="btn-close mt-1" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h5 class="modal-title text-center text-uppercase" id="registerModalChildLabel">{{ __('miscellaneous.account.child.add') }}</h5>
+                        <h5 class="text-center text-muted">{{ __('miscellaneous.account.child.add') }}</h5>
 
                         <form method="POST" action="{{ route('account.entity', ['entity' => 'add_child']) }}">
     @csrf
@@ -244,14 +246,15 @@ if (request()->has('app_id')) {
         </div>
 
         <!-- ### Crop recto image ### -->
-        <div class="modal fade" id="cropModal_recto" tabindex="-1" aria-labelledby="cropModalRectoLabel" aria-hidden="true">
+        <div class="modal fade" id="cropModal_recto" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="cropModalRectoLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header py-0">
+                        <button type="button" class="btn-close mt-1" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <h5 class="text-center text-muted">{{ __('miscellaneous.crop_before_save') }}</h5>
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 mb-sm-0 mb-4">
@@ -259,10 +262,19 @@ if (request()->has('app_id')) {
                                         <img src="" id="retrieved_image_recto" class="img-fluid">
                                     </div>
                                 </div>
+
+                                <div class="col-12 d-flex justify-content-center py-3">
+                                    <button id="rotateL" class="btn btn-floating dktv-btn-gray me-3 pt-1 fs-5" onclick="event.preventDefault(); $(this).cropper('rotate', -45)">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </button>
+                                    <button id="rotateR" class="btn btn-floating dktv-btn-gray pt-1" onclick="event.preventDefault(); $(this).cropper('rotate', 45)">
+                                        <i class="bi bi-arrow-clockwise fs-5"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between">
+                    <div class="modal-footer pb-0 d-flex justify-content-between">
                         <button type="button" class="btn btn-light border border-default shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.cancel') }}</button>
                         <button type="button" id="crop_recto" class="btn dktv-btn-blue btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
@@ -271,14 +283,15 @@ if (request()->has('app_id')) {
         </div>
 
         <!-- ### Crop verso image ### -->
-        <div class="modal fade" id="cropModal_verso" tabindex="-1" aria-labelledby="cropModalVersoLabel" aria-hidden="true">
+        <div class="modal fade" id="cropModal_verso" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="cropModalVersoLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header py-0">
+                        <button type="button" class="btn-close mt-1" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <h5 class="text-center text-muted">{{ __('miscellaneous.crop_before_save') }}</h5>
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 mb-sm-0 mb-4">
@@ -286,10 +299,19 @@ if (request()->has('app_id')) {
                                         <img src="" id="retrieved_image_verso" class="img-fluid">
                                     </div>
                                 </div>
+
+                                <div class="col-12 d-flex justify-content-center py-3">
+                                    <button id="rotateL" class="btn btn-floating dktv-btn-gray me-3 pt-1 fs-5" onclick="event.preventDefault(); $(this).cropper('rotate', -45)">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </button>
+                                    <button id="rotateR" class="btn btn-floating dktv-btn-gray pt-1" onclick="event.preventDefault(); $(this).cropper('rotate', 45)">
+                                        <i class="bi bi-arrow-clockwise fs-5"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between">
+                    <div class="modal-footer pb-0 d-flex justify-content-between">
                         <button type="button" class="btn btn-light border border-default shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.cancel') }}</button>
                         <button type="button" id="crop_verso" class="btn dktv-btn-blue btn-color shadow-0" data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>
@@ -300,14 +322,15 @@ if (request()->has('app_id')) {
 
 @if (Route::is('account') || Route::is('account.entity') || Route::is('account.entity.datas'))
         <!-- ### Crop user image ### -->
-        <div class="modal fade" id="cropModalUser" tabindex="-1" aria-labelledby="cropModalUserLabel" aria-hidden="true">
+        <div class="modal fade" id="cropModalUser" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="cropModalUserLabel">{{ __('miscellaneous.crop_before_save') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header py-0">
+                        <button type="button" class="btn-close mt-1" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body pb-3">
+                        <h5 class="text-center text-muted">{{ __('miscellaneous.crop_before_save') }}</h5>
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 mb-sm-0 mb-4">
@@ -318,7 +341,7 @@ if (request()->has('app_id')) {
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between">
+                    <div class="modal-footer pb-0 d-flex justify-content-between">
                         <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">@lang('miscellaneous.cancel')</button>
                         <button type="button" id="crop_avatar" class="btn dktv-btn-blue rounded-pill"data-bs-dismiss="modal">{{ __('miscellaneous.register') }}</button>
                     </div>

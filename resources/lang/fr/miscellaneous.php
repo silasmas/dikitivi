@@ -339,6 +339,10 @@ return [
         'my_videos' => 'Mes vidéos',
         'parental_control' => 'Contrôle parental',
         'recently_watched_videos' => 'Vidéos récemment regardées',
+        'videos' => [
+            'add' => 'Ajouter une vidéo',
+            'edit' => 'Modifier les infos de la vidéo'
+        ],
         'add_child' => [
             'message' => 'En ajoutant vos enfants, vous leur permettez de se connecter pour regarder les vidéos de DikiTivi et vous serez en mesure de voir ce qu’ils ont regardé.',
             'link' => 'Ajouter un enfant'

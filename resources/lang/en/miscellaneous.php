@@ -339,6 +339,10 @@ return [
         'my_videos' => 'My videos',
         'parental_control' => 'Parental control',
         'recently_watched_videos' => 'Recently watched videos',
+        'videos' => [
+            'add' => 'Add a video',
+            'edit' => 'Update the video'
+        ],
         'add_child' => [
             'message' => 'By adding your children, you allow them to log in to watch DikiTivi videos and you will be able to see what they have watched.',
             'link' => 'Add a child'
