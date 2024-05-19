@@ -93,8 +93,8 @@
     var heroSlider2 = $('.hero-slider-four , .series-slider-active ');
     heroSlider2.slick({
         arrows: true,
-        autoplay: false,
-        autoplaySpeed: 5000,
+        autoplay: true,
+        autoplaySpeed: 3000,
         dots: false,
         pauseOnFocus: false,
         pauseOnHover: false,
@@ -389,7 +389,8 @@
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
         infinite: true,
         prevArrow: '<button type="button" class="slick-prev"><i class="zmdi zmdi-chevron-left"></i> </button>',
         nextArrow: '<button type="button" class="slick-next"><i class="zmdi zmdi-chevron-right"></i></button>',
