@@ -675,16 +675,16 @@ if (request()->has('app_id')) {
 
                 <!-- Footer Area -->
                 <footer class="footer-area detect-webview">
-                    {{-- <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}"> --}}
-                    <div class="footer-top-tow dktv-bg-blue">
-                        <div class="container px-sm-5">
+                    <div class="footer-bottom">
+                        <div class="container">
                             <div class="row">
-                                <div class="col-custom-4 mt--50">
+                                <div class="col-lg-4 col-sm-4">
+                                    <p class="copyright-text" style="color: #fff!important;">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
+                                </div>
+                                <div class="col-lg-4 col-sm-2">
                                     <!-- footer-widget -->
                                     <div class="footer-widget">
-                                        <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
                                         <div class="footer-contet">
-                                            <p style="color: #fff!important;">@lang('miscellaneous.public.about.description')</p>
                                             <ul class="fotter-socail">
                                                 <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
                                                 <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
@@ -694,53 +694,9 @@ if (request()->has('app_id')) {
                                     </div>
                                     <!--// footer-widget -->
                                 </div>
-
-                                <div class="col-custom-4 mt--50">
-                                    <!-- footer-widget -->
-                                    <div class="footer-widget">
-                                        <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.useful_links')</h4>
-
-                                        <div class="footer-contet">
-                                            <ul class="footer-list">
-@empty(Auth::check())
-                                                <li><a href="{{ route('login') }}" class="text-light">@lang('miscellaneous.login_title1')</a></li>
-                                                <li><a href="{{ route('register') }}" class="text-light">@lang('miscellaneous.register_title1')</a></li>
-@endempty
-                                                <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
-                                                <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!--// footer-widget -->
-                                </div>
-
-                                <div class="col-custom-4 mt--50">
-                                    <!-- footer-widget -->
-                                    <div class="footer-widget">
-                                        <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
-
-                                        <div class="footer-contet">
-                                            <ul class="footer-contact-list">
-                                                {{-- <li> <i class="zmdi zmdi-phone"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.phone')</a></li> --}}
-                                                <li> <i class="zmdi zmdi-home"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.address')</a></li>
-                                                <li> <i class="zmdi zmdi-email"></i> <a href="#" class="text-light">@lang('miscellaneous.public.footer.head_office.email')</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!--// footer-widget -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-bottom">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <p class="copyright-text" style="color: #fff!important;">Copyright &copy; {{ date('Y') }} @lang('miscellaneous.all_right_reserved')</p>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <ul class="footer-bottom-list">
+                                        <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
                                         <li><a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}" class="text-light">@lang('miscellaneous.menu.terms_of_use')</a></li>
                                         <li><a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="text-light">@lang('miscellaneous.menu.privacy_policy')</a></li>
                                     </ul>

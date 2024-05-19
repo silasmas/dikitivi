@@ -123,6 +123,7 @@ if (!empty($current_media->belongs_to)) {
 
                                 <div class="d-flex justify-content-between">
     @include('partials.count')
+        @if (Auth::check())
                                     <div class="action">
                                         <button title="{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? __('miscellaneous.public.withdraw_watchlist') : __('miscellaneous.public.add_watchlist') }}" class="Watch-list-btn{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? ' dktv-btn-green' : '' }}" type="button" data-status="{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? 'added' : 'withdrawn' }}" data-watchlist-id="{{ $watchlist->id }}" onclick="event.preventDefault(); toggleAction(this, {{ $current_media->id }}, 'watchlist');">
                                             <i class="zmdi zmdi-{{ inArrayR($current_media->id, $watchlist->orders, 'media_id') ? 'check' : 'plus' }}"></i>
@@ -131,6 +132,16 @@ if (!empty($current_media->belongs_to)) {
                                             <i class="bi bi-{{ inArrayR($current_user->email, $likes, 'email') ? 'heart-fill' : 'heart' }} align-text-bottom"></i>
                                         </button>
                                     </div>
+        @else
+                                    <div class="action">
+                                        <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button" onclick="event.preventDefault(); window.location.replace('{{ route('login') }}');">
+                                            <i class="zmdi zmdi-plus"></i>
+                                        </button>
+                                        <button title="@lang('miscellaneous.public.send_like')" class="Watch-list-btn ms-2" type="button" onclick="event.preventDefault(); window.location.replace('{{ route('login') }}');">
+                                            <i class="bi bi-heart align-text-bottom"></i>
+                                        </button>
+                                    </div>
+        @endif
                                 </div>
                             </div>
 
