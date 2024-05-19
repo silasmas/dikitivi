@@ -67,8 +67,8 @@
     var heroSlider = $('.hero-slider-three');
     heroSlider.slick({
         arrows: true,
-        autoplay: false,
-        autoplaySpeed: 5000,
+        autoplay: true,
+        autoplaySpeed: 3000,
         dots: false,
         pauseOnFocus: false,
         pauseOnHover: false,
