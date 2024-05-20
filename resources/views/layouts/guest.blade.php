@@ -365,7 +365,5 @@
         <!-- Main JS -->
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
-        <script type="text/javascript">
-       </script>
     </body>
 </html>
