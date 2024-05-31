@@ -388,12 +388,12 @@ if (request()->has('app_id')) {
                                             <ul>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
-                                                        <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.public.home.hero.link2')
+                                                        <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_child')
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 0]) }}">
-                                                        <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.public.home.hero.link1')
+                                                        <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_adult')
                                                     </a>
                                                 </li>
                                             </ul>
@@ -403,7 +403,7 @@ if (request()->has('app_id')) {
 
                                     <!-- search-input-box start -->
                                     <div class="search-input-box">
-                                        <input type="text" placeholder="Search">
+                                        <input type="text" placeholder="@lang('miscellaneous.search')">
                                         <button><i class="bi bi-search"></i></button>
                                     </div>
                                     <!-- search-input-box end -->
@@ -515,12 +515,12 @@ if (request()->has('app_id')) {
                                             <ul>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
-                                                        <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.public.home.hero.link2')
+                                                        <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_child')
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 0]) }}">
-                                                        <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.public.home.hero.link1')
+                                                        <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_adult')
                                                     </a>
                                                 </li>
                                             </ul>
