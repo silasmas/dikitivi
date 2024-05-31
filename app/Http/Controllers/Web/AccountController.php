@@ -117,13 +117,12 @@ class AccountController extends Controller
                     // All user children API
                     $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->parental_code, $user->data->user->api_token);
 
-                    dd($children);
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'api_client_manager' => $this::$api_client_manager,
-                        'children' => isset($children->data) ? $children->data : [],
+                        'children' => $children->data,
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.account.child.title'),
                     ]);
@@ -134,6 +133,7 @@ class AccountController extends Controller
                         'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'api_client_manager' => $this::$api_client_manager,
+                        'children' => [],
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.account.child.title'),
                     ]);
