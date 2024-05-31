@@ -53,7 +53,13 @@ Route::get('/choose_age/{for_youth}', function (Request $request, $for_youth) {
     } else {
         session()->put('for_youth', $for_youth);
 
-        return redirect()->back();
+        if ($for_youth == 0) {
+            return redirect()->back();
+        }
+
+        if ($for_youth == 1) {
+            return redirect('/');
+        }
     }
 
 })->whereNumber('for_youth')->name('choose_age');
