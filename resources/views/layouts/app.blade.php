@@ -659,7 +659,7 @@ if (request()->has('app_id')) {
 
                     <ul>
                         <li class="normal-item-pro">
-                            <a class="active" href="{{ route('live.home') }}">
+                            <a class="dktv-btn-blue" href="{{ route('live.home') }}">
                                 <i class="bi bi-broadcast fs-3"></i>
                                 <span>@lang('miscellaneous.menu.live')</span>
                             </a>
