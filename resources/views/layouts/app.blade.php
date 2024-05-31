@@ -373,13 +373,13 @@ if (request()->has('app_id')) {
                                 <div class="right-side d-flex">
                                     <!-- for-youth settings start -->
                                     <div title="@lang('miscellaneous.change')">
-                                        <a class="btn bg-transparent text-muted px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="btn bg-transparent text-muted ms-3 px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     @if ($for_youth == 1)
-                                            <i class="bi bi-person-down d-sm-none d-inline-block me-2 fs-3 align-middle"></i>
+                                            <i class="bi bi-person-down d-sm-none d-inline-block fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_child')</pan>
     @endif
     @if ($for_youth == 0)
-                                            <i class="bi bi-person-up d-sm-none d-inline-block me-2 fs-3 align-middle"></i>
+                                            <i class="bi bi-person-up d-sm-none d-inline-block fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_adult')</pan>
     @endif
                                         </a>
@@ -388,12 +388,12 @@ if (request()->has('app_id')) {
                                             <ul>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
-                                                        <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_child')
+                                                        <i class="bi bi-person-down d-sm-none d-inline-block me-2 fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_child')
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 0]) }}">
-                                                        <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_adult')
+                                                        <i class="bi bi-person-up d-sm-none d-inline-block me-2 fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_adult')
                                                     </a>
                                                 </li>
                                             </ul>
@@ -515,12 +515,12 @@ if (request()->has('app_id')) {
                                             <ul>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
-                                                        <i class="bi bi-person-down d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_child')
+                                                        <i class="bi bi-person-down d-sm-none d-inline-block me-2 fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_child')
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <a href="{{ route('choose_age', ['for_youth' => 0]) }}">
-                                                        <i class="bi bi-person-up d-sm-none d-inline-block fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_adult')
+                                                        <i class="bi bi-person-up d-sm-none d-inline-block me-2 fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_adult')
                                                     </a>
                                                 </li>
                                             </ul>
