@@ -659,37 +659,37 @@ if (request()->has('app_id')) {
 
                     <ul>
                         <li class="normal-item-pro">
-                            <a class="dktv-btn-blue" href="{{ route('live.home') }}">
+                            <a class="{{ Route::is('live.home') ? 'dktv-btn-blue' : '' }}" href="{{ route('live.home') }}">
                                 <i class="bi bi-broadcast fs-3"></i>
                                 <span>@lang('miscellaneous.menu.live')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="{{ route('programs.entity.home', ['entity' => 'preach']) }}">
+                            <a class="{{ Route::is('programs.entity.home') && $entity == 'preach' ? 'dktv-btn-blue' : '' }}" href="{{ route('programs.entity.home', ['entity' => 'preach']) }}">
                                 <i class="bi bi-mic fs-3"></i>
                                 <span>@lang('miscellaneous.menu.preach')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="{{ route('films.home') }}">
+                            <a class="{{ Route::is('films.home') ? 'dktv-btn-blue' : '' }}" href="{{ route('films.home') }}">
                                 <i class="bi bi-film fs-3"></i>
                                 <span>@lang('miscellaneous.menu.films')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="{{ route('series.home') }}">
+                            <a class="{{ Route::is('series.home') ? 'dktv-btn-blue' : '' }}" href="{{ route('series.home') }}">
                                 <i class="bi bi-collection-play fs-3"></i>
                                 <span>@lang('miscellaneous.menu.series')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="{{ route('programs.home') }}">
+                            <a class="{{ Route::is('programs.home') ? 'dktv-btn-blue' : '' }}" href="{{ route('programs.home') }}">
                                 <i class="bi bi-camera-reels fs-3"></i>
                                 <span>@lang('miscellaneous.menu.programs')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
-                            <a href="{{ route('songs.home') }}">
+                            <a class="{{ Route::is('songs.home') ? 'dktv-btn-blue' : '' }}" href="{{ route('songs.home') }}">
                                 <i class="bi bi-music-note-list fs-3"></i>
                                 <span>@lang('miscellaneous.menu.songs')</span>
                             </a>
