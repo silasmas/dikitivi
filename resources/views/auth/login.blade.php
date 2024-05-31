@@ -65,7 +65,7 @@
                                             </div>
         @endif
 
-                                            <div class="row mb-3">
+                                            <div class="row mb-3{{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? ' d-none' : '') : '' }}">
                                                 <div class="col-sm-6 d-flex justify-content-center mx-auto">
                                                     <div class="form-check">
                                                         <input type="checkbox" id="login_remember" class="form-check-input" />
@@ -73,23 +73,25 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-6{{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? ' d-none' : '') : '' }}">
+                                                <div class="col-sm-6">
                                                     <a href="{{ route('password.request') }}">@lang('miscellaneous.forgotten_password')</a>
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill mb-4 shadow-0" style="text-transform: inherit!important;">@lang('auth.login')</button>
+                                            <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill mb-4 shadow-0" style="text-transform: inherit!important;">
+                                                {{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? __('miscellaneous.start') : __('auth.login')) : __('auth.login') }}
+                                            </button>
 
         @if (\Session::has('for_youth'))
             @if (\Session::get('for_youth') == 0)
                                             <a href="{{ route('choose_age', ['for_youth' => 1]) }}" class="btn btn-block dktv-btn-yellow border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.iam_child')</a>
+                                            <a href="{{ route('register') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.go_register')</a>
             @endif
 
-            @if (\Session::get('for_youth') == 1)
+            {{-- @if (\Session::get('for_youth') == 1)
                                             <a href="{{ route('choose_age', ['for_youth' => 0]) }}" class="btn btn-block dktv-btn-green border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.iam_adult')</a>
-            @endif
+            @endif --}}
         @endif
-                                            <a href="{{ route('register') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.go_register')</a>
                                         </form>
                                     </div>
                                 </div>
