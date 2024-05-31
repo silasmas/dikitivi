@@ -78,8 +78,8 @@
                                     <div class="product-image">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @if (!empty($med->thumbnail_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -131,8 +131,8 @@
                                     <div class="product-image">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @if (!empty($med->thumbnail_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -185,8 +185,8 @@
                                     <div class="product-image">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @if (!empty($med->thumbnail_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -238,8 +238,8 @@
                                     <div class="product-image">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @if (!empty($med->thumbnail_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -291,8 +291,8 @@
                                     <div class="product-image">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @if (!empty($med->thumbnail_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -344,8 +344,8 @@
                                     <div class="product-image">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->cover_url }}) no-repeat right top; background-size: cover;"></div>
+            @if (!empty($med->thumbnail_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>

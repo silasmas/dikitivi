@@ -38,8 +38,8 @@
                                     <div class="movie-img">
                                         <a href="{{ route('media.datas', ['id' => $media->id]) }}" title="{{ $media->media_title }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $media->media_title }}">
-        @if (!empty($media->cover_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $media->cover_url }}) no-repeat right top; background-size: cover;"></div>
+        @if (!empty($media->thumbnail_url))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $media->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
         @endif
                                         </a>
         @if (Auth::check())
