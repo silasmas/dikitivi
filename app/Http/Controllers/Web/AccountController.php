@@ -128,6 +128,7 @@ class AccountController extends Controller
                     ]);
 
                 } else {
+
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
