@@ -35,7 +35,7 @@
             @endif
 
             @if (\Session::get('for_youth') == 1)
-                                        <h class="h mb-4 text-muted text-center">@lang('miscellaneous.login_title3')</h>
+                                        <h5 class="h5 mb-4 text-center">@lang('miscellaneous.login_title3')</h5>
             @endif
         @endif
 
