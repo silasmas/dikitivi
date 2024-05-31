@@ -393,7 +393,7 @@ if (request()->has('app_id')) {
 
     @if ($for_youth == 0)
                                         <a href="{{ route('choose_age', ['for_youth' => 1]) }}" class="btn dktv-btn-yellow ms-3 py-2 px-3 rounded-pill shadow-0">
-                                            <i class="bi bi-person-up  me-sm-3fs-3 align-middle"></i>
+                                            <i class="bi bi-person-up me-sm-3 fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_child')</pan>
                                         </a>
     @endif
