@@ -314,6 +314,7 @@ return [
         'login' => 'Log in',
         'live' => 'Live',
         'films' => 'Films',
+        'cartoons' => 'Cartoons',
         'series' => 'TV series',
         'programs' => 'Programs',
         'preach' => 'Preach',

@@ -72,6 +72,7 @@ Route::get('/about/{entity}', 'App\Http\Controllers\Web\HomeController@aboutEnti
 Route::get('/media/{id}', 'App\Http\Controllers\Web\HomeController@mediaDatas')->whereNumber('id')->name('media.datas');
 Route::get('/live', 'App\Http\Controllers\Web\HomeController@live')->name('live.home');
 Route::get('/films', 'App\Http\Controllers\Web\HomeController@films')->name('films.home');
+Route::get('/cartoons', 'App\Http\Controllers\Web\HomeController@cartoons')->name('cartoons.home');
 Route::get('/series', 'App\Http\Controllers\Web\HomeController@series')->name('series.home');
 Route::get('/programs', 'App\Http\Controllers\Web\HomeController@programs')->name('programs.home');
 Route::get('/programs/{entity}', 'App\Http\Controllers\Web\HomeController@programsEntity')->name('programs.entity.home');

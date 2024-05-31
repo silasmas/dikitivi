@@ -314,6 +314,7 @@ return [
         'login' => 'Se connecter',
         'live' => 'En direct',
         'films' => 'Films',
+        'cartoons' => 'Dessins animés',
         'series' => 'Séries TV',
         'programs' => 'Programmes',
         'preach' => 'Enseignements',

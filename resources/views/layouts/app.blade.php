@@ -82,6 +82,9 @@ if (request()->has('app_id')) {
     @if (Route::is('films.home'))
             @lang('miscellaneous.menu.films')
     @endif
+    @if (Route::is('cartoons.home'))
+            @lang('miscellaneous.menu.cartoons')
+    @endif
     @if (Route::is('series.home'))
             @lang('miscellaneous.menu.series')
     @endif
@@ -381,31 +384,19 @@ if (request()->has('app_id')) {
 @if (Auth::check())
                                     <!-- for-youth settings start -->
                                     <div title="@lang('miscellaneous.change')">
-                                        <a class="btn bg-transparent text-muted ms-3 px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     @if ($for_youth == 1)
+                                        <a href="{{ route('choose_age', ['for_youth' => 0]) }}" class="btn dktv-btn-blue ms-3 px-3 rounded-pill shadow-0">
                                             <i class="bi bi-person-down d-sm-none d-inline-block fs-3 align-middle"></i>
-                                            <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_child')</pan>
-    @endif
-    @if ($for_youth == 0)
-                                            <i class="bi bi-person-up d-sm-none d-inline-block fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_adult')</pan>
-    @endif
                                         </a>
+    @endif
 
-                                        <div class="dropdown-menu rounded-0">
-                                            <ul>
-                                                <li class="dropdown-item">
-                                                    <a href="{{ route('choose_age', ['for_youth' => 1]) }}">
-                                                        <i class="bi bi-person-down d-sm-none d-inline-block me-2 fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_child')
-                                                    </a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="{{ route('choose_age', ['for_youth' => 0]) }}">
-                                                        <i class="bi bi-person-up d-sm-none d-inline-block me-2 fs-3" style="vertical-align: -3px;"></i>@lang('miscellaneous.iam_adult')
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+    @if ($for_youth == 0)
+                                        <a href="{{ route('choose_age', ['for_youth' => 1]) }}" class="btn dktv-btn-yellow ms-3 px-3 rounded-pill shadow-0">
+                                            <i class="bi bi-person-up d-sm-none d-inline-block fs-3 align-middle"></i>
+                                            <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_child')</pan>
+                                        </a>
+    @endif
                                     </div>
                                     <!-- for-youth settings end -->
 
@@ -674,6 +665,12 @@ if (request()->has('app_id')) {
                             <a class="{{ Route::is('films.home') ? 'dktv-btn-blue' : '' }}" href="{{ route('films.home') }}">
                                 <i class="bi bi-film fs-3"></i>
                                 <span>@lang('miscellaneous.menu.films')</span>
+                            </a>
+                        </li>
+                        <li class="normal-item-pro">
+                            <a class="{{ Route::is('cartoons.home') ? 'dktv-btn-blue' : '' }}" href="{{ route('cartoons.home') }}">
+                                <i class="bi bi-emoji-sunglasses fs-3"></i>
+                                <span>@lang('miscellaneous.menu.cartoons')</span>
                             </a>
                         </li>
                         <li class="normal-item-pro">
