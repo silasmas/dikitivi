@@ -658,8 +658,8 @@ if (request()->has('app_id')) {
                     <!-- donation end -->
 
                     <ul>
-                        <li class="normal-item-pro active">
-                            <a href="{{ route('live.home') }}">
+                        <li class="normal-item-pro">
+                            <a class="active" href="{{ route('live.home') }}">
                                 <i class="bi bi-broadcast fs-3"></i>
                                 <span>@lang('miscellaneous.menu.live')</span>
                             </a>
