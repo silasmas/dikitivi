@@ -122,7 +122,7 @@ class AccountController extends Controller
                         'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'api_client_manager' => $this::$api_client_manager,
-                        'children' => $children->data,
+                        'children' => isset($children->data) ? $children->data : [],
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.account.child.title'),
                     ]);
