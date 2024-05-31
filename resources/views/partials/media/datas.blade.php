@@ -65,7 +65,7 @@ if (!empty($current_media->belongs_to)) {
 
     @if ($current_media->type->type_name != __('miscellaneous.media_types.tv_series') && $current_media->type->type_name != __('miscellaneous.media_types.music_album'))
                                 <div class="ratio ratio-16x9">
-                                    <iframe src="{{ $current_media->media_url }}?rel=0"frameborder="0"></iframe>
+                                    <iframe src="{{ $current_media->media_url }}?rel=0" allowfullscreen frameborder="0"></iframe>
                                 </div>
     @endif
 

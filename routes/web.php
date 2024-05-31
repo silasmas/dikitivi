@@ -4,6 +4,8 @@
  * @see https://www.linkedin.com/in/xanders-samoth-b2770737/
  */
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +25,38 @@ use Illuminate\Support\Facades\Route;
 Route::get('/symlink', function () { return view('symlink'); })->name('generate_symlink');
 Route::get('/count', 'App\Http\Controllers\Web\HomeController@countActions')->name('count_actions');
 // Choose age
-Route::get('/choose_age/{for_youth}', function ($for_youth) { session()->put('for_youth', $for_youth); return redirect()->back(); })->whereNumber('for_youth')->name('choose_age');
+Route::get('/choose_age/{for_youth}', function (Request $request, $for_youth) {
+    // If user is connected
+    if (Auth::check()) {
+        // If it's a child, deconnect user and ask parental code
+        if ($for_youth == 1) {
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            session()->put('for_youth', $for_youth);
+
+            return redirect('/login');
+        }
+
+        // If it's a child, deconnect user and ask parental code
+        if ($for_youth == 0) {
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            session()->put('for_youth', $for_youth);
+
+            return redirect()->back();
+        }
+
+    } else {
+        session()->put('for_youth', $for_youth);
+
+        return redirect()->back();
+    }
+
+})->whereNumber('for_youth')->name('choose_age');
 // Home
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
