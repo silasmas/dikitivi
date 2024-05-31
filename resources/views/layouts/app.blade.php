@@ -371,6 +371,14 @@ if (request()->has('app_id')) {
                                     </div>
                                 </div>
                                 <div class="right-side d-flex">
+                                    <!-- search-input-box start -->
+                                    <div class="search-input-box">
+                                        <input type="text" placeholder="@lang('miscellaneous.search')">
+                                        <button><i class="bi bi-search"></i></button>
+                                    </div>
+                                    <!-- search-input-box end -->
+
+@if (Auth::check())
                                     <!-- for-youth settings start -->
                                     <div title="@lang('miscellaneous.change')">
                                         <a class="btn bg-transparent text-muted ms-3 px-3 rounded-pill shadow-0 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -401,14 +409,6 @@ if (request()->has('app_id')) {
                                     </div>
                                     <!-- for-youth settings end -->
 
-                                    <!-- search-input-box start -->
-                                    <div class="search-input-box">
-                                        <input type="text" placeholder="@lang('miscellaneous.search')">
-                                        <button><i class="bi bi-search"></i></button>
-                                    </div>
-                                    <!-- search-input-box end -->
-
-@if (Auth::check())
                                     <!-- notifications start -->
                                     <div class="notifications-bar btn-group shadow-0">
                                         <a href="#" class="notifications-iocn shadow-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
