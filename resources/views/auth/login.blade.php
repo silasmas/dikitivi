@@ -86,7 +86,7 @@
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill{{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? '' : ' mb-4') : '' }} shadow-0" style="text-transform: inherit!important;">
+                                            <button type="submit" class="btn btn-block dktv-btn-blue mb-4 rounded-pill{{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? '' : ' mb-4') : '' }} shadow-0" style="text-transform: inherit!important;">
                                                 {{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? __('miscellaneous.start') : __('auth.login')) : __('auth.login') }}
                                             </button>
 
@@ -96,9 +96,9 @@
                                             <a href="{{ route('register') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.go_register')</a>
             @endif
 
-            {{-- @if (\Session::get('for_youth') == 1)
-                                            <a href="{{ route('choose_age', ['for_youth' => 0]) }}" class="btn btn-block dktv-btn-green border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.iam_adult')</a>
-            @endif --}}
+            @if (\Session::get('for_youth') == 1)
+                                            <a href="{{ route('home') }}" class="btn btn-block dktv-btn-gray border-0 rounded-pill text-dark shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.no_parental_code')</a>
+            @endif
         @endif
                                         </form>
                                     </div>

@@ -33,6 +33,7 @@ return [
     'likes' => 'J’aime',
     'iam_child' => 'Jeunesse',
     'iam_adult' => 'Tous les médias',
+    'no_parental_code' => 'Je n\'ai pas de code parental',
     'back_home' => 'Retour à l’accueil',
     'back_list' => 'Retourner à la liste',
     'back_form' => 'Retourner au formulaire',

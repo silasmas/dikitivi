@@ -33,6 +33,7 @@ return [
     'likes' => 'Likes',
     'iam_child' => 'Youth',
     'iam_adult' => 'All medias',
+    'no_parental_code' => 'I don\'t have a parental code',
     'back_home' => 'Return to the home',
     'back_list' => 'Return to the list',
     'back_form' => 'Return to the form',
