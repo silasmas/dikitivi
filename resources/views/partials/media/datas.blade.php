@@ -157,7 +157,7 @@ if (!empty($current_media->belongs_to)) {
                             </div>
                         </div>
 
-    @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album'))
+    @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album') || $current_media->type->type_name == __('miscellaneous.media_types.tv_program'))
 <?php
 $belonging_medias = $api_client_manager::call('GET', getApiURL() . '/media/find_by_belongs_to/' . $current_media->id);
 ?>

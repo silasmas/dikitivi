@@ -294,6 +294,7 @@ return [
     // ===== TYPES
     'media_types' => [
         'feature_film' => 'Feature film',
+        'cartoons' => 'Cartoons',
         'tv_series' => 'TV series',
         'episode' => 'Episode',
         'tv_program' => 'TV program',

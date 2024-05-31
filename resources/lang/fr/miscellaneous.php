@@ -294,6 +294,7 @@ return [
     // ===== TYPES
     'media_types' => [
         'feature_film' => 'Long métrage',
+        'cartoons' => 'Dessins animés',
         'tv_series' => 'Série TV',
         'episode' => 'Episode',
         'tv_program' => 'Programme TV',
