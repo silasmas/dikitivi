@@ -521,12 +521,36 @@ class HomeController extends Controller
                 // Select medias by type API
                 $medias_cartoons = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . session()->get('for_youth') . '/' . $cartoon_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip());
 
-                return view('partials.media.cartoons', [
-                    'for_youth' => session()->get('for_youth'),
-                    'cartoons' => $medias_cartoons->data,
-                    'lastPage' => $medias_cartoons->lastPage,
-                    'api_client_manager' => $this::$api_client_manager,
-                ]);
+                if (Auth::check()) {
+                    // Select a user API
+                    $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                    // User age
+                    $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                    // Select all unread notifications API
+                    $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
+                    // Select medias by type API
+                    $medias_cartoons = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $cartoon_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), $user->data->user->id);
+                    // All user carts by type (Watchlist) API
+                    $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . $user->data->user->id . '/' . $watchlist_type->data->id, $user->data->user->api_token);
+
+                    return view('partials.media.cartoons', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'unread_notifications' => $notifications->data,
+                        'cartoons' => $medias_cartoons->data,
+                        'lastPage' => $medias_cartoons->lastPage,
+                        'watchlist' => $user_watchlist->data,
+                        'api_client_manager' => $this::$api_client_manager,
+                    ]);
+
+                } else {
+                    return view('partials.media.cartoons', [
+                        'for_youth' => session()->get('for_youth'),
+                        'cartoons' => $medias_cartoons->data,
+                        'lastPage' => $medias_cartoons->lastPage,
+                        'api_client_manager' => $this::$api_client_manager,
+                    ]);
+                }
 
             } else {
                 if (Auth::check()) {

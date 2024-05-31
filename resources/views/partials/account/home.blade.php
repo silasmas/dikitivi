@@ -86,6 +86,7 @@
                                                             <td>{{ !empty($current_user->birth_date) ? ucfirst(__('miscellaneous.on_date') . ' ' . explicitDate($current_user->birth_date))  : '- - - - - -' }}</td>
                                                         </tr>
 
+@if ($for_youth == 0)
                                                         <!-- E-mail -->
                                                         <tr>
                                                             <td><strong>@lang('miscellaneous.email')</strong></td>
@@ -101,7 +102,7 @@
                                                         </tr>
 
                                                         <!-- Addresses -->
-@if (!empty($current_user->address_1) && !empty($current_user->address_2))
+    @if (!empty($current_user->address_1) && !empty($current_user->address_2))
                                                         <tr>
                                                             <td><strong>@lang('miscellaneous.addresses')</strong></td>
                                                             <td>@lang('miscellaneous.colon_after_word')</td>
@@ -116,13 +117,13 @@
                                                                 </ul>
                                                             </td>
                                                         </tr>
-@else
+    @else
                                                         <tr>
                                                             <td><strong>@lang('miscellaneous.address.title')</strong></td>
                                                             <td>@lang('miscellaneous.colon_after_word')</td>
                                                             <td>{{ !empty($current_user->address_1) ? $current_user->address_1 : (!empty($current_user->address_2) ? $current_user->address_2 : '- - - - - -') }}</td>
                                                         </tr>
-@endif
+    @endif
 
                                                         <!-- P.O. box -->
                                                         <tr>
@@ -130,6 +131,7 @@
                                                             <td>@lang('miscellaneous.colon_after_word')</td>
                                                             <td>{{ !empty($current_user->p_o_box) ? $current_user->p_o_box : '- - - - - -' }}</td>
                                                         </tr>
+@endif
                                                     </table>
                                                 </div>
                                             </div>
@@ -205,20 +207,23 @@
                                                             </div>
                                                         </div>
 
+@if ($for_youth == 0)
                                                         <div class="col-lg-6">
                                                             <!-- Phone -->
                                                             <div class="form-floating">
                                                                 <input type="text" name="register_phone" id="register_phone" class="form-control" placeholder="@lang('miscellaneous.phone')" aria-describedby="phone_error_message" value="{{ $current_user->phone }}" />
                                                                 <label class="form-label" for="register_phone">@lang('miscellaneous.phone')</label>
                                                             </div>
-@if (!empty($current_user->phone_verified_at))
+    @if (!empty($current_user->phone_verified_at))
                                                             <p id="phone_error_message" class="text-end text-success small"><i class="bi bi-check-circle"></i> @lang('miscellaneous.verified')</p>
-@else
+    @else
                                                             <p id="phone_error_message" class="text-end text-danger small"><i class="bi bi-x-circle"></i> @lang('miscellaneous.unverified')</p>
-@endif
+    @endif
                                                         </div>
+@endif
                                                     </div>
 
+@if ($for_youth == 0)
                                                     <div class="row g-3 mb-3">
                                                         <div class="col-lg-6">
                                                             <!-- E-mail -->
@@ -226,11 +231,11 @@
                                                                 <input type="text" name="register_email" id="register_email" class="form-control" placeholder="@lang('miscellaneous.email')" value="{{ $current_user->email }}" />
                                                                 <label class="form-label" for="register_email">@lang('miscellaneous.email')</label>
                                                             </div>
-@if (!empty($current_user->email_verified_at))
+    @if (!empty($current_user->email_verified_at))
                                                             <p id="phone_error_message" class="text-end text-success small"><i class="bi bi-check-circle"></i> @lang('miscellaneous.verified')</p>
-@else
+    @else
                                                             <p id="phone_error_message" class="text-end text-danger small"><i class="bi bi-x-circle"></i> @lang('miscellaneous.unverified')</p>
-@endif
+    @endif
                                                         </div>
 
                                                         <div class="col-lg-6">
@@ -266,11 +271,11 @@
                                                             <div class="form-floating pt-0">
                                                                 <select name="country_id" id="country_id" class="form-select pt-2 shadow-0">
                                                                     <option class="small" disabled>@lang('miscellaneous.choose_country')</option>
-@forelse ($countries as $country)
+    @forelse ($countries as $country)
                                                                     <option value="{{ $country->id }}"{{ !empty($current_user->country) ? ($country->id == $current_user->country->id ? ' selected' : '') : '' }}>{{ $country->country_name }}</option>
-@empty
+    @empty
                                                                     <option>@lang('miscellaneous.empty_list')</option>
-@endforelse
+    @endforelse
                                                                 </select>
                                                                 <label class="form-label" for="country_id">@lang('miscellaneous.country')</label>
                                                             </div>
@@ -284,6 +289,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+@endif
 
                                                     <div class="row">
                                                         <div class="col-lg-6 col-sm-8 mx-auto">
@@ -291,11 +297,13 @@
                                                         </div>
                                                     </div>
 
+@if ($for_youth == 0)
                                                     <hr class="my-4">
 
                                                     <a role="button" id="accountActivation" class="btn btn-block dktv-btn-pink rounded-pill" data-dktv-status="{{ $current_user->status->status_name }}">
                                                         <i class="bi bi-x-circle-fill me-2 align-middle fs-4"></i>@lang('miscellaneous.account.deactivated.link')
                                                     </a>
+@endif
                                                 </form>
                                             </div>
 
@@ -305,8 +313,9 @@
 
                                                 <div class="row py-4">
                                                     <div class="col-lg-7 col-sm-9 mx-auto">
+@if ($for_youth == 0)
                                                         <form method="POST" action="{{ route('account.entity', ['entity' => 'update_password']) }}">
-@csrf
+    @csrf
                                                             <input type="hidden" name="user_id" value="{{ $current_user->id }}">
                                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
@@ -337,6 +346,11 @@
                                                                 </div>
                                                             </div>
                                                         </form>
+@else
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <h1 class="h1 text-center fw-bold">@lang('miscellaneous.adult_content')</h1>
+                                                        </div>
+@endif
                                                     </div>
                                                 </div>
                                             </div>
