@@ -29,7 +29,15 @@
     @else
                                 <div class="card border rounded-0 text-center shadow-0">
                                     <div class="card-body py-5">
+        @if (\Session::has('for_youth'))
+            @if (\Session::get('for_youth') == 0)
                                         <h4 class="h4 mb-4 text-center">@lang('miscellaneous.login_title2')</h4>
+            @endif
+
+            @if (\Session::get('for_youth') == 1)
+                                        <h class="h mb-4 text-muted text-center">@lang('miscellaneous.login_title3')</h>
+            @endif
+        @endif
 
                                         <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -49,7 +57,7 @@
 
             @if (\Session::get('for_youth') == 1)
                                             <div class="form-floating mb-3">
-                                                <input type="text" name="login_parental_code" id="login_parental_code" class="form-control" placeholder="@lang('miscellaneous.parental_code')" value="{{ \Session::has('error_message_login') ? explode(', ', explode('~', \Session::get('error_message_login'))[1])[0] : '' }}" {{ \Session::has('error_message_login') && !empty(explode(', ', explode('~', \Session::get('error_message_login'))[1])[0])  ? '' : 'autofocus' }}>
+                                                <input type="text" name="login_parental_code" id="login_parental_code" class="form-control mb-4" placeholder="@lang('miscellaneous.parental_code')" value="{{ \Session::has('error_message_login') ? explode(', ', explode('~', \Session::get('error_message_login'))[1])[0] : '' }}" {{ \Session::has('error_message_login') && !empty(explode(', ', explode('~', \Session::get('error_message_login'))[1])[0])  ? '' : 'autofocus' }}>
                                                 <label for="login_parental_code">@lang('miscellaneous.parental_code')</label>
                                             </div>
             @endif
@@ -78,7 +86,7 @@
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill mb-4 shadow-0" style="text-transform: inherit!important;">
+                                            <button type="submit" class="btn btn-block dktv-btn-blue rounded-pill{{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? '' : ' mb-4') : '' }} shadow-0" style="text-transform: inherit!important;">
                                                 {{ \Session::has('for_youth') ? (\Session::get('for_youth') == 1 ? __('miscellaneous.start') : __('auth.login')) : __('auth.login') }}
                                             </button>
 
