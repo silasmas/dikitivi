@@ -386,14 +386,14 @@ if (request()->has('app_id')) {
                                     <div title="@lang('miscellaneous.change')">
     @if ($for_youth == 1)
                                         <a href="{{ route('choose_age', ['for_youth' => 0]) }}" class="btn dktv-btn-blue ms-3 px-3 rounded-pill shadow-0">
-                                            <i class="bi bi-person-down d-sm-none d-inline-block fs-3 align-middle"></i>
+                                            <i class="bi bi-person-down fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_adult')</pan>
                                         </a>
     @endif
 
     @if ($for_youth == 0)
                                         <a href="{{ route('choose_age', ['for_youth' => 1]) }}" class="btn dktv-btn-yellow ms-3 px-3 rounded-pill shadow-0">
-                                            <i class="bi bi-person-up d-sm-none d-inline-block fs-3 align-middle"></i>
+                                            <i class="bi bi-person-up fs-3 align-middle"></i>
                                             <pan class="d-sm-inline-block d-none">@lang('miscellaneous.iam_child')</pan>
                                         </a>
     @endif
