@@ -76,10 +76,10 @@
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-inline-block rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="rounded-3 overflow-hidden">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}" class="rounded-4">
             @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                            <div class="position-absolute w-100 h-100 rounded-4" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -129,10 +129,10 @@
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-inline-block rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="rounded-3 overflow-hidden">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}" class="rounded-4">
             @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                            <div class="position-absolute w-100 h-100 rounded-4" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -183,10 +183,10 @@
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-inline-block rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="rounded-3 overflow-hidden">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}" class="rounded-4">
             @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                            <div class="position-absolute w-100 h-100 rounded-4" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -236,10 +236,10 @@
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-inline-block rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="rounded-3 overflow-hidden">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}" class="rounded-4">
             @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                            <div class="position-absolute w-100 h-100 rounded-4" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -289,10 +289,10 @@
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-inline-block rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="rounded-3 overflow-hidden">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}" class="rounded-4">
             @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                            <div class="position-absolute w-100 h-100 rounded-4" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
@@ -342,10 +342,10 @@
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-inline-block rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
+                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}" class="rounded-4">
             @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                            <div class="position-absolute w-100 h-100 rounded-4" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
