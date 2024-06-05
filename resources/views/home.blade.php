@@ -75,7 +75,7 @@
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
-                                    <div class="product-image">
+                                    <div class="product-image rounded-4">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
             @if (!empty($med->thumbnail_url))
@@ -128,7 +128,7 @@
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
-                                    <div class="product-image">
+                                    <div class="product-image rounded-4">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
             @if (!empty($med->thumbnail_url))
@@ -182,7 +182,7 @@
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
-                                    <div class="product-image">
+                                    <div class="product-image rounded-4">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
             @if (!empty($med->thumbnail_url))
@@ -235,7 +235,7 @@
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
-                                    <div class="product-image">
+                                    <div class="product-image rounded-4">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
             @if (!empty($med->thumbnail_url))
@@ -288,7 +288,7 @@
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
-                                    <div class="product-image">
+                                    <div class="product-image rounded-4">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
             @if (!empty($med->thumbnail_url))
@@ -341,7 +341,7 @@
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
-                                    <div class="product-image">
+                                    <div class="product-image rounded-4">
                                         <a href="{{ route('media.datas', ['id' => $med->id]) }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
             @if (!empty($med->thumbnail_url))
