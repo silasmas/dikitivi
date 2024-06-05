@@ -7029,11 +7029,11 @@ only screen and (max-width: 767px) {
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 10px!important;
 }
 
 .single-product-wrap .product-image a img {
   width: 100%;
+  border-radius: 10px!important;
 }
 
 .single-product-wrap .product-contents {
