@@ -30,13 +30,9 @@ Route::get('/choose_age/{for_youth}', function (Request $request, $for_youth) {
     if (Auth::check()) {
         // If it's a child, deconnect user and ask parental code
         if ($for_youth == 1) {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-
             session()->put('for_youth', $for_youth);
 
-            return redirect('/login');
+            return redirect()->back();
         }
 
         // If it's a child, deconnect user and ask parental code
@@ -67,6 +63,7 @@ Route::get('/choose_age/{for_youth}', function (Request $request, $for_youth) {
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
 Route::get('/notification', 'App\Http\Controllers\Web\HomeController@notification')->name('notification.home');
+Route::post('/parental-code', 'App\Http\Controllers\Web\HomeController@parentalCode')->name('parental_code');
 Route::get('/about', 'App\Http\Controllers\Web\HomeController@about')->name('about');
 Route::get('/about/{entity}', 'App\Http\Controllers\Web\HomeController@aboutEntity')->name('about.entity');
 Route::get('/media/{id}', 'App\Http\Controllers\Web\HomeController@mediaDatas')->whereNumber('id')->name('media.datas');
