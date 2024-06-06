@@ -1057,7 +1057,7 @@ class HomeController extends Controller
         $unread_status_name = 'Non lue';
         $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
         // Select a category by name API
-        $preach_category_name = 'Prédication';
+        $preach_category_name = 'Prédications';
         $preach_category = $this::$api_client_manager::call('GET', getApiURL() . '/category/search/fr/' . $preach_category_name);
         // Select a type by name API
         $watchlist_type_name = 'Watchlist';
