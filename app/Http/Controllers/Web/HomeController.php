@@ -1066,6 +1066,8 @@ class HomeController extends Controller
         if (session()->has('for_youth')) {
             if (session()->get('for_youth') == 1) {
                 if ($entity == 'preach') {
+                    dd($preach_category);
+
                     if (Auth::check()) {
                         // Select a user API
                         $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
