@@ -21,6 +21,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this::$api_client_manager = new ApiClientManager();
+
+        clearstatcache();
     }
 
     // ==================================== HTTP GET METHODS ====================================

@@ -20,6 +20,8 @@ class AccountController extends Controller
         $this::$api_client_manager = new ApiClientManager();
 
         $this->middleware('auth');
+
+        clearstatcache();
     }
 
     // ==================================== HTTP GET METHODS ====================================
