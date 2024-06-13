@@ -1507,9 +1507,7 @@ class HomeController extends Controller
                 return view('parental-code', ['children' => $users->data]);
 
             } else {
-                $error_data = $users->message . ', ' . $users->message . ', ' . __('notifications.error_title');
-
-                return redirect()->back()->with('error_message', $error_data . '-' . $request->login_parental_code);
+                return redirect()->back()->with('error_message', $users->message);
             }
 
         } else {
