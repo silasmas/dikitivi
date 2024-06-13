@@ -1500,20 +1500,34 @@ class HomeController extends Controller
     public function parentalCode(Request $request)
     {
         if (!empty($request->login_parental_code)) {
+            // Select a status by name API
+            $unread_status_name = 'Non lue';
+            $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
+            // Select a user API
+            $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+            // Select all unread notifications API
+            $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
+            // Select all countries API
+            $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
             // Login API
             $users = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $request->parent_id . '/' . $request->login_parental_code);
 
             if ($users->success) {
-                return view('parental-code', ['children' => $users->data]);
+                return view('parental-code', [
+                    'children' => $users->data,
+                    'for_youth' => session()->get('for_youth'),
+                    'current_user' => $user->data->user,
+                    'unread_notifications' => $notifications->data,
+                    'countries' => $countries->data,
+                    'api_client_manager' => $this::$api_client_manager,
+                ]);
 
             } else {
                 return redirect()->back()->with('error_message', $users->message);
             }
 
         } else {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+            Auth::logout();
 
             // Select a user API
             $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . $request->child_id);

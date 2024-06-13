@@ -867,6 +867,7 @@ return [
             'datas' => [
                 'return_link' => [
                     'film' => 'Voir tous les films',
+                    'cartoons' => 'Voir tous les dessins animés',
                     'episode' => 'Autres épisodes de la série',
                     'series' => 'Voir toutes les séries TV',
                     'song' => 'Autres chansons de l’album',

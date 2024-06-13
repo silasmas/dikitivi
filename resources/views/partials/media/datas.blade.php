@@ -11,6 +11,9 @@
         @case(__('miscellaneous.media_types.feature_film'))
                                 <a href="{{ route('films.home') }}" class="btn bg-transparent text-muted text-start rounded-0 shadow-0"><i class="bi bi-arrow-left me-3 fs-4 align-middle"></i>@lang('miscellaneous.public.media.datas.return_link.film')</a>
             @break
+        @case(__('miscellaneous.media_types.cartoons'))
+                                <a href="{{ route('cartoons.home') }}" class="btn bg-transparent text-muted text-start rounded-0 shadow-0"><i class="bi bi-arrow-left me-3 fs-4 align-middle"></i>@lang('miscellaneous.public.media.datas.return_link.cartoons')</a>
+            @break
         @case(__('miscellaneous.media_types.episode'))
 <?php
 if (!empty($current_media->belongs_to)) {

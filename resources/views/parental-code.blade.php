@@ -3,11 +3,11 @@
 @section('app-content')
 
                 <!-- Our-product-area Area  -->
-                <div class="movie-details-wrap section-pb-50">
+                <div class="movie-details-wrap {{ !empty($children) ? 'section-ptb-50' :'section-ptb-140' }}">
                     <div class="container-sm container-fluid">
                         <div class="row mb-3">
     @if (!empty($children))
-                            <div class="col-12">
+                            <div class="col-lg-10 mx-auto">
                                 <h4 class="h4 mb-4 text-muted text-center">@lang('auth.select-your-profile')</h4>
 
                                 <div class="row mb-4 g-2">
@@ -35,7 +35,7 @@
     @else
                             <div class="col-lg-6 col-sm-7 mx-auto">
                                 <div class="card border rounded-6 text-center shadow-0 overflow-hidden">
-                                    <div class="card-body pt-0 pb-4 px-0">
+                                    <div class="card-body">
                                         <h4 class="h4 mb-4">@lang('miscellaneous.login_title3')</h4>
 
                                         <form method="POST" action="{{ route('parental_code') }}">
@@ -47,6 +47,7 @@
                                                 <label for="login_parental_code">@lang('miscellaneous.parental_code')</label>
                                             </div>
 
+                                            <button type="submit" class="btn btn-block dktv-btn-green rounded-pill mb-4 shadow-0" style="text-transform: inherit!important;">@lang('miscellaneous.start')</button>
                                         </form>
                                     </div>
                                 </div>

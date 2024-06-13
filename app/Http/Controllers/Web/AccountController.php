@@ -243,6 +243,8 @@ class AccountController extends Controller
                         'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'api_client_manager' => $this::$api_client_manager,
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.account.parental_control'),
                     ]);
                 }
 
@@ -384,6 +386,8 @@ class AccountController extends Controller
 
             if ($entity == 'children') {
                 if (request()->has('id')) {
+                    // User age
+                    $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                     // Select a user API
                     $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
                     // Recently viewed medias API
@@ -403,6 +407,8 @@ class AccountController extends Controller
 
                 } else {
                     if (!empty($user->data->user->parental_code)) {
+                        // User age
+                        $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                         // All user children API
                         $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->id . '/' . $user->data->user->parental_code, $user->data->user->api_token);
 
@@ -417,6 +423,9 @@ class AccountController extends Controller
                         ]);
 
                     } else {
+                        // User age
+                        $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
@@ -433,6 +442,9 @@ class AccountController extends Controller
             if ($entity == 'videos') {
                 if (request()->has('act')) {
                     if (request()->get('act') == 'add') {
+                        // User age
+                        $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
@@ -444,6 +456,9 @@ class AccountController extends Controller
                     }
 
                     if (request()->get('act') == 'update') {
+                        // User age
+                        $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
@@ -455,6 +470,9 @@ class AccountController extends Controller
                     }
 
                 } else {
+                    // User age
+                    $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
