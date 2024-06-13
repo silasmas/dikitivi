@@ -1517,7 +1517,7 @@ class HomeController extends Controller
             if ($users->success) {
                 return view('parental-code', [
                     'children' => $users->data,
-                    'for_youth' => session()->get('for_youth'),
+                    'for_youth' => 0,
                     'current_user' => $user->data->user,
                     'unread_notifications' => $notifications->data,
                     'countries' => $countries->data,
@@ -1529,8 +1529,11 @@ class HomeController extends Controller
             }
 
         } else {
-            Auth::logout();
+            Auth::guard('web')->logout();
 
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+    
             // Select a user API
             $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . $request->child_id);
             // Authentication datas (E-mail or Phone number or rather username)
