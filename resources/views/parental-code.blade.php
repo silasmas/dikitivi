@@ -2,7 +2,12 @@
 
 @section('app-content')
 
+                <!-- Our-product-area Area  -->
+                <div class="movie-details-wrap section-pb-50">
+                    <div class="container-sm container-fluid">
+                        <div class="row mb-3">
     @if (!empty($children))
+                            <div class="col-12">
                                 <h4 class="h4 mb-4 text-muted text-center">@lang('auth.select-your-profile')</h4>
 
                                 <div class="row mb-4 g-2">
@@ -26,7 +31,9 @@
                                     </div>
         @endforeach
                                 </div>
+                            </div>
     @else
+                            <div class="col-lg-6 col-sm-7 mx-auto">
                                 <div class="card border rounded-6 text-center shadow-0 overflow-hidden">
                                     <div class="card-body pt-0 pb-4 px-0">
                                         <h4 class="h4 mb-4">@lang('miscellaneous.login_title3')</h4>
@@ -43,6 +50,10 @@
                                         </form>
                                     </div>
                                 </div>
+                            </div>
     @endif
+                        </div>
+                    </div>
+                </div>
 
 @endsection
