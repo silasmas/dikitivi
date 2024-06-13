@@ -27,12 +27,18 @@
 @else
                                     <div class="card-body text-center">
                                         <h5 class="mb-4">@lang('miscellaneous.empty_list')</h5>
+    @if ($for_youth == 1)
+                                        <a href="{{ route('home') }}" class="btn dktv-btn-green px-3 py-1 me-sm-2 mb-sm-0 mb-1 rounded-pill shadow-0">
+                                            <span class="zmdi zmdi-home me-3"></span>@lang('miscellaneous.back_home')
+                                        </a>
+    @else
                                         <a href="{{ route('home') }}" class="btn dktv-btn-yellow px-3 py-1 me-sm-2 mb-sm-0 mb-1 rounded-pill shadow-0">
                                             <span class="zmdi zmdi-home me-3"></span>@lang('miscellaneous.back_home')
                                         </a>
                                         <a href="{{ route('account.entity', ['entity' => 'videos']) }}" class="btn dktv-btn-pink px-3 py-1 rounded-pill shadow-0">
                                             <span class="zmdi zmdi-download me-3"></span>@lang('miscellaneous.account.my_videos')
                                         </a>
+    @endif
                                     </div>
 @endif
                                 </div>

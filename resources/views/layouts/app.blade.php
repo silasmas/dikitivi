@@ -465,10 +465,10 @@ if (request()->has('app_id')) {
                                                 <li class="single-list">
                                                     <a href="{{ route('account.entity', ['entity' => 'watchlist']) }}">@lang('miscellaneous.account.watchlist')</a>
                                                 </li>
+    @if ($for_youth != 1)
                                                 <li class="single-list">
                                                     <a href="{{ route('account.entity', ['entity' => 'videos']) }}">@lang('miscellaneous.account.my_videos')</a>
                                                 </li>
-    @if ($for_youth != 1)
                                                 <li class="single-list">
                                                     <a href="{{ route('account.entity', ['entity' => 'children']) }}">@lang('miscellaneous.account.parental_control')</a>
                                                 </li>

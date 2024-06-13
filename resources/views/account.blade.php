@@ -36,10 +36,10 @@
                                     <a href="{{ route('account.entity', ['entity' => 'watchlist']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'watchlist' ? ' active' : '' }}">
                                         <i class="bi bi-file-play me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.watchlist')
                                     </a>
+    @if ($for_youth != 1)
                                     <a href="{{ route('account.entity', ['entity' => 'videos']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'videos' ? ' active' : '' }}">
                                         <i class="bi bi-download me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.my_videos')
                                     </a>
-    @if ($for_youth != 1)
                                     <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="list-group-item list-group-item-action{{ !empty($entity) && $entity == 'children' ? ' active' : '' }}">
                                         <i class="bi bi-people me-3 fs-5 align-middle"></i>@lang('miscellaneous.account.child.title')
                                     </a>

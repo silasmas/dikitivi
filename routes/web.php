@@ -43,7 +43,7 @@ Route::get('/choose_age/{for_youth}', function (Request $request, $for_youth) {
 
             session()->put('for_youth', $for_youth);
 
-            return redirect('/');
+            return redirect('/login');
         }
 
     } else {
