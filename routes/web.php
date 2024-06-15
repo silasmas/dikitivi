@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 */
 // Generate symbolic link
 Route::get('/symlink', function () { return view('symlink'); })->name('generate_symlink');
+// Clear cache
+Route::get('/clear-cache', function() { $exitCode = Artisan::call('optimize:clear'); return redirect('/'); });
+// Count views/likes
 Route::get('/count', 'App\Http\Controllers\Web\HomeController@countActions')->name('count_actions');
 // Choose age
 Route::get('/choose_age/{for_youth}', function (Request $request, $for_youth) {

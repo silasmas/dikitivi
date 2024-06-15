@@ -158,14 +158,16 @@ class AccountController extends Controller
                             $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
                             // Recently viewed medias API
                             $viewed_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_viewed_medias/' . $child->data->user->id, $user->data->user->api_token);
+                            // Paginate result
+                            $paginate_result = paginate($viewed_medias->data, 12);
 
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
                                 'unread_notifications' => $notifications->data,
                                 'child' => $child->data->user,
-                                'viewed_medias' => $viewed_medias->data,
-                                'lastPage' => $viewed_medias->lastPage,
+                                'viewed_medias' => $paginate_result,
+                                'lastPage' => $paginate_result->lastPage(),
                                 'api_client_manager' => $this::$api_client_manager,
                                 'entity' => $entity,
                                 'entity_title' => __('miscellaneous.account.child.title'),
@@ -282,14 +284,16 @@ class AccountController extends Controller
                         $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
                         // Recently viewed medias API
                         $viewed_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_viewed_medias/' . $child->data->user->id, $user->data->user->api_token);
+                        // Paginate result
+                        $paginate_result = paginate($viewed_medias->data, 12);
 
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
                             'unread_notifications' => $notifications->data,
                             'child' => $child->data->user,
-                            'viewed_medias' => $viewed_medias->data,
-                            'lastPage' => $viewed_medias->lastPage,
+                            'viewed_medias' => $paginate_result,
+                            'lastPage' => $paginate_result->lastPage(),
                             'api_client_manager' => $this::$api_client_manager,
                             'entity' => $entity,
                             'entity_title' => __('miscellaneous.account.child.title'),
@@ -394,14 +398,16 @@ class AccountController extends Controller
                     $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
                     // Recently viewed medias API
                     $viewed_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_viewed_medias/' . $child->data->user->id, $user->data->user->api_token);
+                    // Paginate result
+                    $paginate_result = paginate($viewed_medias->data, 12);
 
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
                         'unread_notifications' => $notifications->data,
                         'child' => $child->data->user,
-                        'viewed_medias' => $viewed_medias->data,
-                        'lastPage' => $viewed_medias->lastPage,
+                        'viewed_medias' => $paginate_result,
+                        'lastPage' => $paginate_result->lastPage(),
                         'api_client_manager' => $this::$api_client_manager,
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.account.child.title'),
