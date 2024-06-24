@@ -19,7 +19,7 @@ if (!function_exists('getWebURL')) {
 if (!function_exists('getApiURL')) {
     function getApiURL()
     {
-        return 'https://apidikitivi.jptshienda.com/api';
+        return 'https://api.dikitivi.com/api';
     }
 }
 
