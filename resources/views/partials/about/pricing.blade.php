@@ -63,14 +63,14 @@
 										</div>
 									</div>
 
-									<!--div class="mb-3">
-										<label for="media_url" class="form-label mb-0">Upload video <i role="button" class="bi bi-question-circle" title="Upload the video" data-bs-toggle="tooltip"></i></label>
-										<input type="file" name="media_url" id="media_url" class="form-control" />
-									</div-->
-
 									<div class="mb-3">
 										<label for="media_url" class="form-label mb-0">Video URL (YouTube or other)</label>
 										<input type="text" name="media_url" id="media_url" class="form-control" placeholder="Video URL (YouTube or other)" value="{{ !empty($current_media) ? $current_media->media_url : '' }}">
+									</div>
+
+									<div class="mb-3">
+										<label for="media_file_url" class="form-label mb-0">Upload video <i role="button" class="bi bi-question-circle" title="Upload the video" data-bs-toggle="tooltip"></i></label>
+										<input type="file" name="media_file_url" id="media_file_url" class="form-control" />
 									</div>
 
 									<div class="mb-3">
@@ -164,7 +164,7 @@
 										</div>
 									</div>
 
-									<p class="text-center"></p>
+									<div class="d-flex justify-content-center mt-5 text-center request-message"></div>
 								</form>
 							</div>
 						</div>

@@ -395,34 +395,57 @@
         <!-- Custom JS -->
         <script type="text/javascript">
             $(document).ready(function () {
-				/* Register form-data */
+                const navigator = window.navigator;
+                const currentLanguage = $('html').attr('lang');
+                const currentUser = $('[name="dktv-visitor"]').attr('content');
+                const currentHost = $('[name="dktv-url"]').attr('content');
+                const apiHost = $('[name="dktv-api-url"]').attr('content');
+
+                /* Register form-data */
 				$('form#data').submit(function (e) {
 					e.preventDefault();
 
-					var formData = $(this).serializeArray();
-					var urlPost = $('meta[name="dktv-api-url"]').attr('content') + '/media';
-					var urlPut = $('meta[name="dktv-api-url"]').attr('content') + '/media/' + $('input[name="id"]').val();
+                    var formData = new FormData(this);
+                    var categories = [];
 
-					$.ajax({
-						headers: { 'Authorization': 'Bearer 227|fUTn1tx9ziTvK3GZgDWjdUPxhUKOneptwmmh9YPJ9c14bac5', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
-						type: $('input[name="id"]').val() === undefined ? 'POST' : 'PUT',
+                    document.querySelectorAll('[name="categories_ids"]').forEach(item => {
+                        if (item.checked === true) {
+                            categories.push(parseInt(item.value));
+                        }
+                    });
+
+                    for (let i = 0; i < categories.length; i++) {
+                        formData.append('categories_ids[' + i + ']', categories[i]);
+                    }
+
+                    $.ajax({
+						headers: { 'Authorization': 'Bearer 500|5cCJNuu1AhHSSUxzKWxtMbTItwizA4kLKRtiF6Dg69d3a1e5', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
+						type: 'POST',
 						contentType: 'multipart/form-data',
-						url: $('input[name="id"]').val() === undefined ? urlPost : urlPut,
+						url: apiHost + '/media',
 						data: formData,
 						beforeSend: function () {
-							$('#data p').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
+							$('form#data .request-message').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
 						},
 						success: function (res) {
-							$('#data p').addClass('text-success').html(res.message);
-						},
-						complete: function() {
+                            if ($('form#data .request-message').hasClass('text-danger')) {
+                                $('form#data .request-message').removeClass('text-danger');
+                            }
+
+							$('form#data .request-message').addClass('text-success').html(res.message);
+
+                            document.getElementById('workData').reset();
 							location.reload();
-						},
-						// cache: false,
-						// contentType: false,
-						// processData: false,
+                        },
+						cache: false,
+						contentType: false,
+						processData: false,
 						error: function (xhr, error, status_description) {
-							$('#data p').addClass('text-danger').html(xhr.responseJSON.message + ' : ' + xhr.responseJSON.error);
+                            if ($('form#data .request-message').hasClass('text-success')) {
+                                $('form#data .request-message').removeClass('text-success');
+                            }
+
+                            $('form#data .request-message').addClass('text-danger').html(xhr.responseJSON.message);
 							console.log(xhr.responseJSON);
 							console.log(xhr.status);
 							console.log(error);
