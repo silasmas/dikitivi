@@ -447,62 +447,12 @@
 
                             // $('form#data .request-message').addClass('text-danger').html(xhr.responseJSON.message);
 							// console.log(xhr.responseJSON);
+							console.log(xhr.response.message);
 							console.log(xhr.status);
 							console.log(error);
 							console.log(status_description);
 						}
 					});
-				});
-
-					// e.preventDefault();
-
-                    // var formData = new FormData(this);
-                    // var categories = [];
-
-                    // document.querySelectorAll('[name="categories_ids"]').forEach(item => {
-                    //     if (item.checked === true) {
-                    //         categories.push(parseInt(item.value));
-                    //     }
-                    // });
-
-                    // for (let i = 0; i < categories.length; i++) {
-                    //     formData.append('categories_ids[' + i + ']', categories[i]);
-                    // }
-
-                    // $.ajax({
-					// 	headers: { 'Authorization': 'Bearer 23|fEmzaqAOGb6ld8Cej6NMU0VdXl3UISFkMDhoMLPp1754add6', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
-					// 	type: 'POST',
-					// 	contentType: 'multipart/form-data',
-					// 	url: apiHost + '/media',
-					// 	data: formData,
-					// 	beforeSend: function () {
-					// 		$('form#data .request-message').html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>');
-					// 	},
-					// 	success: function (res) {
-                    //         if ($('form#data .request-message').hasClass('text-danger')) {
-                    //             $('form#data .request-message').removeClass('text-danger');
-                    //         }
-
-					// 		$('form#data .request-message').addClass('text-success').html(res.message);
-
-                    //         document.getElementById('workData').reset();
-					// 		location.reload();
-                    //     },
-					// 	cache: false,
-					// 	contentType: false,
-					// 	processData: false,
-					// 	error: function (xhr, error, status_description) {
-                    //         if ($('form#data .request-message').hasClass('text-success')) {
-                    //             $('form#data .request-message').removeClass('text-success');
-                    //         }
-
-                    //         // $('form#data .request-message').addClass('text-danger').html(xhr.responseJSON.message);
-					// 		console.log(xhr);
-					// 		console.log(xhr.status);
-					// 		console.log(error);
-					// 		console.log(status_description);
-					// 	}
-					// });
 				});
 
                 /* On select change, update de country phone code */
