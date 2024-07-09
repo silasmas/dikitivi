@@ -22,7 +22,7 @@
 							</div>
 
 							<div class="card-body">
-								<form id="data" method="post" enctype="multipart/form-data">
+								<form id="data">
 @csrf
 @if (!empty($current_media))
 									<input type="hidden" name="id" id="id" value="{{ $current_media->id }}">

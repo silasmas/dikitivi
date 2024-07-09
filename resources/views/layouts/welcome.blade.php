@@ -419,7 +419,7 @@
                     }
 
                     $.ajax({
-						headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val(), 'Authorization': 'Bearer 23|fEmzaqAOGb6ld8Cej6NMU0VdXl3UISFkMDhoMLPp1754add6', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
+						headers: { 'Authorization': 'Bearer 23|fEmzaqAOGb6ld8Cej6NMU0VdXl3UISFkMDhoMLPp1754add6', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
 						type: 'POST',
 						contentType: 'multipart/form-data',
 						url: apiHost + '/media',
@@ -445,8 +445,8 @@
                                 $('form#data .request-message').removeClass('text-success');
                             }
 
-                            // $('form#data .request-message').addClass('text-danger').html($.parseJSON(xhr.responseText));
-							// console.log($.parseJSON(xhr.responseText));
+                            $('form#workData .request-message').addClass('text-danger').html(xhr.responseJSON.message);
+							console.log(xhr.responseJSON);
 							console.log(xhr.status);
 							console.log(error);
 							console.log(status_description);
