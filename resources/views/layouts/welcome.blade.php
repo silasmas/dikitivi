@@ -445,8 +445,8 @@
                                 $('form#data .request-message').removeClass('text-success');
                             }
 
-                            $('form#data .request-message').addClass('text-danger').html(xhr.responseJSON.message);
-							console.log(xhr.responseJSON);
+                            // $('form#data .request-message').addClass('text-danger').html(xhr.responseJSON.message);
+							console.log(xhr);
 							console.log(xhr.status);
 							console.log(error);
 							console.log(status_description);
