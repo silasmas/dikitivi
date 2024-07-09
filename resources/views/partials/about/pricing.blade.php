@@ -15,7 +15,7 @@
                 <hr class="mt-4 mb-5">
 
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
 						<div class="card border rounded-5 overflow-hidden shadow-0">
 							<div class="card-header py-3">
 								<h3 class="mb-0 text-center fw-bold">Add/Update a media</h3>
@@ -23,7 +23,6 @@
 
 							<div class="card-body">
 								<form id="data" method="post" enctype="multipart/form-data">
-@csrf
 @if (!empty($current_media))
 									<input type="hidden" name="id" id="id" value="{{ $current_media->id }}">
 @endif
@@ -170,7 +169,7 @@
 							</div>
 						</div>
                     </div>
-					<div class="col-sm-6">
+					<div class="col-lg-6">
 						<div class="card border rounded-5 overflow-hidden shadow-0">
 							<div class="card-header border-bottom border-default bg-light py-3">
 								<h3 class="mb-0 text-center fw-bold">Medias list</h3>
