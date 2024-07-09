@@ -418,8 +418,8 @@
                         formData.append('categories_ids[' + i + ']', categories[i]);
                     }
 
-                    $.ajax({
-						headers: { 'Authorization': 'Bearer 23|fEmzaqAOGb6ld8Cej6NMU0VdXl3UISFkMDhoMLPp1754add6', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
+                    $.ajaxSetup({
+						headers: { 'X-CSRF-TOKEN': $('input[name="_token"]').val(), 'Authorization': 'Bearer 23|fEmzaqAOGb6ld8Cej6NMU0VdXl3UISFkMDhoMLPp1754add6', 'Accept': 'multipart/form-data', 'X-localization': navigator.language },
 						type: 'POST',
 						contentType: 'multipart/form-data',
 						url: apiHost + '/media',
