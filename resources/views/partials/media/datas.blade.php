@@ -68,9 +68,15 @@ if (!empty($current_media->belongs_to)) {
 
     @if ($current_media->type->type_name != __('miscellaneous.media_types.tv_series') && $current_media->type->type_name != __('miscellaneous.media_types.music_album'))
         @if (!empty($current_media->media_url))
+            @if ($current_media->source == 'AWS')
+                                <div class="ratio ratio-16x9 bg-dark">
+                                    <video src="{{ $current_media->media_url }}" loop controls class="hover-to-play w-100"></video>
+                                </div>
+            @else
                                 <div class="ratio ratio-16x9">
                                     <iframe src="{{ $current_media->media_url }}?rel=0" allowfullscreen frameborder="0"></iframe>
                                 </div>
+            @endif
         @else
                                 <div class="bg-image">
                                     <img src="{{ !empty($current_media->cover_url) ? $current_media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $current_media->media_title }}" class="w-100 rounded-4">
