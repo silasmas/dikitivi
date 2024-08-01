@@ -1,3 +1,4 @@
+<?php $lastPage = $lastPage_films ?>
 @extends('layouts.app')
 
 @section('app-content')

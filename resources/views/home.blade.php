@@ -1,3 +1,4 @@
+<?php $slides_data = array_merge((array_slice($lives, 0, 2)), (array_slice($series, 0, 2)), (array_slice($albums, 0, 2))) ?>
 @extends('layouts.app')
 
 @section('app-content')

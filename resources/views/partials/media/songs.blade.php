@@ -1,3 +1,4 @@
+<?php $lastPage = $lastPage_songs ?>
 @extends('layouts.app')
 
 @section('app-content')

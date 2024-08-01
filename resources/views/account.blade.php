@@ -1,3 +1,7 @@
+<?php 
+$watchlist = paginate($watchlist->orders, 7);
+$lastPage = $watchlist->lastPage(); 
+?>
 @extends('layouts.app')
 
 @section('app-content')

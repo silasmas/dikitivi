@@ -1,3 +1,4 @@
+<?php $lastPage = $lastPage_series ?>
 @extends('layouts.app')
 
 @section('app-content')

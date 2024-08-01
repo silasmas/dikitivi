@@ -20,8 +20,6 @@ class AccountController extends Controller
         $this::$api_client_manager = new ApiClientManager();
 
         $this->middleware('auth');
-
-        clearstatcache();
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -32,13 +30,8 @@ class AccountController extends Controller
      */
     public function account()
     {
-        // Select a status by name API
-        $unread_status_name = 'Non lue';
-        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
         // Select a user API
         $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
-        // Select all unread notifications API
-        $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
         // Select all countries API
         $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
@@ -51,9 +44,7 @@ class AccountController extends Controller
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'unread_notifications' => $notifications->data,
-                        'countries' => $countries->data,
-                        'api_client_manager' => $this::$api_client_manager,
+                        'countries' => $countries->data
                     ]);
 
                 } else {
@@ -62,9 +53,7 @@ class AccountController extends Controller
 
                     return view('parental-code', [
                         'for_youth' => $for_youth,
-                        'current_user' => $user->data->user,
-                        'unread_notifications' => $notifications->data,
-                        'api_client_manager' => $this::$api_client_manager,
+                        'current_user' => $user->data->user
                     ]);
                 }
 
@@ -73,17 +62,13 @@ class AccountController extends Controller
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-                // Select all unread notifications API
-                $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
                 // Select all countries API
                 $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
                 return view('account', [
                     'for_youth' => $for_youth,
                     'current_user' => $user->data->user,
-                    'unread_notifications' => $notifications->data,
-                    'countries' => $countries->data,
-                    'api_client_manager' => $this::$api_client_manager,
+                    'countries' => $countries->data
                 ]);
             }
 
@@ -92,17 +77,13 @@ class AccountController extends Controller
             $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
             // User age
             $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-            // Select all unread notifications API
-            $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
             // Select all countries API
             $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
             return view('account', [
                 'for_youth' => $for_youth,
                 'current_user' => $user->data->user,
-                'unread_notifications' => $notifications->data,
-                'countries' => $countries->data,
-                'api_client_manager' => $this::$api_client_manager,
+                'countries' => $countries->data
             ]);
         }
     }
@@ -115,14 +96,8 @@ class AccountController extends Controller
      */
     public function accountEntity($entity)
     {
-        // Select a status by name API
-        $unread_status_name = 'Non lue';
-        $unread_status = $this::$api_client_manager::call('GET', getApiURL() . '/status/search/fr/' . $unread_status_name);
-
         // Select a user API
         $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
-        // Select all unread notifications API
-        $notifications = $this::$api_client_manager::call('GET', getApiURL() . '/notification/select_by_status_user/' . $unread_status->data->id . '/' . $user->data->user->id, $user->data->user->api_token);
 
         if (session()->has('for_youth')) {
             if (session()->get('for_youth') == 1) {
@@ -131,24 +106,11 @@ class AccountController extends Controller
                     $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
 
                     if ($entity == 'watchlist') {
-                        // Select a type by name API
-                        $watchlist_type_name = 'Watchlist';
-                        $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
-                        // All user carts by type (Watchlist) API
-                        $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . $user->data->user->id . '/' . $watchlist_type->data->id, $user->data->user->api_token);
-                        // Paginate result
-                        $paginate_result = paginate($user_watchlist->data->orders, 7);
-
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'unread_notifications' => $notifications->data,
-                            'watchlist_id' => $user_watchlist->data->id,
-                            'watchlist' => $paginate_result,
-                            'lastPage' => $paginate_result->lastPage(),
-                            'api_client_manager' => $this::$api_client_manager,
                             'entity' => $entity,
-                            'entity_title' => __('miscellaneous.account.watchlist'),
+                            'entity_title' => __('miscellaneous.account.watchlist')
                         ]);
                     }
 
@@ -164,13 +126,11 @@ class AccountController extends Controller
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'unread_notifications' => $notifications->data,
                                 'child' => $child->data->user,
                                 'viewed_medias' => $paginate_result,
                                 'lastPage' => $paginate_result->lastPage(),
-                                'api_client_manager' => $this::$api_client_manager,
                                 'entity' => $entity,
-                                'entity_title' => __('miscellaneous.account.child.title'),
+                                'entity_title' => __('miscellaneous.account.child.title')
                             ]);
 
                         } else {
@@ -181,22 +141,18 @@ class AccountController extends Controller
                                 return view('account', [
                                     'for_youth' => $for_youth,
                                     'current_user' => $user->data->user,
-                                    'unread_notifications' => $notifications->data,
-                                    'api_client_manager' => $this::$api_client_manager,
                                     'children' => $children->data,
                                     'entity' => $entity,
-                                    'entity_title' => __('miscellaneous.account.child.title'),
+                                    'entity_title' => __('miscellaneous.account.child.title')
                                 ]);
 
                             } else {
                                 return view('account', [
                                     'for_youth' => $for_youth,
                                     'current_user' => $user->data->user,
-                                    'unread_notifications' => $notifications->data,
-                                    'api_client_manager' => $this::$api_client_manager,
                                     'children' => [],
                                     'entity' => $entity,
-                                    'entity_title' => __('miscellaneous.account.child.title'),
+                                    'entity_title' => __('miscellaneous.account.child.title')
                                 ]);
                             }
                         }
@@ -208,10 +164,8 @@ class AccountController extends Controller
                                 return view('account', [
                                     'for_youth' => $for_youth,
                                     'current_user' => $user->data->user,
-                                    'unread_notifications' => $notifications->data,
-                                    'api_client_manager' => $this::$api_client_manager,
                                     'entity' => $entity,
-                                    'entity_title' => __('miscellaneous.account.my_videos'),
+                                    'entity_title' => __('miscellaneous.account.my_videos')
                                 ]);
                             }
 
@@ -219,8 +173,6 @@ class AccountController extends Controller
                                 return view('account', [
                                     'for_youth' => $for_youth,
                                     'current_user' => $user->data->user,
-                                    'unread_notifications' => $notifications->data,
-                                    'api_client_manager' => $this::$api_client_manager,
                                     'entity' => $entity,
                                     'entity_title' => __('miscellaneous.account.my_videos'),
                                 ]);
@@ -230,10 +182,8 @@ class AccountController extends Controller
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'unread_notifications' => $notifications->data,
-                                'api_client_manager' => $this::$api_client_manager,
                                 'entity' => $entity,
-                                'entity_title' => __('miscellaneous.account.my_videos'),
+                                'entity_title' => __('miscellaneous.account.my_videos')
                             ]);
                         }
                     }
@@ -245,10 +195,8 @@ class AccountController extends Controller
                     return view('parental-code', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'unread_notifications' => $notifications->data,
-                        'api_client_manager' => $this::$api_client_manager,
                         'entity' => $entity,
-                        'entity_title' => __('miscellaneous.account.parental_control'),
+                        'entity_title' => __('miscellaneous.account.parental_control')
                     ]);
                 }
 
@@ -257,24 +205,11 @@ class AccountController extends Controller
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
 
                 if ($entity == 'watchlist') {
-                    // Select a type by name API
-                    $watchlist_type_name = 'Watchlist';
-                    $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
-                    // All user carts by type (Watchlist) API
-                    $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . $user->data->user->id . '/' . $watchlist_type->data->id, $user->data->user->api_token);
-                    // Paginate result
-                    $paginate_result = paginate($user_watchlist->data->orders, 7);
-
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'unread_notifications' => $notifications->data,
-                        'watchlist_id' => $user_watchlist->data->id,
-                        'watchlist' => $paginate_result,
-                        'lastPage' => $paginate_result->lastPage(),
-                        'api_client_manager' => $this::$api_client_manager,
                         'entity' => $entity,
-                        'entity_title' => __('miscellaneous.account.watchlist'),
+                        'entity_title' => __('miscellaneous.account.watchlist')
                     ]);
                 }
 
@@ -290,13 +225,11 @@ class AccountController extends Controller
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'unread_notifications' => $notifications->data,
                             'child' => $child->data->user,
                             'viewed_medias' => $paginate_result,
                             'lastPage' => $paginate_result->lastPage(),
-                            'api_client_manager' => $this::$api_client_manager,
                             'entity' => $entity,
-                            'entity_title' => __('miscellaneous.account.child.title'),
+                            'entity_title' => __('miscellaneous.account.child.title')
                         ]);
 
                     } else {
@@ -307,22 +240,18 @@ class AccountController extends Controller
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'unread_notifications' => $notifications->data,
-                                'api_client_manager' => $this::$api_client_manager,
                                 'children' => $children->data,
                                 'entity' => $entity,
-                                'entity_title' => __('miscellaneous.account.child.title'),
+                                'entity_title' => __('miscellaneous.account.child.title')
                             ]);
 
                         } else {
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'unread_notifications' => $notifications->data,
-                                'api_client_manager' => $this::$api_client_manager,
                                 'children' => [],
                                 'entity' => $entity,
-                                'entity_title' => __('miscellaneous.account.child.title'),
+                                'entity_title' => __('miscellaneous.account.child.title')
                             ]);
                         }
                     }
@@ -334,10 +263,8 @@ class AccountController extends Controller
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'unread_notifications' => $notifications->data,
-                                'api_client_manager' => $this::$api_client_manager,
                                 'entity' => $entity,
-                                'entity_title' => __('miscellaneous.account.my_videos'),
+                                'entity_title' => __('miscellaneous.account.my_videos')
                             ]);
                         }
 
@@ -345,10 +272,8 @@ class AccountController extends Controller
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'unread_notifications' => $notifications->data,
-                                'api_client_manager' => $this::$api_client_manager,
                                 'entity' => $entity,
-                                'entity_title' => __('miscellaneous.account.my_videos'),
+                                'entity_title' => __('miscellaneous.account.my_videos')
                             ]);
                         }
 
@@ -356,10 +281,8 @@ class AccountController extends Controller
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'unread_notifications' => $notifications->data,
-                            'api_client_manager' => $this::$api_client_manager,
                             'entity' => $entity,
-                            'entity_title' => __('miscellaneous.account.my_videos'),
+                            'entity_title' => __('miscellaneous.account.my_videos')
                         ]);
                     }
                 }
@@ -369,24 +292,12 @@ class AccountController extends Controller
             if ($entity == 'watchlist') {
                 // User age
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-                // Select a type by name API
-                $watchlist_type_name = 'Watchlist';
-                $watchlist_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $watchlist_type_name);
-                // All user carts by type (Watchlist) API
-                $user_watchlist = $this::$api_client_manager::call('GET', getApiURL() . '/cart/find_by_type/' . $user->data->user->id . '/' . $watchlist_type->data->id, $user->data->user->api_token);
-                // Paginate result
-                $paginate_result = paginate($user_watchlist->data->orders, 7);
 
                 return view('account', [
                     'for_youth' => $for_youth,
                     'current_user' => $user->data->user,
-                    'unread_notifications' => $notifications->data,
-                    'watchlist_id' => $user_watchlist->data->id,
-                    'watchlist' => $paginate_result,
-                    'lastPage' => $paginate_result->lastPage(),
-                    'api_client_manager' => $this::$api_client_manager,
                     'entity' => $entity,
-                    'entity_title' => __('miscellaneous.account.watchlist'),
+                    'entity_title' => __('miscellaneous.account.watchlist')
                 ]);
             }
 
@@ -404,13 +315,11 @@ class AccountController extends Controller
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'unread_notifications' => $notifications->data,
                         'child' => $child->data->user,
                         'viewed_medias' => $paginate_result,
                         'lastPage' => $paginate_result->lastPage(),
-                        'api_client_manager' => $this::$api_client_manager,
                         'entity' => $entity,
-                        'entity_title' => __('miscellaneous.account.child.title'),
+                        'entity_title' => __('miscellaneous.account.child.title')
                     ]);
 
                 } else {
@@ -423,11 +332,9 @@ class AccountController extends Controller
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'unread_notifications' => $notifications->data,
-                            'api_client_manager' => $this::$api_client_manager,
                             'children' => $children->data,
                             'entity' => $entity,
-                            'entity_title' => __('miscellaneous.account.child.title'),
+                            'entity_title' => __('miscellaneous.account.child.title')
                         ]);
 
                     } else {
@@ -437,11 +344,9 @@ class AccountController extends Controller
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'unread_notifications' => $notifications->data,
-                            'api_client_manager' => $this::$api_client_manager,
                             'children' => [],
                             'entity' => $entity,
-                            'entity_title' => __('miscellaneous.account.child.title'),
+                            'entity_title' => __('miscellaneous.account.child.title')
                         ]);
                     }
                 }
@@ -456,10 +361,8 @@ class AccountController extends Controller
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'unread_notifications' => $notifications->data,
-                            'api_client_manager' => $this::$api_client_manager,
                             'entity' => $entity,
-                            'entity_title' => __('miscellaneous.account.my_videos'),
+                            'entity_title' => __('miscellaneous.account.my_videos')
                         ]);
                     }
 
@@ -470,10 +373,8 @@ class AccountController extends Controller
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'unread_notifications' => $notifications->data,
-                            'api_client_manager' => $this::$api_client_manager,
                             'entity' => $entity,
-                            'entity_title' => __('miscellaneous.account.my_videos'),
+                            'entity_title' => __('miscellaneous.account.my_videos')
                         ]);
                     }
 
@@ -484,10 +385,8 @@ class AccountController extends Controller
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'unread_notifications' => $notifications->data,
-                        'api_client_manager' => $this::$api_client_manager,
                         'entity' => $entity,
-                        'entity_title' => __('miscellaneous.account.my_videos'),
+                        'entity_title' => __('miscellaneous.account.my_videos')
                     ]);
                 }
             }
