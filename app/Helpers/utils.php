@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Xanders
  * @see https://www.linkedin.com/in/xanders-samoth-b2770737/
@@ -66,7 +67,7 @@ if (!function_exists('deleteExplodedArrayItem')) {
         $explodes = explode($separator, $subject);
         $clean_inventory = array();
 
-        foreach($explodes as $explode) {
+        foreach ($explodes as $explode) {
             if (!isset($clean_inventory[$explode])) {
                 $clean_inventory[$explode] = 0;
             }
@@ -99,7 +100,7 @@ if (!function_exists('addItemsToExplodedArray')) {
 }
 
 // Friendly username from names
-if (!function_exists("friendlyUsername")) {
+if (!function_exists('friendlyUsername')) {
     function friendlyUsername($str)
     {
         // convert to entities
@@ -115,6 +116,33 @@ if (!function_exists("friendlyUsername")) {
         $string = strtolower($string);
 
         return $string;
+    }
+}
+
+// Convert Array to Object
+if (!function_exists('prepare_array_to_obj')) {
+    function prepare_array_to_obj($array, &$obj)
+    {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $obj->$key = new stdClass();
+                prepare_array_to_obj($value, $obj->$key);
+
+            } else {
+                $obj->$key = $value;
+            }
+        }
+
+        return $obj;
+    }
+}
+
+if (!function_exists('array_to_obj')) {
+    function array_to_obj($array)
+    {
+        $object = new stdClass();
+
+        return prepare_array_to_obj($array, $object);
     }
 }
 
