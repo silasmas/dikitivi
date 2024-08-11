@@ -244,8 +244,6 @@ class AppServiceProvider extends ServiceProvider
             $medias_lives_home = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->get();
             $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
 
-            dd(ResourcesMedia::collection($medias_series_home));
-
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs) {
                 $view->with('programs', $medias_programs);
@@ -256,19 +254,19 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_films', $medias_films->lastPage());
             });
             View::composer(['home', 'partials.media.series'], function ($view) use ($medias_series_home, $medias_series) {
-                $view->with('series_home', ResourcesMedia::collection($medias_series_home)->toJson());
+                $view->with('series_home', ResourcesMedia::collection($medias_series_home)->toArray(request()));
                 $view->with('series', $medias_series);
                 $view->with('lastPage_series', $medias_series->lastPage());
             });
             View::composer(['home', 'partials.media.songs'], function ($view) use ($medias_albums_home, $medias_albums, $medias_songs) {
-                $view->with('albums_home', ResourcesMedia::collection($medias_albums_home)->toJson());
+                $view->with('albums_home', ResourcesMedia::collection($medias_albums_home)->toArray(request()));
                 $view->with('albums', $medias_albums);
                 $view->with('songs', $medias_songs);
                 $view->with('lastPage_songs', $medias_songs->lastPage());
             });
             View::composer(['home', 'partials.media.live'], function ($view) use ($medias_lives_home, $medias_trends, $medias_lives) {
                 $view->with('trends', $medias_trends);
-                $view->with('lives_home', ResourcesMedia::collection($medias_lives_home)->toJson());
+                $view->with('lives_home', ResourcesMedia::collection($medias_lives_home)->toArray(request()));
                 $view->with('lives', $medias_lives);
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
