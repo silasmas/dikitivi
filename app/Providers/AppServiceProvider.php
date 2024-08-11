@@ -235,7 +235,7 @@ class AppServiceProvider extends ServiceProvider
             // -- FILMS
             $medias_films = Media::where([['for_youth', $for_youth], ['type_id', 3]])->orderByDesc('created_at')->paginate(12);
             // -- CARTOONS
-            $medias_cartoons = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 19]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 19)->orderByDesc('created_at')->paginate(12);
+            $medias_cartoons = Media::where([['for_youth', $for_youth], ['type_id', 19]])->orderByDesc('created_at')->paginate(12);
             // -- SERIES
             $medias_series = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->paginate(12);
             // -- SONGS

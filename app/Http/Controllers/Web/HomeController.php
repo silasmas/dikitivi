@@ -410,10 +410,6 @@ class HomeController extends Controller
      */
     public function cartoons(Request $request)
     {
-        // Select a media by type API
-        $cartoon_type_name = 'Dessins animés';
-        $cartoon_type = $this::$api_client_manager::call('GET', getApiURL() . '/type/search/fr/' . $cartoon_type_name);
-
         if (session()->has('for_youth')) {
             if (session()->get('for_youth') == 1) {
                 if (Auth::check()) {
@@ -422,14 +418,10 @@ class HomeController extends Controller
 
                     if ($user->data->user->age < 18) {
                         $for_youth = session()->get('for_youth');
-                        // Select medias by type API
-                        $medias_cartoons = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $cartoon_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), $user->data->user->id);
 
                         return view('partials.media.cartoons', [
                             'for_youth' => $for_youth,
-                            'current_user' => $user->data->user,
-                            'cartoons' => $medias_cartoons->data,
-                            'lastPage' => $medias_cartoons->lastPage
+                            'current_user' => $user->data->user
                         ]);
 
                     } else {
@@ -443,13 +435,8 @@ class HomeController extends Controller
                     }
 
                 } else {
-                    // Select medias by type API
-                    $medias_cartoons = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . session()->get('for_youth') . '/' . $cartoon_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip());
-
                     return view('partials.media.cartoons', [
-                        'for_youth' => session()->get('for_youth'),
-                        'cartoons' => $medias_cartoons->data,
-                        'lastPage' => $medias_cartoons->lastPage
+                        'for_youth' => session()->get('for_youth')
                     ]);
                 }
 
@@ -459,14 +446,10 @@ class HomeController extends Controller
                     $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                     // User age
                     $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-                    // Select medias by type API
-                    $medias_cartoons = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $cartoon_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), $user->data->user->id);
 
                     return view('partials.media.cartoons', [
                         'for_youth' => $for_youth,
-                        'current_user' => $user->data->user,
-                        'cartoons' => $medias_cartoons->data,
-                        'lastPage' => $medias_cartoons->lastPage
+                        'current_user' => $user->data->user
                     ]);
 
                 } else {
@@ -480,14 +463,10 @@ class HomeController extends Controller
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-                // Select medias by type API
-                $medias_cartoons = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_age_type/' . $for_youth . '/' . $cartoon_type->data->id . '?page=' . $request->get('page'), null, null, $request->ip(), $user->data->user->id);
 
                 return view('partials.media.cartoons', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data->user,
-                    'cartoons' => $medias_cartoons->data,
-                    'lastPage' => $medias_cartoons->lastPage
+                    'current_user' => $user->data->user
                 ]);
 
             } else {
