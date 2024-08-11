@@ -4,10 +4,7 @@ namespace App\Providers;
 
 use App\Http\Controllers\ApiClientManager;
 use App\Http\Resources\Media as ResourcesMedia;
-use App\Http\Resources\Notification as ResourcesNotification;
-use App\Models\Cart;
 use App\Models\Media;
-use App\Models\Notification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -177,15 +174,6 @@ class AppServiceProvider extends ServiceProvider
             $medias_trends = $for_youth == 1 ? Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get() : Media::whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
             // Select media lives
             $medias_lives = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12) : Media::where([['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
-            // Select user watchlist
-            $user_watchlist = Cart::where([['user_id', Auth::user()->id], ['type_id', 14]])->first();
-
-            if (is_null($user_watchlist)) {
-                $user_watchlist = Cart::create([
-                    'type_id' => 14,
-                    'user_id' => Auth::user()->id
-                ]);
-            }
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
@@ -217,11 +205,9 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
-            view()->composer('*', function ($view) use ($user_watchlist) {
+            view()->composer('*', function ($view) {
                 $view->with('current_locale', app()->getLocale());
                 $view->with('available_locales', config('app.available_locales'));
-                $view->with('watchlist', $user_watchlist);
-                $view->with('watchlist_id', $user_watchlist->id);
             });
 
         } else {

@@ -1,5 +1,5 @@
 <?php 
-$watchlist = paginate($watchlist->orders, 7);
+$watchlist = paginate($current_user->watchlist->orders, 7);
 $lastPage = $watchlist->lastPage(); 
 ?>
 @extends('layouts.app')
