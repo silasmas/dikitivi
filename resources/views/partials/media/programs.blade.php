@@ -1,10 +1,10 @@
-<?php $lastPage = $lastPage_programs ?>
 @extends('layouts.app')
 
 @section('app-content')
 
     @if (!empty($entity))
         @if ($entity == 'preach')
+<?php $lastPage = $lastPage_preachs ?>
             @if (count($preachs) > 0)
                 <!-- slider area start -->
                 <div class="slider-area bg-black">
@@ -77,6 +77,7 @@
                 <!--// movies list end  -->
         @endif
     @else
+<?php $lastPage = $lastPage_programs ?>
         @if (count($programs) > 0)
                 <!-- slider area start -->
                 <div class="slider-area bg-black">
