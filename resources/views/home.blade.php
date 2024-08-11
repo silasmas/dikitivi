@@ -7,7 +7,7 @@
                 <div class="hero-slider hero-slider-three">
     @if (count($slides_data) > 0)
         @foreach ($slides_data as $media)
-{{ dd($media['id']) }}
+{{ dd($media['type']->type_name) }}
                     <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $media->cover_url }}">
                         <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
                         <!-- Hero Content One Start -->
