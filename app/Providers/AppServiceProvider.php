@@ -170,7 +170,7 @@ class AppServiceProvider extends ServiceProvider
             // -- SONGS
             $medias_songs = Media::where([['for_youth', $for_youth], ['type_id', 8]])->orderByDesc('created_at')->paginate(12);
             // -- ALBUMS
-            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get(1);
+            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get();
             $medias_albums = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->paginate(12);
             // Select media trends
             $medias_trends = Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
@@ -235,7 +235,7 @@ class AppServiceProvider extends ServiceProvider
             // -- SONGS
             $medias_songs = Media::where([['for_youth', $for_youth], ['type_id', 8]])->orderByDesc('created_at')->paginate(12);
             // -- ALBUMS
-            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get(1);
+            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get();
             $medias_albums = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->paginate(12);
             // Select media trends API
             $medias_trends = Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
