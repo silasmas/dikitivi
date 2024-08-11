@@ -44,8 +44,8 @@
         @endif
                                         </a>
         @if (Auth::check())
-                                        <button title="{{ inArrayR($media['id'], $watchlist->orders, 'media_id') ? __('miscellaneous.public.withdraw_watchlist') : __('miscellaneous.public.add_watchlist') }}" class="Watch-list-btn{{ inArrayR($media['id'], $watchlist->orders, 'media_id') ? ' dktv-btn-green' : '' }}" type="button" data-status="{{ inArrayR($media['id'], $watchlist->orders, 'media_id') ? 'added' : 'withdrawn' }}" data-watchlist-id="{{ $watchlist->id }}" onclick="event.preventDefault(); toggleAction(this, {{ $media['id'] }}, 'watchlist');">
-                                            <i class="zmdi zmdi-{{ inArrayR($media['id'], $watchlist->orders, 'media_id') ? 'check' : 'plus' }}"></i>
+                                        <button title="{{ inArrayR($media['id'], $current_user->watchlist->orders, 'media_id') ? __('miscellaneous.public.withdraw_watchlist') : __('miscellaneous.public.add_watchlist') }}" class="Watch-list-btn{{ inArrayR($media['id'], $current_user->watchlist->orders, 'media_id') ? ' dktv-btn-green' : '' }}" type="button" data-status="{{ inArrayR($media['id'], $current_user->watchlist->orders, 'media_id') ? 'added' : 'withdrawn' }}" data-watchlist-id="{{ $current_user->watchlist_id }}" onclick="event.preventDefault(); toggleAction(this, {{ $media['id'] }}, 'watchlist');">
+                                            <i class="zmdi zmdi-{{ inArrayR($media['id'], $current_user->watchlist->orders, 'media_id') ? 'check' : 'plus' }}"></i>
                                         </button>
         @else
                                         <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button" onclick="event.preventDefault(); window.location.replace('{{ route('login') }}');">
