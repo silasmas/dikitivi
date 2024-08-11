@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Controllers\ApiClientManager;
 use App\Http\Resources\Media as ResourcesMedia;
+use App\Http\Resources\Notification as ResourcesNotification;
 use App\Models\Cart;
 use App\Models\Media;
 use App\Models\Notification;
@@ -189,7 +190,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             View::share('api_client_manager', $api_client_manager);
-            View::share('unread_notifications', $notifications);
+            View::share('unread_notifications', ResourcesNotification::collection($notifications)->toArray(request()));
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
                 $view->with('programs', ResourcesMedia::collection($medias_programs)->toArray(request()));
                 $view->with('preachs', ResourcesMedia::collection($medias_programs_preach)->toArray(request()));
