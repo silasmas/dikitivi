@@ -37,7 +37,7 @@
                             <div class="col-xxl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                                 <div class="movie-wrap text-center mb-30">
                                     <div class="movie-img">
-                                        <a href="{{ route('media.datas', ['id' => $media['']id]) }}" title="{{ $media['media_title'] }}">
+                                        <a href="{{ route('media.datas', ['id' => $media['id']]) }}" title="{{ $media['media_title'] }}">
                                             <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $media['media_title'] }}">
         @if (!empty($media['thumbnail_url']))
                                             <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $media['thumbnail_url'] }}) no-repeat center center; background-size: cover;"></div>
