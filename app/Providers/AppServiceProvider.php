@@ -255,7 +255,7 @@ class AppServiceProvider extends ServiceProvider
             });
             View::composer(['home', 'partials.media.live'], function ($view) use ($medias_trends, $medias_lives) {
                 $view->with('trends', ResourcesMedia::collection($medias_trends)->toArray(request()));
-                $view->with('lives', array_to_obj(ResourcesMedia::collection($medias_lives)->toArray(request())));
+                $view->with('lives', json_encode(ResourcesMedia::collection($medias_lives)->toArray(request())));
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
