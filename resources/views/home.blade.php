@@ -7,25 +7,24 @@
                 <div class="hero-slider hero-slider-three">
     @if (count($slides_data) > 0)
         @foreach ($slides_data as $media)
-{{ dd($media['type']->type_name) }}
-                    <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $media->cover_url }}">
+                    <div class="single-slide-3 d-flex align-items-center bg-image-two bg-grey" data-bgimage="{{ $media['cover_url'] }}">
                         <div class="position-absolute w-100 h-100" style="background: rgba(3, 5, 7, 0.7); z-index: 8;"></div>
                         <!-- Hero Content One Start -->
                         <div class="hero-content-three container-fluid">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="slider-text-info position-relative" style="z-index: 9;">
-                                        <h3 class="text-muted"><i class="bi bi-camera-reels me-2"></i>{{ $media->type->type_name }}</h3>
-                                        <h1 class="dktv-text-green" title="{{ $media->media_title }}">{{ Str::limit($media->media_title, 14, '...') }}</h1>
-                                        <p style="color: #fff!important">{{ Str::limit($media->media_description, 140, '...') }}</p>
+                                        <h3 class="text-muted"><i class="bi bi-camera-reels me-2"></i>{{ $media['type']->type_name }}</h3>
+                                        <h1 class="dktv-text-green" title="{{ $media['media_title'] }}">{{ Str::limit($media['media_title'], 14, '...') }}</h1>
+                                        <p style="color: #fff!important">{{ Str::limit($media['media_description'], 140, '...') }}</p>
                                         <div class="slider-button">
-                                            <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
-            @if ($media->teaser_url != null)
+                                            <a href="{{ route('media.datas', ['id' => $media['id']]) }}" class="default-btn dktv-btn-yellow mr--10 rounded-pill">@lang('miscellaneous.see_more')</a>
+            @if ($media['teaser_url'] != null)
                                             <a href="#Video-one" class="video-play-btn afterglow ml--10">
                                                 <i class="zmdi zmdi-play"></i>
                                             </a>
                                             <video id="Video-one" width="960" height="540">
-                                                <source src="{{ $media->teaser_url }}" type="video/*">
+                                                <source src="{{ $media['teaser_url'] }}" type="video/*">
                                             </video>
             @endif
                                         </div>
@@ -71,22 +70,22 @@
         @foreach ($trends as $med)
 <?php
 // Views & Likes for a media
-// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med['id']);
+// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med['id']);
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                        <a href="{{ route('media.datas', ['id' => $med['id']]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med['media_title'] }}">
+            @if (!empty($med['thumbnail_url']))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med['thumbnail_url'] }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med['id']]) }}" class="d-block text-truncate" title="{{ $med['media_title'] }}">{{ $med['media_title'] }}</a></h4>
                                         <div class="pro-quality">
                                             {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
@@ -124,22 +123,22 @@
         @foreach ($lives as $med)
 <?php
 // Views & Likes for a media
-// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med['id']);
+// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med['id']);
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                        <a href="{{ route('media.datas', ['id' => $med['id']]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med['media_title'] }}">
+            @if (!empty($med['thumbnail_url']))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med['thumbnail_url'] }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med['id']]) }}" class="d-block text-truncate" title="{{ $med['media_title'] }}">{{ $med['media_title'] }}</a></h4>
                                         <div class="pro-quality">
                                             {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
@@ -178,22 +177,22 @@
         @foreach ($films as $med)
 <?php
 // Views & Likes for a media
-// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med['id']);
+// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med['id']);
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                        <a href="{{ route('media.datas', ['id' => $med['id']]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med['media_title'] }}">
+            @if (!empty($med['thumbnail_url']))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med['thumbnail_url'] }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med['id']]) }}" class="d-block text-truncate" title="{{ $med['media_title'] }}">{{ $med['media_title'] }}</a></h4>
                                         <div class="pro-quality">
                                             {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
@@ -231,22 +230,22 @@
         @foreach ($series as $med)
 <?php
 // Views & Likes for a media
-// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med['id']);
+// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med['id']);
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                        <a href="{{ route('media.datas', ['id' => $med['id']]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med['media_title'] }}">
+            @if (!empty($med['thumbnail_url']))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med['thumbnail_url'] }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med['id']]) }}" class="d-block text-truncate" title="{{ $med['media_title'] }}">{{ $med['media_title'] }}</a></h4>
                                         <div class="pro-quality">
                                             {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
@@ -284,22 +283,22 @@
         @foreach ($programs as $med)
 <?php
 // Views & Likes for a media
-// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med['id']);
+// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med['id']);
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                        <a href="{{ route('media.datas', ['id' => $med['id']]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med['media_title'] }}">
+            @if (!empty($med['thumbnail_url']))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med['thumbnail_url'] }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med['id']]) }}" class="d-block text-truncate" title="{{ $med['media_title'] }}">{{ $med['media_title'] }}</a></h4>
                                         <div class="pro-quality">
                                             {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
@@ -337,22 +336,22 @@
         @foreach ($songs as $med)
 <?php
 // Views & Likes for a media
-// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med->id);
-// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med->id);
+// $views = $api_client_manager::call('GET', getApiURL() . '/media/find_views/' . $med['id']);
+// $likes = $api_client_manager::call('GET', getApiURL() . '/media/find_likes/' . $med['id']);
 ?>
                             <div class="col-lg-3">
                                 <!-- single-product-wrap -->
                                 <div class="single-product-wrap mt--15">
                                     <div class="product-image">
-                                        <a href="{{ route('media.datas', ['id' => $med->id]) }}">
-                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med->media_title }}">
-            @if (!empty($med->thumbnail_url))
-                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med->thumbnail_url }}) no-repeat center center; background-size: cover;"></div>
+                                        <a href="{{ route('media.datas', ['id' => $med['id']]) }}">
+                                            <img src="{{ asset('assets/img/blank-media-cover.png') }}" alt="{{ $med['media_title'] }}">
+            @if (!empty($med['thumbnail_url']))
+                                            <div class="position-absolute w-100 h-100" style="top: 0; right: 0; background: transparent url({{ $med['thumbnail_url'] }}) no-repeat center center; background-size: cover;"></div>
             @endif
                                         </a>
                                     </div>
                                     <div class="product-contents">
-                                        <h4><a href="{{ route('media.datas', ['id' => $med->id]) }}" class="d-block text-truncate" title="{{ $med->media_title }}">{{ $med->media_title }}</a></h4>
+                                        <h4><a href="{{ route('media.datas', ['id' => $med['id']]) }}" class="d-block text-truncate" title="{{ $med['media_title'] }}">{{ $med['media_title'] }}</a></h4>
                                         <div class="pro-quality">
                                             {{-- <span>
                                                 <i class="bi bi-eye" title="@lang('miscellaneous.views')"></i> {{ thousandsCurrencyFormat(count($views->data)) }}
