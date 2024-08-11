@@ -190,7 +190,6 @@ class AppServiceProvider extends ServiceProvider
             }
 
             View::share('api_client_manager', $api_client_manager);
-            View::share('unread_notifications', ResourcesNotification::collection($notifications)->toArray(request()));
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
                 $view->with('programs', ResourcesMedia::collection($medias_programs)->toArray(request()));
                 $view->with('preachs', ResourcesMedia::collection($medias_programs_preach)->toArray(request()));
@@ -220,9 +219,10 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
-            view()->composer('*', function ($view) use ($user_watchlist) {
+            view()->composer('*', function ($view) use ($user_watchlist, $notifications) {
                 $view->with('current_locale', app()->getLocale());
                 $view->with('available_locales', config('app.available_locales'));
+                $view->with('unread_notifications', ResourcesNotification::collection($notifications)->toArray(request()));
                 $view->with('watchlist', $user_watchlist);
                 $view->with('watchlist_id', $user_watchlist->id);
             });
