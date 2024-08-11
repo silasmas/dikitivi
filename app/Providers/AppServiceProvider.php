@@ -165,17 +165,17 @@ class AppServiceProvider extends ServiceProvider
             // -- FILMS
             $medias_films = Media::where([['for_youth', $for_youth], ['type_id', 3]])->orderByDesc('created_at')->paginate(12);
             // -- SERIES
-            $medias_series_home = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->get()->toArray();
+            $medias_series_home = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->get();
             $medias_series = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->paginate(12);
             // -- SONGS
             $medias_songs = Media::where([['for_youth', $for_youth], ['type_id', 8]])->orderByDesc('created_at')->paginate(12);
             // -- ALBUMS
-            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get()->toArray();
+            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get();
             $medias_albums = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->paginate(12);
             // Select media trends
             $medias_trends = Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
             // Select media lives
-            $medias_lives_home = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->get()->toArray();
+            $medias_lives_home = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->get();
             $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
             // Select user watchlist
             $user_watchlist = Cart::where([['user_id', Auth::user()->id], ['type_id', 14]])->first();
@@ -230,18 +230,20 @@ class AppServiceProvider extends ServiceProvider
             // -- FILMS
             $medias_films = Media::where([['for_youth', $for_youth], ['type_id', 3]])->orderByDesc('created_at')->paginate(12);
             // -- SERIES
-            $medias_series_home = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->get()->toArray();
+            $medias_series_home = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->get();
             $medias_series = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->paginate(12);
             // -- SONGS
             $medias_songs = Media::where([['for_youth', $for_youth], ['type_id', 8]])->orderByDesc('created_at')->paginate(12);
             // -- ALBUMS
-            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get()->toArray();
+            $medias_albums_home = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->get();
             $medias_albums = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->paginate(12);
             // Select media trends API
             $medias_trends = Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
             // Select media lives API
-            $medias_lives_home = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->get()->toArray();
+            $medias_lives_home = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->get();
             $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
+
+            dd($medias_lives);
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs) {
