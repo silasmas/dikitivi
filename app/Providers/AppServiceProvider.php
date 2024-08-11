@@ -190,7 +190,7 @@ class AppServiceProvider extends ServiceProvider
             View::share('api_client_manager', $api_client_manager);
             View::share('unread_notifications', $notifications);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs) {
-                $view->with('programs', ResourcesMedia::collection($medias_programs)->toArray(request()));
+                $view->with((!empty($entity) ? 'preachs' : 'programs'), ResourcesMedia::collection($medias_programs)->toArray(request()));
                 $view->with('lastPage_programs', $medias_programs->lastPage());
             });
             View::composer(['home', 'partials.media.films'], function ($view) use ($medias_films) {
@@ -243,7 +243,7 @@ class AppServiceProvider extends ServiceProvider
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs) {
-                $view->with('programs', ResourcesMedia::collection($medias_programs)->toArray(request()));
+                $view->with((!empty($entity) ? 'preachs' : 'programs'), ResourcesMedia::collection($medias_programs)->toArray(request()));
                 $view->with('lastPage_programs', $medias_programs->lastPage());
             });
             View::composer(['home', 'partials.media.films'], function ($view) use ($medias_films) {
