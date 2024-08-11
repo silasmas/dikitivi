@@ -191,28 +191,28 @@ class AppServiceProvider extends ServiceProvider
             View::share('api_client_manager', $api_client_manager);
             View::share('unread_notifications', $notifications);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs) {
-                $view->with('programs', $medias_programs);
+                $view->with('programs', ResourcesMedia::collection($medias_programs)->toArray(request()));
                 $view->with('lastPage_programs', $medias_programs->lastPage());
             });
             View::composer(['home', 'partials.media.films'], function ($view) use ($medias_films) {
-                $view->with('films', $medias_films);
+                $view->with('films', ResourcesMedia::collection($medias_films)->toArray(request()));
                 $view->with('lastPage_films', $medias_films->lastPage());
             });
             View::composer(['home', 'partials.media.series'], function ($view) use ($medias_series_home, $medias_series) {
-                $view->with('series_home', $medias_series_home);
-                $view->with('series', $medias_series);
+                $view->with('series_home', ResourcesMedia::collection($medias_series_home)->toArray(request()));
+                $view->with('series', ResourcesMedia::collection($medias_series)->toArray(request()));
                 $view->with('lastPage_series', $medias_series->lastPage());
             });
             View::composer(['home', 'partials.media.songs'], function ($view) use ($medias_albums_home, $medias_albums, $medias_songs) {
-                $view->with('albums_home', $medias_albums_home);
-                $view->with('albums', $medias_albums);
-                $view->with('songs', $medias_songs);
+                $view->with('albums_home', ResourcesMedia::collection($medias_albums_home)->toArray(request()));
+                $view->with('albums', ResourcesMedia::collection($medias_albums)->toArray(request()));
+                $view->with('songs', ResourcesMedia::collection($medias_songs)->toArray(request()));
                 $view->with('lastPage_songs', $medias_songs->lastPage());
             });
             View::composer(['home', 'partials.media.live'], function ($view) use ($medias_lives_home, $medias_trends, $medias_lives) {
-                $view->with('trends', $medias_trends);
-                $view->with('lives_home', $medias_lives_home);
-                $view->with('lives', $medias_lives);
+                $view->with('trends', ResourcesMedia::collection($medias_trends)->toArray(request()));
+                $view->with('lives_home', ResourcesMedia::collection($medias_lives_home)->toArray(request()));
+                $view->with('lives', ResourcesMedia::collection($medias_lives)->toArray(request()));
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
@@ -246,28 +246,28 @@ class AppServiceProvider extends ServiceProvider
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs) {
-                $view->with('programs', $medias_programs);
+                $view->with('programs', ResourcesMedia::collection($medias_programs)->toArray(request()));
                 $view->with('lastPage_programs', $medias_programs->lastPage());
             });
             View::composer(['home', 'partials.media.films'], function ($view) use ($medias_films) {
-                $view->with('films', $medias_films);
+                $view->with('films', ResourcesMedia::collection($medias_films)->toArray(request()));
                 $view->with('lastPage_films', $medias_films->lastPage());
             });
             View::composer(['home', 'partials.media.series'], function ($view) use ($medias_series_home, $medias_series) {
                 $view->with('series_home', ResourcesMedia::collection($medias_series_home)->toArray(request()));
-                $view->with('series', $medias_series);
+                $view->with('series', ResourcesMedia::collection($medias_series)->toArray(request()));
                 $view->with('lastPage_series', $medias_series->lastPage());
             });
             View::composer(['home', 'partials.media.songs'], function ($view) use ($medias_albums_home, $medias_albums, $medias_songs) {
                 $view->with('albums_home', ResourcesMedia::collection($medias_albums_home)->toArray(request()));
-                $view->with('albums', $medias_albums);
-                $view->with('songs', $medias_songs);
+                $view->with('albums', ResourcesMedia::collection($medias_albums)->toArray(request()));
+                $view->with('songs', ResourcesMedia::collection($medias_songs)->toArray(request()));
                 $view->with('lastPage_songs', $medias_songs->lastPage());
             });
             View::composer(['home', 'partials.media.live'], function ($view) use ($medias_lives_home, $medias_trends, $medias_lives) {
-                $view->with('trends', $medias_trends);
+                $view->with('trends', ResourcesMedia::collection($medias_trends)->toArray(request()));
                 $view->with('lives_home', ResourcesMedia::collection($medias_lives_home)->toArray(request()));
-                $view->with('lives', $medias_lives);
+                $view->with('lives', ResourcesMedia::collection($medias_lives)->toArray(request()));
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
