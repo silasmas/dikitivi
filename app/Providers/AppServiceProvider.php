@@ -234,6 +234,8 @@ class AppServiceProvider extends ServiceProvider
             $medias_programs_preach = Media::where('for_youth', $for_youth)->whereHas('categories', function ($query) {$query->whereIn('categories.id', [14]);})->orderByDesc('medias.created_at')->paginate(12);
             // -- FILMS
             $medias_films = Media::where([['for_youth', $for_youth], ['type_id', 3]])->orderByDesc('created_at')->paginate(12);
+            // -- CARTOONS
+            $medias_cartoons = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 19]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 19)->orderByDesc('created_at')->paginate(12);
             // -- SERIES
             $medias_series = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->paginate(12);
             // -- SONGS
@@ -255,6 +257,10 @@ class AppServiceProvider extends ServiceProvider
             View::composer(['home', 'partials.media.films'], function ($view) use ($medias_films) {
                 $view->with('films', ResourcesMedia::collection($medias_films)->toArray(request()));
                 $view->with('lastPage_films', $medias_films->lastPage());
+            });
+            View::composer(['home', 'partials.media.cartoons'], function ($view) use ($medias_cartoons) {
+                $view->with('cartoons', ResourcesMedia::collection($medias_cartoons)->toArray(request()));
+                $view->with('lastPage_cartoons', $medias_cartoons->lastPage());
             });
             View::composer(['home', 'partials.media.series'], function ($view) use ($medias_series) {
                 $view->with('series', ResourcesMedia::collection($medias_series)->toArray(request()));
