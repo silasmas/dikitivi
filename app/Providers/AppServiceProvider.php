@@ -159,8 +159,6 @@ class AppServiceProvider extends ServiceProvider
         if (Auth::check()) {
             // Select a user
             $for_youth = session()->has('for_youth') ? session()->get('for_youth') : (!empty(Auth::user()->birth_date) ? (Carbon::parse(Auth::user()->birth_date)->age < 18 ? 1 : 0) : 1);
-            // Select all unread notifications
-            $notifications = Notification::where([['status_id', 11], ['user_id', Auth::user()->id]])->orderByDesc('created_at')->get();
             // Select medias by type
             // -- PROGRAMS
             $medias_programs = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 6]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 6)->orderByDesc('created_at')->paginate(12);
@@ -219,10 +217,9 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
-            view()->composer('*', function ($view) use ($user_watchlist, $notifications) {
+            view()->composer('*', function ($view) use ($user_watchlist) {
                 $view->with('current_locale', app()->getLocale());
                 $view->with('available_locales', config('app.available_locales'));
-                $view->with('unread_notifications', ResourcesNotification::collection($notifications)->toArray(request()));
                 $view->with('watchlist', $user_watchlist);
                 $view->with('watchlist_id', $user_watchlist->id);
             });

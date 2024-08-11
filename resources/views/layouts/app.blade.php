@@ -404,11 +404,11 @@ if (request()->has('app_id')) {
                                     <div class="notifications-bar btn-group shadow-0">
                                         <a href="#" class="notifications-iocn shadow-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="zmdi zmdi-notifications"></i>
-    @if (count($unread_notifications) > 0)
-                                            <span style="color: #fff!important;">{{ count($unread_notifications) }}</span>
+    @if (count($current_user->unread_notifications) > 0)
+                                            <span style="color: #fff!important;">{{ count($current_user->unread_notifications) }}</span>
     @endif
                                         </a>
-    @if (count($unread_notifications) > 0)
+    @if (count($current_user->unread_notifications) > 0)
                                         <div class="dropdown-menu">
                                             <div>
                                                 <a role="button" class="float-end position-relative" style="top: -6px;" title="@lang('miscellaneous.mark_all_read')" data-bs-toggle="tooltip">
@@ -417,7 +417,7 @@ if (request()->has('app_id')) {
                                                 <h5 style="color: #333!important;">@lang('miscellaneous.menu.notifications')</h5>
                                             </div>
                                             <ul>
-        @forelse ($unread_notifications as $notif)
+        @forelse ($current_user->unread_notifications as $notif)
             @if ($loop->index < 4)
                                                 <li class="single-notifications pb-2 border-bottom" style="border-color: #d4d4d4!important;">
                                                     <a href="{{ $notif->notification_url }}">
