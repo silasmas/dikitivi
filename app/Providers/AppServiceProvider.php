@@ -254,19 +254,19 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_films', $medias_films->lastPage());
             });
             View::composer(['home', 'partials.media.series'], function ($view) use ($medias_series_home, $medias_series) {
-                $view->with('series_home', ResourcesMedia::collection($medias_series_home));
+                $view->with('series_home', ResourcesMedia::collection($medias_series_home)->toJson());
                 $view->with('series', $medias_series);
                 $view->with('lastPage_series', $medias_series->lastPage());
             });
             View::composer(['home', 'partials.media.songs'], function ($view) use ($medias_albums_home, $medias_albums, $medias_songs) {
-                $view->with('albums_home', ResourcesMedia::collection($medias_albums_home));
+                $view->with('albums_home', ResourcesMedia::collection($medias_albums_home)->toJson());
                 $view->with('albums', $medias_albums);
                 $view->with('songs', $medias_songs);
                 $view->with('lastPage_songs', $medias_songs->lastPage());
             });
             View::composer(['home', 'partials.media.live'], function ($view) use ($medias_lives_home, $medias_trends, $medias_lives) {
                 $view->with('trends', $medias_trends);
-                $view->with('lives_home', ResourcesMedia::collection($medias_lives_home));
+                $view->with('lives_home', ResourcesMedia::collection($medias_lives_home)->toJson());
                 $view->with('lives', $medias_lives);
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
