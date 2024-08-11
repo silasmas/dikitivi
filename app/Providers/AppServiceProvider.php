@@ -244,7 +244,7 @@ class AppServiceProvider extends ServiceProvider
             $medias_lives_home = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->get();
             $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
 
-            dd(ResourcesMedia::collection($medias_lives));
+            dd(ResourcesMedia::collection($medias_lives_home));
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs) {
