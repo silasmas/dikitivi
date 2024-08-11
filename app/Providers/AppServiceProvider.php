@@ -162,19 +162,21 @@ class AppServiceProvider extends ServiceProvider
             $notifications = Notification::where([['status_id', 11], ['user_id', Auth::user()->id]])->orderByDesc('created_at')->get();
             // Select medias by type
             // -- PROGRAMS
-            $medias_programs = Media::where([['for_youth', $for_youth], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
+            $medias_programs = $for_youth == 1 ? (!empty($entity) ? Media::where('for_youth', $for_youth)->whereHas('categories', function ($query) {$query->whereIn('categories.id', [14]);})->orderByDesc('medias.created_at')->paginate(12) : Media::where([['for_youth', $for_youth], ['type_id', 6]])->orderByDesc('created_at')->paginate(12)) : (!empty($entity) ? Media::whereHas('categories', function ($query) {$query->whereIn('categories.id', [14]);})->orderByDesc('medias.created_at')->paginate(12) : Media::where('type_id', 6)->orderByDesc('created_at')->paginate(12));
             // -- FILMS
-            $medias_films = Media::where([['for_youth', $for_youth], ['type_id', 3]])->orderByDesc('created_at')->paginate(12);
+            $medias_films = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 3]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 3)->orderByDesc('created_at')->paginate(12);
+            // -- CARTOONS
+            $medias_cartoons = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 19]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 19)->orderByDesc('created_at')->paginate(12);
             // -- SERIES
-            $medias_series = Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->paginate(12);
+            $medias_series = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 4]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 4)->orderByDesc('created_at')->paginate(12);
             // -- SONGS
-            $medias_songs = Media::where([['for_youth', $for_youth], ['type_id', 8]])->orderByDesc('created_at')->paginate(12);
+            $medias_songs = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 8]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 8)->orderByDesc('created_at')->paginate(12);
             // -- ALBUMS
-            $medias_albums = Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->paginate(12);
+            $medias_albums = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 7]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', 7)->orderByDesc('created_at')->paginate(12);
             // Select media trends
-            $medias_trends = Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
+            $medias_trends = $for_youth == 1 ? Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get() : Media::whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
             // Select media lives
-            $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
+            $medias_lives = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12) : Media::where([['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
             // Select user watchlist
             $user_watchlist = Cart::where([['user_id', Auth::user()->id], ['type_id', 14]])->first();
 
@@ -194,6 +196,10 @@ class AppServiceProvider extends ServiceProvider
             View::composer(['home', 'partials.media.films'], function ($view) use ($medias_films) {
                 $view->with('films', ResourcesMedia::collection($medias_films)->toArray(request()));
                 $view->with('lastPage_films', $medias_films->lastPage());
+            });
+            View::composer(['home', 'partials.media.cartoons'], function ($view) use ($medias_cartoons) {
+                $view->with('cartoons', ResourcesMedia::collection($medias_cartoons)->toArray(request()));
+                $view->with('lastPage_cartoons', $medias_cartoons->lastPage());
             });
             View::composer(['home', 'partials.media.series'], function ($view) use ($medias_series) {
                 $view->with('series', ResourcesMedia::collection($medias_series)->toArray(request()));
@@ -221,7 +227,7 @@ class AppServiceProvider extends ServiceProvider
             $for_youth = session()->has('for_youth') ? session()->get('for_youth') : 1;
             // Select medias by type API
             // -- PROGRAMS
-            $medias_programs = Media::where([['for_youth', $for_youth], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
+            $medias_programs = !empty($entity) ? Media::where('for_youth', $for_youth)->whereHas('categories', function ($query) {$query->whereIn('categories.id', [14]);})->orderByDesc('medias.created_at')->paginate(12) : Media::where([['for_youth', $for_youth], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
             // -- FILMS
             $medias_films = Media::where([['for_youth', $for_youth], ['type_id', 3]])->orderByDesc('created_at')->paginate(12);
             // -- SERIES

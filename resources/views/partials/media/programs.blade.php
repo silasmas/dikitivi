@@ -1,3 +1,4 @@
+<?php $lastPage = $lastPage_programs ?>
 @extends('layouts.app')
 
 @section('app-content')
@@ -77,7 +78,6 @@
         @endif
     @else
         @if (count($programs) > 0)
-<?php $lastPage = $lastPage_programs ?>
                 <!-- slider area start -->
                 <div class="slider-area bg-black">
                     <div class="container-fluid p-0">

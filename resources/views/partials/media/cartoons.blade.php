@@ -1,3 +1,4 @@
+<?php $lastPage = $lastPage_cartoons ?>
 @extends('layouts.app')
 
 @section('app-content')
