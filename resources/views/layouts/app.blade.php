@@ -376,14 +376,15 @@ if (request()->has('app_id')) {
                                 </div>
                                 <div class="right-side d-flex">
                                     <!-- search-input-box start -->
-                                    <div class="search-input-box position-relative">
-                                        <input id="search" type="text" placeholder="@lang('miscellaneous.search')" autocomplete="false">
+                                    <form action="{{ route('search') }}" class="search-input-box position-relative">
+                                        <input type="hidden" name="for_youth" value="{{ $for_youth }}" id="forYouth">
+                                        <input type="text" name="data" placeholder="@lang('miscellaneous.search')" autocomplete="false" id="search">
                                         <button><i class="bi bi-search"></i></button>
 
                                         <div id="autocompleteSearch" class="list-group list-group-flush position-absolute w-100 px-4 top-100 start-0 d-none" style="z-index: 999;">
                                             <a href="#" class="list-group-item list-group-item-action active text-center">@lang('miscellaneous.see_all_results')</a>
                                         </div>
-                                    </div>
+                                    </form>
                                     <!-- search-input-box end -->
 
 @if (Auth::check())
@@ -789,7 +790,7 @@ if (request()->has('app_id')) {
              */
             var mHeaders = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': 'application/json', 'X-localization': navigator.language, 'X-user-id': $('[name="dktv-visitor"]').attr('content'), 'X-ip-address': $('[name="dktv-ip-addr"]').attr('content') };
             var mUrl = currentHost + '/search';
-            var mDatas = JSON.stringify({ 'data': $('#search').val() });
+            var mDatas = JSON.stringify({ 'data': $('#search').val(), 'for_youth': $('#forYouth').val() });
 
             $("#search").autocomplete({
                 source: function(request, response) {

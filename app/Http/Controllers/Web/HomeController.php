@@ -54,7 +54,7 @@ class HomeController extends Controller
      */
     public function search(Request $request)
     {
-        $medias = Media::where('media_title', 'LIKE', '%' . $request->input('data') . '%')->orderByDesc('created_at')->paginate(12);
+        $medias = Media::where([['media_title', 'LIKE', '%' . $request->input('data') . '%'], ['for_youth', $request->input('for_youth')]])->orderByDesc('created_at')->paginate(12);
 
         if ($request->hasHeader('X-user-id') and $request->hasHeader('X-ip-address')) {
             $session = ModelsSession::where('user_id', $request->header('X-user-id'))->first();
@@ -107,13 +107,15 @@ class HomeController extends Controller
             return view('partials.media.search', [
                 'medias' => ResourcesMedia::collection($medias),
                 'search_content' => $request->input('data'),
+                'for_youth' => $request->input('for_youth'),
                 'current_user' => $user->data->user
             ]);
 
         } else {
             return view('partials.media.search', [
                 'medias' => ResourcesMedia::collection($medias),
-                'search_content' => $request->input('data')
+                'search_content' => $request->input('data'),
+                'for_youth' => $request->input('for_youth')
             ]);
         }
     }
