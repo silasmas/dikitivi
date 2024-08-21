@@ -6,6 +6,7 @@
         <meta name="keywords" content="@lang('miscellaneous.keywords')">
         <meta name="dktv-url" content="{{ getWebURL() }}">
         <meta name="dktv-api-url" content="{{ getApiURL() }}">
+        <meta name="dktv-ip-addr" content="{{ getIpAdress() }}">
         <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
         <meta name="dktv-media" content="{{ !empty($current_media) ? $current_media->id : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -376,15 +377,11 @@ if (request()->has('app_id')) {
                                 <div class="right-side d-flex">
                                     <!-- search-input-box start -->
                                     <div class="search-input-box position-relative">
-                                        <input type="text" placeholder="@lang('miscellaneous.search')">
+                                        <input id="search" type="text" placeholder="@lang('miscellaneous.search')" autocomplete="false">
                                         <button><i class="bi bi-search"></i></button>
 
-                                        <div class="list-group list-group-flush position-absolute w-100 px-4 top-100 start-0" style="z-index: 999;">
-                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A first link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A second link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A third link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A fourth link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action active small text-center">@lang('miscellaneous.see_all_results')</a>
+                                        <div id="autocompleteSearch" class="list-group list-group-flush position-absolute w-100 px-4 top-100 start-0 d-none" style="z-index: 999;">
+                                            <a href="#" class="list-group-item list-group-item-action active text-center">@lang('miscellaneous.see_all_results')</a>
                                         </div>
                                     </div>
                                     <!-- search-input-box end -->
@@ -774,15 +771,54 @@ if (request()->has('app_id')) {
         <script src="{{ asset('assets/addons/streamo/js/main.js') }}"></script>
         <!-- Custom JS -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
+@if (Route::is('media.datas'))
         <script type="text/javascript">
             /**
              * Refresh an element every second
              */
-            setInterval(function() {
+             setInterval(function() {
                 const url = currentHost + '/count?media_id=' + $('[name="dktv-media"]').attr('content');
 
                 $('.count').load(url + ' .count');
             }, 500);
+        </script>
+@endif
+        <script type="text/javascript">
+            /**
+             * Autocomplete search
+             */
+            var mHeaders = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language, 'X-user-id': $('[name="dktv-visitor"]').attr('content'), 'X-ip-address': $('[name="dktv-ip-addr"]').attr('content') };
+            var mUrl = apiHost + '/media/search/' + $('#search').val();
+            var mDatas = JSON.stringify({ 'data': $('#search').val() });
+
+            $("#search").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        headers: mHeaders,
+                        url: mUrl,
+                        dataType: 'json',
+                        data: mDatas,
+                        success: function(data) {
+                            $('#autocompleteSearch').toggleClass('d-none');
+                            response(data);
+
+                            var medias = data.data;
+                            var $lastChild = $('#autocompleteSearch .list-group-item').last();
+
+                            medias.forEach(element => {
+                                $lastChild.before('<a href="#" class="list-group-item list-group-item-action py-2">' + element.media_title + '</a>');
+                            });
+                        },
+                        error: function (xhr, error, status_description) {
+                            console.log(xhr.responseJSON);
+                            console.log(xhr.status);
+                            console.log(error);
+                            console.log(status_description);
+                        }
+                    });
+                },
+                minLength: 2 // Nombre minimum de caractères avant d'envoyer la requête
+            });
 
             /**
              * Generate random strings

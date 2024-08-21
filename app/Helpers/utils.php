@@ -32,6 +32,14 @@ if (!function_exists('getApiToken')) {
     }
 }
 
+// Get API toke
+if (!function_exists('getIpAdress')) {
+    function getIpAdress()
+    {
+        return request()->ip();
+    }
+}
+
 // Check if a value exists into an multidimensional array
 if (!function_exists('inArrayR')) {
     function inArrayR($needle, $haystack, $key)
