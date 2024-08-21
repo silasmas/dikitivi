@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Http\Controllers\ApiClientManager;
+use App\Http\Resources\Country as ResourcesCountry;
 use App\Http\Resources\Media as ResourcesMedia;
+use App\Models\Country;
 use App\Models\Media;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -174,6 +176,8 @@ class AppServiceProvider extends ServiceProvider
             $medias_trends = $for_youth == 1 ? Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get() : Media::whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
             // Select media lives
             $medias_lives = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12) : Media::where([['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
+            // Select all countries
+            $countries = Country::all();
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
@@ -203,6 +207,9 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('trends', ResourcesMedia::collection($medias_trends)->toArray(request()));
                 $view->with('lives', ResourcesMedia::collection($medias_lives)->toArray(request()));
                 $view->with('lastPage_lives', $medias_lives->lastPage());
+            });
+            View::composer(['account', 'partials.account.watchlist', 'partials.account.watchlist'], function ($view) use ($countries) {
+                $view->with('countries', ResourcesCountry::collection($countries)->toArray(request()));
             });
 
             view()->composer('*', function ($view) {

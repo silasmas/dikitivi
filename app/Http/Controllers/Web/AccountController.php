@@ -114,32 +114,35 @@ class AccountController extends Controller
                             // Select a user API
                             $child = User::find(request()->get('id'));
                             $child_resource = new ResourcesUser($child);
-                            dd($child_resource);
-                            // // Recently viewed medias API
-                            // $viewed_medias = MediaView::where('user_id', $child->id)->orderByDesc('created_at')->get();
-                            // $viewed_media_resource = ResourcesMediaView::collection($viewed_medias)->toArray(request());
-                            // // Paginate result
-                            // $paginate_result = paginate($viewed_media_resource, 12);
+                            // Recently viewed medias API
+                            $viewed_medias = MediaView::where('user_id', $child->id)->orderByDesc('created_at')->get();
+                            $viewed_media_resource = ResourcesMediaView::collection($viewed_medias)->toArray(request());
+                            // Paginate result
+                            $paginate_result = paginate($viewed_media_resource, 12);
 
-                            // return view('account', [
-                            //     'for_youth' => $for_youth,
-                            //     'current_user' => $user->data->user,
-                            //     'child' => $child->data->user,
-                            //     'viewed_medias' => $paginate_result,
-                            //     'lastPage' => $paginate_result->lastPage(),
-                            //     'entity' => $entity,
-                            //     'entity_title' => __('miscellaneous.account.child.title')
-                            // ]);
+                            return view('account', [
+                                'for_youth' => $for_youth,
+                                'current_user' => $user->data->user,
+                                'child' => $child_resource,
+                                'viewed_medias' => $paginate_result,
+                                'lastPage' => $paginate_result->lastPage(),
+                                'entity' => $entity,
+                                'entity_title' => __('miscellaneous.account.child.title')
+                            ]);
 
                         } else {
                             if (!empty($user->data->user->parental_code)) {
                                 // All user children API
+                                $user = User::find($user->data->user->id);
+                                $parent = User::where('parental_code', $user->data->user->parental_code)->whereNull('belongs_to')->first();
                                 $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->id . '/' . $user->data->user->parental_code, $user->data->user->api_token);
+                                $users = User::where('belongs_to', $parent->id)->get();
+                                $children = ResourcesUser::collection($users)->toArray(request());
 
                                 return view('account', [
                                     'for_youth' => $for_youth,
                                     'current_user' => $user->data->user,
-                                    'children' => $children->data,
+                                    'children' => $children,
                                     'entity' => $entity,
                                     'entity_title' => __('miscellaneous.account.child.title')
                                 ]);
@@ -214,16 +217,18 @@ class AccountController extends Controller
                 if ($entity == 'children') {
                     if (request()->has('id')) {
                         // Select a user API
-                        $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
+                        $child = User::find(request()->get('id'));
+                        $child_resource = new ResourcesUser($child);
                         // Recently viewed medias API
-                        $viewed_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_viewed_medias/' . $child->data->user->id, $user->data->user->api_token);
+                        $viewed_medias = MediaView::where('user_id', $child->id)->orderByDesc('created_at')->get();
+                        $viewed_media_resource = ResourcesMediaView::collection($viewed_medias)->toArray(request());
                         // Paginate result
-                        $paginate_result = paginate($viewed_medias->data, 12);
+                        $paginate_result = paginate($viewed_media_resource, 12);
 
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'child' => $child->data->user,
+                            'child' => $child_resource,
                             'viewed_medias' => $paginate_result,
                             'lastPage' => $paginate_result->lastPage(),
                             'entity' => $entity,
@@ -233,12 +238,16 @@ class AccountController extends Controller
                     } else {
                         if (!empty($user->data->user->parental_code)) {
                             // All user children API
+                            $user = User::find($user->data->user->id);
+                            $parent = User::where('parental_code', $user->data->user->parental_code)->whereNull('belongs_to')->first();
                             $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->id . '/' . $user->data->user->parental_code, $user->data->user->api_token);
+                            $users = User::where('belongs_to', $parent->id)->get();
+                            $children = ResourcesUser::collection($users)->toArray(request());
 
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'children' => $children->data,
+                                'children' => $children,
                                 'entity' => $entity,
                                 'entity_title' => __('miscellaneous.account.child.title')
                             ]);
@@ -304,16 +313,18 @@ class AccountController extends Controller
                     // User age
                     $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                     // Select a user API
-                    $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
+                    $child = User::find(request()->get('id'));
+                    $child_resource = new ResourcesUser($child);
                     // Recently viewed medias API
-                    $viewed_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_viewed_medias/' . $child->data->user->id, $user->data->user->api_token);
+                    $viewed_medias = MediaView::where('user_id', $child->id)->orderByDesc('created_at')->get();
+                    $viewed_media_resource = ResourcesMediaView::collection($viewed_medias)->toArray(request());
                     // Paginate result
-                    $paginate_result = paginate($viewed_medias->data, 12);
+                    $paginate_result = paginate($viewed_media_resource, 12);
 
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'child' => $child->data->user,
+                        'child' => $child_resource,
                         'viewed_medias' => $paginate_result,
                         'lastPage' => $paginate_result->lastPage(),
                         'entity' => $entity,
@@ -325,12 +336,16 @@ class AccountController extends Controller
                         // User age
                         $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                         // All user children API
+                        $user = User::find($user->data->user->id);
+                        $parent = User::where('parental_code', $user->data->user->parental_code)->whereNull('belongs_to')->first();
                         $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->id . '/' . $user->data->user->parental_code, $user->data->user->api_token);
+                        $users = User::where('belongs_to', $parent->id)->get();
+                        $children = ResourcesUser::collection($users)->toArray(request());
 
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'children' => $children->data,
+                            'children' => $children,
                             'entity' => $entity,
                             'entity_title' => __('miscellaneous.account.child.title')
                         ]);
