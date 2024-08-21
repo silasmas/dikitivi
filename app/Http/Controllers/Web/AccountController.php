@@ -34,6 +34,7 @@ class AccountController extends Controller
      */
     public function account()
     {
+        dd('test123');
         // Select a user API
         $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
 
