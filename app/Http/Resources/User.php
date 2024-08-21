@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Notification as NotificationModel;
+use App\Models\Cart as CartModel;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -20,6 +21,14 @@ class User extends JsonResource
     public function toArray($request)
     {
         $unread_notifications = NotificationModel::where([['status_id', 11], ['user_id', $this->id]])->orderByDesc('created_at')->get();
+        $user_watchlist = CartModel::where([['user_id', $this->id], ['type_id', 14]])->first();
+
+        if (is_null($user_watchlist)) {
+            $user_watchlist = CartModel::create([
+                'type_id' => 14,
+                'user_id' => $this->id
+            ]);
+        }
 
         return [
             'id' => $this->id,
@@ -44,10 +53,10 @@ class User extends JsonResource
             'remember_token' => $this->remember_token,
             'api_token' => $this->api_token,
             'prefered_theme' => $this->prefered_theme,
-            'avatar_url' => $this->avatar_url != null ? getApiURL() . '/public/storage/' . $this->avatar_url : (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/public/assets/img/user.png',
+            'avatar_url' => $this->avatar_url != null ? 'https://api.dikitivi.com/public/storage/' . $this->avatar_url : (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/public/assets/img/user.png',
             'id_card_type' => $this->id_card_type,
-            'id_card_recto' => $this->id_card_recto != null ? getApiURL() . '/public/storage/' . $this->id_card_recto : null,
-            'id_card_verso' => $this->id_card_verso != null ? getApiURL() . '/public/storage/' . $this->id_card_verso : null,
+            'id_card_recto' => $this->id_card_recto != null ? 'https://api.dikitivi.com/public/storage/' . $this->id_card_recto : null,
+            'id_card_verso' => $this->id_card_verso != null ? 'https://api.dikitivi.com/public/storage/' . $this->id_card_verso : null,
             'status' => Status::make($this->status),
             'country' => Country::make($this->country),
             'roles' => Role::collection($this->roles),
@@ -55,6 +64,8 @@ class User extends JsonResource
             'payments' => Payment::collection($this->payments)->sortByDesc('created_at')->toArray(),
             'notifications' => Notification::collection($this->notifications)->sortByDesc('created_at')->toArray(),
             'unread_notifications' => Notification::collection($unread_notifications)->toArray($request),
+            'watchlist' => Cart::make($user_watchlist)->toArray($request),
+            'watchlist_id' => $user_watchlist->id,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s')
         ];
