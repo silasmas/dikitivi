@@ -90,6 +90,8 @@ return [
     'mark_read' => 'Mark as read',
     'mark_all_read' => 'Mark all as read',
     'empty_list' => 'The list is empty',
+    'see_all' => 'See all',
+    'see_all_results' => 'See all results',
     'see_more' => 'See more',
     'see_less' => 'See less',
     'show' => 'Show',

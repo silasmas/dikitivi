@@ -90,6 +90,8 @@ return [
     'mark_read' => 'Marquer comme lue',
     'mark_all_read' => 'Tout marquer comme lue',
     'empty_list' => 'La liste est vide',
+    'see_all' => 'Voir tout',
+    'see_all_results' => 'Voir tous les résultats',
     'see_more' => 'Voir plus',
     'see_less' => 'Voir moins',
     'show' => 'Afficher',

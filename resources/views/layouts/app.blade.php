@@ -379,12 +379,12 @@ if (request()->has('app_id')) {
                                         <input class="position-relative" type="text" placeholder="@lang('miscellaneous.search')">
                                         <button class="position-relative"><i class="bi bi-search"></i></button>
 
-                                        <div class="list-group list-group-flush position-absolute w-100 start-0 top-0" style="z-index: 999;">
-                                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">The current link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-                                            <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
+                                        <div class="list-group list-group-flush position-absolute w-100 start-0" style="top: 30rem; z-index: 999;">
+                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A first link item</a>
+                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A second link item</a>
+                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A third link item</a>
+                                            <a href="#" class="list-group-item list-group-item-action py-2 small">A fourth link item</a>
+                                            <a href="#" class="list-group-item list-group-item-action small text-center">@lang('miscellaneous.see_all_results')</a>
                                         </div>
                                     </div>
                                     <!-- search-input-box end -->
