@@ -106,6 +106,7 @@ class HomeController extends Controller
 
             return view('partials.media.search', [
                 'medias' => ResourcesMedia::collection($medias),
+                'lastPage_searchResults' => $medias->lastPage(),
                 'search_content' => $request->input('data'),
                 'for_youth' => $request->input('for_youth'),
                 'current_user' => $user->data->user
@@ -114,6 +115,7 @@ class HomeController extends Controller
         } else {
             return view('partials.media.search', [
                 'medias' => ResourcesMedia::collection($medias),
+                'lastPage_searchResults' => $medias->lastPage(),
                 'search_content' => $request->input('data'),
                 'for_youth' => $request->input('for_youth')
             ]);
