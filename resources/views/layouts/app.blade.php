@@ -379,7 +379,7 @@ if (request()->has('app_id')) {
                                         <input type="text" placeholder="@lang('miscellaneous.search')">
                                         <button><i class="bi bi-search"></i></button>
 
-                                        <div class="list-group list-group-flush position-absolute w-100 top-50 start-0" style="z-index: 999;">
+                                        <div class="list-group list-group-flush position-absolute w-100 top-100 start-0" style="z-index: 999;">
                                             <a href="#" class="list-group-item list-group-item-action py-2 small">A first link item</a>
                                             <a href="#" class="list-group-item list-group-item-action py-2 small">A second link item</a>
                                             <a href="#" class="list-group-item list-group-item-action py-2 small">A third link item</a>
