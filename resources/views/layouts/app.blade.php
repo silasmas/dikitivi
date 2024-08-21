@@ -376,8 +376,8 @@ if (request()->has('app_id')) {
                                 <div class="right-side d-flex">
                                     <!-- search-input-box start -->
                                     <div class="search-input-box position-relative">
-                                        <input class="position-relative" type="text" placeholder="@lang('miscellaneous.search')">
-                                        <button class="position-relative"><i class="bi bi-search"></i></button>
+                                        <input type="text" placeholder="@lang('miscellaneous.search')">
+                                        <button><i class="bi bi-search"></i></button>
 
                                         <div class="list-group list-group-flush position-absolute w-100 top-50 start-0" style="z-index: 999;">
                                             <a href="#" class="list-group-item list-group-item-action py-2 small">A first link item</a>
