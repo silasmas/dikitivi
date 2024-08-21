@@ -272,7 +272,7 @@
                                                                 <select name="country_id" id="country_id" class="form-select pt-2 shadow-0">
                                                                     <option class="small" disabled>@lang('miscellaneous.choose_country')</option>
     @forelse ($countries as $country)
-                                                                    <option value="{{ $country->id }}"{{ !empty($current_user->country) ? ($country->id == $current_user->country->id ? ' selected' : '') : '' }}>{{ $country->country_name }}</option>
+                                                                    <option value="{{ $country['id'] }}"{{ !empty($current_user->country) ? ($country['id'] == $current_user->country->id ? ' selected' : '') : '' }}>{{ $country['country_name'] }}</option>
     @empty
                                                                     <option>@lang('miscellaneous.empty_list')</option>
     @endforelse
