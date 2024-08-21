@@ -89,11 +89,10 @@
         @if (count($viewed_medias) > 0)
                                         <div class="list-group">
             @foreach ($viewed_medias as $viewed_media)
-{{ dd($viewed_media['media']->media_title) }}
-                                            <a href="{{ route('media.datas', ['id' => $media['id']]) }}" class="list-group-item list-group-item-action position-relative">
-                                                <img src="{{ !empty($media['cover_url']) ? $media['cover_url'] : asset('assets/img/blank-media-video.png') }}" alt="{{ $media['media_title'] }}" width="160" class="float-sm-start rounded-4 me-3">
-                                                <h4 class="my-2 dktv-text-green fw-bold">{{ $media['media_title'] }}</h4>
-                                                <p class="text-muted">{{ !empty($media['media_description']) ? Str::limit($media['media_description'], 20, '...') : $media['author_names'] }}</p>
+                                            <a href="{{ route('media.datas', ['id' => $viewed_media['media']->id]) }}" class="list-group-item list-group-item-action position-relative">
+                                                <img src="{{ !empty($viewed_media['media']->cover_url) ? $viewed_media['media']->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $viewed_media['media']->media_title }}" width="160" class="float-sm-start rounded-4 me-3">
+                                                <h4 class="my-2 dktv-text-green fw-bold">{{ $viewed_media['media']->media_title }}</h4>
+                                                <p class="text-muted">{{ !empty($viewed_media['media']->media_description) ? Str::limit($viewed_media['media']->media_description, 20, '...') : $viewed_media['media']->author_names }}</p>
                                             </a>
             @endforeach
                                         </div>
