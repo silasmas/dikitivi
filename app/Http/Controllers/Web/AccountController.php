@@ -318,7 +318,6 @@ class AccountController extends Controller
                     $viewed_media_resource = ResourcesMediaView::collection($viewed_medias)->toArray(request());
                     // Paginate result
                     $paginate_result = paginate($viewed_media_resource, 12);
-                    dd($paginate_result);
 
                     return view('account', [
                         'for_youth' => $for_youth,
