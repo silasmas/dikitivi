@@ -319,7 +319,7 @@ class AccountController extends Controller
                     // Paginate result
                     $paginate_result = paginate($viewed_media_resource, 12);
 
-                    dd($child_resource);
+                    dd($child_resource->avatar_url);
 
                     return view('account', [
                         'for_youth' => $for_youth,
