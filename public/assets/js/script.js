@@ -753,7 +753,7 @@ $(function () {
                 type: 'PUT',
                 contentType: 'application/json',
                 url: apiHost + '/user/' + currentUser,
-                data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'light' }),
+                data: JSON.stringify({ '_token': $('[name="csrf-token"]').attr('content'), 'id': currentUser, 'prefered_theme': 'light' }),
                 success: function () {
                     $(this).unbind('click');
                     e.stopPropagation();
@@ -782,7 +782,7 @@ $(function () {
                 type: 'PUT',
                 contentType: 'application/json',
                 url: apiHost + '/user/' + currentUser,
-                data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'dark' }),
+                data: JSON.stringify({ '_token': $('[name="csrf-token"]').attr('content'), 'id': currentUser, 'prefered_theme': 'dark' }),
                 success: function () {
                     $(this).unbind('click');
                     e.stopPropagation();
@@ -811,7 +811,7 @@ $(function () {
                 type: 'PUT',
                 contentType: 'application/json',
                 url: apiHost + '/user/' + currentUser,
-                data: JSON.stringify({ 'id': currentUser, 'prefered_theme': 'auto' }),
+                data: JSON.stringify({ '_token': $('[name="csrf-token"]').attr('content'), 'id': currentUser, 'prefered_theme': 'auto' }),
                 success: function () {
                     $(this).unbind('click');
                     e.stopPropagation();
@@ -836,7 +836,7 @@ $(function () {
             type: 'PUT',
             contentType: 'application/json',
             url: apiHost + '/notification/mark_all_read/' + currentUser,
-            data: JSON.stringify({ 'id': currentUser }),
+            data: JSON.stringify({ '_token': $('[name="csrf-token"]').attr('content'), 'id': currentUser }),
             success: function () {
                 $(this).unbind('click');
                 e.stopPropagation();
