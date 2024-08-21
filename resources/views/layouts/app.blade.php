@@ -788,7 +788,7 @@ if (request()->has('app_id')) {
              * Autocomplete search
              */
             var mHeaders = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': 'application/json', 'X-localization': navigator.language, 'X-user-id': $('[name="dktv-visitor"]').attr('content'), 'X-ip-address': $('[name="dktv-ip-addr"]').attr('content') };
-            var mUrl = apiHost + '/media/search/' + $('#search').val();
+            var mUrl = currentHost + '/search';
             var mDatas = JSON.stringify({ 'data': $('#search').val() });
 
             $("#search").autocomplete({
