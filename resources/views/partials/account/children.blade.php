@@ -10,7 +10,7 @@
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('account.entity', ['entity' => 'update_child']) }}">
         @csrf
-                                            <input type="hidden" name="user_id" value="{{ $child->id }}">
+                                            <input type="hidden" name="user_id" value="{{ $child['id'] }}">
                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
                                             <div class="row g-3">
@@ -20,7 +20,7 @@
                                                             <p class="small mb-1 text-center dktv-line-height-1_4">@lang('miscellaneous.account.child.click_to_change_picture')</p>
 
                                                             <div class="bg-image hover-overlay">
-                                                                <img src="{{ asset($child->avatar_url) }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" class="other-user-image img-fluid rounded-circle">
+                                                                <img src="{{ asset($child['avatar_url']) }}" alt="{{ $child['firstname'] . ' ' . $child['lastname'] }}" class="other-user-image img-fluid rounded-circle">
                                                                 <div class="mask rounded-circle" style="background-color: rgba(5, 5, 5, 0.5);">
                                                                     <label role="button" for="image_profile" class="d-flex h-100 justify-content-center align-items-center">
                                                                         <i class="bi bi-pencil-fill text-white fs-2"></i>
@@ -127,13 +127,13 @@
                                                             </a>
 
                                                             <ul class="dropdown-menu" aria-labelledby="childAction">
-                                                                <li><a class="dropdown-item" href="{{ route('account.entity', ['entity' => 'children', 'id' => $child->id]) }}">@lang('miscellaneous.details')</a></li>
-                                                                <li><a class="dropdown-item" href="{{ route('account.entity.datas', ['entity' => 'children', 'id' => $child->id]) }}">@lang('miscellaneous.delete')</a></li>
+                                                                <li><a class="dropdown-item" href="{{ route('account.entity', ['entity' => 'children', 'id' => $child['id']]) }}">@lang('miscellaneous.details')</a></li>
+                                                                <li><a class="dropdown-item" href="{{ route('account.entity.datas', ['entity' => 'children', 'id' => $child['id']]) }}">@lang('miscellaneous.delete')</a></li>
                                                             </ul>
                                                         </div>
 
-                                                        <img src="{{ $child->avatar_url }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" width="70" class="float-start rounded-circle me-3">
-                                                        <h4 class="mt-2 mb-1 dktv-text-green fw-bold text-truncate">{{ $child->firstname . ' ' . $child->lastname }}</h4>
+                                                        <img src="{{ $child['avatar_url'] }}" alt="{{ $child['firstname'] . ' ' . $child['lastname'] }}" width="70" class="float-start rounded-circle me-3">
+                                                        <h4 class="mt-2 mb-1 dktv-text-green fw-bold text-truncate">{{ $child['firstname'] . ' ' . $child['lastname'] }}</h4>
                                                         <p class="m-0 text-muted text-truncate">{{ '@' . $child->username }}</p>
                                                     </div>
                                                 </div>
