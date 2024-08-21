@@ -10,7 +10,8 @@ const currentLanguage = $('html').attr('lang');
 const currentUser = $('[name="dktv-visitor"]').attr('content');
 const currentHost = $('[name="dktv-url"]').attr('content');
 const apiHost = $('[name="dktv-api-url"]').attr('content');
-const headers = { 'X-CSRF-TOKEN': $('[name="csrf-token"]').attr('content'), 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language };
+const headers = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language };
+// const headers = { 'X-CSRF-TOKEN': $('[name="csrf-token"]').attr('content'), 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language };
 // Modals
 const modalUser = $('#cropModalUser');
 // Preview images
@@ -417,6 +418,8 @@ $(function () {
         // Ajax loading image to tell user to wait
         $('.user-image').attr('src', currentHost + '/assets/img/ajax-loading.gif');
 
+        console.log(headers);
+
         var canvas = cropper.getCroppedCanvas({
             width: 700,
             height: 700
@@ -431,7 +434,7 @@ $(function () {
             reader.onloadend = function () {
                 var base64_data = reader.result;
                 var mUrl = apiHost + '/user/update_avatar_picture/' + parseInt(currentUser);
-                var datas = JSON.stringify({ 'id': parseInt(currentUser), 'user_id': currentUser, 'image_64': base64_data });
+                var datas = JSON.stringify({ '_token': $('[name="csrf-token"]').attr('content'), 'id': parseInt(currentUser), 'user_id': currentUser, 'image_64': base64_data });
 
                 $.ajax({
                     headers: headers,
