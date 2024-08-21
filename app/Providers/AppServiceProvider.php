@@ -208,13 +208,11 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lives', ResourcesMedia::collection($medias_lives)->toArray(request()));
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
-            View::composer(['account', 'partials.account.watchlist', 'partials.account.watchlist'], function ($view) use ($countries) {
-                $view->with('countries', ResourcesCountry::collection($countries)->toArray(request()));
-            });
 
-            view()->composer('*', function ($view) {
+            view()->composer('*', function ($view) use ($countries) {
                 $view->with('current_locale', app()->getLocale());
                 $view->with('available_locales', config('app.available_locales'));
+                $view->with('countries', ResourcesCountry::collection($countries)->toArray(request()));
             });
 
         } else {
