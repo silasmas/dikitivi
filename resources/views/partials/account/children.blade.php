@@ -1,6 +1,7 @@
                                 <div class="card border rounded-4">
 @if ($for_youth != 1)
     @if (request()->has('id'))
+<?php $lastPage = $lastPage_viewed_media ?>
                                     <div class="card-header d-flex justify-content-between align-items-center bg-light">
                                         <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="btn btn-link px-2 pt-1 text-muted fw-semibold">
                                             <i class="bi bi-arrow-left me-3"></i>@lang('miscellaneous.back_list')
@@ -89,11 +90,10 @@
         @if (count($viewed_medias) > 0)
                                         <div class="list-group">
             @foreach ($viewed_medias as $viewed_media)
-{{ dd($viewed_media['media']) }}
-                                            <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="list-group-item list-group-item-action position-relative">
-                                                <img src="{{ !empty($media->cover_url) ? $media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $media->media_title }}" width="160" class="float-sm-start rounded-4 me-3">
-                                                <h4 class="my-2 dktv-text-green fw-bold">{{ $media->media_title }}</h4>
-                                                <p class="text-muted">{{ !empty($media->media_description) ? Str::limit($media->media_description, 20, '...') : $media->author_names }}</p>
+                                            <a href="{{ route('media.datas', ['id' => $viewed_media['media']->id]) }}" class="list-group-item list-group-item-action position-relative">
+                                                <img src="{{ !empty($viewed_media['media']->cover_url) ? (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://admin.dikitivi.com/public' . $viewed_media['media']->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $viewed_media['media']->media_title }}" width="160" class="float-sm-start rounded-4 me-3">
+                                                <h4 class="my-2 dktv-text-green fw-bold">{{ $viewed_media['media']->media_title }}</h4>
+                                                <p class="text-muted">{{ !empty($viewed_media['media']->media_description) ? Str::limit($viewed_media['media']->media_description, 20, '...') : $viewed_media['media']->author_names }}</p>
                                             </a>
             @endforeach
                                         </div>

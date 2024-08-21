@@ -125,7 +125,7 @@ class AccountController extends Controller
                                 'current_user' => $user->data->user,
                                 'child' => $child_resource,
                                 'viewed_medias' => $paginate_result,
-                                'lastPage' => $paginate_result->lastPage(),
+                                'lastPage_viewed_media' => $paginate_result->lastPage(),
                                 'entity' => $entity,
                                 'entity_title' => __('miscellaneous.account.child.title')
                             ]);
@@ -229,7 +229,7 @@ class AccountController extends Controller
                             'current_user' => $user->data->user,
                             'child' => $child_resource,
                             'viewed_medias' => $paginate_result,
-                            'lastPage' => $paginate_result->lastPage(),
+                            'lastPage_viewed_media' => $paginate_result->lastPage(),
                             'entity' => $entity,
                             'entity_title' => __('miscellaneous.account.child.title')
                         ]);
@@ -324,7 +324,7 @@ class AccountController extends Controller
                         'current_user' => $user->data->user,
                         'child' => $child_resource,
                         'viewed_medias' => $paginate_result,
-                        'lastPage' => $paginate_result->lastPage(),
+                        'lastPage_viewed_media' => $paginate_result->lastPage(),
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.account.child.title')
                     ]);
