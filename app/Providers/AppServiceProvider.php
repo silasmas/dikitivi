@@ -178,7 +178,6 @@ class AppServiceProvider extends ServiceProvider
             $medias_lives = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12) : Media::where([['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
             // Select all countries
             $countries = Country::all();
-            dd($countries);
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
@@ -236,6 +235,8 @@ class AppServiceProvider extends ServiceProvider
             $medias_trends = Media::where('for_youth', $for_youth)->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
             // Select media lives API
             $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
+            // Select all countries
+            $countries = Country::all();
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
@@ -267,9 +268,10 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
-            view()->composer('*', function ($view) {
+            view()->composer('*', function ($view) use ($countries) {
                 $view->with('current_locale', app()->getLocale());
                 $view->with('available_locales', config('app.available_locales'));
+                $view->with('countries', ResourcesCountry::collection($countries)->toArray(request()));
             });
         }
     }
