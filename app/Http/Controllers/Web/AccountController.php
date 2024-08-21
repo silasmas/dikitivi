@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
+use App\Http\Resources\MediaView as ResourcesMediaView;
+use App\Http\Resources\User as ResourcesUser;
+use App\Models\MediaView;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,8 +36,6 @@ class AccountController extends Controller
     {
         // Select a user API
         $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
-        // Select all countries API
-        $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
         if (session()->has('for_youth')) {
             if (session()->get('for_youth') == 1) {
@@ -43,8 +45,7 @@ class AccountController extends Controller
 
                     return view('account', [
                         'for_youth' => $for_youth,
-                        'current_user' => $user->data->user,
-                        'countries' => $countries->data
+                        'current_user' => $user->data->user
                     ]);
 
                 } else {
@@ -62,13 +63,10 @@ class AccountController extends Controller
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-                // Select all countries API
-                $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
                 return view('account', [
                     'for_youth' => $for_youth,
-                    'current_user' => $user->data->user,
-                    'countries' => $countries->data
+                    'current_user' => $user->data->user
                 ]);
             }
 
@@ -77,13 +75,10 @@ class AccountController extends Controller
             $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
             // User age
             $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-            // Select all countries API
-            $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
             return view('account', [
                 'for_youth' => $for_youth,
-                'current_user' => $user->data->user,
-                'countries' => $countries->data
+                'current_user' => $user->data->user
             ]);
         }
     }
@@ -117,11 +112,14 @@ class AccountController extends Controller
                     if ($entity == 'children') {
                         if (request()->has('id')) {
                             // Select a user API
-                            $child = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . request()->get('id'), $user->data->user->api_token);
+                            $child = User::find(request()->get('id'));
+                            $child_resource = new ResourcesUser($child);
+                            dd($child_resource);
                             // Recently viewed medias API
-                            $viewed_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_viewed_medias/' . $child->data->user->id, $user->data->user->api_token);
+                            $viewed_medias = MediaView::where('user_id', $child->id)->orderByDesc('created_at')->get();
+                            $viewed_media_resource = ResourcesMediaView::collection($viewed_medias)->toArray(request());
                             // Paginate result
-                            $paginate_result = paginate($viewed_medias->data, 12);
+                            $paginate_result = paginate($viewed_media_resource, 12);
 
                             return view('account', [
                                 'for_youth' => $for_youth,
