@@ -20,7 +20,7 @@
                                                             <p class="small mb-1 text-center dktv-line-height-1_4">@lang('miscellaneous.account.child.click_to_change_picture')</p>
 
                                                             <div class="bg-image hover-overlay">
-                                                                <img src="{{ asset($child->avatar_url) }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" class="other-user-image img-fluid rounded-circle">
+                                                                <img src="{{ !empty($child->avatar_url) ? asset((!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://api.dikitivi.com/public/storage/' . $child->avatar_url) : (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://api.dikitivi.com/public/assets/img/user.png' }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" class="other-user-image img-fluid rounded-circle">
                                                                 <div class="mask rounded-circle" style="background-color: rgba(5, 5, 5, 0.5);">
                                                                     <label role="button" for="image_profile" class="d-flex h-100 justify-content-center align-items-center">
                                                                         <i class="bi bi-pencil-fill text-white fs-2"></i>
