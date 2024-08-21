@@ -1,5 +1,4 @@
 <?php 
-dd($current_user);
 $watchlist = paginate($current_user->watchlist->orders, 7);
 $lastPage = $watchlist->lastPage(); 
 ?>

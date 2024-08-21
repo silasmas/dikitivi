@@ -10,7 +10,7 @@ const currentLanguage = $('html').attr('lang');
 const currentUser = $('[name="dktv-visitor"]').attr('content');
 const currentHost = $('[name="dktv-url"]').attr('content');
 const apiHost = $('[name="dktv-api-url"]').attr('content');
-const headers = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language };
+const headers = { 'X-CSRF-TOKEN': $('[name="csrf-token"]').attr('content'), 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language };
 // Modals
 const modalUser = $('#cropModalUser');
 // Preview images
