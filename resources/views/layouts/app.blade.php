@@ -787,7 +787,7 @@ if (request()->has('app_id')) {
             /**
              * Autocomplete search
              */
-            var mHeaders = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': $('.mime-type').val(), 'X-localization': navigator.language, 'X-user-id': $('[name="dktv-visitor"]').attr('content'), 'X-ip-address': $('[name="dktv-ip-addr"]').attr('content') };
+            var mHeaders = { 'Authorization': 'Bearer ' + $('[name="dktv-ref"]').attr('content'), 'Accept': 'application/json', 'X-localization': navigator.language, 'X-user-id': $('[name="dktv-visitor"]').attr('content'), 'X-ip-address': $('[name="dktv-ip-addr"]').attr('content') };
             var mUrl = apiHost + '/media/search/' + $('#search').val();
             var mDatas = JSON.stringify({ 'data': $('#search').val() });
 
@@ -801,11 +801,11 @@ if (request()->has('app_id')) {
                         success: function(data) {
                             $('#autocompleteSearch').toggleClass('d-none');
                             response(data);
+                            console.log(data);
 
-                            var medias = data.data;
                             var $lastChild = $('#autocompleteSearch .list-group-item').last();
 
-                            medias.forEach(element => {
+                            data.forEach(element => {
                                 $lastChild.before('<a href="#" class="list-group-item list-group-item-action py-2">' + element.media_title + '</a>');
                             });
                         },

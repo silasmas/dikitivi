@@ -8,6 +8,7 @@ use App\Http\Resources\Media as ResourcesMedia;
 use App\Http\Resources\Session as ResourcesSession;
 use App\Http\Resources\User as ResourcesUser;
 use App\Models\Media;
+use App\Models\Session as ModelsSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
@@ -42,6 +43,64 @@ class HomeController extends Controller
         session()->put('locale', $locale);
 
         return redirect()->back();
+    }
+
+    /**
+     * GET: Welcome/Home page
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string $data
+     * @return \Illuminate\View\View
+     */
+    public function search(Request $request)
+    {
+        $medias = Media::where('media_title', 'LIKE', '%' . $request->input('data') . '%')->orderByDesc('created_at')->paginate(12);
+
+        if ($request->hasHeader('X-user-id') and $request->hasHeader('X-ip-address')) {
+            $session = ModelsSession::where('user_id', $request->header('X-user-id'))->first();
+
+            if (!empty($session)) {
+                if (count($session->medias) == 0) {
+                    $session->medias()->attach($medias->pluck('id'));
+                }
+
+                if (count($session->medias) > 0) {
+                    $session->medias()->syncWithoutDetaching($medias->pluck('id'));
+                }
+            }
+
+        } else {
+            if ($request->hasHeader('X-user-id') and !$request->hasHeader('X-ip-address')) {
+                $session = ModelsSession::where('user_id', $request->header('X-user-id'))->first();
+
+                if (!empty($session)) {
+                    if (count($session->medias) == 0) {
+                        $session->medias()->attach($medias->pluck('id'));
+                    }
+
+                    if (count($session->medias) > 0) {
+                        $session->medias()->syncWithoutDetaching($medias->pluck('id'));
+                    }
+                }
+
+            } else {
+                if ($request->hasHeader('X-ip-address')) {
+                    $session = ModelsSession::where('ip_address', $request->header('X-ip-address'))->first();
+
+                    if (!empty($session)) {
+                        if (count($session->medias) == 0) {
+                            $session->medias()->attach($medias->pluck('id'));
+                        }
+
+                        if (count($session->medias) > 0) {
+                            $session->medias()->syncWithoutDetaching($medias->pluck('id'));
+                        }
+                    }
+                }
+            }
+        }
+
+        return ResourcesMedia::collection($medias);
     }
 
     /**

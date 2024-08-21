@@ -66,6 +66,7 @@ Route::get('/choose_age/{for_youth}', function (Request $request, $for_youth) {
 // Home
 Route::get('/', 'App\Http\Controllers\Web\HomeController@index')->name('home');
 Route::get('/language/{locale}', 'App\Http\Controllers\Web\HomeController@changeLanguage')->name('change_language');
+Route::get('/search', 'App\Http\Controllers\Web\HomeController@search')->name('search');
 Route::get('/notification', 'App\Http\Controllers\Web\HomeController@notification')->name('notification.home');
 Route::post('/parental-code', 'App\Http\Controllers\Web\HomeController@parentalCode')->name('parental_code');
 Route::get('/about', 'App\Http\Controllers\Web\HomeController@about')->name('about');
