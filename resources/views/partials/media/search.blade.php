@@ -9,7 +9,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card border rounded-4">
-                                    <h3 class="mb-4">@lang('miscellaneous.search_result', ['data' => 'search_content'])</h3>
+                                    <h3 class="my-3 text-center text-secondary">@lang('miscellaneous.search_result', ['data' => $search_content])</h3>
 
                                     <div class="list-group list-group-flush">
     @foreach ($medias as $media)
