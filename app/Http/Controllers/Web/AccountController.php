@@ -319,6 +319,8 @@ class AccountController extends Controller
                     // Paginate result
                     $paginate_result = paginate($viewed_media_resource, 12);
 
+                    dd($child_resource);
+
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
