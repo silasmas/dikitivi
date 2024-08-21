@@ -384,7 +384,7 @@ if (request()->has('app_id')) {
                                             <a href="#" class="list-group-item list-group-item-action py-2 small">A second link item</a>
                                             <a href="#" class="list-group-item list-group-item-action py-2 small">A third link item</a>
                                             <a href="#" class="list-group-item list-group-item-action py-2 small">A fourth link item</a>
-                                            <a href="#" class="list-group-item list-group-item-action small text-center">@lang('miscellaneous.see_all_results')</a>
+                                            <a href="#" class="list-group-item list-group-item-action active small text-center">@lang('miscellaneous.see_all_results')</a>
                                         </div>
                                     </div>
                                     <!-- search-input-box end -->
