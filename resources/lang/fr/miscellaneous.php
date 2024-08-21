@@ -87,6 +87,7 @@ return [
     'lock' => 'Bloquer',
     'unlock' => 'Débloquer',
     'search' => 'Rechercher ...',
+    'search_result' => 'Résultat pour « :data » ...',
     'mark_read' => 'Marquer comme lue',
     'mark_all_read' => 'Tout marquer comme lue',
     'empty_list' => 'La liste est vide',

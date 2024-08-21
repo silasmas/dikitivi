@@ -87,6 +87,7 @@ return [
     'lock' => 'Lock',
     'unlock' => 'Unlock',
     'search' => 'Search...',
+    'search_result' => 'Result for “:data” ...',
     'mark_read' => 'Mark as read',
     'mark_all_read' => 'Mark all as read',
     'empty_list' => 'The list is empty',

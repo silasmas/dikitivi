@@ -100,7 +100,22 @@ class HomeController extends Controller
             }
         }
 
-        return ResourcesMedia::collection($medias);
+        if (Auth::check()) {
+            // Select a user API
+            $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+
+            return view('partials.media.search', [
+                'medias' => ResourcesMedia::collection($medias),
+                'search_content' => $request->input('data'),
+                'current_user' => $user->data->user
+            ]);
+
+        } else {
+            return view('partials.media.search', [
+                'medias' => ResourcesMedia::collection($medias),
+                'search_content' => $request->input('data')
+            ]);
+        }
     }
 
     /**
