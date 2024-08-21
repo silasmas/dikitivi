@@ -375,9 +375,17 @@ if (request()->has('app_id')) {
                                 </div>
                                 <div class="right-side d-flex">
                                     <!-- search-input-box start -->
-                                    <div class="search-input-box">
-                                        <input type="text" placeholder="@lang('miscellaneous.search')">
-                                        <button><i class="bi bi-search"></i></button>
+                                    <div class="search-input-box position-relative">
+                                        <input class="position-relative" type="text" placeholder="@lang('miscellaneous.search')">
+                                        <button class="position-relative"><i class="bi bi-search"></i></button>
+
+                                        <div class="list-group list-group-flush position-absolute w-100 start-0 top-0" style="z-index: 999;">
+                                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">The current link item</a>
+                                            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                                            <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                                            <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                                            <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
+                                        </div>
                                     </div>
                                     <!-- search-input-box end -->
 
