@@ -133,9 +133,9 @@
                                                             </ul>
                                                         </div>
 
-                                                        <img src="{{ $child['avatar_url'] }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" width="70" class="float-start rounded-circle me-3">
-                                                        <h4 class="mt-2 mb-1 dktv-text-green fw-bold text-truncate">{{ $child->firstname . ' ' . $child->lastname }}</h4>
-                                                        <p class="m-0 text-muted text-truncate">{{ '@' . $child->username }}</p>
+                                                        <img src="{{ $child['avatar_url'] }}" alt="{{ $child['firstname'] . ' ' . $child['lastname'] }}" width="70" class="float-start rounded-circle me-3">
+                                                        <h4 class="mt-2 mb-1 dktv-text-green fw-bold text-truncate">{{ $child['firstname'] . ' ' . $child['lastname'] }}</h4>
+                                                        <p class="m-0 text-muted text-truncate">{{ '@' . $child['username'] }}</p>
                                                     </div>
                                                 </div>
                                             </div>
