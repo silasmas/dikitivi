@@ -316,6 +316,7 @@ class AccountController extends Controller
                     // Recently viewed medias API
                     $viewed_medias = MediaView::where('user_id', $child->id)->orderByDesc('created_at')->get();
                     $viewed_media_resource = ResourcesMediaView::collection($viewed_medias)->toArray(request());
+                    dd($viewed_media_resource);
                     // Paginate result
                     $paginate_result = paginate($viewed_media_resource, 12);
 
