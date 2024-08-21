@@ -133,7 +133,6 @@ class AccountController extends Controller
                         } else {
                             if (!empty($user->data->user->parental_code)) {
                                 // All user children API
-                                $user = User::find($user->data->user->id);
                                 $parent = User::where('parental_code', $user->data->user->parental_code)->whereNull('belongs_to')->first();
                                 $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->id . '/' . $user->data->user->parental_code, $user->data->user->api_token);
                                 $users = User::where('belongs_to', $parent->id)->get();
@@ -238,7 +237,6 @@ class AccountController extends Controller
                     } else {
                         if (!empty($user->data->user->parental_code)) {
                             // All user children API
-                            $user = User::find($user->data->user->id);
                             $parent = User::where('parental_code', $user->data->user->parental_code)->whereNull('belongs_to')->first();
                             $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->id . '/' . $user->data->user->parental_code, $user->data->user->api_token);
                             $users = User::where('belongs_to', $parent->id)->get();
@@ -336,7 +334,6 @@ class AccountController extends Controller
                         // User age
                         $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                         // All user children API
-                        $user = User::find($user->data->user->id);
                         $parent = User::where('parental_code', $user->data->user->parental_code)->whereNull('belongs_to')->first();
                         $children = $this::$api_client_manager::call('GET', getApiURL() . '/user/find_by_parental_code/' . $user->data->user->id . '/' . $user->data->user->parental_code, $user->data->user->api_token);
                         $users = User::where('belongs_to', $parent->id)->get();
