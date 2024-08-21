@@ -123,7 +123,7 @@ class AccountController extends Controller
                             return view('account', [
                                 'for_youth' => $for_youth,
                                 'current_user' => $user->data->user,
-                                'child' => $child_resource,
+                                'child' => array_to_obj($child_resource),
                                 'viewed_medias' => $paginate_result,
                                 'lastPage' => $paginate_result->lastPage(),
                                 'entity' => $entity,
@@ -227,7 +227,7 @@ class AccountController extends Controller
                         return view('account', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'child' => $child_resource,
+                            'child' => array_to_obj($child_resource),
                             'viewed_medias' => $paginate_result,
                             'lastPage' => $paginate_result->lastPage(),
                             'entity' => $entity,
@@ -319,12 +319,10 @@ class AccountController extends Controller
                     // Paginate result
                     $paginate_result = paginate($viewed_media_resource, 12);
 
-                    dd($child_resource->avatar_url);
-
                     return view('account', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'child' => $child_resource,
+                        'child' => array_to_obj($child_resource),
                         'viewed_medias' => $paginate_result,
                         'lastPage' => $paginate_result->lastPage(),
                         'entity' => $entity,

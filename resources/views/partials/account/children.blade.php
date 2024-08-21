@@ -1,7 +1,6 @@
                                 <div class="card border rounded-4">
 @if ($for_youth != 1)
     @if (request()->has('id'))
-{{ dd($child) }}
                                     <div class="card-header d-flex justify-content-between align-items-center bg-light">
                                         <a href="{{ route('account.entity', ['entity' => 'children']) }}" class="btn btn-link px-2 pt-1 text-muted fw-semibold">
                                             <i class="bi bi-arrow-left me-3"></i>@lang('miscellaneous.back_list')
@@ -11,7 +10,7 @@
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('account.entity', ['entity' => 'update_child']) }}">
         @csrf
-                                            <input type="hidden" name="user_id" value="{{ $child->id }}">
+                                            <input type="hidden" name="user_id" value="{{ $child['id'] }}">
                                             <input type="hidden" name="api_token" value="{{ $current_user->api_token }}">
 
                                             <div class="row g-3">
@@ -21,7 +20,7 @@
                                                             <p class="small mb-1 text-center dktv-line-height-1_4">@lang('miscellaneous.account.child.click_to_change_picture')</p>
 
                                                             <div class="bg-image hover-overlay">
-                                                                <img src="{{ asset($child->avatar_url) }}" alt="{{ $child->firstname . ' ' . $child->lastname }}" class="other-user-image img-fluid rounded-circle">
+                                                                <img src="{{ asset($child['avatar_url']) }}" alt="{{ $child['firstname'] . ' ' . $child['lastname'] }}" class="other-user-image img-fluid rounded-circle">
                                                                 <div class="mask rounded-circle" style="background-color: rgba(5, 5, 5, 0.5);">
                                                                     <label role="button" for="image_profile" class="d-flex h-100 justify-content-center align-items-center">
                                                                         <i class="bi bi-pencil-fill text-white fs-2"></i>
@@ -37,31 +36,31 @@
                                                 <div class="col-sm-7 mx-auto">
                                                     <!-- First name -->
                                                     <div class="form-floating mt-3">
-                                                        <input type="text" name="register_firstname" id="update_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" value="{{ $child->firstname }}" required autofocus />
+                                                        <input type="text" name="register_firstname" id="update_firstname" class="form-control" placeholder="@lang('miscellaneous.firstname')" value="{{ $child['firstname'] }}" required autofocus />
                                                         <label class="form-label" for="update_firstname">@lang('miscellaneous.firstname')</label>
                                                     </div>
 
                                                     <!-- Last name -->
                                                     <div class="form-floating mt-3">
-                                                        <input type="text" name="register_lastname" id="update_lastname" class="form-control" placeholder="@lang('miscellaneous.lastname')" value="{{ $child->lastname }}" />
+                                                        <input type="text" name="register_lastname" id="update_lastname" class="form-control" placeholder="@lang('miscellaneous.lastname')" value="{{ $child['lastname'] }}" />
                                                         <label class="form-label" for="update_lastname">@lang('miscellaneous.lastname')</label>
                                                     </div>
 
                                                     <!-- Surname -->
                                                     <div class="form-floating mt-3">
-                                                        <input type="text" name="register_surname" id="update_surname" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ $child->surname }}" />
+                                                        <input type="text" name="register_surname" id="update_surname" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ $child['surname'] }}" />
                                                         <label class="form-label" for="update_surname">@lang('miscellaneous.surname')</label>
                                                     </div>
 
                                                     <!-- Username -->
                                                     <div class="form-floating mt-3">
-                                                        <input type="text" name="register_username" id="update_username" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ $child->username }}" />
+                                                        <input type="text" name="register_username" id="update_username" class="form-control" placeholder="@lang('miscellaneous.surname')" value="{{ $child['username'] }}" />
                                                         <label class="form-label" for="update_username">@lang('miscellaneous.username')</label>
                                                     </div>
 
                                                     <!-- Birth date -->
                                                     <div class="form-floating mt-3">
-                                                        <input type="text" name="register_birthdate" id="update_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" value="{{ !empty($child->birth_date) ? str_starts_with(app()->getLocale(), 'fr') ? \Carbon\Carbon::createFromFormat('Y-m-d', $child->birth_date)->format('d/m/Y') : \Carbon\Carbon::createFromFormat('Y-m-d', $child->birth_date)->format('m/d/Y') : null }}" />
+                                                        <input type="text" name="register_birthdate" id="update_birthdate" class="form-control" placeholder="@lang('miscellaneous.birth_date.label')" value="{{ !empty($child['birth_date']) ? str_starts_with(app()->getLocale(), 'fr') ? \Carbon\Carbon::createFromFormat('Y-m-d', $child['birth_date'])->format('d/m/Y') : \Carbon\Carbon::createFromFormat('Y-m-d', $child['birth_date'])->format('m/d/Y') : null }}" />
                                                         <label class="form-label" for="update_birthdate">@lang('miscellaneous.birth_date.label')</label>
                                                     </div>
 
@@ -69,11 +68,11 @@
                                                     <div class="mt-3 text-center">
                                                         <p class="mb-lg-1 mb-0">@lang('miscellaneous.gender_title')</p>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="register_gender" id="update_male" value="M"{{ $child->gender == 'M' ? ' checked' : '' }}>
+                                                            <input class="form-check-input" type="radio" name="register_gender" id="update_male" value="M"{{ $child['gender'] == 'M' ? ' checked' : '' }}>
                                                             <label class="form-check-label text-muted" for="male">@lang('miscellaneous.gender1')</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="register_gender" id="update_female" value="F"{{ $child->gender == 'F' ? ' checked' : '' }}>
+                                                            <input class="form-check-input" type="radio" name="register_gender" id="update_female" value="F"{{ $child['gender'] == 'F' ? ' checked' : '' }}>
                                                             <label class="form-check-label text-muted" for="female">@lang('miscellaneous.gender2')</label>
                                                         </div>
                                                     </div>
