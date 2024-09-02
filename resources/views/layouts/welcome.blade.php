@@ -285,12 +285,12 @@
 @yield('welcome-content')
 
             <!-- Footer Area -->
-            <footer class="footer-area">
+            <footer class="footer-area detect-webview">
                 {{-- <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}"> --}}
                 <div class="footer-top-tow dktv-bg-blue">
                     <div class="container">
                         <div class="row">
-                            <div class="col-custom-4 mt--50 detect-webview">
+                            <div class="col-custom-4 mt--50">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.about.title')</h4>
@@ -323,7 +323,7 @@
                                 <!--// footer-widget -->
                             </div>
 
-                            <div class="col-custom-4 mt--50 detect-webview">
+                            <div class="col-custom-4 mt--50">
                                 <!-- footer-widget -->
                                 <div class="footer-widget">
                                     <h4 class="footer-widget-title">@lang('miscellaneous.public.footer.head_office.title')</h4>
@@ -342,7 +342,7 @@
                     </div>
                 </div>
 
-                <div class="footer-bottom detect-webview">
+                <div class="footer-bottom">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
