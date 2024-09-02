@@ -8,6 +8,7 @@ use App\Http\Resources\Media as ResourcesMedia;
 use App\Http\Resources\Session as ResourcesSession;
 use App\Http\Resources\User as ResourcesUser;
 use App\Models\Media;
+use App\Models\MediaView;
 use App\Models\Session as ModelsSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,54 @@ class HomeController extends Controller
         $this::$api_client_manager = new ApiClientManager();
 
         clearstatcache();
+    }
+
+    // ==================================== CUSTOM METHODS ====================================
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, $id)
+    {
+        $media = Media::find($id);
+
+        if (is_null($media)) {
+            return $this->handleError(__('notifications.find_media_404'));
+        }
+
+        if (Auth::check()) {
+            $session = ModelsSession::where('user_id', Auth::user()->id)->first();
+
+            if (!empty($session)) {
+                if (count($session->medias) == 0) {
+                    $session->medias()->attach([$media->id]);
+                }
+
+                if (count($session->medias) > 0) {
+                    $session->medias()->syncWithoutDetaching([$media->id]);
+                }
+
+                MediaView::create(['user_id' => $session->user_id, 'media_id' => $media->id]);
+            }
+
+        } else {
+            $session = ModelsSession::where('ip_address', $request->ip())->first();
+
+            if (!empty($session)) {
+                if (count($session->medias) == 0) {
+                    $session->medias()->attach([$media->id]);
+                }
+
+                if (count($session->medias) > 0) {
+                    $session->medias()->syncWithoutDetaching([$media->id]);
+                }
+            }
+        }
+
+        return new ResourcesMedia($media)/*->toArray($request)*/;
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -223,7 +272,7 @@ class HomeController extends Controller
      */
     public function mediaDatas(Request $request, $id)
     {
-        $media = Media::find($id);
+        $media = $this->show($request, $id);
 
         if (is_null($media)) {
             return $this->handleError(__('notifications.find_media_404'));
@@ -240,15 +289,13 @@ class HomeController extends Controller
 
                     if ($user->data->user->age < 18) {
                         $for_youth = session()->get('for_youth');
-                        // Select the current media API
-                        $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, $user->data->user->api_token, null, $request->ip(), $user->data->user->id);
                         // Select other medias by current media type ID
-                        $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $current_media->data->type->id]])->orderByDesc('created_at')->paginate(12);
+                        $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12);
 
                         return view('partials.media.datas', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'current_media' => $current_media->data,
+                            'current_media' => $media,
                             'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
                             'views' => ResourcesSession::collection($views)->toArray(request()),
                             'likes' => ResourcesUser::collection($likes)->toArray(request())
@@ -268,19 +315,16 @@ class HomeController extends Controller
 
                 } else {
                     $for_youth = session()->get('for_youth');
-
-                    // Select the current media API
-                    $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, null, null, $request->ip());
                     // Select other medias by current media type ID
-                    $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $current_media->data->type->id]])->orderByDesc('created_at')->paginate(12);
+                    $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12);
 
-                    if ($current_media->data->for_youth != session()->get('for_youth')) {
+                    if ($media->for_youth != session()->get('for_youth')) {
                         return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
 
                     } else {
                         return view('partials.media.datas', [
                             'for_youth' => session()->get('for_youth'),
-                            'current_media' => $current_media->data,
+                            'current_media' => $media,
                             'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
                             'views' => ResourcesSession::collection($views)->toArray(request()),
                             'likes' => ResourcesUser::collection($likes)->toArray(request())
@@ -294,15 +338,13 @@ class HomeController extends Controller
                     $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                     // User age
                     $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-                    // Select the current media API
-                    $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, $user->data->user->api_token, null, $request->ip(), $user->data->user->id);
                     // Select other medias by current media type ID
-                    $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $current_media->data->type->id]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', $current_media->data->type->id)->orderByDesc('created_at')->paginate(12);
+                    $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
 
                     return view('partials.media.datas', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'current_media' => $current_media->data,
+                        'current_media' => $media,
                         'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
                         'views' => ResourcesSession::collection($views)->toArray(request()),
                         'likes' => ResourcesUser::collection($likes)->toArray(request())
@@ -319,19 +361,17 @@ class HomeController extends Controller
                 $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
                 // User age
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-                // Select the current media API
-                $current_media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . $id, $user->data->user->api_token, null, $request->ip(), $user->data->user->id);
                 // Select other medias by current media type ID
-                $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $current_media->data->type->id]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', $current_media->data->type->id)->orderByDesc('created_at')->paginate(12);
+                $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
 
-                if ($for_youth == 1 AND $for_youth != $current_media->data->for_youth) {
+                if ($for_youth == 1 AND $for_youth != $media->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
 
                 } else {
                     return view('partials.media.datas', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'current_media' => $current_media->data,
+                        'current_media' => $media,
                         'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
                         'views' => ResourcesSession::collection($views)->toArray(request()),
                         'likes' => ResourcesUser::collection($likes)->toArray(request())
@@ -725,10 +765,6 @@ class HomeController extends Controller
      */
     public function programsEntity(Request $request, $entity)
     {
-        // Select a category by name API
-        $preach_category_name = 'Prédications';
-        $preach_category = $this::$api_client_manager::call('GET', getApiURL() . '/category/search/fr/' . $preach_category_name);
-
         if (session()->has('for_youth')) {
             if (session()->get('for_youth') == 1) {
                 if ($entity == 'preach') {
@@ -740,14 +776,9 @@ class HomeController extends Controller
                             $for_youth = session()->get('for_youth');
 
                             if ($entity == 'preach') {
-                                // Select medias by categories API
-                                $medias_preachs = $this::$api_client_manager::call('POST', getApiURL() . '/media/filter_by_categories/' . $for_youth . '?page=' . $request->get('page'), null, ['categories_ids' => [$preach_category->data->id]], $request->ip(), $user->data->user->id);
-
                                 return view('partials.media.programs', [
                                     'for_youth' => $for_youth,
                                     'current_user' => $user->data->user,
-                                    'preachs' => $medias_preachs->data,
-                                    'lastPage' => $medias_preachs->lastPage,
                                     'entity' => $entity,
                                     'entity_title' => __('miscellaneous.menu.preach')
                                 ]);
@@ -764,13 +795,8 @@ class HomeController extends Controller
                         }
 
                     } else {
-                        // Select medias by categories API
-                        $medias_preachs = $this::$api_client_manager::call('POST', getApiURL() . '/media/filter_by_categories/' . session()->get('for_youth') . '?page=' . $request->get('page'), null, ['categories_ids' => [$preach_category->data->id]], $request->ip());
-
                         return view('partials.media.programs', [
                             'for_youth' => session()->get('for_youth'),
-                            'preachs' => $medias_preachs->data,
-                            'lastPage' => $medias_preachs->lastPage,
                             'entity' => $entity,
                             'entity_title' => __('miscellaneous.menu.preach')
                         ]);
@@ -785,14 +811,9 @@ class HomeController extends Controller
                     $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
 
                     if ($entity == 'preach') {
-                        // Select medias by categories API
-                        $medias_preachs = $this::$api_client_manager::call('POST', getApiURL() . '/media/filter_by_categories/' . $for_youth . '?page=' . $request->get('page'), null, ['categories_ids' => [$preach_category->data->id]], $request->ip(), $user->data->user->id);
-
                         return view('partials.media.programs', [
                             'for_youth' => $for_youth,
                             'current_user' => $user->data->user,
-                            'preachs' => $medias_preachs->data,
-                            'lastPage' => $medias_preachs->lastPage,
                             'entity' => $entity,
                             'entity_title' => __('miscellaneous.menu.preach')
                         ]);
@@ -811,14 +832,9 @@ class HomeController extends Controller
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
 
                 if ($entity == 'preach') {
-                    // Select medias by categories API
-                    $medias_preachs = $this::$api_client_manager::call('POST', getApiURL() . '/media/filter_by_categories/' . $for_youth . '?page=' . $request->get('page'), null, ['categories_ids' => [$preach_category->data->id]], $request->ip(), $user->data->user->id);
-
                     return view('partials.media.programs', [
                         'for_youth' => $for_youth,
                         'current_user' => $user->data->user,
-                        'preachs' => $medias_preachs->data,
-                        'lastPage' => $medias_preachs->lastPage,
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.menu.preach')
                     ]);
@@ -950,7 +966,7 @@ class HomeController extends Controller
                     'titles' => $titles,
                     'types' => $types->data,
                     'belonging_medias' => $medias,
-                    'current_media' => $media->data,
+                    'current_media' => $media,
                     'categories' => $categories->data,
                     'all_medias' => $all_medias->data,
                     'lastPage' => $all_medias->lastPage,
