@@ -5,8 +5,13 @@ namespace App\Providers;
 use App\Http\Controllers\ApiClientManager;
 use App\Http\Resources\Country as ResourcesCountry;
 use App\Http\Resources\Media as ResourcesMedia;
+use App\Http\Resources\Pricing as ResourcesPricing;
+use App\Http\Resources\Type as ResourcesType;
 use App\Models\Country;
+use App\Models\Group;
 use App\Models\Media;
+use App\Models\Pricing;
+use App\Models\Type;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -178,6 +183,11 @@ class AppServiceProvider extends ServiceProvider
             $medias_lives = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12) : Media::where([['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
             // Select all countries
             $countries = Country::all();
+            // Select all pricings
+            $pricings = Pricing::all();
+            // Select all types by group (Type de transaction)
+            $group = Group::where('group_name->fr', 'Type de transaction')->first();
+            $transaction_types = Type::where('group_id', $group->id)->get();
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
@@ -209,10 +219,12 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
-            view()->composer('*', function ($view) use ($countries) {
+            view()->composer('*', function ($view) use ($countries, $pricings, $transaction_types) {
                 $view->with('current_locale', app()->getLocale());
                 $view->with('available_locales', config('app.available_locales'));
                 $view->with('countries', ResourcesCountry::collection($countries)->toArray(request()));
+                $view->with('pricings', ResourcesPricing::collection($pricings)->toArray(request()));
+                $view->with('transaction_types', ResourcesType::collection($transaction_types)->toArray(request()));
             });
 
         } else {
@@ -237,6 +249,11 @@ class AppServiceProvider extends ServiceProvider
             $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6]])->orderByDesc('created_at')->paginate(12);
             // Select all countries
             $countries = Country::all();
+            // Select all pricings
+            $pricings = Pricing::all();
+            // Select all types by group (Type de transaction)
+            $group = Group::where('group_name->fr', 'Type de transaction')->first();
+            $transaction_types = Type::where('group_id', $group->id)->get();
 
             View::share('api_client_manager', $api_client_manager);
             View::composer(['home', 'partials.media.programs'], function ($view) use ($medias_programs, $medias_programs_preach) {
@@ -268,10 +285,12 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('lastPage_lives', $medias_lives->lastPage());
             });
 
-            view()->composer('*', function ($view) use ($countries) {
+            view()->composer('*', function ($view) use ($countries, $pricings, $transaction_types) {
                 $view->with('current_locale', app()->getLocale());
                 $view->with('available_locales', config('app.available_locales'));
                 $view->with('countries', ResourcesCountry::collection($countries)->toArray(request()));
+                $view->with('pricings', ResourcesPricing::collection($pricings)->toArray(request()));
+                $view->with('transaction_types', ResourcesType::collection($transaction_types)->toArray(request()));
             });
         }
     }

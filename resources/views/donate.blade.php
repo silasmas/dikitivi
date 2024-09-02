@@ -31,9 +31,9 @@
 
                                     <div id="paymentMethod">
     @foreach ($transaction_types as $type)
-        @if ($type->type_name == __('miscellaneous.account.payment.send_money.mobile_money'))
+        @if ($type['type_name'] == __('miscellaneous.account.payment.send_money.mobile_money'))
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input mt-2" type="radio" name="transaction_type_id" id="mobile_money" value="{{ $type->id }}" />
+                                            <input class="form-check-input mt-2" type="radio" name="transaction_type_id" id="mobile_money" value="{{ $type['id'] }}" />
                                             <label class="form-check-label" for="mobile_money">
                                                 <img src="{{ asset('assets/img/payment-mobile-money.png') }}" alt="{{ __('miscellaneous.account.payment.send_money.mobile_money') }}" width="40">
                                                 @lang('miscellaneous.account.payment.send_money.mobile_money')
@@ -41,7 +41,7 @@
                                         </div>
         @else
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input mt-2" type="radio" name="transaction_type_id" id="bank_card" value="{{ $type->id }}" />
+                                            <input class="form-check-input mt-2" type="radio" name="transaction_type_id" id="bank_card" value="{{ $type['id'] }}" />
                                             <label class="form-check-label" for="bank_card">
                                                 <img src="{{ asset('assets/img/payment-credit-card.png') }}" alt="{{ __('miscellaneous.public.about.donate.send_money.bank_card') }}" width="40">
                                                 @lang('miscellaneous.public.about.donate.send_money.bank_card')
@@ -63,7 +63,7 @@
                                                 <option class="small" selected disabled>@lang('miscellaneous.public.about.donate.period.choose')</option>
                                                 <option>@lang('miscellaneous.public.about.donate.period.unique')</option>
     @forelse ($pricings as $pricing)
-                                                <option value="{{ $pricing->id }}">{{ $pricing->deadline }}</option>
+                                                <option value="{{ $pricing['id'] }}">{{ $pricing['deadline'] }}</option>
     @empty
     @endforelse
                                             </select>
@@ -96,7 +96,7 @@
                                             <select name="select_country" id="select_country1" class="form-select pt-2 shadow-0">
                                                 <option class="small" selected disabled>@lang('miscellaneous.choose_country')</option>
     @forelse ($countries as $country)
-                                                <option value="{{ $country->country_phone_code . '-' . $country->id }}">{{ $country->country_name }}</option>
+                                                <option value="{{ $country['country_phone_code'] . '-' . $country['id'] }}">{{ $country['country_name'] }}</option>
     @empty
                                                 <option>@lang('miscellaneous.empty_list')</option>
     @endforelse

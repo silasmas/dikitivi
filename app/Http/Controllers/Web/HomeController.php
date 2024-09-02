@@ -912,19 +912,7 @@ class HomeController extends Controller
      */
     public function donate()
     {
-        // Select all types by group API
-        $transaction_types_name = 'Type de transaction';
-        $transaction_types = $this::$api_client_manager::call('GET', getApiURL() . '/type/find_by_group/fr/' . $transaction_types_name);
-        // Select all countries API
-        $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
-        // Select all pricings API
-        $pricings = $this::$api_client_manager::call('GET', getApiURL() . '/pricing');
-
-        return view('donate', [
-            'transaction_types' => $transaction_types->data,
-            'countries' => $countries->data,
-            'pricings' => $pricings->data
-        ]);
+        return view('donate');
     }
 
     /**
@@ -946,45 +934,55 @@ class HomeController extends Controller
      */
     public function aboutEntity($entity)
     {
-        $titles = Lang::get('miscellaneous.public.about.' . $entity . '.titles');
-		$types = $this::$api_client_manager::call('GET', getApiURL() . '/type/find_by_group/fr/Type de média');
-		$albums = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_type/fr/Album musique');
-		$series = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_type/fr/Série TV');
-		$medias = (collect($albums->data))->merge(collect($series->data));
-		$categories = $this::$api_client_manager::call('GET', getApiURL() . '/category');
-		$all_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media?page=' . request()->get('page'));
+        if ($entity == 'pricing') {
+            $titles = Lang::get('miscellaneous.public.about.' . $entity . '.titles');
+            $types = $this::$api_client_manager::call('GET', getApiURL() . '/type/find_by_group/fr/Type de média');
+            $albums = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_type/fr/Album musique');
+            $series = $this::$api_client_manager::call('GET', getApiURL() . '/media/find_all_by_type/fr/Série TV');
+            $medias = (collect($albums->data))->merge(collect($series->data));
+            $categories = $this::$api_client_manager::call('GET', getApiURL() . '/category');
+            $all_medias = $this::$api_client_manager::call('GET', getApiURL() . '/media?page=' . request()->get('page'));
 
-		if (request()->has('id')) {
-			$media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . request()->get('id'));
+            if (request()->has('id')) {
+                $media = $this::$api_client_manager::call('GET', getApiURL() . '/media/' . request()->get('id'));
 
-			return view('about', [
-				'titles' => $titles,
-				'entity' => $entity,
-				'types' => $types->data,
-				'belonging_medias' => $medias,
-				'current_media' => $media->data,
-				'categories' => $categories->data,
-				'all_medias' => $all_medias->data,
-                'lastPage' => $all_medias->lastPage,
-				'entity' => $entity,
-				'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
-				'entity_menu' => __('miscellaneous.menu.' . $entity),
-			]);
+                return view('about', [
+                    'titles' => $titles,
+                    'types' => $types->data,
+                    'belonging_medias' => $medias,
+                    'current_media' => $media->data,
+                    'categories' => $categories->data,
+                    'all_medias' => $all_medias->data,
+                    'lastPage' => $all_medias->lastPage,
+                    'entity' => $entity,
+                    'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                    'entity_menu' => __('miscellaneous.menu.' . $entity),
+                ]);
 
-		} else {
-			return view('about', [
-				'titles' => $titles,
-				'entity' => $entity,
-				'types' => $types->data,
-				'belonging_medias' => $medias,
-				'categories' => $categories->data,
-				'all_medias' => $all_medias->data,
-                'lastPage' => $all_medias->lastPage,
-				'entity' => $entity,
-				'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
-				'entity_menu' => __('miscellaneous.menu.' . $entity),
-			]);
-		}
+            } else {
+                return view('about', [
+                    'titles' => $titles,
+                    'types' => $types->data,
+                    'belonging_medias' => $medias,
+                    'categories' => $categories->data,
+                    'all_medias' => $all_medias->data,
+                    'lastPage' => $all_medias->lastPage,
+                    'entity' => $entity,
+                    'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                    'entity_menu' => __('miscellaneous.menu.' . $entity),
+                ]);
+            }
+
+        } else {
+            $titles = Lang::get('miscellaneous.public.about.' . $entity . '.titles');
+
+            return view('about', [
+                'titles' => $titles,
+                'entity' => $entity,
+                'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                'entity_menu' => __('miscellaneous.menu.' . $entity),
+            ]);
+        }
     }
 
     /**

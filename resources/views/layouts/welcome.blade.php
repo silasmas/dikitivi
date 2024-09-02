@@ -284,8 +284,6 @@
 
 @yield('welcome-content')
 
-@if(Route::is('about.entity'))
-@else
             <!-- Footer Area -->
             <footer class="footer-area">
                 {{-- <div class="footer-top-tow bg-image-two" data-bgimage="{{ asset('assets/img/transit/footer-bg-02.jpg') }}"> --}}
@@ -361,7 +359,6 @@
                 </div>
             </footer>
             <!--// Footer Area -->
-@endif
         </div>
         <!-- Main Wrapper End -->
 
