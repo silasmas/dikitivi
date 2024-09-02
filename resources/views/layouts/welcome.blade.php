@@ -297,10 +297,10 @@
                                     <div class="footer-contet">
                                         <p style="color: #fff!important;">@lang('miscellaneous.public.about.description')</p>
                                         <ul class="fotter-socail">
-                                            <li><a href="#" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
-                                            <li><a href="#" class="fs-4"><i class="bi bi-instagram align-middle"></i></a></li>
-                                            <li><a href="#" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
-                                        </ul>
+                                            <li><a href="https://www.facebook.com/DIKITIVI?mibextid=ZbWKwL" class="fs-4"><i class="bi bi-facebook align-middle"></i></a></li>
+                                            <li><a href="https://x.com/DikiTivi?t=cuvFpqwKTw-5MN9JnIew5g&s=09" class="fs-4"><i class="bi bi-twitter-x align-middle"></i></a></li>
+                                            <li><a href="https://youtube.com/@dikitivi?si=mV7Fuhx94Q7rk_Mk" class="fs-4"><i class="bi bi-youtube align-middle"></i></a></li>
+                                    </ul>
                                     </div>
                                 </div>
                                 <!--// footer-widget -->

@@ -297,6 +297,7 @@ class HomeController extends Controller
                             'current_user' => $user->data->user,
                             'current_media' => $media,
                             'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
+                            'other_medias_lastPage' => $other_medias->lastPage(),
                             'views' => ResourcesSession::collection($views)->toArray(request()),
                             'likes' => ResourcesUser::collection($likes)->toArray(request())
                         ]);
@@ -326,6 +327,7 @@ class HomeController extends Controller
                             'for_youth' => session()->get('for_youth'),
                             'current_media' => $media,
                             'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
+                            'other_medias_lastPage' => $other_medias->lastPage(),
                             'views' => ResourcesSession::collection($views)->toArray(request()),
                             'likes' => ResourcesUser::collection($likes)->toArray(request())
                         ]);
@@ -346,7 +348,8 @@ class HomeController extends Controller
                         'current_user' => $user->data->user,
                         'current_media' => $media,
                         'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
-                        'views' => ResourcesSession::collection($views)->toArray(request()),
+                        'other_medias_lastPage' => $other_medias->lastPage(),
+                    'views' => ResourcesSession::collection($views)->toArray(request()),
                         'likes' => ResourcesUser::collection($likes)->toArray(request())
                     ]);
 
@@ -373,7 +376,8 @@ class HomeController extends Controller
                         'current_user' => $user->data->user,
                         'current_media' => $media,
                         'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
-                        'views' => ResourcesSession::collection($views)->toArray(request()),
+                        'other_medias_lastPage' => $other_medias->lastPage(),
+                    'views' => ResourcesSession::collection($views)->toArray(request()),
                         'likes' => ResourcesUser::collection($likes)->toArray(request())
                     ]);
                 }
