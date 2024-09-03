@@ -6,7 +6,7 @@
                 <!-- Our-product-area Area  -->
                 <div class="movie-details-wrap section-pb-50">
                     <div class="container-sm container-fluid">
-                        <div class="row mb-3">
+                        <div class="row mb-3 d-sm-inline-block d-none">
                             <div class="col-12">
     @switch($current_media->type->type_name)
         @case(__('miscellaneous.media_types.feature_film'))
