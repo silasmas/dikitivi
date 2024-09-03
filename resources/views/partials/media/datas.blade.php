@@ -167,7 +167,7 @@ if (!empty($current_media->belongs_to)) {
 
     @forelse ($other_medias as $media)
                                 <h3 class="me-lg-0 me-2">
-                                    <span class="badge bg-info fw-normal">{{ $media->media_title }}</span>
+                                    <span class="badge bg-info fw-normal">{{ $media['media_title'] }}</span>
                                 </h3>
     @empty
     @endforelse
