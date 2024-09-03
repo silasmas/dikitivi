@@ -59,7 +59,7 @@ if (!empty($current_media->belongs_to)) {
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-8 mx-auto">
+                            <div class="col-sm-7 mx-auto">
     @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album'))
                                 <div class="bg-image">
                                     <img src="{{ !empty($current_media->cover_url) ? $current_media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $current_media->media_title }}" class="w-100 rounded-4">
