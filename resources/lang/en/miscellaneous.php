@@ -853,6 +853,7 @@ return [
         // Media
         'media' => [
             'categories' => 'Categories',
+            'related_medias' => 'Related medias',
             'all_episodes' => 'Episodes of the series',
             'all_songs' => 'Songs from the album',
 

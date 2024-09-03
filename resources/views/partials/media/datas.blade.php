@@ -140,7 +140,7 @@ if (!empty($current_media->belongs_to)) {
 
                                 <div class="d-flex justify-content-between">
     @include('partials.count')
-        @if (Auth::check())
+    @if (Auth::check())
                                     <div class="action">
                                         <button title="{{ inArrayR($current_media->id, $current_user->watchlist->orders, 'media_id') ? __('miscellaneous.public.withdraw_watchlist') : __('miscellaneous.public.add_watchlist') }}" class="Watch-list-btn{{ inArrayR($current_media->id, $current_user->watchlist->orders, 'media_id') ? ' dktv-btn-green' : '' }}" type="button" data-status="{{ inArrayR($current_media->id, $current_user->watchlist->orders, 'media_id') ? 'added' : 'withdrawn' }}" data-watchlist-id="{{ $current_user->watchlist_id }}" onclick="event.preventDefault(); toggleAction(this, {{ $current_media->id }}, 'watchlist');">
                                             <i class="zmdi zmdi-{{ inArrayR($current_media->id, $current_user->watchlist->orders, 'media_id') ? 'check' : 'plus' }}"></i>
@@ -149,7 +149,7 @@ if (!empty($current_media->belongs_to)) {
                                             <i class="bi bi-{{ inArrayR($current_user->email, $likes, 'email') ? 'heart-fill' : 'heart' }} align-text-bottom"></i>
                                         </button>
                                     </div>
-        @else
+    @else
                                     <div class="action">
                                         <button title="@lang('miscellaneous.public.add_watchlist')" class="Watch-list-btn" type="button" onclick="event.preventDefault(); window.location.replace('{{ route('login') }}');">
                                             <i class="zmdi zmdi-plus"></i>
@@ -158,19 +158,23 @@ if (!empty($current_media->belongs_to)) {
                                             <i class="bi bi-heart align-text-bottom"></i>
                                         </button>
                                     </div>
-        @endif
+    @endif
                                 </div>
                             </div>
 
-                            <div class="col-sm-4 mx-auto">
-                                <h3 class="text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.categories')</h3>
+                            <div class="col-sm-5 mx-auto">
+                                <h3 class="text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.related_medias')</h3>
 
+                                <div class="list-group list-group-flush">
     @forelse ($other_medias as $media)
-                                <h3 class="me-lg-0 me-2">
-                                    <span class="badge bg-info fw-normal">{{ $media['media_title'] }}</span>
-                                </h3>
+                                    <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="list-group-item list-group-item-action">
+                                        <img src="{{ !empty($media->cover_url) ? $media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $media->media_title }}" width="190" class="float-start rounded-4 me-3">
+                                        <h4 class="my-2 dktv-text-green fw-bold">{{ $media->media_title }}</h4>
+                                        <p class="text-muted">{{ !empty($media->media_description) ? Str::limit($media->media_description, 20, '...') :$media->author_names }}</p>
+                                    </a>
     @empty
     @endforelse
+                                </div>
                             </div>
 {{-- 
                             <div class="col-lg-2 col-sm-3 mx-auto">
