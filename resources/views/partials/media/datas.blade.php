@@ -167,11 +167,13 @@ if (!empty($current_media->belongs_to)) {
 
                                 <div class="list-group list-group-flush">
     @forelse ($other_medias as $media)
+        @if ($media['id'] != $current_media->id)
                                     <a href="{{ route('media.datas', ['id' => $media['id']]) }}" class="list-group-item list-group-item-action bg-transparent">
                                         <img src="{{ !empty($media['cover_url']) ? $media['cover_url'] : asset('assets/img/blank-media-video.png') }}" alt="{{ $media['media_title'] }}" width="140" class="float-start rounded-4 me-3">
                                         <h4 class="my-2 dktv-text-green fw-bold">{{ $media['media_title'] }}</h4>
                                         <p class="text-muted">{{ !empty($media['media_description']) ? Str::limit($media['media_description'], 20, '...') :$media['author_names'] }}</p>
                                     </a>
+        @endif
     @empty
     @endforelse
                                 </div>
