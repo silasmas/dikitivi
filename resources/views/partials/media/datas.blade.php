@@ -59,7 +59,7 @@ if (!empty($current_media->belongs_to)) {
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-10 col-sm-9 mx-auto">
+                            <div class="col-sm-8 mx-auto">
     @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album'))
                                 <div class="bg-image">
                                     <img src="{{ !empty($current_media->cover_url) ? $current_media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $current_media->media_title }}" class="w-100 rounded-4">
@@ -162,6 +162,17 @@ if (!empty($current_media->belongs_to)) {
                                 </div>
                             </div>
 
+                            <div class="col-sm-4 mx-auto">
+                                <h3 class="text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.categories')</h3>
+
+    @forelse ($other_medias as $media)
+                                <h3 class="me-lg-0 me-2">
+                                    <span class="badge bg-info fw-normal">{{ $media->media_title }}</span>
+                                </h3>
+    @empty
+    @endforelse
+                            </div>
+{{-- 
                             <div class="col-lg-2 col-sm-3 mx-auto">
                                 <h3 class="text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.categories')</h3>
 
@@ -171,7 +182,7 @@ if (!empty($current_media->belongs_to)) {
                                 </h3>
     @empty
     @endforelse
-                            </div>
+                            </div> --}}
                         </div>
 
     @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album') || $current_media->type->type_name == __('miscellaneous.media_types.tv_program'))
