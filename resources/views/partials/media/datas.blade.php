@@ -1,4 +1,4 @@
-{{ dd($other_medias) }}
+{{-- {{ dd($other_medias) }} --}}
 @extends('layouts.app')
 
 @section('app-content')
