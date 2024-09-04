@@ -41,7 +41,7 @@ class HomeController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $media = Media::find($id);
+        $media = Media::where('id', $id)->first();
 
         if (is_null($media)) {
             return $this->handleError(__('notifications.find_media_404'));
@@ -272,8 +272,7 @@ class HomeController extends Controller
      */
     public function mediaDatas(Request $request, $id)
     {
-        $media_db = $this->show($request, $id);
-        $media = new ResourcesMedia($media_db);
+        $media = $this->show($request, $id);
 
         dd($media);
 
