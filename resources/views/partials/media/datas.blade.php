@@ -208,7 +208,7 @@ $belonging_medias = $api_client_manager::call('GET', getApiURL() . '/media/find_
                             <div class="col-sm-5 mx-auto">
                                 <h3 class="text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.related_medias')</h3>
 
-                                <div class="list-group list-group-flush text-center">
+                                <div class="list-group list-group-flush">
     @forelse ($other_medias as $media)
         @if ($media['id'] != $current_media->id)
                                     <a href="{{ route('media.datas', ['id' => $media['id']]) }}" class="list-group-item list-group-item-action bg-transparent" title="{{ $media['media_title'] }}">
@@ -224,47 +224,47 @@ $belonging_medias = $api_client_manager::call('GET', getApiURL() . '/media/find_
 
     @switch($current_media->type->type_name)
         @case(__('miscellaneous.media_types.feature_film'))
-                                    <a href="{{ route('films.home') }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('films.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
             @break
         @case(__('miscellaneous.media_types.cartoons'))
-                                    <a href="{{ route('cartoons.home') }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('cartoons.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
             @break
         @case(__('miscellaneous.media_types.episode'))
 <?php
 if (!empty($current_media->belongs_to)) {
     $series = $api_client_manager::call('GET', getApiURL() . '/media/' . $current_media->belongs_to);
 ?>
-                                    <a href="{{ route('media.datas', ['id' => $series->data->id]) }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('media.datas', ['id' => $series->data->id]) }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
 <?php
 } else {
 ?>
-                                    <a href="{{ route('series.home') }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('series.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
 <?php
 }
 ?>
             @break
         @case(__('miscellaneous.media_types.tv_series'))
-                                    <a href="{{ route('series.home') }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('series.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
             @break
         @case(__('miscellaneous.media_types.song'))
 <?php
 if (!empty($current_media->belongs_to)) {
     $album = $api_client_manager::call('GET', getApiURL() . '/media/' . $current_media->belongs_to);
 ?>
-                                    <a href="{{ route('media.datas', ['id' => $album->data->id]) }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('media.datas', ['id' => $album->data->id]) }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
 <?php
 } else {
 ?>
-                                    <a href="{{ route('songs.home') }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('songs.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
 <?php
 }
 ?>
             @break
         @case(__('miscellaneous.media_types.music_album'))
-                                    <a href="{{ route('songs.home') }}" class="list-group-item list-group-item-action border-bottom-0 float-end">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ route('songs.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
             @break
         @case(__('miscellaneous.media_types.tv_program'))
-                                    <a href="{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? route('programs.entity.home', ['entity' => 'preach']) : route('programs.home') }}" class="list-group-item list-group-item-action border-bottom-0 float-end">{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? __('miscellaneous.see_all') : __('miscellaneous.see_all') }}<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? route('programs.entity.home', ['entity' => 'preach']) : route('programs.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? __('miscellaneous.see_all') : __('miscellaneous.see_all') }}<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
             @break
         @default
     @endswitch
