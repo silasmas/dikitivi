@@ -274,7 +274,7 @@ class HomeController extends Controller
     {
         $media = $this->mediaById($request, $id);
 
-        dd($media);
+        dd(new ResourcesMedia($media));
 
         if (is_null($media)) {
             return $this->handleError(__('notifications.find_media_404'));
