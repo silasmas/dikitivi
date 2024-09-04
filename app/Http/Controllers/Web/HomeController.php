@@ -273,8 +273,7 @@ class HomeController extends Controller
     public function mediaDatas(Request $request, $id)
     {
         $media = $this->mediaById($request, $id);
-
-        dd(new ResourcesMedia($media));
+        $media = new ResourcesMedia($media);
 
         if (is_null($media)) {
             return $this->handleError(__('notifications.find_media_404'));
