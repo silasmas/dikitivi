@@ -272,7 +272,8 @@ class HomeController extends Controller
      */
     public function mediaDatas(Request $request, $id)
     {
-        $media = $this->show($request, $id);
+        $media_db = $this->show($request, $id);
+        $media = ResourcesMedia($media_db);
 
         dd($media);
 
