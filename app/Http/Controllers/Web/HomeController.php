@@ -76,7 +76,7 @@ class HomeController extends Controller
             }
         }
 
-        return new ResourcesMedia($media)/*->toArray($request)*/;
+        return $media;
     }
 
     // ==================================== HTTP GET METHODS ====================================
