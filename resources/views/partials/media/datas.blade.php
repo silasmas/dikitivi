@@ -169,6 +169,40 @@ if (!empty($current_media->belongs_to)) {
                                     </div>
     @endif
                                 </div>
+
+    @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album') || $current_media->type->type_name == __('miscellaneous.media_types.tv_program'))
+<?php
+$belonging_medias = $api_client_manager::call('GET', getApiURL() . '/media/find_by_belongs_to/' . $current_media->id);
+?>
+
+        @if ($belonging_medias->success)
+            @if (count($belonging_medias->data) > 0)
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 class="mt-4 mb-3 text-muted fw-bold">
+                @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series'))
+                                            @lang('miscellaneous.public.media.all_episodes')
+                @endif
+                @if ($current_media->type->type_name == __('miscellaneous.media_types.music_album'))
+                                            @lang('miscellaneous.public.media.all_songs')
+                @endif
+                                        </h3>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="list-group list-group-flush">
+                @foreach ($belonging_medias->data as $media)
+                                            <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="list-group-item list-group-item-action">
+                                                <img src="{{ !empty($media->cover_url) ? $media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $media->media_title }}" width="190" class="float-start rounded-4 me-3">
+                                                <h4 class="my-2 dktv-text-green fw-bold">{{ $media->media_title }}</h4>
+                                                <p class="text-muted">{{ !empty($media->media_description) ? Str::limit($media->media_description, 20, '...') :$media->author_names }}</p>
+                                            </a>
+                @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+            @endif
+        @endif
+    @endif
                             </div>
 
                             <div class="col-sm-5 mx-auto">
@@ -187,45 +221,57 @@ if (!empty($current_media->belongs_to)) {
         @endif
     @empty
     @endforelse
-                                </div>
-                            </div>
-                        </div>
 
-    @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album') || $current_media->type->type_name == __('miscellaneous.media_types.tv_program'))
+    @switch($current_media->type->type_name)
+        @case(__('miscellaneous.media_types.feature_film'))
+                                    <a href="{{ route('films.home') }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+            @break
+        @case(__('miscellaneous.media_types.cartoons'))
+                                    <a href="{{ route('cartoons.home') }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+            @break
+        @case(__('miscellaneous.media_types.episode'))
 <?php
-$belonging_medias = $api_client_manager::call('GET', getApiURL() . '/media/find_by_belongs_to/' . $current_media->id);
+if (!empty($current_media->belongs_to)) {
+    $series = $api_client_manager::call('GET', getApiURL() . '/media/' . $current_media->belongs_to);
 ?>
-
-        @if ($belonging_medias->success)
-            @if (count($belonging_medias->data) > 0)
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="mt-4 mb-3 text-muted fw-bold">
-                @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series'))
-                                    @lang('miscellaneous.public.media.all_episodes')
-                @endif
-                @if ($current_media->type->type_name == __('miscellaneous.media_types.music_album'))
-                                    @lang('miscellaneous.public.media.all_songs')
-                @endif
-                                </h3>
-                            </div>
-                            <div class="col-12">
-                                <div class="list-group list-group-flush">
-                @foreach ($belonging_medias->data as $media)
-                                    <a href="{{ route('media.datas', ['id' => $media->id]) }}" class="list-group-item list-group-item-action">
-                                        <img src="{{ !empty($media->cover_url) ? $media->cover_url : asset('assets/img/blank-media-video.png') }}" alt="{{ $media->media_title }}" width="190" class="float-start rounded-4 me-3">
-                                        <h4 class="my-2 dktv-text-green fw-bold">{{ $media->media_title }}</h4>
-                                        <p class="text-muted">{{ !empty($media->media_description) ? Str::limit($media->media_description, 20, '...') :$media->author_names }}</p>
-                                    </a>
-                @endforeach
+                                    <a href="{{ route('media.datas', ['id' => $series->data->id]) }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+<?php
+} else {
+?>
+                                    <a href="{{ route('series.home') }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+<?php
+}
+?>
+            @break
+        @case(__('miscellaneous.media_types.tv_series'))
+                                    <a href="{{ route('series.home') }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+            @break
+        @case(__('miscellaneous.media_types.song'))
+<?php
+if (!empty($current_media->belongs_to)) {
+    $album = $api_client_manager::call('GET', getApiURL() . '/media/' . $current_media->belongs_to);
+?>
+                                    <a href="{{ route('media.datas', ['id' => $album->data->id]) }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+<?php
+} else {
+?>
+                                    <a href="{{ route('songs.home') }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+<?php
+}
+?>
+            @break
+        @case(__('miscellaneous.media_types.music_album'))
+                                    <a href="{{ route('songs.home') }}" class="list-group-item list-group-item-action">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+            @break
+        @case(__('miscellaneous.media_types.tv_program'))
+                                    <a href="{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? route('programs.entity.home', ['entity' => 'preach']) : route('programs.home') }}" class="list-group-item list-group-item-action">{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? __('miscellaneous.see_all') : __('miscellaneous.see_all') }}<i class="bi bi-chevron-double-right ms-3 fs-4 align-middle"></i></a>
+            @break
+        @default
+    @endswitch
                                 </div>
                             </div>
                         </div>
-            @endif
-        @endif
-    @endif
                     </div>
                 </div>
                 <!--// Our-product-area Area  -->
-    
 @endsection

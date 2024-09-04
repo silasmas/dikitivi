@@ -290,7 +290,7 @@ class HomeController extends Controller
                     if ($user->data->user->age < 18) {
                         $for_youth = session()->get('for_youth');
                         // Select other medias by current media type ID
-                        $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12);
+                        $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5);
 
                         return view('partials.media.datas', [
                             'for_youth' => $for_youth,
@@ -317,7 +317,7 @@ class HomeController extends Controller
                 } else {
                     $for_youth = session()->get('for_youth');
                     // Select other medias by current media type ID
-                    $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12);
+                    $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5);
 
                     if ($media->for_youth != session()->get('for_youth')) {
                         return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
@@ -341,7 +341,7 @@ class HomeController extends Controller
                     // User age
                     $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                     // Select other medias by current media type ID
-                    $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
+                    $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
 
                     return view('partials.media.datas', [
                         'for_youth' => $for_youth,
@@ -365,7 +365,7 @@ class HomeController extends Controller
                 // User age
                 $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
                 // Select other medias by current media type ID
-                $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(12) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
+                $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
 
                 if ($for_youth == 1 AND $for_youth != $media->for_youth) {
                     return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
