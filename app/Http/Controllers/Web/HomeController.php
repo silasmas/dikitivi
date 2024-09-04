@@ -39,7 +39,7 @@ class HomeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function mediaById(Request $request, $id)
     {
         $media = Media::find($id);
 
@@ -76,7 +76,7 @@ class HomeController extends Controller
             }
         }
 
-        return ResourcesMedia::make($media)/*->toArray($request)*/;
+        return new ResourcesMedia($media)/*->toArray($request)*/;
     }
 
     // ==================================== HTTP GET METHODS ====================================
@@ -272,7 +272,7 @@ class HomeController extends Controller
      */
     public function mediaDatas(Request $request, $id)
     {
-        $media = $this->show($request, $id);
+        $media = $this->mediaById($request, $id);
 
         dd($media);
 
