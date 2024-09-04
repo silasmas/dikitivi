@@ -134,12 +134,14 @@ if (!empty($current_media->belongs_to)) {
                                                 <li class="text-muted fw-normal"><span>@lang('miscellaneous.public.media.label.published_date')@lang('miscellaneous.colon_after_word') </span> {{ $current_media->published_date }}</li>
     @endif
     @if (count($current_media->categories) > 0)
-                                                <li class="mt-4" style="width: 80%!important; overflow: hidden; white-space: normal!important;">
+                                                <li class="mt-4">
+                                                    <div>
         @foreach ($current_media->categories as $cat)
-                                                    <h3 class="me-lg-0 me-2">
-                                                        <span class="badge bg-info fw-normal">{{ $cat->category_name }}</span>
-                                                    </h3>
+                                                        <h3 class="me-lg-0 me-2">
+                                                            <span class="badge bg-info fw-normal">{{ $cat->category_name }}</span>
+                                                        </h3>
         @endforeach
+                                                    </div>
                                                 </li>
     @endif
                                             </ul>
