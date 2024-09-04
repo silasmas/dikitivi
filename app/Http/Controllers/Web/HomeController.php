@@ -41,7 +41,7 @@ class HomeController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $media = Media::where('id', $id)->first();
+        $media = Media::find($id);
 
         if (is_null($media)) {
             return $this->handleError(__('notifications.find_media_404'));
@@ -76,7 +76,7 @@ class HomeController extends Controller
             }
         }
 
-        return new ResourcesMedia($media)/*->toArray($request)*/;
+        return ResourcesMedia::make($media)/*->toArray($request)*/;
     }
 
     // ==================================== HTTP GET METHODS ====================================
