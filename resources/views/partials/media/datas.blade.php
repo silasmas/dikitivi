@@ -1,4 +1,4 @@
-{{ dd($current_media) }}
+{{ dd($current_media->categories) }}
 @extends('layouts.app')
 
 @section('app-content')
