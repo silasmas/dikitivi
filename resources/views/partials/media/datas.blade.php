@@ -137,7 +137,7 @@ if (!empty($current_media->belongs_to)) {
                                                 <li class="mt-4">
                                                     <div>
         @foreach ($current_media->categories as $cat)
-                                                        <h3 class="me-lg-0 me-2">
+                                                        <h3 class="d-inline-block me-lg-0 me-2">
                                                             <span class="badge bg-info fw-normal">{{ $cat->category_name }}</span>
                                                         </h3>
         @endforeach
