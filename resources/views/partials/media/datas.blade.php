@@ -133,6 +133,17 @@ if (!empty($current_media->belongs_to)) {
     @if (!empty($current_media->published_date))
                                                 <li class="text-muted fw-normal"><span>@lang('miscellaneous.public.media.label.published_date')@lang('miscellaneous.colon_after_word') </span> {{ $current_media->published_date }}</li>
     @endif
+    @if (count($current_media->categories) > 0)
+                                                <li>
+                                                    <h3 class="h6 text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.categories')</h3>
+
+        @foreach ($current_media->categories as $cat)
+                                                    <h3 class="me-lg-0 me-2">
+                                                        <span class="badge bg-info fw-normal">{{ $cat->category_name }}</span>
+                                                    </h3>
+        @endforeach
+                                                </li>
+    @endif
                                             </ul>
                                         </div>
                                     </div>
@@ -178,17 +189,6 @@ if (!empty($current_media->belongs_to)) {
     @endforelse
                                 </div>
                             </div>
-{{-- 
-                            <div class="col-lg-2 col-sm-3 mx-auto">
-                                <h3 class="text-secondary pb-2 border-bottom">@lang('miscellaneous.public.media.categories')</h3>
-
-    @forelse ($current_media->categories as $cat)
-                                <h3 class="me-lg-0 me-2">
-                                    <span class="badge bg-info fw-normal">{{ $cat->category_name }}</span>
-                                </h3>
-    @empty
-    @endforelse
-                            </div> --}}
                         </div>
 
     @if ($current_media->type->type_name == __('miscellaneous.media_types.tv_series') || $current_media->type->type_name == __('miscellaneous.media_types.music_album') || $current_media->type->type_name == __('miscellaneous.media_types.tv_program'))
