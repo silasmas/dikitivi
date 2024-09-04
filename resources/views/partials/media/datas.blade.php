@@ -178,7 +178,7 @@ if (!empty($current_media->belongs_to)) {
     @forelse ($other_medias as $media)
         @if ($media['id'] != $current_media->id)
                                     <a href="{{ route('media.datas', ['id' => $media['id']]) }}" class="list-group-item list-group-item-action bg-transparent" title="{{ $media['media_title'] }}">
-                                        <div class="ratio ratio-16x9" style="width: 140px;">
+                                        <div class="ratio ratio-16x9 float-start" style="width: 140px;">
                                             <img src="{{ !empty($media['cover_url']) ? $media['cover_url'] : asset('assets/img/blank-media-video.png') }}" alt="{{ $media['media_title'] }}" width="140" class="float-start rounded-4 me-3">
                                         </div>
                                         <h4 class="my-2 dktv-text-green fw-bold">{{ Str::limit($media['media_title'], 40, '...') }}</h4>
