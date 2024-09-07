@@ -29,11 +29,9 @@ class RegisteredUserController extends Controller
         // Find users having the role "Membre" to verify if the register page can be displayed or not
         $role_data = 'Membre';
         $member_role = $this::$api_client_manager::call('GET', getApiURL() . '/role/search/' . $role_data);
-        $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
 
         return view('auth.register', [
-            'role_id' => $member_role->data->id,
-            'countries' => $countries->data,
+            'role_id' => $member_role->data->id
         ]);
     }
 
@@ -55,8 +53,6 @@ class RegisteredUserController extends Controller
             ]);
 
             if ($pr->success) {
-                $countries = $this::$api_client_manager::call('GET', getApiURL() . '/country');
-
                 if (!empty($request->redirect)) {
                     if ($request->redirect == 'reset_password') {
                         return view('auth.reset-password', [
@@ -79,8 +75,7 @@ class RegisteredUserController extends Controller
 
                 } else {
                     return view('auth.register', [
-                        'temporary_user' => $pr->data->user,
-                        'countries' => $countries->data
+                        'temporary_user' => $pr->data->user
                     ]);
                 }
 
