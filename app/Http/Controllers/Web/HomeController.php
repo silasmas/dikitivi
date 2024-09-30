@@ -41,9 +41,9 @@ class HomeController extends Controller
      */
     public function mediaById(Request $request, $id)
     {
-        $media = Media::find($id);
+        $current_media = Media::find($id);
 
-        if (is_null($media)) {
+        if (is_null($current_media)) {
             return $this->handleError(__('notifications.find_media_404'));
         }
 
@@ -52,14 +52,14 @@ class HomeController extends Controller
 
             if (!empty($session)) {
                 if (count($session->medias) == 0) {
-                    $session->medias()->attach([$media->id]);
+                    $session->medias()->attach([$current_media->id]);
                 }
 
                 if (count($session->medias) > 0) {
-                    $session->medias()->syncWithoutDetaching([$media->id]);
+                    $session->medias()->syncWithoutDetaching([$current_media->id]);
                 }
 
-                MediaView::create(['user_id' => $session->user_id, 'media_id' => $media->id]);
+                MediaView::create(['user_id' => $session->user_id, 'media_id' => $current_media->id]);
             }
 
         } else {
@@ -67,14 +67,16 @@ class HomeController extends Controller
 
             if (!empty($session)) {
                 if (count($session->medias) == 0) {
-                    $session->medias()->attach([$media->id]);
+                    $session->medias()->attach([$current_media->id]);
                 }
 
                 if (count($session->medias) > 0) {
-                    $session->medias()->syncWithoutDetaching([$media->id]);
+                    $session->medias()->syncWithoutDetaching([$current_media->id]);
                 }
             }
         }
+
+        $media = new ResourcesMedia($current_media);
 
         return $media;
     }
