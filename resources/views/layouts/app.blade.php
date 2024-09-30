@@ -8,7 +8,7 @@
         <meta name="dktv-api-url" content="{{ getApiURL() }}">
         <meta name="dktv-ip-addr" content="{{ getIpAdress() }}">
         <meta name="dktv-visitor" content="{{ !empty($current_user) ? $current_user->id : null }}">
-        <meta name="dktv-media" content="{{ !empty($current_media) ? $current_media->id : null }}">
+        <meta name="dktv-media" content="{{ !empty($current_media) ? $current_media['id'] : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="dktv-ref" content="{{ !empty($current_user) ? $current_user->api_token : null }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
