@@ -65,7 +65,7 @@ if (request()->has('app_id')) {
 
         <title>
 @if (!empty($current_media))
-            {{ $current_media->media_title }}
+            {{ $current_media['media_title'] }}
 @else
             DikiTivi / 
     @if (Route::is('home'))
