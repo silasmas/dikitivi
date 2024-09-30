@@ -280,119 +280,117 @@ class HomeController extends Controller
 
         $media_data_resource = new ResourcesMedia($media_data);
 
+        $views = $media_data_resource->sessions;
+        $likes = $media_data_resource->users;
         $media = $media_data_resource->toArray(request());
 
-        dd($media);
-        // $views = $media->sessions;
-        // $likes = $media->users;
+        if (session()->has('for_youth')) {
+            if (session()->get('for_youth') == 1) {
+                if (Auth::check()) {
+                    // Select a user API
+                    $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
 
-        // if (session()->has('for_youth')) {
-        //     if (session()->get('for_youth') == 1) {
-        //         if (Auth::check()) {
-        //             // Select a user API
-        //             $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                    if ($user->data->user->age < 18) {
+                        $for_youth = session()->get('for_youth');
+                        // Select other medias by current media type ID
+                        $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5);
 
-        //             if ($user->data->user->age < 18) {
-        //                 $for_youth = session()->get('for_youth');
-        //                 // Select other medias by current media type ID
-        //                 $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5);
+                        return view('partials.media.datas', [
+                            'for_youth' => $for_youth,
+                            'current_user' => $user->data->user,
+                            'current_media' => $media,
+                            'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
+                            'other_medias_lastPage' => $other_medias->lastPage(),
+                            'views' => ResourcesSession::collection($views)->toArray(request()),
+                            'likes' => ResourcesUser::collection($likes)->toArray(request())
+                        ]);
 
-        //                 return view('partials.media.datas', [
-        //                     'for_youth' => $for_youth,
-        //                     'current_user' => $user->data->user,
-        //                     'current_media' => $media,
-        //                     'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
-        //                     'other_medias_lastPage' => $other_medias->lastPage(),
-        //                     'views' => ResourcesSession::collection($views)->toArray(request()),
-        //                     'likes' => ResourcesUser::collection($likes)->toArray(request())
-        //                 ]);
+                    } else {
+                        // User age
+                        $for_youth = 0;
 
-        //             } else {
-        //                 // User age
-        //                 $for_youth = 0;
+                        return view('parental-code', [
+                            'for_youth' => $for_youth,
+                            'current_user' => $user->data->user,
+                            'views' => ResourcesSession::collection($views)->toArray(request()),
+                            'likes' => ResourcesUser::collection($likes)->toArray(request())
+                        ]);
+                    }
 
-        //                 return view('parental-code', [
-        //                     'for_youth' => $for_youth,
-        //                     'current_user' => $user->data->user,
-        //                     'views' => ResourcesSession::collection($views)->toArray(request()),
-        //                     'likes' => ResourcesUser::collection($likes)->toArray(request())
-        //                 ]);
-        //             }
+                } else {
+                    $for_youth = session()->get('for_youth');
+                    // Select other medias by current media type ID
+                    $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5);
 
-        //         } else {
-        //             $for_youth = session()->get('for_youth');
-        //             // Select other medias by current media type ID
-        //             $other_medias = Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5);
+                    if ($media->for_youth != session()->get('for_youth')) {
+                        return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
 
-        //             if ($media->for_youth != session()->get('for_youth')) {
-        //                 return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
+                    } else {
+                        return view('partials.media.datas', [
+                            'for_youth' => session()->get('for_youth'),
+                            'current_media' => $media,
+                            'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
+                            'other_medias_lastPage' => $other_medias->lastPage(),
+                            'views' => ResourcesSession::collection($views)->toArray(request()),
+                            'likes' => ResourcesUser::collection($likes)->toArray(request())
+                        ]);
+                    }
+                }
 
-        //             } else {
-        //                 return view('partials.media.datas', [
-        //                     'for_youth' => session()->get('for_youth'),
-        //                     'current_media' => $media,
-        //                     'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
-        //                     'other_medias_lastPage' => $other_medias->lastPage(),
-        //                     'views' => ResourcesSession::collection($views)->toArray(request()),
-        //                     'likes' => ResourcesUser::collection($likes)->toArray(request())
-        //                 ]);
-        //             }
-        //         }
+            } else {
+                if (Auth::check()) {
+                    // Select a user API
+                    $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                    // User age
+                    $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                    // Select other medias by current media type ID
+                    $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
 
-        //     } else {
-        //         if (Auth::check()) {
-        //             // Select a user API
-        //             $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
-        //             // User age
-        //             $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-        //             // Select other medias by current media type ID
-        //             $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
+                    return view('partials.media.datas', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'current_media' => $media,
+                        'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
+                        'other_medias_lastPage' => $other_medias->lastPage(),
+                    'views' => ResourcesSession::collection($views)->toArray(request()),
+                        'likes' => ResourcesUser::collection($likes)->toArray(request())
+                    ]);
 
-        //             return view('partials.media.datas', [
-        //                 'for_youth' => $for_youth,
-        //                 'current_user' => $user->data->user,
-        //                 'current_media' => $media,
-        //                 'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
-        //                 'other_medias_lastPage' => $other_medias->lastPage(),
-        //             'views' => ResourcesSession::collection($views)->toArray(request()),
-        //                 'likes' => ResourcesUser::collection($likes)->toArray(request())
-        //             ]);
+                } else {
+                    return redirect()->route('login');
+                }
+            }
 
-        //         } else {
-        //             return redirect()->route('login');
-        //         }
-        //     }
+        } else {
+            if (Auth::check()) {
+                // Select a user API
+                $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
+                // User age
+                $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
+                // Select other medias by current media type ID
+                $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
 
-        // } else {
-        //     if (Auth::check()) {
-        //         // Select a user API
-        //         $user = $this::$api_client_manager::call('GET', getApiURL() . '/user/' . Auth::user()->id, Auth::user()->api_token);
-        //         // User age
-        //         $for_youth = !empty($user->data->user->age) ? ($user->data->user->age < 18 ? 1 : 0) : 1;
-        //         // Select other medias by current media type ID
-        //         $other_medias = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', $media->type->id]])->orderByDesc('created_at')->paginate(5) : Media::where('type_id', $media->type->id)->orderByDesc('created_at')->paginate(12);
+                if ($for_youth == 1 AND $for_youth != $media->for_youth) {
+                    return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
 
-        //         if ($for_youth == 1 AND $for_youth != $media->for_youth) {
-        //             return redirect('/')->with('error_message', __('miscellaneous.adult_content'));
+                } else {
+                    return view('partials.media.datas', [
+                        'for_youth' => $for_youth,
+                        'current_user' => $user->data->user,
+                        'current_media' => $media,
+                        'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
+                        'other_medias_lastPage' => $other_medias->lastPage(),
+                    'views' => ResourcesSession::collection($views)->toArray(request()),
+                        'likes' => ResourcesUser::collection($likes)->toArray(request())
+                    ]);
+                }
 
-        //         } else {
-        //             return view('partials.media.datas', [
-        //                 'for_youth' => $for_youth,
-        //                 'current_user' => $user->data->user,
-        //                 'current_media' => $media,
-        //                 'other_medias' => ResourcesMedia::collection($other_medias)->toArray(request()),
-        //                 'other_medias_lastPage' => $other_medias->lastPage(),
-        //             'views' => ResourcesSession::collection($views)->toArray(request()),
-        //                 'likes' => ResourcesUser::collection($likes)->toArray(request())
-        //             ]);
-        //         }
+            } else {
+                Session::put('url.intended', URL::previous());
 
-        //     } else {
-        //         Session::put('url.intended', URL::previous());
-
-        //         return view('welcome');
-        //     }
-        // }
+                return view('welcome');
+            }
+        }
     }
 
     /**
