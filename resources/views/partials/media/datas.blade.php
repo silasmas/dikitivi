@@ -8,7 +8,7 @@
                     <div class="container-sm container-fluid">
                         <div class="row mb-3 d-sm-inline-block d-none">
                             <div class="col-12">
-    @switch($current_media->type->type_name)
+    @switch($current_media['type']->type_name)
         @case(__('miscellaneous.media_types.feature_film'))
                                 <a href="{{ route('films.home') }}" class="btn bg-transparent text-muted text-start rounded-0 shadow-0"><i class="bi bi-arrow-left me-3 fs-4 align-middle"></i>@lang('miscellaneous.public.media.datas.return_link.film')</a>
             @break
