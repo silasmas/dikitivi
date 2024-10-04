@@ -268,7 +268,7 @@ if (!empty($current_media['belongs_to'])) {
                                     <a href="{{ route('songs.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">@lang('miscellaneous.see_all')<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
             @break
         @case(__('miscellaneous.media_types.tv_program'))
-                                    <a href="{{ inArrayR(__('miscellaneous.category.preach'), $current_media['categories'], 'category_name') ? route('programs.entity.home', ['entity' => 'preach']) : route('programs.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">{{ inArrayR(__('miscellaneous.category.preach'), $current_media->categories, 'category_name') ? __('miscellaneous.see_all') : __('miscellaneous.see_all') }}<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
+                                    <a href="{{ inArrayR(__('miscellaneous.category.preach'), $current_media['categories'], 'category_name') ? route('programs.entity.home', ['entity' => 'preach']) : route('programs.home') }}" class="list-group-item list-group-item-action border-bottom-0 bg-transparent text-center">{{ inArrayR(__('miscellaneous.category.preach'), $current_media['categories'], 'category_name') ? __('miscellaneous.see_all') : __('miscellaneous.see_all') }}<i class="bi bi-chevron-double-right ms-2 fs-5 align-middle"></i></a>
             @break
         @default
     @endswitch

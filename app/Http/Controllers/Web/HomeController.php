@@ -284,8 +284,6 @@ class HomeController extends Controller
         $likes = $media_data_resource->users;
         $media = $media_data_resource->toArray(request());
 
-        dd($media);
-
         if (session()->has('for_youth')) {
             if (session()->get('for_youth') == 1) {
                 if (Auth::check()) {
