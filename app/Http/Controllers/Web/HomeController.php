@@ -954,6 +954,8 @@ class HomeController extends Controller
         $subject_resource = new ResourcesLegalInfoSubject($subject);
         $subject_data = $subject_resource->toArray(request()); // Convert resource to array
 
+        dd($subject_data);
+
         return view('about', ['subject' => $subject_data]);
     }
 
