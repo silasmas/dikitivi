@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\LegalInfoContent as ModelsLegalInfoContent;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -18,13 +19,16 @@ class LegalInfoTitle extends JsonResource
      */
     public function toArray($request)
     {
+        $contents = ModelsLegalInfoContent::where('legal_info_title_id', $this->id)->get();
+        $legal_info_contents = LegalInfoContent::collection($contents)->toArray($request);
+
         return [
             'id' => $this->id,
             'title_en' => $this->getTranslation('title', 'fr'),
             'title_fr' => $this->getTranslation('title', 'en'),
             'title_ln' => $this->getTranslation('title', 'ln'),
             'title' => $this->title,
-            'legal_info_contents' => LegalInfoContent::collection($this->legal_info_contents),
+            'legal_info_contents' => $legal_info_contents,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
             'legal_info_subject_id' => $this->legal_info_subject_id
