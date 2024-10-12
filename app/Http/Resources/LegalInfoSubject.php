@@ -20,12 +20,14 @@ class LegalInfoSubject extends JsonResource
     {
         return [
             'id' => $this->id,
-            'subject_name_en' => $this->subject_name->en,
-            'subject_name_fr' => $this->subject_name->fr,
-            'subject_name_ln' => $this->subject_name->ln,
-            'subject_description_en' => $this->subject_description->en,
-            'subject_description_fr' => $this->subject_description->fr,
-            'subject_description_ln' => $this->subject_description->ln,
+            'subject_name_en' => $this->getTranslation('subject_name', 'fr'),
+            'subject_name_fr' => $this->getTranslation('subject_name', 'en'),
+            'subject_name_ln' => $this->getTranslation('subject_name', 'ln'),
+            'subject_name' => $this->subject_name,
+            'subject_description_en' => $this->getTranslation('subject_description', 'fr'),
+            'subject_description_fr' => $this->getTranslation('subject_description', 'en'),
+            'subject_description_ln' => $this->getTranslation('subject_description', 'ln'),
+            'subject_description' => $this->subject_description,
             'legal_info_titles' => LegalInfoTitle::collection($this->legal_info_titles),
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s')
