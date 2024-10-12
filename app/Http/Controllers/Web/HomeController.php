@@ -951,8 +951,6 @@ class HomeController extends Controller
     {
         // $titles = Lang::get('miscellaneous.public.about.content.titles');
         $subject = LegalInfoSubject::where('subject_name->fr', 'A Propos de DikiTivi')->first();
-        // $titles = LegalInfoTitle::where('legal_info_subject_id', $subject->id)->get();
-        // $titlesRes = ResourcesLegalInfoTitle::collection($titles)->toArray(request());
         $subject_resource = new ResourcesLegalInfoSubject($subject);
         $subject_data = $subject_resource->toArray(request()); // Convert resource to array
 

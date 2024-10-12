@@ -18,6 +18,9 @@ class LegalInfoSubject extends JsonResource
      */
     public function toArray($request)
     {
+        $titles = LegalInfoTitle::where('legal_info_subject_id', $this->id)->get();
+        $legal_info_titles = LegalInfoTitle::collection($titles)->toArray($request);
+
         return [
             'id' => $this->id,
             'subject_name_en' => $this->getTranslation('subject_name', 'fr'),
@@ -28,7 +31,7 @@ class LegalInfoSubject extends JsonResource
             'subject_description_fr' => $this->getTranslation('subject_description', 'en'),
             'subject_description_ln' => $this->getTranslation('subject_description', 'ln'),
             'subject_description' => $this->subject_description,
-            'legal_info_titles' => LegalInfoTitle::collection($this->legal_info_titles),
+            'legal_info_titles' => $legal_info_titles,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s')
         ];
