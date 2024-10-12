@@ -949,12 +949,9 @@ class HomeController extends Controller
      */
     public function about()
     {
-        // $titles = Lang::get('miscellaneous.public.about.content.titles');
         $subject = LegalInfoSubject::where('subject_name->fr', 'A Propos de DikiTivi')->first();
         $subject_resource = new ResourcesLegalInfoSubject($subject);
-        $subject_data = $subject_resource->toArray(request()); // Convert resource to array
-
-        dd($subject_data);
+        $subject_data = $subject_resource->toArray(request());
 
         return view('about', ['subject' => $subject_data]);
     }
