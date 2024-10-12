@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiClientManager;
+use App\Http\Resources\LegalInfoSubject as ResourcesLegalInfoSubject;
+use App\Http\Resources\LegalInfoTitle as ResourcesLegalInfoTitle;
 use App\Http\Resources\Media as ResourcesMedia;
 use App\Http\Resources\Session as ResourcesSession;
 use App\Http\Resources\User as ResourcesUser;
+use App\Models\LegalInfoSubject;
+use App\Models\LegalInfoTitle;
 use App\Models\Media;
 use App\Models\MediaView;
 use App\Models\Session as ModelsSession;
@@ -945,9 +949,16 @@ class HomeController extends Controller
      */
     public function about()
     {
-        $titles = Lang::get('miscellaneous.public.about.content.titles');
+        // $titles = Lang::get('miscellaneous.public.about.content.titles');
+        $subject = LegalInfoSubject::where('subject_name->fr', 'A Propos de DikiTivi')->first();
+        // $titles = LegalInfoTitle::where('legal_info_subject_id', $subject->id)->get();
+        // $titlesRes = ResourcesLegalInfoTitle::collection($titles)->toArray(request());
+        $subject_resource = new ResourcesLegalInfoSubject($subject);
+        $subject_data = $subject_resource->toArray(request()); // Convert resource to array
 
-        return view('about', ['titles' => $titles]);
+        dd($subject_data);
+
+        // return view('about', ['titles' => $titles]);
     }
 
     /**
