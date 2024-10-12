@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\LegalInfoTitle as ModelsLegalInfoTitle;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -18,7 +19,7 @@ class LegalInfoSubject extends JsonResource
      */
     public function toArray($request)
     {
-        $titles = LegalInfoTitle::where('legal_info_subject_id', $this->id)->get();
+        $titles = ModelsLegalInfoTitle::where('legal_info_subject_id', $this->id)->get();
         $legal_info_titles = LegalInfoTitle::collection($titles)->toArray($request);
 
         return [
