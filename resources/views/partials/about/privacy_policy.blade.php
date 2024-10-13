@@ -17,12 +17,12 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <ul class="ps-5">
-@foreach ($titles as $ttl)
+@foreach ($subject['legal_info_titles'] as $ttl)
                             <li class="h3 mb-4 fw-bold" style="list-style-type: decimal;">{{ $ttl['title'] }}</li>
 
 
-    @if ($ttl['ref'] == 'data_use')
-        @foreach ($ttl['contents'] as $cnt)
+    @if ($ttl['title_fr'] == 'Utilisation des informations')
+        @foreach ($ttl['legal_info_contents'] as $cnt)
                             <div class="mb-4">
             @if ($cnt['subtitle'])
                                 <p class="mb-3 fs-6 text-secondary">{{ $cnt['subtitle'] }}</p>
@@ -32,7 +32,7 @@
         @endforeach
 
     @else
-        @foreach ($ttl['contents'] as $cnt)
+        @foreach ($ttl['legal_info_contents'] as $cnt)
                             <div class="mb-4">
                                 <h5 class="h5 mb-1 fw-semibold dktv-text-green">{{ $cnt['subtitle'] }}</h5>
 
