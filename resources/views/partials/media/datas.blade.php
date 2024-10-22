@@ -71,7 +71,7 @@ if (!empty($current_media['belongs_to'])) {
         @if (!empty($current_media['media_url']))
             @if ($current_media['source'] == 'AWS')
                                 <div class="ratio ratio-16x9 bg-dark overflow-hidden rounded-4">
-                                    <video src="{{ $current_media['media_url'] }}" loop controls class="hover-to-play w-100" poster="{{ $current_media['cover_url'] }}"></video>
+                                    <video oncontextmenu="return false;" src="{{ $current_media['media_url'] }}" loop controls class="hover-to-play w-100" poster="{{ $current_media['cover_url'] }}"></video>
                                 </div>
             @else
                                 <div class="ratio ratio-16x9">
