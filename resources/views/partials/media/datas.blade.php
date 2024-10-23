@@ -71,7 +71,20 @@ if (!empty($current_media['belongs_to'])) {
         @if (!empty($current_media['media_url']))
             @if ($current_media['source'] == 'AWS')
                                 <div class="ratio ratio-16x9 bg-dark rounded-4 player-wrapper overflow-hidden">
-                                    <video class="player-html hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop controls oncontextmenu="return false;"></video>
+                                    <video id="player" playsinline controls data-poster="{{ $current_media['cover_url'] }}">
+                @if (mime_content_type($current_media['media_url']) == 'video/avi')
+                                        <source src="$current_media['media_url']" type="video/mp4" />
+                @endif
+                @if (mime_content_type($current_media['media_url']) == 'video/mp4')
+                                        <source src="$current_media['media_url']" type="video/mp4" />
+                @endif
+                @if (mime_content_type($current_media['media_url']) == 'video/webm')
+                                        <source src="$current_media['media_url']" type="video/webm" />
+                @endif
+                                        <!-- Captions are optional -->
+                                        <track kind="captions" label="Captions" src="assets/addons/custom/plyr/src/js/captions.js" srclang="{{ str_replace('_', '-', app()->getLocale()) }}" default />
+                                    </video>
+                                    {{-- <video class="player-html hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop controls oncontextmenu="return false;"></video> --}}
                                 </div>
             @else
                                 <div class="ratio ratio-16x9">
