@@ -779,9 +779,9 @@ if (request()->has('app_id')) {
             /**
              * Initialize Plyr
              */
-            import Plyr from currentHost + '/assets/addons/custom/plyr/src/js/plyr.js';
-
+            const Plyr = require(currentHost + '/assets/addons/custom/plyr/src/js/plyr.js')
             const player = new Plyr('#player');
+
             /**
              * Refresh an element every second
              */
