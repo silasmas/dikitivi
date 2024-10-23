@@ -779,7 +779,6 @@ if (request()->has('app_id')) {
             /**
              * Initialize Plyr
              */
-            const Plyr = require(currentHost + '/assets/addons/custom/plyr/src/js/plyr.js')
             const player = new Plyr('#player');
 
             /**

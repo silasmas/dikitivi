@@ -74,9 +74,6 @@ if (!empty($current_media['belongs_to'])) {
                                     <video id="player" playsinline controls data-poster="{{ $current_media['cover_url'] }}">
                                         <source src="{{ $current_media['media_url'] }}" type="video/mp4" />
                                         <source src="{{ $current_media['media_url'] }}" type="video/webm" />
-
-                                        <!-- Captions are optional -->
-                                        <track kind="captions" label="Captions" src="{{ asset('assets/addons/custom/plyr/src/js/captions.js') }}" srclang="{{ str_replace('_', '-', app()->getLocale()) }}" default />
                                     </video>
                                     {{-- <video class="player-html hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop controls oncontextmenu="return false;"></video> --}}
                                 </div>
