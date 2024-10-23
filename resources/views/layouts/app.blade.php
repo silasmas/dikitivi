@@ -779,11 +779,13 @@ if (request()->has('app_id')) {
             /**
              * Initialize Plyr
              */
-             const player = new Plyr('#player');
+            import Plyr from 'plyr';
+
+            const player = new Plyr('#player');
             /**
              * Refresh an element every second
              */
-             setInterval(function() {
+            setInterval(function() {
                 const url = currentHost + '/count?media_id=' + $('[name="dktv-media"]').attr('content');
 
                 $('.count').load(url + ' .count');
