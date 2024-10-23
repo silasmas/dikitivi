@@ -70,8 +70,11 @@ if (!empty($current_media['belongs_to'])) {
     @if ($current_media['type']->type_name != __('miscellaneous.media_types.tv_series') && $current_media['type']->type_name != __('miscellaneous.media_types.music_album'))
         @if (!empty($current_media['media_url']))
             @if ($current_media['source'] == 'AWS')
-                                <div class="ratio ratio-16x9 bg-dark overflow-hidden rounded-4">
-                                    <video oncontextmenu="return false;" src="{{ $current_media['media_url'] }}" loop controls class="hover-to-play w-100" poster="{{ $current_media['cover_url'] }}"></video>
+                                <div class="ratio ratio-16x9 bg-dark overflow-hidden rounded-4 position-relative">
+                                    <video id="mediaVideo" class="hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop oncontextmenu="return false;"></video>
+                                    <div class="d-flex justify-content-center position-absolute w-100 bottom-0">
+                                        <a role="button"><i class="bi bi-play-btn fs-4 text-info"></i></a>
+                                    </div>
                                 </div>
             @else
                                 <div class="ratio ratio-16x9">
