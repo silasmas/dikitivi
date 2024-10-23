@@ -72,7 +72,7 @@ if (!empty($current_media['belongs_to'])) {
             @if ($current_media['source'] == 'AWS')
                                 <div class="ratio ratio-16x9 bg-dark overflow-hidden rounded-4 position-relative">
                                     <video id="mediaVideo" class="hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop oncontextmenu="return false;"></video>
-                                    <div class="d-flex justify-content-center position-absolute w-100" style="height: 3rem; background: transparent; background: linear-gradient(0deg, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 100%); bottom: 0; z-index: 999;">
+                                    <div class="d-flex justify-content-center position-absolute w-100" style="height: 3rem; background: transparent; background: linear-gradient(0deg, rgba(255,255,255,0) 100%, rgba(0,0,0,0.2) 0%); bottom: 0; z-index: 999;">
                                         <a role="button"><i class="bi bi-play-fill fs-1 text-white"></i></a>
                                     </div>
                                 </div>
