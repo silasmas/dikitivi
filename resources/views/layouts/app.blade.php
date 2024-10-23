@@ -32,6 +32,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/addons/custom/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/addons/custom/cropper/css/cropper.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.css') }}">
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
         <!-- ============ Streamo CSS File ============ -->
         <link rel="stylesheet" href="{{ asset('assets/addons/streamo/css/plugins.css') }}">
@@ -765,7 +766,7 @@ if (request()->has('app_id')) {
         <!-- SweetAlert -->
         <script src="{{ asset('assets/addons/custom/sweetalert2/dist/sweetalert2.min.js') }}"></script>
         <!-- Plyr -->
-        <script src="{{ asset('assets/addons/custom/plyr/src/js/plyr.js') }}"></script>
+        <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
         <!-- DataTable -->
         <script src="{{ asset('assets/addons/custom/dataTables/datatables.min.js') }}"></script>
         <!-- Autosize -->
