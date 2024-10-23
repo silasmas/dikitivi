@@ -78,10 +78,8 @@ if (!empty($current_media['belongs_to'])) {
                                     </video>
                                 </div>
             @else
-                                <div class="ratio ratio-16x9">
-                                    <div class="plyr__video-embed" id="player">
-                                        <iframe src="{{ $current_media['media_url'] }}?rel=0" allowfullscreen allowtransparency></iframe>
-                                    </div>
+                                <div class="plyr__video-embed" id="player">
+                                    <iframe src="{{ $current_media['media_url'] }}?rel=0" allowfullscreen allowtransparency></iframe>
                                 </div>
             @endif
         @else
