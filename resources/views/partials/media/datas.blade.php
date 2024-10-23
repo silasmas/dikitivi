@@ -72,7 +72,7 @@ if (!empty($current_media['belongs_to'])) {
             @if ($current_media['source'] == 'AWS')
                                 <div class="ratio ratio-16x9 bg-dark rounded-4 player-wrapper overflow-hidden">
                                     <video id="player" playsinline controls data-poster="{{ $current_media['cover_url'] }}">
-                                        <source src="{{ $current_media['media_url'] }}" type="video/avi" />
+                                        <source src="{{ $current_media['media_url'] }}" type="video/mp4" />
                                         <source src="{{ $current_media['media_url'] }}" type="video/webm" />
 
                                         <!-- Captions are optional -->
