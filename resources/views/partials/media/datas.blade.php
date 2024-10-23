@@ -1,4 +1,4 @@
-{{ dd(mime_content_type($current_media['media_url'])) }}
+{{ dd($current_media['media_url']) }}
 @extends('layouts.app')
 
 @section('app-content')
