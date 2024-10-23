@@ -70,11 +70,12 @@ if (!empty($current_media['belongs_to'])) {
     @if ($current_media['type']->type_name != __('miscellaneous.media_types.tv_series') && $current_media['type']->type_name != __('miscellaneous.media_types.music_album'))
         @if (!empty($current_media['media_url']))
             @if ($current_media['source'] == 'AWS')
-                                <div class="ratio ratio-16x9 bg-dark overflow-hidden rounded-4 position-relative">
-                                    <video id="mediaVideo" class="hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop oncontextmenu="return false;"></video>
-                                    <div class="position-absolute w-100" style="height: 3rem; background: transparent; background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(255,255,255,0) 100%); bottom: 0; z-index: 999;">
-                                        <a role="button"><i class="bi bi-play-fill fs-1 text-white"></i></a>
-                                    </div>
+                                <div class="ratio ratio-16x9 bg-dark overflow-hidden rounded-4">
+                                    <video id="mediaVideo" class="hover-to-play position-relative w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop oncontextmenu="return false;">
+                                        <div class="position-absolute w-100" style="height: 3rem; background: transparent; background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(255,255,255,0) 100%); bottom: 0; z-index: 999;">
+                                            <a role="button"><i class="bi bi-play-fill fs-1 text-white"></i></a>
+                                        </div>
+                                    </video>
                                 </div>
             @else
                                 <div class="ratio ratio-16x9">
