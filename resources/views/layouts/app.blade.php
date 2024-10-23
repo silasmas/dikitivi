@@ -777,6 +777,10 @@ if (request()->has('app_id')) {
 @if (Route::is('media.datas'))
         <script type="text/javascript">
             /**
+             * Initialize Plyr
+             */
+             const player = new Plyr('#player');
+            /**
              * Refresh an element every second
              */
              setInterval(function() {
