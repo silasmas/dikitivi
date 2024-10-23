@@ -1,4 +1,4 @@
-{{-- {{ dd($current_media['type']->type_name) }} --}}
+{{ dd(mime_content_type($current_media['media_url'])) }}
 @extends('layouts.app')
 
 @section('app-content')
@@ -72,9 +72,9 @@ if (!empty($current_media['belongs_to'])) {
             @if ($current_media['source'] == 'AWS')
                                 <div class="ratio ratio-16x9 bg-dark rounded-4 player-wrapper overflow-hidden">
                                     <video id="player" playsinline controls data-poster="{{ $current_media['cover_url'] }}">
-                {{-- @if (mime_content_type($current_media['media_url']) == 'video/avi')
+                @if (mime_content_type($current_media['media_url']) == 'video/avi')
                                         <source src="$current_media['media_url']" type="video/avi" />
-                @endif --}}
+                @endif
                 @if (mime_content_type($current_media['media_url']) == 'video/mp4')
                                         <source src="$current_media['media_url']" type="video/mp4" />
                 @endif
