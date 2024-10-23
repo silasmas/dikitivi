@@ -70,7 +70,7 @@ if (!empty($current_media['belongs_to'])) {
     @if ($current_media['type']->type_name != __('miscellaneous.media_types.tv_series') && $current_media['type']->type_name != __('miscellaneous.media_types.music_album'))
         @if (!empty($current_media['media_url']))
             @if ($current_media['source'] == 'AWS')
-                                <div class="ratio ratio-16x9 bg-dark rounded-4 position-absolute w-100 top-0 start-0">
+                                <div class="ratio ratio-16x9 bg-dark rounded-4 player-wrapper overflow-hidden position-absolute w-100 top-0 start-0">
                                     <video id="player" class="position-relative" playsinline controls data-poster="{{ $current_media['cover_url'] }}">
                                         <source src="{{ $current_media['media_url'] }}" type="video/mp4" />
                                         <source src="{{ $current_media['media_url'] }}" type="video/webm" />
