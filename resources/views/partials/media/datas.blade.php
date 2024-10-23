@@ -67,6 +67,7 @@ if (!empty($current_media['belongs_to'])) {
                                 </div>
     @endif
 
+                                    {{-- <video class="player-html hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop controls oncontextmenu="return false;"></video> --}}
     @if ($current_media['type']->type_name != __('miscellaneous.media_types.tv_series') && $current_media['type']->type_name != __('miscellaneous.media_types.music_album'))
         @if (!empty($current_media['media_url']))
             @if ($current_media['source'] == 'AWS')
@@ -75,7 +76,6 @@ if (!empty($current_media['belongs_to'])) {
                                         <source src="{{ $current_media['media_url'] }}" type="video/mp4" />
                                         <source src="{{ $current_media['media_url'] }}" type="video/webm" />
                                     </video>
-                                    <video class="player-html hover-to-play w-100" src="{{ $current_media['media_url'] }}" poster="{{ $current_media['cover_url'] }}" loop controls oncontextmenu="return false;"></video>
                                 </div>
             @else
                                 <div class="ratio ratio-16x9">
