@@ -104,6 +104,7 @@ if (request()->has('app_id')) {
     @endif
 @endif
         </title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="5bec4f1b-4119-4e29-94af-57ffdd81d4c7"></script>
     </head>
 
     <body>
