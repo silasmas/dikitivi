@@ -1003,14 +1003,22 @@ class HomeController extends Controller
             }
 
         } else {
-            $titles = Lang::get('miscellaneous.public.about.' . $entity . '.titles');
+            $subjects = LegalInfoSubject::all();
 
-            return view('about', [
-                'titles' => $titles,
-                'entity' => $entity,
-                'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
-                'entity_menu' => __('miscellaneous.menu.' . $entity),
-            ]);
+            dd($subjects);
+
+            if ($entity == 'terms_of_use') {
+                $subject = LegalInfoSubject::where('subject_name->fr', 'A Propos de DikiTivi')->first();
+                $subject_resource = new ResourcesLegalInfoSubject($subject);
+                $subject_data = $subject_resource->toArray(request());
+        
+                return view('about', [
+                    'subject' => $subject_data,
+                    'entity' => $entity,
+                    'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                    'entity_menu' => __('miscellaneous.menu.' . $entity),
+                ]);
+            }
         }
     }
 
