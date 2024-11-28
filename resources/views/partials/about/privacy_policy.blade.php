@@ -45,6 +45,6 @@
                         </ul>
 
 @else
-                            <h3 class="h3 mb-4 text-center fw-bold" style="list-style-type: decimal;">{{ $subject }}</h3>
+                            <h3 class="h3 mb-4 fw-bold" style="list-style-type: decimal;">{{ $subject }}</h3>
 @endif
                     </div>

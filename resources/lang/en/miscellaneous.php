@@ -31,7 +31,7 @@ return [
     'awaiting_approval' => 'Awaiting Approval',
     'views' => 'Views',
     'likes' => 'Likes',
-    'iam_child' => 'Youth',
+    'iam_child' => 'Youth free access',
     'iam_adult' => 'All medias',
     'no_parental_code' => 'I don\'t have a parental code',
     'back_home' => 'Return to the home',

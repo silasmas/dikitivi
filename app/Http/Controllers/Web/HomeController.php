@@ -1008,7 +1008,7 @@ class HomeController extends Controller
 
                 if ($subject == null) {
                     return view('about', [
-                        'subject' => 'Il n\'y a aucun sujet là dessus. Songez à créer le sujet « Conditions d\'utilisation » avec ses titres et ses sous-titres.',
+                        'subject' => 'Veuillez créer le sujet « Conditions d\'utilisation » avec ses titres et ses sous-titres.',
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
                         'entity_menu' => __('miscellaneous.menu.' . $entity),
@@ -1032,7 +1032,7 @@ class HomeController extends Controller
 
                 if ($subject == null) {
                     return view('about', [
-                        'subject' => 'Il n\'y a aucun sujet là dessus. Songez à créer le sujet « Politique de confidentialité » avec ses titres et ses sous-titres.',
+                        'subject' => 'Veuillez créer le sujet « Politique de confidentialité » avec ses titres et ses sous-titres.',
                         'entity' => $entity,
                         'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
                         'entity_menu' => __('miscellaneous.menu.' . $entity),

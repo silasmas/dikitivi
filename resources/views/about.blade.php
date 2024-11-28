@@ -18,7 +18,7 @@
     @if (Route::is('about'))
                                 <a href="{{ route('about.entity', ['entity' => 'terms_of_use']) }}" class="btn btn-sm dktv-btn-blue btn-block mb-2 pb-1 rounded-pill shadow-0">@lang('miscellaneous.public.about.terms_of_use.title')</a>
                                 <a href="{{ route('about.entity', ['entity' => 'privacy_policy']) }}" class="btn btn-sm dktv-btn-blue btn-block mb-2 pb-1 rounded-pill shadow-0">@lang('miscellaneous.public.about.privacy_policy.title')</a>
-                                <a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="btn btn-sm dktv-btn-blue btn-block mb-2 pb-1 rounded-pill shadow-0">@lang('miscellaneous.public.about.contact.title')</a>
+                                {{-- <a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="btn btn-sm dktv-btn-blue btn-block mb-2 pb-1 rounded-pill shadow-0">@lang('miscellaneous.public.about.contact.title')</a> --}}
                             </div>
                         </div>
                     </div>

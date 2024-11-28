@@ -289,7 +289,7 @@
     @endif
 @endempty
                                                 <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
-                                                <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
+                                                {{-- <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li> --}}
                                         </ul>
                                     </div>
                                 </div>
