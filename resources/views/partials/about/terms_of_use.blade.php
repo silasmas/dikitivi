@@ -16,16 +16,20 @@
 
                 <div class="row">
                     <div class="col-sm-8">
-@foreach ($subject['legal_info_titles'] as $ttl)
+@if (!empty($subject['legal_info_titles']))
+    @foreach ($subject['legal_info_titles'] as $ttl)
                         <h3 class="h3 mb-4 fw-bold">{{ $ttl['title'] }}</h3>
 
-        @foreach ($ttl['legal_info_contents'] as $cnt)
+            @foreach ($ttl['legal_info_contents'] as $cnt)
                         <div class="mb-4">
                             <h5 class="h5 mb-1 fw-semibold dktv-text-green">{{ $cnt['subtitle'] }}</h5>
 
                             <p class="mb-1 fs-6 text-secondary">{!! $cnt['content'] !!}</p>
                         </div>
-        @endforeach
-@endforeach
-                    </div>
+            @endforeach
+    @endforeach
 
+@else
+                        <h3 class="h3 mb-4 text-center fw-bold" style="list-style-type: decimal;">{{ $subject }}</h3>
+@endif
+                    </div>

@@ -16,31 +16,35 @@
 
                 <div class="row">
                     <div class="col-sm-8">
+@if (!empty($subject['legal_info_titles']))
                         <ul class="ps-5">
-@foreach ($subject['legal_info_titles'] as $ttl)
+    @foreach ($subject['legal_info_titles'] as $ttl)
                             <li class="h3 mb-4 fw-bold" style="list-style-type: decimal;">{{ $ttl['title'] }}</li>
 
 
-    @if ($ttl['title_fr'] == 'Utilisation des informations')
-        @foreach ($ttl['legal_info_contents'] as $cnt)
+        @if ($ttl['title_fr'] == 'Utilisation des informations')
+            @foreach ($ttl['legal_info_contents'] as $cnt)
                             <div class="mb-4">
-            @if ($cnt['subtitle'])
+                @if ($cnt['subtitle'])
                                 <p class="mb-3 fs-6 text-secondary">{{ $cnt['subtitle'] }}</p>
-            @endif
+                @endif
                                 <p class="mb-1 fs-6 text-secondary"><i class="bi bi-chevron-double-right me-2 align-middle fs-5 text-danger"></i> {!! $cnt['content'] !!}</p>
                             </div>
-        @endforeach
+            @endforeach
 
-    @else
-        @foreach ($ttl['legal_info_contents'] as $cnt)
+        @else
+            @foreach ($ttl['legal_info_contents'] as $cnt)
                             <div class="mb-4">
                                 <h5 class="h5 mb-1 fw-semibold dktv-text-green">{{ $cnt['subtitle'] }}</h5>
 
                                 <p class="mb-1 fs-6 text-secondary">{!! $cnt['content'] !!}</p>
                             </div>
-        @endforeach
-    @endif
-@endforeach
+            @endforeach
+        @endif
+    @endforeach
                         </ul>
-                    </div>
 
+@else
+                            <h3 class="h3 mb-4 text-center fw-bold" style="list-style-type: decimal;">{{ $subject }}</h3>
+@endif
+                    </div>
