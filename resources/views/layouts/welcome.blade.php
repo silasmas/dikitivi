@@ -101,7 +101,7 @@
                                         <ul>
                                             <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                             <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
+                                            {{-- <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li> --}}
                                         </ul>
                                     </nav>
                                     <div class="login-button">
@@ -153,7 +153,7 @@
                                     <ul>
                                         <li><a href="{{ route('home') }}">@lang('miscellaneous.menu.home')</a></li>
                                         <li><a href="{{ route('about') }}">@lang('miscellaneous.menu.about')</a></li>
-                                        <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li>
+                                        {{-- <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}">@lang('miscellaneous.menu.contact')</a></li> --}}
                                     </ul>
                                 </nav>
                                 <div class="login-button">
@@ -315,7 +315,7 @@
                                         <ul class="footer-list">
                                             <li><a href="{{ route('home') }}" class="text-light">@lang('miscellaneous.menu.home')</a></li>
                                             <li><a href="{{ route('about') }}" class="text-light">@lang('miscellaneous.menu.about')</a></li>
-                                            <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li>
+                                            {{-- <li><a href="{{ route('about.entity', ['entity' => 'contact']) }}" class="text-light">@lang('miscellaneous.menu.contact')</a></li> --}}
                                             <li><a href="{{ route('login') }}" class="text-light">@lang('miscellaneous.login_title1')</a></li>
                                         </ul>
                                     </div>
