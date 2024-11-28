@@ -10,7 +10,7 @@
         @include('partials.about.' . $entity)
     @endif
 
-                    <div class="col-sm-4 d-none">
+                    <div class="col-sm-4 detect-webview">
                         <div class="card border border-default shadow-0">
                             <div class="card-body">
                                 <h4 class="h4 mb-4 text-black fw-bold">@lang('miscellaneous.public.about.other_links.title')</h4>
