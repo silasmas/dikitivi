@@ -31,7 +31,7 @@ return [
     'awaiting_approval' => 'Awaiting Approval',
     'views' => 'Views',
     'likes' => 'Likes',
-    'iam_child' => 'Youth free access',
+    'iam_child' => 'Youth',
     'iam_adult' => 'All medias',
     'no_parental_code' => 'I don\'t have a parental code',
     'back_home' => 'Return to the home',
@@ -445,7 +445,7 @@ return [
                 'title' => 'Christian medias',
                 'content' => 'To get started, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">log in</a> or choose your age group in order to find the media that suit you.',
                 'link1' => 'See all media',
-                'link2' => 'Youth'
+                'link2' => 'Youth free access'
             ],
             'download_mobile_app' => [
                 'title' => 'Download the DikiTivi mobile app',

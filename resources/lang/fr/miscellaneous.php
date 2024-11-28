@@ -31,7 +31,7 @@ return [
     'awaiting_approval' => 'En attente d’approbation',
     'views' => 'Vues',
     'likes' => 'J’aime',
-    'iam_child' => 'Accès libre jeunesse',
+    'iam_child' => 'Jeunesse',
     'iam_adult' => 'Tous les médias',
     'no_parental_code' => 'Je n\'ai pas de code parental',
     'back_home' => 'Retour à l’accueil',
@@ -445,7 +445,7 @@ return [
                 'title' => 'Médias chrétiens',
                 'content' => 'Pour commencez, <a href="' . route('login') . '" class="text-decoration-underline" style="color: #abff67;">identifiez-vous</a> ou choisissez votre tranche d’âge afin de trouver les médias qui vous correspondent.',
                 'link1' => 'Voir tous les médias',
-                'link2' => 'Jeunesse'
+                'link2' => 'Accès libre jeunesse'
             ],
             'download_mobile_app' => [
                 'title' => 'Télécharger l’appli mobile DikiTivi',
