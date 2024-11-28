@@ -1003,21 +1003,52 @@ class HomeController extends Controller
             }
 
         } else {
-            $subjects = LegalInfoSubject::all();
-
-            dd($subjects);
-
             if ($entity == 'terms_of_use') {
-                $subject = LegalInfoSubject::where('subject_name->fr', 'A Propos de DikiTivi')->first();
-                $subject_resource = new ResourcesLegalInfoSubject($subject);
-                $subject_data = $subject_resource->toArray(request());
-        
-                return view('about', [
-                    'subject' => $subject_data,
-                    'entity' => $entity,
-                    'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
-                    'entity_menu' => __('miscellaneous.menu.' . $entity),
-                ]);
+                $subject = LegalInfoSubject::where('subject_name->fr', 'Conditions d\'utilisation')->first();
+
+                if ($subject == null) {
+                    return view('about', [
+                        'subject' => 'Il n\'y a aucun sujet là dessus. Songez à créer le sujet « <strong>Conditions d\'utilisation</strong> » avec ses titres et ses sous-titres.',
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                        'entity_menu' => __('miscellaneous.menu.' . $entity),
+                    ]);
+
+                } else {
+                    $subject_resource = new ResourcesLegalInfoSubject($subject);
+                    $subject_data = $subject_resource->toArray(request());
+
+                    return view('about', [
+                        'subject' => $subject_data,
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                        'entity_menu' => __('miscellaneous.menu.' . $entity),
+                    ]);
+                }
+            }
+
+            if ($entity == 'privacy_policy') {
+                $subject = LegalInfoSubject::where('subject_name->fr', 'Politique de confidentialité')->first();
+
+                if ($subject == null) {
+                    return view('about', [
+                        'subject' => 'Il n\'y a aucun sujet là dessus. Songez à créer le sujet « <strong>Politique de confidentialité</strong> » avec ses titres et ses sous-titres.',
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                        'entity_menu' => __('miscellaneous.menu.' . $entity),
+                    ]);
+
+                } else {
+                    $subject_resource = new ResourcesLegalInfoSubject($subject);
+                    $subject_data = $subject_resource->toArray(request());
+
+                    return view('about', [
+                        'subject' => $subject_data,
+                        'entity' => $entity,
+                        'entity_title' => __('miscellaneous.public.about.' . $entity . '.title'),
+                        'entity_menu' => __('miscellaneous.menu.' . $entity),
+                    ]);
+                }
             }
         }
     }
