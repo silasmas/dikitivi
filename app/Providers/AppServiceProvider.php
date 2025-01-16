@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
             // -- ALBUMS
             $medias_albums = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['type_id', 7], ['is_public', 1]])->orderByDesc('created_at')->paginate(12) : Media::where([['type_id', 7], ['is_public', 1]])->orderByDesc('created_at')->paginate(12);
             // Select media trends
-            $medias_trends = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['is_public', 1]])->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get() : Media::whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->where('is_public', 1)->orderByDesc('created_at')->limit(5)->get();
+            $medias_trends = Media::getMediaSessions(date('Y'), $for_youth);
             // Select media lives
             $medias_lives = $for_youth == 1 ? Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6], ['is_public', 1]])->orderByDesc('created_at')->paginate(12) : Media::where([['is_live', 1], ['type_id', 6], ['is_public', 1]])->orderByDesc('created_at')->paginate(12);
             // Select all countries
@@ -121,7 +121,7 @@ class AppServiceProvider extends ServiceProvider
             // -- ALBUMS
             $medias_albums = Media::where([['for_youth', $for_youth], ['type_id', 7], ['is_public', 1]])->orderByDesc('created_at')->paginate(12);
             // Select media trends API
-            $medias_trends = Media::where([['for_youth', $for_youth], ['is_public', 1]])->whereHas('sessions', function ($query) {$query->whereYear('sessions.created_at', '=', date('Y'));})->distinct()->orderByDesc('created_at')->limit(5)->get();
+            $medias_trends = Media::getMediaSessions(date('Y'), $for_youth);
             // Select media lives API
             $medias_lives = Media::where([['for_youth', $for_youth], ['is_live', 1], ['type_id', 6], ['is_public', 1]])->orderByDesc('created_at')->paginate(12);
             // Select all countries

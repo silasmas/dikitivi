@@ -75,4 +75,27 @@ class Media extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * Current trends
+     */
+    public static function getMediaSessions($year, $for_youth)
+    {
+        // Start the query with the association table
+        $query = self::join('media_session', 'media_session.media_id', '=', 'medias.id')
+                        ->leftJoin('sessions', 'media_session.session_id', '=', 'sessions.id')
+                        ->whereYear('media_session.created_at', $year)
+                        ->orWhereNull('media_session.session_id');
+
+        // Add condition for "for_youth" and "is_public" dynamically
+        if ($for_youth == 0) {
+            $query->where('medias.is_public', 1);
+
+        } else {
+            $query->where([['medias.for_youth', $for_youth], ['medias.is_public', 1]]);
+        }
+
+        // Select the necessary columns and limit the results
+        return $query->select('medias.*')->orderByDesc('media_session.created_at')->limit(5)->get();
+    }
 }
