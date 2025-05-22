@@ -68,39 +68,43 @@ if (request()->has('app_id')) {
 @if (!empty($current_media))
             {{ $current_media['media_title'] }}
 @else
-            DikiTivi / 
-    @if (Route::is('home'))
-            @lang('miscellaneous.menu.home')
-    @endif
-    @if (Route::is('account'))
-            @lang('miscellaneous.menu.account')
-    @endif
-    @if (Route::is('account.entity') || Route::is('account.entity.datas'))
-            {{ $entity_title }}
-    @endif
-    @if (Route::is('live.home'))
-            @lang('miscellaneous.menu.live')
-    @endif
-    @if (Route::is('films.home'))
-            @lang('miscellaneous.menu.films')
-    @endif
-    @if (Route::is('cartoons.home'))
-            @lang('miscellaneous.menu.cartoons')
-    @endif
-    @if (Route::is('series.home'))
-            @lang('miscellaneous.menu.series')
-    @endif
-    @if (Route::is('programs.home'))
-            @lang('miscellaneous.menu.programs')
-    @endif
-    @if (Route::is('programs.entity.home'))
-            {{ $entity_title }}
-    @endif
-    @if (Route::is('songs.home'))
-            @lang('miscellaneous.menu.songs')
-    @endif
-    @if (Route::is('books.home') || Route::is('books.datas'))
-            @lang('miscellaneous.menu.books')
+    @if (!empty($search_content))
+        @lang('miscellaneous.search_result', ['data' => $search_content])
+    @else
+                DikiTivi / 
+        @if (Route::is('home'))
+                @lang('miscellaneous.menu.home')
+        @endif
+        @if (Route::is('account'))
+                @lang('miscellaneous.menu.account')
+        @endif
+        @if (Route::is('account.entity') || Route::is('account.entity.datas'))
+                {{ $entity_title }}
+        @endif
+        @if (Route::is('live.home'))
+                @lang('miscellaneous.menu.live')
+        @endif
+        @if (Route::is('films.home'))
+                @lang('miscellaneous.menu.films')
+        @endif
+        @if (Route::is('cartoons.home'))
+                @lang('miscellaneous.menu.cartoons')
+        @endif
+        @if (Route::is('series.home'))
+                @lang('miscellaneous.menu.series')
+        @endif
+        @if (Route::is('programs.home'))
+                @lang('miscellaneous.menu.programs')
+        @endif
+        @if (Route::is('programs.entity.home'))
+                {{ $entity_title }}
+        @endif
+        @if (Route::is('songs.home'))
+                @lang('miscellaneous.menu.songs')
+        @endif
+        @if (Route::is('books.home') || Route::is('books.datas'))
+                @lang('miscellaneous.menu.books')
+        @endif
     @endif
 @endif
         </title>
