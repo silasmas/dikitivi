@@ -18,7 +18,7 @@ class Media extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        return [ 
             'id' => $this->id,
             'media_title' => $this->media_title,
             'media_description' => $this->media_description,
